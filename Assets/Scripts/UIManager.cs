@@ -6,8 +6,39 @@ public class UIManager : MonoBehaviour
 {
     public TMP_Text Text_WordsLearnedValue;
     public TMP_Text Text_ExperienceValue;
+    public bool ActivateDebugWindow;
+    public Canvas DebugWindowCanvas;
+    public TMP_Text Text_DebugPlayerX;
+    public TMP_Text Text_DebugPlayerY;
 
-    public GameManager gameManager; 
+    public GameManager gameManager;
+
+    private string debugPrefs;
+
+    private void Awake()
+    {
+        Debug.Log("UIManager: BEFORE: ActivateDebugWindow: " + ActivateDebugWindow.ToString());
+
+        if (!PlayerPrefs.HasKey("SaveState"))
+        {
+            Debug.Log("UIManager: No save data found.");
+        }
+        else
+        {
+            debugPrefs = PlayerPrefs.GetString("DebugWindow");
+            Debug.Log("DEBUG WINDOW ACTIVATION: " + debugPrefs);
+        }
+
+        if (debugPrefs != "")
+        {
+            ActivateDebugWindow = (debugPrefs == "True");
+        }
+        Debug.Log("UIManager: AFTER: ActivateDebugWindow: " + ActivateDebugWindow.ToString());
+    }
+    void Update()
+    {
+        DebugWindowCanvas.enabled = (ActivateDebugWindow);
+    }
 
     private void OnEnable()
     {
@@ -54,6 +85,19 @@ public class UIManager : MonoBehaviour
         if (Text_ExperienceValue != null)
         {
             Text_ExperienceValue.text = experience.ToString();
+        }
+    }
+
+    public void UpdateDebugWindow(float playerPosX, float playerPosY)
+    {
+        if (Text_DebugPlayerX != null)
+        {
+            Text_DebugPlayerX.text = "Player Position X: " + playerPosX.ToString();
+        }
+
+        if (Text_DebugPlayerY != null)
+        {
+            Text_DebugPlayerY.text = "Player Position Y: " + playerPosY.ToString();
         }
     }
 }

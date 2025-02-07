@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Sprite[] spriteArray;
     public float movementSpeed = 0.15f;
+    public UIManager uiManager;
 
     public Rigidbody2D rb;
     public Animator animator;
@@ -39,27 +40,23 @@ public class Player : MonoBehaviour
             }
 
             movement = joystickInput * movementSpeed; // Apply movement speed *after* dead zone
-            //movement.x = joystick.Horizontal * movementSpeed;
-            //movement.y = joystick.Vertical * movementSpeed;
         } else
         {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
             movement *= movementSpeed; // Apply movement speed after getting input *only for keyboard*
-            //movement.x = Input.GetAxisRaw("Horizontal");
-            //movement.y = Input.GetAxisRaw("Vertical");
         }
 
         // Swap sprite direction, using animator
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
-
+        
     }
 
     // FixedUdpate is called 50 times a second by default
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * movementSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movementSpeed * Time.fixedDeltaTime * movement);
     }
 }

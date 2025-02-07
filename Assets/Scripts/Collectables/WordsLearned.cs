@@ -20,8 +20,7 @@ namespace Assets.Scripts.Collectables
             GameManager.Instance.WordsLearned++;
             GameManager.Instance.Experience += experience;
 
-            Debug.Log($"WordsLearned incremented. New value: {GameManager.Instance.WordsLearned}");
-            Debug.Log($"Total Experience: {GameManager.Instance.Experience}");
+            Debug.Log($"WordsLearned incremented. New value: {GameManager.Instance.WordsLearned} \nTotal Experience: {GameManager.Instance.Experience}");
 
             // The Collectable.OnCollect() method already handles everything else (destroying the object etc.)
         }

@@ -28,7 +28,7 @@ public class TextColliderManager : MonoBehaviour
     {
         if (popupCanvasGO != null && collision.CompareTag("Player"))
         {
-            Debug.Log("TRIGGER IS ALIVE");
+            //Debug.Log("TRIGGER IS ALIVE");
             popupCanvasGO.SetActive(true); // Enable the GameObject
         }
     }
@@ -37,7 +37,7 @@ public class TextColliderManager : MonoBehaviour
     {
         if (popupCanvasGO != null && collision.CompareTag("Player"))
         {
-            Debug.Log("TRIGGER IS GOODBYE");
+            //Debug.Log("TRIGGER IS GOODBYE");
             popupCanvasGO.SetActive(false); // Disable the GameObject
         }
     }

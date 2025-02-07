@@ -56,7 +56,7 @@ public class Collectable : MonoBehaviour
         PlayerPrefs.SetInt("Collectable_" + CollectableID, 1); // Save to PlayerPrefs.
         PlayerPrefs.Save();
 
-        GameManager.Instance.SaveState(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, "");
+        GameManager.Instance.SaveState(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, "", Vector3.zero, new Bounds()); // Pass new Bounds() as portalBounds
 
         Destroy(gameObject);
     }

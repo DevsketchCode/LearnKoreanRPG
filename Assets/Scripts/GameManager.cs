@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     // Player related
     public GameObject playerPrefab;
-    private GameObject playerGO;
+    public GameObject playerGO;
 
     // Resources
     public List<Sprite> playerSprites;
@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     // References
     public Player player; // Consider if this is actually used. If not, remove.
     public FloatingTextManager floatingTextManager;
+    public UIManager uiManager;
 
     // Game data
     public int koreanWon;
@@ -97,6 +98,7 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log($"[OnSceneLoaded] Scene Loaded: {scene.name}, Mode: {mode}, Time: {Time.time} - SceneLoadCompleted"); 
         LoadState(scene);
         InitializeCollectables();
     }
@@ -107,7 +109,7 @@ public class GameManager : MonoBehaviour
         floatingTextManager.Show(msg, fontSize, color, position, motion, duration);
     }
 
-    public void SaveState(string activeScene, string enteredFrom)
+    public void SaveState(string activeScene, string enteredFrom, Vector3 portalPosition, Bounds portalBounds) // Added portalBounds parameter
     {
         // Find the player
         playerGO = GameObject.FindGameObjectWithTag("Player");
@@ -118,38 +120,76 @@ public class GameManager : MonoBehaviour
         }
 
         player1WorldPos = playerGO.transform.position;
-
-        // Save player position based on scene and entry direction.  Simplified logic.
-        if (activeScene != "Town1")
+        // Don't need to save the player position at this time for any other scene.
+        if(activeScene == "Town1")
         {
-            // Adjust position slightly based on entry direction for smoother transitions.
-            float yOffset = 0f;
-            if (enteredFrom == "Bottom") yOffset = -0.20f;
-            else if (enteredFrom == "Top") yOffset = 0.20f;
-            player1WorldPos.y += yOffset;
+            // Debug logs for loading (before offset)
+            //Debug.Log($"[LoadState - Town1] Loaded PlayerPosX: {PlayerPrefs.GetFloat("PlayerPosX")}, PlayerPosY: {PlayerPrefs.GetFloat("PlayerPosY")}");
+
+
+            // Save player position - With Offset
+            PlayerPrefs.SetFloat("PlayerPosX", portalBounds.center.x);
+
+            if (enteredFrom == "Bottom")
+            {
+                PlayerPrefs.SetFloat("PlayerPosY", (portalBounds.min.y - 0.5f));
+            }
+            else if (enteredFrom == "Top")
+            {
+                PlayerPrefs.SetFloat("PlayerPosY", (portalBounds.max.y + 0.5f));
+            } 
+            else
+            {
+                PlayerPrefs.SetFloat("PlayerPosY", player1WorldPos.y);
+            }
+
+            //Debug.Log($"[LoadState - Town1] Position after Y and X offset: X={player1WorldPos.x}, Y={player1WorldPos.y}"); // Log position after offsets
         }
-        PlayerPrefs.SetFloat("PlayerPosX", player1WorldPos.x);
-        PlayerPrefs.SetFloat("PlayerPosY", player1WorldPos.y);
+
+        //PlayerPrefs.SetFloat("LastExitPortalY", portalPosition.y);
+        //PlayerPrefs.SetFloat("LastExitPortalMinX", portalBounds.min.x); // Save Portal Min X Bound
+        //PlayerPrefs.SetFloat("LastExitPortalMaxX", portalBounds.max.x); // Save Portal Max X Bound
 
 
-        // Save game data
+        // Debug logs for saving (include portal bounds)
+        // Debug.Log($"[SaveState] Scene: {activeScene}, Leaving from: {enteredFrom}, Saving Player Pos: X={player1WorldPos.x}, Y={player1WorldPos.y}, Portal Y={portalPosition.y}, Portal MinX={portalBounds.min.x}, Portal MaxX={portalBounds.max.x}");
+        //Debug.Log($"[SaveState] Saved PlayerPosX: {PlayerPrefs.GetFloat("PlayerPosX")}, PlayerPosY: {PlayerPrefs.GetFloat("PlayerPosY")}");
+
+        // Save game data (rest is fine)
         PlayerPrefs.SetInt("KoreanWon", koreanWon);
         PlayerPrefs.SetInt("Experience", experience);
         PlayerPrefs.SetInt("WordsLearned", numberWordsLearned);
-        PlayerPrefs.SetString("SaveState", "true");
 
-        // Save collectable states
+        if (uiManager == null)
+        {
+            Debug.Log("UIMANAGER was NULL");
+            uiManager = FindObjectOfType<UIManager>(); // Find the UIManager
+            PlayerPrefs.SetString("DebugWindow", "False");
+        }
+
+        if (uiManager != null)
+        {
+            PlayerPrefs.SetString("DebugWindow", uiManager.ActivateDebugWindow.ToString());
+        }
+
+        PlayerPrefs.SetString("SaveState", "True");
+
+        // Save collectable states (rest is fine)
         SaveCollectableStates();
 
         PlayerPrefs.Save();
+        Debug.Log("SCENE SAVED!! Scene: " + activeScene);
+        Debug.Log($"[SaveState] Scene: {activeScene} SAVED. PlayerPrefs DebugWindow: {PlayerPrefs.GetString("DebugWindow")}");
     }
 
     public void LoadState(Scene scene)
     {
+        Debug.Log($"[LoadState] Loading Scene: {scene.name}");
+
         if (!PlayerPrefs.HasKey("SaveState"))
         {
             Debug.Log("No save data found. Player will start at default position.");
-            InitializeCollectables(); // Initialize collectables even without save data.
+            InitializeCollectables();
             return;
         }
 
@@ -161,19 +201,35 @@ public class GameManager : MonoBehaviour
         {
             player1WorldPos = new Vector3(PlayerPrefs.GetFloat("PlayerPosX"), PlayerPrefs.GetFloat("PlayerPosY"), 0);
 
-            // Find or instantiate the player.  Simplified logic.
+            // Find or instantiate the player.
             playerGO = GameObject.FindGameObjectWithTag("Player");
             if (playerGO == null)
             {
                 playerGO = Instantiate(playerPrefab);
                 playerGO.tag = "Player";
             }
-            playerGO.transform.position = player1WorldPos;
+
+            playerGO.transform.position = player1WorldPos; // Set player position - NOW with Y and X offset
+
+            //Debug.Log($"[LoadState - Town1] Setting Player Position: X={playerGO.transform.position.x}, Y={playerGO.transform.position.y} (GameObject)"); // Log final player position from GameObject
+        }
+        if (uiManager == null)
+        {
+            Debug.Log("UIMANAGER was NULL");
+            uiManager = FindObjectOfType<UIManager>(); // Find the UIManager
         }
 
-        LoadCollectableStates(); // Load collectable states after other game data.
-        InitializeCollectables(); // Ensure collectables are initialized.
+        if (uiManager != null)
+        {
+            Debug.Log("UIMANAGER EXISTS: Before: " + uiManager.ActivateDebugWindow);
+            uiManager.ActivateDebugWindow = (PlayerPrefs.GetString("DebugWindow") == "True");
+            Debug.Log("UIMANAGER EXISTS: After: " + uiManager.ActivateDebugWindow);
+        }
 
+        LoadCollectableStates();
+        InitializeCollectables();
+        //Debug.Log("Loading Complete for " + scene.name + ". Experience: " + experience + " // Words Learned: " + numberWordsLearned);
+        Debug.Log($"[LoadState] Scene: {scene.name} PlayerPrefs DebugWindow: {PlayerPrefs.GetString("DebugWindow")}");
     }
 
     // WordsLearned property with event firing
