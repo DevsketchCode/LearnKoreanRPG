@@ -17,8 +17,6 @@ public class Collectable : MonoBehaviour
         Destroy
     }
 
-    public bool delayedAction;
-
     [SerializeField] private CollectionType collectionType = CollectionType.Item;
     public string CollectableID;
 

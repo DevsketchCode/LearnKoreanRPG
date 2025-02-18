@@ -127,30 +127,32 @@ namespace Assets.Scripts.Collectables
                     Debug.LogError("altLangWordTextPro is null! Cannot get alternate language word text.");
                     return; // Exit if we can't get AltLang word text
                 }
-            }
 
-
-            // **Add word pair to WordsLearnedDictionary in GameManager**
-            if (!string.IsNullOrEmpty(learnedWord_eng) && !string.IsNullOrEmpty(learnedWord_alt)) // Check if both words are not empty
-            {
-                if (!GameManager.Instance.wordsLearnedDictionary.ContainsKey(learnedWord_eng)) // Check if English word (key) already exists
+                // **Add word pair to WordsLearnedDictionary in GameManager**
+                if (!string.IsNullOrEmpty(learnedWord_eng) && !string.IsNullOrEmpty(learnedWord_alt)) // Check if both words are not empty
                 {
-                    KeyValuePair<string, string> wordPair = new KeyValuePair<string, string>(learnedWord_eng, learnedWord_alt); // Create the word pair
-                    GameManager.Instance.wordsLearnedDictionary.Add(learnedWord_eng, wordPair); // Add to dictionary, English word as key, pair as value
+                    if (!GameManager.Instance.wordsLearnedDictionary.ContainsKey(learnedWord_eng)) // Check if English word (key) already exists
+                    {
+                        // Create a new WordData object
+                        WordData wordData = new WordData(learnedWord_alt, wordKnowledgeLevel); // Create WordData object, initial level = New
 
-                    Debug.Log($"Word pair added to WordsLearnedDictionary. English: '{learnedWord_eng}', Korean: '{learnedWord_alt}'");
+                        GameManager.Instance.wordsLearnedDictionary.Add(learnedWord_eng, wordData); // Add to dictionary, English word as key, and wordData object as value
+
+                        Debug.Log($"Word added to WordsLearnedDictionary. English: '{learnedWord_eng}', AltLang: '{learnedWord_alt}', Knowledge Level: {WordKnowledgeLevel.New}"); // Log knowledge level
+                    }
+                    else
+                    {
+                        Debug.Log($"Word '{learnedWord_eng}' already in WordsLearnedDictionary. (Duplicate collection?)");
+                    }
                 }
                 else
                 {
-                    Debug.Log($"Word '{learnedWord_eng}' already in WordsLearnedDictionary. (Duplicate collection?)");
+                    Debug.LogError($"Could not add word pair. English word: '{learnedWord_eng}', AltLang word: '{learnedWord_alt}'. One or both are empty!");
                 }
-            }
-            else
-            {
-                Debug.LogError($"Could not add word pair. English word: '{learnedWord_eng}', AltLang word: '{learnedWord_alt}'. One or both are empty!");
+
+                Debug.Log($"WordsLearned incremented. New value: {GameManager.Instance.WordsLearned} \nTotal Experience: {GameManager.Instance.Experience}");
             }
 
-            Debug.Log($"WordsLearned incremented. New value: {GameManager.Instance.WordsLearned} \nTotal Experience: {GameManager.Instance.Experience}");
         }
         // The Collectable.OnCollect() method already handles everything else (destroying/disabling the object etc.)
     }

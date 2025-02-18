@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System; // Required for Action
+using Assets.Scripts.Collectables;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class GameManager : MonoBehaviour
     public List<Sprite> attachmentSprites;
     public List<int> attachmentPrices;
     public List<int> xpTable;
-    public Dictionary<string, KeyValuePair<string, string>> wordsLearnedDictionary = new Dictionary<string, KeyValuePair<string, string>>(); // New dictionary to store word pairs
+    public Dictionary<string, WordData> wordsLearnedDictionary = new Dictionary<string, WordData>();
 
     // References
     public Player playerControls; 
@@ -117,7 +118,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("--- WordsLearnedDictionary Contents (Press 'P' to Refresh) ---");
             foreach (var pair in wordsLearnedDictionary)
             {
-                Debug.Log($"Word: '{pair.Key}', Learned: {pair.Value}");
+                Debug.Log($"Word: '{pair.Key}', AltLang: {pair.Value.altLangWord}, Knowledge Level: {pair.Value.knowledgeLevel}"); // Access properties of WordData object
             }
             Debug.Log("--- End of Dictionary ---");
         }
