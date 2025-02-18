@@ -10,8 +10,19 @@ public class Collectable : MonoBehaviour
         WordsLearned
     }
 
+    public enum ActionOnCollect
+    {
+        None,
+        Deactivate,
+        Destroy
+    }
+
+    public bool delayedAction;
+
     [SerializeField] private CollectionType collectionType = CollectionType.Item;
-    [SerializeField] public string CollectableID;
+    public string CollectableID;
+
+    public ActionOnCollect actionOnCollect;
 
     protected virtual void Awake()
     {
@@ -58,6 +69,23 @@ public class Collectable : MonoBehaviour
 
         GameManager.Instance.SaveState(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, "", Vector3.zero, new Bounds()); // Pass new Bounds() as portalBounds
 
-        Destroy(gameObject);
+        // Deactivation ran in Collectable.cs
+        ShouldDeactivateOnCollect();
+    }
+
+    // **NEW: Virtual method to control deactivation behavior**
+    protected void ShouldDeactivateOnCollect()
+    {
+        if (actionOnCollect == ActionOnCollect.Deactivate) // **NEW: Conditional deactivation based on virtual method**
+        {
+            Debug.Log("Collectable.cs: ShouldDeactivateOnCollect: Should Deactivate" + actionOnCollect.ToString());
+            gameObject.SetActive(false); // **Deactivate only if ShouldDeactivateOnCollect() returns true**
+        }
+        else if (actionOnCollect == ActionOnCollect.Destroy)
+        {
+            Debug.Log("Collectable.cs: ShouldDeactivateOnCollect: Should Destroy" + actionOnCollect.ToString());
+            Destroy(gameObject);
+        }
+        Debug.Log("Collectable.cs ShouldDeactivateOnCollect hit.");
     }
 }

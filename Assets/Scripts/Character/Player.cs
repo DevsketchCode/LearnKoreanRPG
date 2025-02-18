@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public Joystick joystick;
     public bool useJoystick;
     public float joystickDeadZone = 0.1f; // Adjust this value as needed
+    public bool canMove = true; // Flag to control movement
 
     private void Start()
     {
@@ -27,6 +28,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canMove) return; // Early exit if movement is disabled
+
         if (useJoystick)
         {
             Vector2 joystickInput;
@@ -58,5 +61,18 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movementSpeed * Time.fixedDeltaTime * movement);
+    }
+
+    public void DisableMovement()
+    {
+        canMove = false;
+        movement = Vector2.zero; // Stop the users movement (walking animation still continues)
+        Debug.Log("[PlayerMovement] Movement DISABLED");
+    }
+
+    public void EnableMovement()
+    {
+        canMove = true;
+        Debug.Log("[PlayerMovement] Movement ENABLED");
     }
 }

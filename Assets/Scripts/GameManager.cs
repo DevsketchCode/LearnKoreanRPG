@@ -21,11 +21,13 @@ public class GameManager : MonoBehaviour
     public List<Sprite> attachmentSprites;
     public List<int> attachmentPrices;
     public List<int> xpTable;
+    public Dictionary<string, KeyValuePair<string, string>> wordsLearnedDictionary = new Dictionary<string, KeyValuePair<string, string>>(); // New dictionary to store word pairs
 
     // References
-    public Player player; // Consider if this is actually used. If not, remove.
+    public Player playerControls; 
     public FloatingTextManager floatingTextManager;
     public UIManager uiManager;
+
 
     // Game data
     public int koreanWon;
@@ -90,6 +92,37 @@ public class GameManager : MonoBehaviour
         experience = PlayerPrefs.GetInt("Experience", 0);
     }
 
+    private void Start()
+    {
+        // Get PlayerMovement reference in Start (more efficient)
+        GameObject playerGameObject = GameObject.FindGameObjectWithTag("Player"); // Find Player GO
+        if (playerGameObject != null)
+        {
+            playerControls = playerGameObject.GetComponent<Player>(); // Get PlayerMovement component
+            if (playerControls == null)
+            {
+                Debug.LogError("PlayerMovement script not found on Player GameObject!");
+            }
+        }
+        else
+        {
+            Debug.LogError("Player GameObject not found with tag 'Player'!");
+        }
+    }
+
+    void Update() // For TESTING - REMOVE LATER!
+    {
+        if (Input.GetKeyDown(KeyCode.P)) // Press 'P' key to print dictionary to console (for testing)
+        {
+            Debug.Log("--- WordsLearnedDictionary Contents (Press 'P' to Refresh) ---");
+            foreach (var pair in wordsLearnedDictionary)
+            {
+                Debug.Log($"Word: '{pair.Key}', Learned: {pair.Value}");
+            }
+            Debug.Log("--- End of Dictionary ---");
+        }
+    }
+
     private void OnDestroy()
     {
         // Unsubscribe from scene loaded event
@@ -146,14 +179,8 @@ public class GameManager : MonoBehaviour
             //Debug.Log($"[LoadState - Town1] Position after Y and X offset: X={player1WorldPos.x}, Y={player1WorldPos.y}"); // Log position after offsets
         }
 
-        //PlayerPrefs.SetFloat("LastExitPortalY", portalPosition.y);
-        //PlayerPrefs.SetFloat("LastExitPortalMinX", portalBounds.min.x); // Save Portal Min X Bound
-        //PlayerPrefs.SetFloat("LastExitPortalMaxX", portalBounds.max.x); // Save Portal Max X Bound
-
-
-        // Debug logs for saving (include portal bounds)
-        // Debug.Log($"[SaveState] Scene: {activeScene}, Leaving from: {enteredFrom}, Saving Player Pos: X={player1WorldPos.x}, Y={player1WorldPos.y}, Portal Y={portalPosition.y}, Portal MinX={portalBounds.min.x}, Portal MaxX={portalBounds.max.x}");
-        //Debug.Log($"[SaveState] Saved PlayerPosX: {PlayerPrefs.GetFloat("PlayerPosX")}, PlayerPosY: {PlayerPrefs.GetFloat("PlayerPosY")}");
+        // Debug.Log($"[SaveState] Scene: {activeScene}, Leaving from: {enteredFrom}, Saving Player Pos: X={player1WorldPos.x}, Y={player1WorldPos.y}, LevelChanger Y={portalPosition.y}, LevelChanger MinX={portalBounds.min.x}, LevelChanger MaxX={portalBounds.max.x}");
+        // Debug.Log($"[SaveState] Saved PlayerPosX: {PlayerPrefs.GetFloat("PlayerPosX")}, PlayerPosY: {PlayerPrefs.GetFloat("PlayerPosY")}");
 
         // Save game data (rest is fine)
         PlayerPrefs.SetInt("KoreanWon", koreanWon);
@@ -162,7 +189,7 @@ public class GameManager : MonoBehaviour
 
         if (uiManager == null)
         {
-            Debug.Log("UIMANAGER was NULL");
+            // Debug.Log("UIMANAGER was NULL");
             uiManager = FindObjectOfType<UIManager>(); // Find the UIManager
             PlayerPrefs.SetString("DebugWindow", "False");
         }
@@ -209,21 +236,28 @@ public class GameManager : MonoBehaviour
                 playerGO.tag = "Player";
             }
 
-            playerGO.transform.position = player1WorldPos; // Set player position - NOW with Y and X offset
+            if (playerGO != null)
+            {
+                playerGO.transform.position = player1WorldPos; // Set player position - NOW with Y and X offset
+            }
+            if (playerControls != null)
+            {
+                playerControls.EnableMovement();
+            }
 
             //Debug.Log($"[LoadState - Town1] Setting Player Position: X={playerGO.transform.position.x}, Y={playerGO.transform.position.y} (GameObject)"); // Log final player position from GameObject
         }
         if (uiManager == null)
         {
-            Debug.Log("UIMANAGER was NULL");
+            // Debug.Log("UIMANAGER was NULL");
             uiManager = FindObjectOfType<UIManager>(); // Find the UIManager
         }
 
         if (uiManager != null)
         {
-            Debug.Log("UIMANAGER EXISTS: Before: " + uiManager.ActivateDebugWindow);
+            // Debug.Log("UIMANAGER EXISTS: Before: " + uiManager.ActivateDebugWindow);
             uiManager.ActivateDebugWindow = (PlayerPrefs.GetString("DebugWindow") == "True");
-            Debug.Log("UIMANAGER EXISTS: After: " + uiManager.ActivateDebugWindow);
+            // Debug.Log("UIMANAGER EXISTS: After: " + uiManager.ActivateDebugWindow);
         }
 
         LoadCollectableStates();
@@ -292,7 +326,8 @@ public class GameManager : MonoBehaviour
 
                 if (isCollected)
                 {
-                    Destroy(collectable.gameObject); // Destroy it immediately if collected.
+                    // Destroy(collectable.gameObject); // Destroy it immediately if collected.
+                    collectable.gameObject.SetActive(false);
                 }
             }
         }

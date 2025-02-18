@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("UIManager: BEFORE: ActivateDebugWindow: " + ActivateDebugWindow.ToString());
+        // Debug.Log("UIManager: BEFORE: ActivateDebugWindow: " + ActivateDebugWindow.ToString());
 
         if (!PlayerPrefs.HasKey("SaveState"))
         {
@@ -26,14 +26,14 @@ public class UIManager : MonoBehaviour
         else
         {
             debugPrefs = PlayerPrefs.GetString("DebugWindow");
-            Debug.Log("DEBUG WINDOW ACTIVATION: " + debugPrefs);
+            // Debug.Log("DEBUG WINDOW ACTIVATION: " + debugPrefs);
         }
 
         if (debugPrefs != "")
         {
             ActivateDebugWindow = (debugPrefs == "True");
         }
-        Debug.Log("UIManager: AFTER: ActivateDebugWindow: " + ActivateDebugWindow.ToString());
+        // Debug.Log("UIManager: AFTER: ActivateDebugWindow: " + ActivateDebugWindow.ToString());
     }
     void Update()
     {
