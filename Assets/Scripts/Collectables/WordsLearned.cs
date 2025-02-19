@@ -18,7 +18,10 @@ namespace Assets.Scripts.Collectables
 
         [SerializeField] private WordKnowledgeLevel wordKnowledgeLevel; // Backing field is now SerializedField and private
 
-        [SerializeField] private int experience = 0;
+        [SerializeField] private int familiarExperience = 0;
+        [SerializeField] private int knownExperience = 0;
+        [SerializeField] private int masteredExperience = 0;
+        private WordKnowledgeLevel selectedLevelExperience;
         private TextMeshPro englishWordTextPro; // Reference for English TextPro
         private TextMeshPro altLangWordTextPro;  // Reference for Alternate Language TextPro
         private string learnedWord_eng;
@@ -33,6 +36,8 @@ namespace Assets.Scripts.Collectables
         public Color knownWordColor = Color.cyan;
         public Color masteredWordColor = Color.green;
 
+        private bool levelSelectedForCurrentWord = false; // Flag to track if a level has been selected
+
         // Public Property for Knowledge Level with Setter Logic
         public WordKnowledgeLevel WordKnowledgeLevelProp // Renamed to PascalCase for property convention
         {
@@ -43,7 +48,7 @@ namespace Assets.Scripts.Collectables
 
                 Debug.Log($"[WordsLearned - WordKnowledgeLevelProp SET] Word: '{learnedWord_eng}', Knowledge Level: {wordKnowledgeLevel}");
 
-                UpdateKnowledgeLevelButtonColor(); // **Call UI update function here!**
+                UpdateKnowledgeLevelButtonColor(); // Call UI update function here!
             }
         }
 
@@ -90,7 +95,7 @@ namespace Assets.Scripts.Collectables
                     Debug.LogError("Text_AltLang not found under Panel_Background!");
                 }
 
-                // **Dynamically Find Buttons**
+                // Dynamically Find Buttons
                 buttonFamiliar = panelBackground.Find("Button_Familiar").GetComponent<Button>();
                 if (buttonFamiliar == null) Debug.LogError("Button_Familiar NOT found under Panel_Background!");
                 buttonKnown = panelBackground.Find("Button_Known").GetComponent<Button>();
@@ -107,14 +112,16 @@ namespace Assets.Scripts.Collectables
         protected override void Start()
         {
             base.Start();
-            UpdateKnowledgeLevelFromDictionary(); // **NEW - Initialize knowledge level from dictionary on Start**
-            UpdateKnowledgeLevelButtonColor(); // **Initial button color update on Start**
+            UpdateKnowledgeLevelFromDictionary(); // Initialize knowledge level from dictionary on Start
+            UpdateKnowledgeLevelButtonColor(); // Initial button color update on Start
         }
 
 
         protected override void OnCollect()
         {
             Debug.Log("WORDSLEARNED: OnCollect()");
+            levelSelectedForCurrentWord = false; // Reset the flag when a new word is collected
+
 
             if (GameManager.Instance == null)
             {
@@ -149,7 +156,7 @@ namespace Assets.Scripts.Collectables
             // The Collectable.OnCollect() method already handles everything else (destroying/disabling the object etc.)
         }
 
-        // Initialize knowledge level from dictionary on Start/Load**
+        // Initialize knowledge level from dictionary on Start/Load
         private void UpdateKnowledgeLevelFromDictionary()
         {
             if (GameManager.Instance == null)
@@ -171,7 +178,7 @@ namespace Assets.Scripts.Collectables
                 WordKnowledgeLevelProp = wordData.KnowledgeLevel; // Use property setter to trigger UI update
                 Debug.Log($"[WordsLearned - UpdateKnowledgeLevelFromDictionary] Loaded knowledge level '{WordKnowledgeLevelProp}' from dictionary for word: '{learnedWord_eng}'.");
 
-                // **Crucially, we don't need to set a persistent 'wordLearned' flag here in WordsLearned.cs anymore!**
+                // Crucially, we don't need to set a persistent 'wordLearned' flag here in WordsLearned.cs anymore!
                 // The 'IsLearned' flag in WordData in the dictionary is now the persistent source of truth.
 
             }
@@ -182,27 +189,18 @@ namespace Assets.Scripts.Collectables
             }
         }
 
-        // Called this when a button is clicked**
+        // Called this when a button is clicked
         public void FinalizeWordCollection(WordKnowledgeLevel selectedLevel)
         {
-            if (GameManager.Instance.wordsLearnedDictionary.ContainsKey(learnedWord_eng) && GameManager.Instance.wordsLearnedDictionary[learnedWord_eng].IsLearned) // Double check to prevent double collection if buttons are spammed
-            {
-                Debug.LogWarning($"[WordsLearned - FinalizeWordCollection] Word '{learnedWord_eng}' already finalized! Ignoring button click.");
-                return;
-            }
-
-            // Now process the collection and set knowledge level based on button click
-            WordKnowledgeLevelProp = selectedLevel; // Use property setter to set level AND update UI
-
-            GameManager.Instance.WordsLearned++; // Increment word count
-            GameManager.Instance.Experience += experience; // Add experience
-
-            // **Get or Add word pair to WordsLearnedDictionary in GameManager**
             WordData wordData;
+
+            Debug.Log($"[WordsLearned - FinalizeWordCollection] START - Word: '{learnedWord_eng}', levelSelectedForCurrentWord: {levelSelectedForCurrentWord}"); // **DEBUG LOG - START**
+
+            selectedLevelExperience = selectedLevel;
+            // Get or Add word pair to WordsLearnedDictionary in GameManager
             if (GameManager.Instance.wordsLearnedDictionary.ContainsKey(learnedWord_eng))
             {
                 wordData = GameManager.Instance.wordsLearnedDictionary[learnedWord_eng]; // Get existing WordData
-                wordData.KnowledgeLevel = selectedLevel; // Update Knowledge Level
             }
             else
             {
@@ -210,11 +208,74 @@ namespace Assets.Scripts.Collectables
                 GameManager.Instance.wordsLearnedDictionary.Add(learnedWord_eng, wordData); // Add to dictionary
                 Debug.Log($"Word added to WordsLearnedDictionary (new entry). English: '{learnedWord_eng}', AltLang: '{learnedWord_alt}', Knowledge Level: {selectedLevel}");
             }
-            wordData.IsLearned = true; // **PERSISTENTLY set IsLearned flag in WordData to TRUE!**
+
+            if (wordData.IsLearned) 
+            {
+                // Already had the Knowledge Level Button Clicked
+
+                // Check to see if the KnowledgeLevel has been updated
+                if (wordData.KnowledgeLevel == selectedLevel)
+                {
+                    Debug.LogWarning($"[WordsLearned - FinalizeWordCollection] Word '{learnedWord_eng}' already finalized! Ignoring button click.");
+                }
+                else
+                {
+                    // Process the collection and set knowledge level based on button click
+                    WordKnowledgeLevelProp = selectedLevel; // Use property setter to set level AND update UI
+                    wordData.KnowledgeLevel = selectedLevel; // Get or Add word pair to WordsLearnedDictionary in GameManager
+
+                    Debug.Log("Do stuff here, the KnowledgeLevel has changed.");
+                }
+            } 
+            else if (!wordData.IsLearned)
+            {
+                // First Time a Knowledge Level button Clicked
+
+                // Process the collection and set knowledge level based on button click
+                WordKnowledgeLevelProp = selectedLevel; // Use property setter to set level AND update UI
+                wordData.KnowledgeLevel = selectedLevel; // Get or Add word pair to WordsLearnedDictionary in GameManager
+
+                GameManager.Instance.WordsLearned++; // Increment word count
+                switch (selectedLevel)
+                {
+                    case WordKnowledgeLevel.Familiar:
+                        GameManager.Instance.Experience += familiarExperience;
+                        break;
+                    case WordKnowledgeLevel.Known:
+                        GameManager.Instance.Experience += knownExperience;
+                        break;
+                    case WordKnowledgeLevel.Mastered:
+                        GameManager.Instance.Experience += masteredExperience;
+                        break;
+                }
+                //GameManager.Instance.Experience += familiarExperience; // Add experience
+                if (selectedLevelExperience == WordKnowledgeLevel.Familiar)
+                {
+                    Debug.Log("SelectedLevelExperience: " + selectedLevelExperience.ToString() + " selectedLevel: " + selectedLevel.ToString());
+                }
+
+                wordData.IsLearned = true; // PERSISTENTLY set IsLearned flag in WordData to TRUE!
+                levelSelectedForCurrentWord = true; // Set the flag to prevent further level selections for this popup instance
+            }
+
+
+
+            //if (GameManager.Instance.wordsLearnedDictionary.ContainsKey(learnedWord_eng))
+            //{
+            //    wordData = GameManager.Instance.wordsLearnedDictionary[learnedWord_eng]; // Get existing WordData
+            //    wordData.KnowledgeLevel = selectedLevel; // Update Knowledge Level
+            //}
+
 
             Debug.Log($"[WordsLearned - FinalizeWordCollection] Word '{learnedWord_eng}' collection finalized at level: {selectedLevel}. WordsLearned: {GameManager.Instance.WordsLearned}, Experience: {GameManager.Instance.Experience}");
 
-            // **Optionally disable/destroy the Collectable object after successful finalization.
+            Debug.Log($"[WordsLearned - FinalizeWordCollection] END - Word '{learnedWord_eng}' collection finalized at level: {selectedLevel}. levelSelectedForCurrentWord set to TRUE. Further button clicks will be ignored for this word popup."); // **DEBUG LOG - END (Successful Collection)**
+
+
+
+
+
+            // Optionally disable/destroy the Collectable object after successful finalization.
             base.OnCollect(); // Call base.OnCollect to handle object disabling/destruction
         }
 
@@ -227,7 +288,7 @@ namespace Assets.Scripts.Collectables
         public void SetKnowledgeLevel(WordKnowledgeLevel level)
         {
             //wordKnowledgeLevel = level; // DO NOT set the backing field directly!
-            WordKnowledgeLevelProp = level; // **Use the Property Setter!**
+            WordKnowledgeLevelProp = level; // Use the Property Setter!
             Debug.Log($"[WordsLearned - SetKnowledgeLevel] Word '{learnedWord_eng}' knowledge level set to: {WordKnowledgeLevelProp} (triggered by button or load)");
         }
 

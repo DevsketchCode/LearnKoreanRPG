@@ -114,8 +114,13 @@ MonoBehaviour:
   CollectableID: 
   actionOnCollect: 1
   wordKnowledgeLevel: 0
-  wordLearned: 0
-  experience: 50
+  familiarExperience: 50
+  knownExperience: 100
+  masteredExperience: 200
+  newWordColor: {r: 1, g: 1, b: 1, a: 1}
+  familiarWordColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  knownWordColor: {r: 0, g: 1, b: 1, a: 1}
+  masteredWordColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &2744646220490217158
 GameObject:
   m_ObjectHideFlags: 0
