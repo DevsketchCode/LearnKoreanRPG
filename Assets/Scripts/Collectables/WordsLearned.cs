@@ -17,7 +17,6 @@ namespace Assets.Scripts.Collectables
         }
 
         [SerializeField] private WordKnowledgeLevel wordKnowledgeLevel; // Backing field is now SerializedField and private
-        public bool wordLearned = false;
 
         [SerializeField] private int experience = 0;
         private TextMeshPro englishWordTextPro; // Reference for English TextPro
@@ -108,6 +107,7 @@ namespace Assets.Scripts.Collectables
         protected override void Start()
         {
             base.Start();
+            UpdateKnowledgeLevelFromDictionary(); // **NEW - Initialize knowledge level from dictionary on Start**
             UpdateKnowledgeLevelButtonColor(); // **Initial button color update on Start**
         }
 
@@ -122,72 +122,101 @@ namespace Assets.Scripts.Collectables
                 return;
             }
 
-            if (wordLearned)
+            // Check persistent 'IsLearned' flag in GameManager dictionary
+            if (GameManager.Instance.wordsLearnedDictionary.ContainsKey(learnedWord_eng) && GameManager.Instance.wordsLearnedDictionary[learnedWord_eng].IsLearned)
             {
-                Debug.Log($"[WordsLearned - OnCollect] Word Learned Already! Skipping word collection for {gameObject.name}.");
-                base.OnCollect(); // Still call base.OnCollect for timed-out collections (important for saving state etc.)
-                
+                Debug.Log($"[WordsLearned - OnCollect] Word ALREADY LEARNED (persistent data) for {gameObject.name}. Ignoring trigger.");
+                base.OnCollect(); // Still call base.OnCollect to handle potential timed actions
+                return; // Exit early if already learned
+            }
+
+            // Get words if they aren't already fetched (to be safe, in case Awake didn't run in time in some edge cases)
+            if (string.IsNullOrEmpty(learnedWord_eng) || string.IsNullOrEmpty(learnedWord_alt))
+            {
+                if (englishWordTextPro != null) learnedWord_eng = englishWordTextPro.text;
+                if (altLangWordTextPro != null) learnedWord_alt = altLangWordTextPro.text;
+
+                if (string.IsNullOrEmpty(learnedWord_eng) || string.IsNullOrEmpty(learnedWord_alt))
+                {
+                    Debug.LogError($"[WordsLearned - OnCollect] Could not retrieve English or AltLang word text for: {gameObject.name}!");
+                    return; // Cannot proceed without the words
+                }
+            }
+
+            // Word is now "activated" and waiting for button press. Do NOT increment WordsLearned/Experience or set knowledge level here!
+            // This object will remain active and visible until a WordButton associated with it is clicked.
+
+            // The Collectable.OnCollect() method already handles everything else (destroying/disabling the object etc.)
+        }
+
+        // Initialize knowledge level from dictionary on Start/Load**
+        private void UpdateKnowledgeLevelFromDictionary()
+        {
+            if (GameManager.Instance == null)
+            {
+                Debug.LogError("[WordsLearned - UpdateKnowledgeLevelFromDictionary] GameManager.instance is NULL!");
                 return;
             }
 
-            // Implement action on collect
-            if(wordKnowledgeLevel == WordKnowledgeLevel.New)
+            if (string.IsNullOrEmpty(learnedWord_eng))
             {
-                GameManager.Instance.WordsLearned++;
-                GameManager.Instance.Experience += experience;
-                // Set default knowledge level to the Prop
-                WordKnowledgeLevelProp = WordKnowledgeLevel.Familiar; // **Use the Property Setter!**
-
-
-                // **Get English Word**
-                if (englishWordTextPro != null)
-                {
-                    learnedWord_eng = englishWordTextPro.text;
-                }
-                else
-                {
-                    Debug.LogError("englishWordTextPro is null! Cannot get English word text.");
-                    return; // Exit if we can't get English word text
-                }
-
-                // **Get Alternate Language Word**
-                if (altLangWordTextPro != null)
-                {
-                    learnedWord_alt = altLangWordTextPro.text;
-                }
-                else
-                {
-                    Debug.LogError("altLangWordTextPro is null! Cannot get alternate language word text.");
-                    return; // Exit if we can't get AltLang word text
-                }
-
-                // **Add word pair to WordsLearnedDictionary in GameManager**
-                if (!string.IsNullOrEmpty(learnedWord_eng) && !string.IsNullOrEmpty(learnedWord_alt)) // Check if both words are not empty
-                {
-                    if (!GameManager.Instance.wordsLearnedDictionary.ContainsKey(learnedWord_eng)) // Check if English word (key) already exists
-                    {
-                        // Create a new WordData object
-                        WordData wordData = new WordData(learnedWord_alt, wordKnowledgeLevel); // Create WordData object, initial level = New
-
-                        GameManager.Instance.wordsLearnedDictionary.Add(learnedWord_eng, wordData); // Add to dictionary, English word as key, and wordData object as value
-
-                        Debug.Log($"Word added to WordsLearnedDictionary. English: '{learnedWord_eng}', AltLang: '{learnedWord_alt}', Knowledge Level: {WordKnowledgeLevel.New}"); // Log knowledge level
-                    }
-                    else
-                    {
-                        Debug.Log($"Word '{learnedWord_eng}' already in WordsLearnedDictionary. (Duplicate collection?)");
-                    }
-                }
-                else
-                {
-                    Debug.LogError($"Could not add word pair. English word: '{learnedWord_eng}', AltLang word: '{learnedWord_alt}'. One or both are empty!");
-                }
-
-                Debug.Log($"WordsLearned incremented. New value: {GameManager.Instance.WordsLearned} \nTotal Experience: {GameManager.Instance.Experience}");
+                Debug.LogError("[WordsLearned - UpdateKnowledgeLevelFromDictionary] learnedWord_eng is NULL or empty! Cannot retrieve data from dictionary.");
+                return;
             }
 
+            if (GameManager.Instance.wordsLearnedDictionary.ContainsKey(learnedWord_eng))
+            {
+                WordData wordData = GameManager.Instance.wordsLearnedDictionary[learnedWord_eng];
+                //wordKnowledgeLevel = wordData.KnowledgeLevel; // DO NOT set backing field directly!
+                WordKnowledgeLevelProp = wordData.KnowledgeLevel; // Use property setter to trigger UI update
+                Debug.Log($"[WordsLearned - UpdateKnowledgeLevelFromDictionary] Loaded knowledge level '{WordKnowledgeLevelProp}' from dictionary for word: '{learnedWord_eng}'.");
+
+                // **Crucially, we don't need to set a persistent 'wordLearned' flag here in WordsLearned.cs anymore!**
+                // The 'IsLearned' flag in WordData in the dictionary is now the persistent source of truth.
+
+            }
+            else
+            {
+                Debug.Log($"[WordsLearned - UpdateKnowledgeLevelFromDictionary] Word '{learnedWord_eng}' NOT found in dictionary on Start. Starting as 'New'.");
+                WordKnowledgeLevelProp = WordKnowledgeLevel.New; // Default to New if not in dictionary
+            }
         }
-        // The Collectable.OnCollect() method already handles everything else (destroying/disabling the object etc.)
+
+        // Called this when a button is clicked**
+        public void FinalizeWordCollection(WordKnowledgeLevel selectedLevel)
+        {
+            if (GameManager.Instance.wordsLearnedDictionary.ContainsKey(learnedWord_eng) && GameManager.Instance.wordsLearnedDictionary[learnedWord_eng].IsLearned) // Double check to prevent double collection if buttons are spammed
+            {
+                Debug.LogWarning($"[WordsLearned - FinalizeWordCollection] Word '{learnedWord_eng}' already finalized! Ignoring button click.");
+                return;
+            }
+
+            // Now process the collection and set knowledge level based on button click
+            WordKnowledgeLevelProp = selectedLevel; // Use property setter to set level AND update UI
+
+            GameManager.Instance.WordsLearned++; // Increment word count
+            GameManager.Instance.Experience += experience; // Add experience
+
+            // **Get or Add word pair to WordsLearnedDictionary in GameManager**
+            WordData wordData;
+            if (GameManager.Instance.wordsLearnedDictionary.ContainsKey(learnedWord_eng))
+            {
+                wordData = GameManager.Instance.wordsLearnedDictionary[learnedWord_eng]; // Get existing WordData
+                wordData.KnowledgeLevel = selectedLevel; // Update Knowledge Level
+            }
+            else
+            {
+                wordData = new WordData(learnedWord_alt, selectedLevel); // Create new WordData with selected level
+                GameManager.Instance.wordsLearnedDictionary.Add(learnedWord_eng, wordData); // Add to dictionary
+                Debug.Log($"Word added to WordsLearnedDictionary (new entry). English: '{learnedWord_eng}', AltLang: '{learnedWord_alt}', Knowledge Level: {selectedLevel}");
+            }
+            wordData.IsLearned = true; // **PERSISTENTLY set IsLearned flag in WordData to TRUE!**
+
+            Debug.Log($"[WordsLearned - FinalizeWordCollection] Word '{learnedWord_eng}' collection finalized at level: {selectedLevel}. WordsLearned: {GameManager.Instance.WordsLearned}, Experience: {GameManager.Instance.Experience}");
+
+            // **Optionally disable/destroy the Collectable object after successful finalization.
+            base.OnCollect(); // Call base.OnCollect to handle object disabling/destruction
+        }
 
         public string GetEnglishWord() 
         {

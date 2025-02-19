@@ -41,9 +41,36 @@ public class WordButton : MonoBehaviour
     public void OnButtonClicked() // Call this function when the button is clicked (set in Button's OnClick event in Inspector)
     {
         Debug.Log("Button Clicked");
-        UpdateWordKnowledgeLevel(newKnowledgeLevel);
+        FinalizeWordCollectionForWord();
     }
 
+    private void FinalizeWordCollectionForWord()
+    {
+        if (WordsLearnedGO == null)
+        {
+            Debug.LogError($"[WordButton - FinalizeWordCollectionForWord] WordsLearnedGO is NOT assigned in Inspector for button: {gameObject.name}! Cannot finalize collection.");
+            return;
+        }
+
+        WordsLearned wordsLearnedScript = WordsLearnedGO.GetComponent<WordsLearned>();
+        if (wordsLearnedScript == null)
+        {
+            Debug.LogError($"[WordButton - FinalizeWordCollectionForWord] WordsLearned component NOT found on WordsLearnedGO for button: {gameObject.name}!");
+            return;
+        }
+
+
+        wordsLearnedScript.FinalizeWordCollection(newKnowledgeLevel); // **Call the NEW FinalizeWordCollection function in WordsLearned.cs!**
+
+        // OPTIONAL:  You might want to disable the buttons or the popup after a button is clicked,
+        // or handle any other UI cleanup here.  For example:
+        // transform.parent.gameObject.SetActive(false); // Disable the entire popup panel.
+        // gameObject.GetComponent<Button>().interactable = false; // Disable just this button.
+
+        Debug.Log($"[WordButton - FinalizeWordCollectionForWord] FinalizeWordCollection called in WordsLearned.cs for word: '{englishWordKey}', level: {newKnowledgeLevel}.");
+    }
+
+    // Function not currently used, but leaving it, as this function will update the WordKnowledgeLevel elsewhere other than the buttons if needed
     public void UpdateWordKnowledgeLevel(WordsLearned.WordKnowledgeLevel level)
     {
         if (GameManager.Instance == null)
