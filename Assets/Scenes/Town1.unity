@@ -3015,6 +3015,10 @@ PrefabInstance:
       propertyPath: WordsLearnedGO
       value: 
       objectReference: {fileID: 1084601667}
+    - target: {fileID: 6342626068178852164, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+      propertyPath: m_Color.a
+      value: 0.8352941
+      objectReference: {fileID: 0}
     - target: {fileID: 6757408068601412892, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3094,6 +3098,22 @@ PrefabInstance:
     - target: {fileID: 7444233824161255653, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: CollectableID
       value: d1b5e45c-8344-4476-ad9c-cfc64b1d8d47
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444233824161255653, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+      propertyPath: newWordColor.a
+      value: 0.8352941
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444233824161255653, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+      propertyPath: knownWordColor.a
+      value: 0.8352941
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444233824161255653, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+      propertyPath: familiarWordColor.a
+      value: 0.8352941
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444233824161255653, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+      propertyPath: masteredWordColor.a
+      value: 0.8352941
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
