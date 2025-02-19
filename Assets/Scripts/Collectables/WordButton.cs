@@ -55,10 +55,10 @@ public class WordButton : MonoBehaviour
         if (GameManager.Instance.wordsLearnedDictionary.ContainsKey(englishWordKey)) // Make sure the word exists in the dictionary
         {
             WordData wordData = GameManager.Instance.wordsLearnedDictionary[englishWordKey]; // Get the WordData object from the dictionary
-            wordData.knowledgeLevel = level; // **Update the knowledgeLevel property of the WordData object!**
+            wordData.KnowledgeLevel = level; // **Update the knowledgeLevel property of the WordData object!**
             if (WordsLearnedGO != null)
             {
-                WordsLearnedGO.GetComponent<WordsLearned>().wordKnowledgeLevel = level;
+                WordsLearnedGO.GetComponent<WordsLearned>().WordKnowledgeLevelProp = level;
             }
             
             Debug.Log($"[WordButton] Knowledge level updated for word '{englishWordKey}' to: {level}");

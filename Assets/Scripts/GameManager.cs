@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("--- WordsLearnedDictionary Contents (Press 'P' to Refresh) ---");
             foreach (var pair in wordsLearnedDictionary)
             {
-                Debug.Log($"Word: '{pair.Key}', AltLang: {pair.Value.altLangWord}, Knowledge Level: {pair.Value.knowledgeLevel}"); // Access properties of WordData object
+                Debug.Log($"Word: '{pair.Key}', AltLang: {pair.Value.altLangWord}, Knowledge Level: {pair.Value.KnowledgeLevel}"); // Access properties of WordData object
             }
             Debug.Log("--- End of Dictionary ---");
         }
@@ -331,6 +331,31 @@ public class GameManager : MonoBehaviour
                     collectable.gameObject.SetActive(false);
                 }
             }
+
+            // **NEW CODE - WordsLearned Specific Handling - ADD THIS BLOCK**
+            if (collectable is WordsLearned wordObject) // Check if it's a WordsLearned object
+            {
+                string englishWord = wordObject.GetEnglishWord(); // **Need to create GetEnglishWord() function in WordsLearned.cs - Step B**
+
+                if (!string.IsNullOrEmpty(englishWord) && wordsLearnedDictionary.ContainsKey(englishWord))
+                {
+                    // We have saved data for this word in the dictionary!
+                    WordData wordData = wordsLearnedDictionary[englishWord];
+                    WordsLearned.WordKnowledgeLevel savedKnowledgeLevel = wordData.KnowledgeLevel;
+
+                    // Update the WordKnowledgeLevel on the WordsLearned script in the scene
+                    wordObject.SetKnowledgeLevel(savedKnowledgeLevel); // **Use the SetKnowledgeLevel() function we created earlier**
+
+                    Debug.Log($"[InitializeCollectables] Loaded Word Knowledge Level: '{savedKnowledgeLevel}' for word: '{englishWord}' from dictionary and applied to scene object.");
+                }
+                else
+                {
+                    // Word is in scene, but no saved data in dictionary (maybe a new word in this scene instance)
+                    Debug.Log($"[InitializeCollectables] No saved data found in dictionary for word: '{englishWord}' in scene. Keeping default 'New' level.");
+                    // It will remain at its default "New" level, which is fine for newly instantiated words or words not yet learned.
+                }
+            }
+            // **End of NEW CODE - WordsLearned Specific Handling**
         }
     }
 

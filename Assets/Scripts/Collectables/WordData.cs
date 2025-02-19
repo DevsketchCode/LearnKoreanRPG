@@ -5,14 +5,14 @@ using System; // Required for Serializable if you want to save WordData
 public class WordData
 {
     public string altLangWord;
-    public WordsLearned.WordKnowledgeLevel knowledgeLevel;
+    public WordsLearned.WordKnowledgeLevel KnowledgeLevel;
     public WordsLearned WordsLearnedGameObject { get; private set; }
 
     // Constructor (optional, but good practice to initialize)
     public WordData(string altWord, WordsLearned.WordKnowledgeLevel level)
     {
         altLangWord = altWord;
-        knowledgeLevel = level;
+        KnowledgeLevel = level;
     }
 
     // Default constructor (required if you use [Serializable] and might instantiate without arguments sometimes)

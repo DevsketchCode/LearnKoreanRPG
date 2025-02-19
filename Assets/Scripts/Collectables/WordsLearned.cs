@@ -16,7 +16,7 @@ namespace Assets.Scripts.Collectables
             Mastered    // Fluent knowledge, automatic recall
         }
 
-        public WordKnowledgeLevel wordKnowledgeLevel;
+        [SerializeField] private WordKnowledgeLevel wordKnowledgeLevel; // Backing field is now SerializedField and private
         public bool wordLearned = false;
 
         [SerializeField] private int experience = 0;
@@ -25,7 +25,28 @@ namespace Assets.Scripts.Collectables
         private string learnedWord_eng;
         private string learnedWord_alt;
 
+        [Header("UI Button Integration")] // Add a header in inspector for organization
+        private Button buttonFamiliar; // buttons will be dynamically set
+        private Button buttonKnown;
+        private Button buttonMastered;
+        public Color newWordColor = Color.white;         // Set colors in inspector
+        public Color familiarWordColor = Color.yellow;
+        public Color knownWordColor = Color.cyan;
+        public Color masteredWordColor = Color.green;
 
+        // Public Property for Knowledge Level with Setter Logic
+        public WordKnowledgeLevel WordKnowledgeLevelProp // Renamed to PascalCase for property convention
+        {
+            get { return wordKnowledgeLevel; }
+            set
+            {
+                wordKnowledgeLevel = value; // Set the backing field
+
+                Debug.Log($"[WordsLearned - WordKnowledgeLevelProp SET] Word: '{learnedWord_eng}', Knowledge Level: {wordKnowledgeLevel}");
+
+                UpdateKnowledgeLevelButtonColor(); // **Call UI update function here!**
+            }
+        }
 
         protected override void Awake() // Use Awake to get the references early
         {
@@ -43,6 +64,11 @@ namespace Assets.Scripts.Collectables
                     if (englishWordTextPro == null)
                     {
                         Debug.LogError("TextMeshProUGUI component NOT found on Text_English!");
+                    }
+                    else
+                    {
+                        learnedWord_eng = englishWordTextPro.text;
+                        Debug.Log($"[WordsLearned - Awake] Initialized English Word: '{learnedWord_eng}' for object: {gameObject.transform.parent.parent.name}");
                     }
                 }
                 else
@@ -64,6 +90,14 @@ namespace Assets.Scripts.Collectables
                 {
                     Debug.LogError("Text_AltLang not found under Panel_Background!");
                 }
+
+                // **Dynamically Find Buttons**
+                buttonFamiliar = panelBackground.Find("Button_Familiar").GetComponent<Button>();
+                if (buttonFamiliar == null) Debug.LogError("Button_Familiar NOT found under Panel_Background!");
+                buttonKnown = panelBackground.Find("Button_Known").GetComponent<Button>();
+                if (buttonKnown == null) Debug.LogError("Button_Known NOT found under Panel_Background!");
+                buttonMastered = panelBackground.Find("Button_Mastered").GetComponent<Button>();
+                if (buttonMastered == null) Debug.LogError("Button_Mastered NOT found under Panel_Background!");
             }
             else
             {
@@ -74,12 +108,9 @@ namespace Assets.Scripts.Collectables
         protected override void Start()
         {
             base.Start();
+            UpdateKnowledgeLevelButtonColor(); // **Initial button color update on Start**
         }
 
-        protected void Update()
-        {
-            
-        }
 
         protected override void OnCollect()
         {
@@ -104,7 +135,9 @@ namespace Assets.Scripts.Collectables
             {
                 GameManager.Instance.WordsLearned++;
                 GameManager.Instance.Experience += experience;
-                wordKnowledgeLevel = WordKnowledgeLevel.Familiar;
+                // Set default knowledge level to the Prop
+                WordKnowledgeLevelProp = WordKnowledgeLevel.Familiar; // **Use the Property Setter!**
+
 
                 // **Get English Word**
                 if (englishWordTextPro != null)
@@ -155,5 +188,65 @@ namespace Assets.Scripts.Collectables
 
         }
         // The Collectable.OnCollect() method already handles everything else (destroying/disabling the object etc.)
+
+        public string GetEnglishWord() 
+        {
+            Debug.Log($"[WordsLearned - GetEnglishWord] Returning English word: '{learnedWord_eng}' for object: {gameObject.transform.parent.parent.name}");
+            return learnedWord_eng;
+        }
+
+        public void SetKnowledgeLevel(WordKnowledgeLevel level)
+        {
+            //wordKnowledgeLevel = level; // DO NOT set the backing field directly!
+            WordKnowledgeLevelProp = level; // **Use the Property Setter!**
+            Debug.Log($"[WordsLearned - SetKnowledgeLevel] Word '{learnedWord_eng}' knowledge level set to: {WordKnowledgeLevelProp} (triggered by button or load)");
+        }
+
+        private void UpdateKnowledgeLevelButtonColor()
+        {
+            if (buttonFamiliar == null || buttonKnown == null || buttonMastered == null)
+            {
+                Debug.LogWarning($"[WordsLearned - UpdateKnowledgeLevelButtonColor] One or more Knowledge Level Buttons are NOT found for word: '{learnedWord_eng}'. UI update skipped.");
+                return; // Exit if buttons are missing!
+            }
+
+            Image familiarButtonImage = buttonFamiliar.GetComponent<Image>();
+            Image knownButtonImage = buttonKnown.GetComponent<Image>();
+            Image masteredButtonImage = buttonMastered.GetComponent<Image>();
+
+            if (familiarButtonImage == null || knownButtonImage == null || masteredButtonImage == null)
+            {
+                Debug.LogError($"[WordsLearned - UpdateKnowledgeLevelButtonColor] Image component MISSING on one or more Knowledge Level Buttons for word: '{learnedWord_eng}'. UI update skipped.");
+                return; // Exit if Image component is missing!
+            }
+
+            // Reset all buttons to default color first
+            familiarButtonImage.color = newWordColor;
+            knownButtonImage.color = newWordColor;
+            masteredButtonImage.color = newWordColor;
+
+
+            switch (WordKnowledgeLevelProp) // Use the Property here!
+            {
+                case WordKnowledgeLevel.New:
+                    // No button is highlighted for "New" level
+                    break;
+                case WordKnowledgeLevel.Familiar:
+                    familiarButtonImage.color = familiarWordColor;
+                    break;
+                case WordKnowledgeLevel.Known:
+                    knownButtonImage.color = knownWordColor;
+                    break;
+                case WordKnowledgeLevel.Mastered:
+                    masteredButtonImage.color = masteredWordColor;
+                    break;
+                default:
+                    Debug.LogWarning($"[WordsLearned - UpdateKnowledgeLevelButtonColor] Unknown WordKnowledgeLevel: {WordKnowledgeLevelProp} for word: '{learnedWord_eng}'. No button highlighted.");
+                    break;
+            }
+
+            Debug.Log($"[WordsLearned - UpdateKnowledgeLevelButtonColor] Button colors updated for word: '{learnedWord_eng}' to level: {WordKnowledgeLevelProp}");
+        }
+
     }
 }
