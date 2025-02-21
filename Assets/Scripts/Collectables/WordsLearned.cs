@@ -21,7 +21,6 @@ namespace Assets.Scripts.Collectables
         [SerializeField] private int familiarExperience = 0;
         [SerializeField] private int knownExperience = 0;
         [SerializeField] private int masteredExperience = 0;
-        private WordKnowledgeLevel selectedLevelExperience;
         private TextMeshPro englishWordTextPro; // Reference for English TextPro
         private TextMeshPro altLangWordTextPro;  // Reference for Alternate Language TextPro
         private string learnedWord_eng;

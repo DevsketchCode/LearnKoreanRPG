@@ -1,13 +1,38 @@
 {
-    "m_SelectedDeviceId": "",
+    "m_SelectedDeviceId": "29261FDH300D8D",
     "m_SelectedProcess": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "29261FDH300D8D",
+        "name": "com.devsketch.unity.learnkoreanrpg",
+        "processId": 22429,
         "exited": false
     },
     "m_SelectedPriority": 0,
-    "m_KnownProcessesForSerialization": [],
+    "m_KnownProcessesForSerialization": [
+        {
+            "deviceId": "29261FDH300D8D",
+            "name": "com.android.settings",
+            "processId": 4465,
+            "exited": false
+        },
+        {
+            "deviceId": "29261FDH300D8D",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 6203,
+            "exited": false
+        },
+        {
+            "deviceId": "29261FDH300D8D",
+            "name": "com.devsketch.unity.learnkoreanrpg",
+            "processId": 7720,
+            "exited": false
+        },
+        {
+            "deviceId": "29261FDH300D8D",
+            "name": "com.devsketch.unity.learnkoreanrpg",
+            "processId": 22429,
+            "exited": false
+        }
+    ],
     "m_Tags": {
         "m_Entries": [
             {
