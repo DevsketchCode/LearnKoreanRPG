@@ -3,7 +3,7 @@
     "m_SelectedProcess": {
         "deviceId": "29261FDH300D8D",
         "name": "com.devsketch.unity.learnkoreanrpg",
-        "processId": 22429,
+        "processId": 27600,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -30,6 +30,12 @@
             "deviceId": "29261FDH300D8D",
             "name": "com.devsketch.unity.learnkoreanrpg",
             "processId": 22429,
+            "exited": false
+        },
+        {
+            "deviceId": "29261FDH300D8D",
+            "name": "com.devsketch.unity.learnkoreanrpg",
+            "processId": 27600,
             "exited": false
         }
     ],
