@@ -9,7 +9,7 @@ namespace Assets.Scripts.Collectables
 {
     class InteractionButton : MonoBehaviour
     {
-        enum ButtonAction
+        public enum ButtonAction
         {
             None,
             Show,
@@ -17,19 +17,38 @@ namespace Assets.Scripts.Collectables
             ToggleShowHide
         }
 
-        [SerializeField]
-        private GameObject GOToInteractWith; // Assign the GameObject
+        public GameObject GOToInteractWith1; // Assign the GameObject
 
-        [SerializeField]
-        private ButtonAction buttonAction; // Assign the button action
+        public ButtonAction buttonAction1; // Assign the button action
+
+        public GameObject GOToInteractWith2; // Assign the GameObject
+
+        public ButtonAction buttonAction2; // Assign the button action
+
+        public GameObject GOToInteractWith3; // Assign the GameObject
+
+        public ButtonAction buttonAction3; // Assign the button action
 
         public void OnButtonClicked() // Call this function when the button is clicked (set in Button's OnClick event in Inspector)
         {
             Debug.Log("Button Clicked");
-            ShowHideGO(GOToInteractWith, buttonAction);
+            if (GOToInteractWith1 != null)
+            {
+                ShowHideGO(GOToInteractWith1, buttonAction1);
+            }
+
+            if (GOToInteractWith2 != null)
+            {
+                ShowHideGO(GOToInteractWith2, buttonAction2);
+            }
+
+            if (GOToInteractWith3 != null)
+            {
+                ShowHideGO(GOToInteractWith1, buttonAction3);
+            }
         }
 
-        private void ShowHideGO(GameObject go, ButtonAction btnAction)
+        public void ShowHideGO(GameObject go, ButtonAction btnAction)
         {
             if(go.activeSelf && (btnAction == ButtonAction.ToggleShowHide || btnAction == ButtonAction.Hide))
             {

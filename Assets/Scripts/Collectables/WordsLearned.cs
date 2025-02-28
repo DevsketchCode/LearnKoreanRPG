@@ -25,6 +25,9 @@ namespace Assets.Scripts.Collectables
         private TextMeshPro altLangWordTextPro;  // Reference for Alternate Language TextPro
         private string learnedWord_eng;
         private string learnedWord_alt;
+        private GameObject showAnswerButton;
+        private GameObject correctButton;
+        private GameObject incorrectButton;
 
         [Header("UI Button Integration")] // Add a header in inspector for organization
         private Button buttonFamiliar; // buttons will be dynamically set
@@ -36,6 +39,8 @@ namespace Assets.Scripts.Collectables
         public Color masteredWordColor = Color.green;
 
         private bool isNewWord = false;
+        private Transform panelBackground;
+        private Transform englishTextObject;
 
         // Public Property for Knowledge Level with Setter Logic
         public WordKnowledgeLevel WordKnowledgeLevelProp // Renamed to PascalCase for property convention
@@ -56,10 +61,10 @@ namespace Assets.Scripts.Collectables
             base.Awake();
 
             // Debug.Log("Ultimate ParentObjectName: " + transform.parent.parent.name);
-            Transform panelBackground = transform.parent.Find("PopupCanvas").Find("Panel_Background");
+            panelBackground = transform.parent.Find("PopupCanvas").Find("Panel_Background");
             if (panelBackground != null)
             {
-                Transform englishTextObject = panelBackground.Find("Text_English");
+                englishTextObject = panelBackground.Find("Text_English");
                 if (englishTextObject != null)
                 {
                     // Debug.Log($"[WordsLearned - Awake] Text_English FOUND: {englishTextObject.name}"); // Success Log for englishTextObject
@@ -228,6 +233,44 @@ namespace Assets.Scripts.Collectables
             {
                 GameManager.Instance.WordsLearned++; // Increment word count
             }
+
+            //-------------------------------------------------------
+            if (panelBackground != null)
+            {
+                showAnswerButton = panelBackground.Find("Button_Show").gameObject;
+                correctButton = panelBackground.Find("Button_Correct").gameObject;
+                incorrectButton = panelBackground.Find("Button_Incorrect").gameObject;
+            }
+
+            if (englishTextObject != null && showAnswerButton != null && correctButton != null && incorrectButton !)
+            {
+                InteractionButton interaction = gameObject.AddComponent<InteractionButton>();
+
+                if (selectedLevel == WordsLearned.WordKnowledgeLevel.Known || selectedLevel == WordsLearned.WordKnowledgeLevel.Mastered)
+                {
+                    Debug.Log("Adjust Answer Visibility");
+                    
+                    interaction.ShowHideGO(englishTextObject.gameObject, InteractionButton.ButtonAction.Hide);
+
+                    interaction.ShowHideGO(showAnswerButton, InteractionButton.ButtonAction.Show);
+                    interaction.ShowHideGO(correctButton, InteractionButton.ButtonAction.Show);
+                    interaction.ShowHideGO(incorrectButton, InteractionButton.ButtonAction.Show);
+                }
+                else
+                {
+                    interaction.ShowHideGO(showAnswerButton, InteractionButton.ButtonAction.Hide);
+                    interaction.ShowHideGO(correctButton, InteractionButton.ButtonAction.Hide);
+                    interaction.ShowHideGO(incorrectButton, InteractionButton.ButtonAction.Hide);
+
+                    interaction.ShowHideGO(englishTextObject.gameObject, InteractionButton.ButtonAction.Show);
+                }
+            }
+
+
+
+
+
+            // ----------------------------------------------------
 
             wordData.IsLearned = true; // PERSISTENTLY set IsLearned flag in WordData to TRUE!
 
