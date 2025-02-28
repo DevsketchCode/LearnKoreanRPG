@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class TextColliderManager : MonoBehaviour
 {
-    private GameObject popupCanvasGO; // Store the GameObject, not the Canvas component
+    private GameObject popupCanvasGO; // Store the GameObject
+    private GameObject initiateInteractionGO;  // Store the GameObject
 
     private void Awake()
     {
@@ -10,8 +11,16 @@ public class TextColliderManager : MonoBehaviour
 
         if (parent != null)
         {
+            // Find the InitiateInteractionCanvas GameObject by name (or tag, if preferred)
+            initiateInteractionGO = parent.Find("InitiateInteractionCanvas").gameObject; // Get the GameObject
+
             // Find the PopupCanvas GameObject by name (or tag, if preferred)
             popupCanvasGO = parent.Find("PopupCanvas").gameObject; // Get the GameObject
+
+            if (initiateInteractionGO == null)
+            {
+                Debug.LogError("InitiateInteractiveCanvas GameObject not found as a sibling of TextTrigger!");
+            }
 
             if (popupCanvasGO == null)
             {
@@ -26,15 +35,21 @@ public class TextColliderManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (popupCanvasGO != null && collision.CompareTag("Player"))
+        if (initiateInteractionGO != null && collision.CompareTag("Player"))
         {
             //Debug.Log("TRIGGER IS ALIVE");
-            popupCanvasGO.SetActive(true); // Enable the GameObject
+            initiateInteractionGO.SetActive(true); // Enable the GameObject
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (initiateInteractionGO != null && collision.CompareTag("Player"))
+        {
+            //Debug.Log("TRIGGER IS GOODBYE");
+            initiateInteractionGO.SetActive(false); // Disable the GameObject
+        }
+
         if (popupCanvasGO != null && collision.CompareTag("Player"))
         {
             //Debug.Log("TRIGGER IS GOODBYE");

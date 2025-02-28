@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 3537685889603619235}
   - component: {fileID: 6304654502307373064}
   - component: {fileID: 4280609166135681221}
+  - component: {fileID: 5653631220592244975}
   m_Layer: 5
   m_Name: Button_InitiateInteraction
   m_TagString: Untagged
@@ -241,7 +242,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6304654502307373064}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5653631220592244975}
+        m_TargetAssemblyTypeName: Assets.Scripts.Collectables.InteractionButton,
+          Assembly-CSharp
+        m_MethodName: OnButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5653631220592244975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075122049953665042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc538fd0c2db91a42aab1857e2a5419a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GOToInteractWith: {fileID: 6757408069907237689}
+  buttonAction: 1
 --- !u!1 &2164249931162890433
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.0125, y: 0.4}
+  m_AnchoredPosition: {x: -0.0125, y: 0.45}
   m_SizeDelta: {x: 0.5, y: 0.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1899354533763006928

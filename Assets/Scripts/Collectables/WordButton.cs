@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using Assets.Scripts.Collectables; // Make sure to include your namespace
 using TMPro;
 

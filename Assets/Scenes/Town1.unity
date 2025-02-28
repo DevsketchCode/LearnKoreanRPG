@@ -3003,6 +3003,26 @@ PrefabInstance:
       propertyPath: m_text
       value: "\uC5EC\uC131"
       objectReference: {fileID: 0}
+    - target: {fileID: 2164249931162890433, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280609166135681221, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+      propertyPath: m_Transition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280609166135681221, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280609166135681221, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280609166135681221, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4999667875665457949, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3015,6 +3035,10 @@ PrefabInstance:
       propertyPath: WordsLearnedGO
       value: 
       objectReference: {fileID: 1084601667}
+    - target: {fileID: 6304654502307373064, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6342626068178852164, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: m_Color.a
       value: 0.8352941

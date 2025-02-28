@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Collidable.cs" />
     <Compile Include="Assets\MoveByTouch.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Collectables\InteractionButton.cs" />
     <Compile Include="Assets\GooglePlayPlugins\com.google.play.integrity\Samples\IntegrityTestApp\Scripts\RequestIntegrityTokenAction.cs" />
     <Compile Include="Assets\Scripts\Collectable.cs" />
     <Compile Include="Assets\Scripts\ChangeSpriteManager.cs" />
