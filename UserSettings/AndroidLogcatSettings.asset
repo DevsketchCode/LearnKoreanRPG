@@ -3,7 +3,7 @@
     "m_SelectedProcess": {
         "deviceId": "29261FDH300D8D",
         "name": "com.devsketch.unity.learnkoreanrpg",
-        "processId": 27600,
+        "processId": 12367,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -36,6 +36,30 @@
             "deviceId": "29261FDH300D8D",
             "name": "com.devsketch.unity.learnkoreanrpg",
             "processId": 27600,
+            "exited": false
+        },
+        {
+            "deviceId": "29261FDH300D8D",
+            "name": "com.devsketch.unity.learnkoreanrpg",
+            "processId": 11057,
+            "exited": false
+        },
+        {
+            "deviceId": "29261FDH300D8D",
+            "name": "com.devsketch.unity.learnkoreanrpg",
+            "processId": 11478,
+            "exited": false
+        },
+        {
+            "deviceId": "29261FDH300D8D",
+            "name": "com.devsketch.unity.learnkoreanrpg",
+            "processId": 11923,
+            "exited": false
+        },
+        {
+            "deviceId": "29261FDH300D8D",
+            "name": "com.devsketch.unity.learnkoreanrpg",
+            "processId": 12367,
             "exited": false
         }
     ],

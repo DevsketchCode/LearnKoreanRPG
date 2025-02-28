@@ -3,7 +3,7 @@ using UnityEngine;
 public class TextColliderManager : MonoBehaviour
 {
     private GameObject popupCanvasGO; // Store the GameObject
-    private GameObject initiateInteractionGO;  // Store the GameObject
+    public GameObject initiateInteractionGO;  // Store the GameObject
 
     private void Awake()
     {
@@ -11,8 +11,6 @@ public class TextColliderManager : MonoBehaviour
 
         if (parent != null)
         {
-            // Find the InitiateInteractionCanvas GameObject by name (or tag, if preferred)
-            initiateInteractionGO = parent.Find("InitiateInteractionCanvas").gameObject; // Get the GameObject
 
             // Find the PopupCanvas GameObject by name (or tag, if preferred)
             popupCanvasGO = parent.Find("PopupCanvas").gameObject; // Get the GameObject
@@ -39,6 +37,8 @@ public class TextColliderManager : MonoBehaviour
         {
             //Debug.Log("TRIGGER IS ALIVE");
             initiateInteractionGO.SetActive(true); // Enable the GameObject
+
+            popupCanvasGO.SetActive(false); // Enable the GameObject
         }
     }
 

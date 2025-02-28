@@ -270,7 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GOToInteractWith1: {fileID: 6757408069907237689}
   buttonAction1: 1
-  GOToInteractWith2: {fileID: 1075122049953665042}
+  GOToInteractWith2: {fileID: 2164249931162890433}
   buttonAction2: 2
   GOToInteractWith3: {fileID: 0}
   buttonAction3: 0
@@ -1693,7 +1693,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3137476905207043988
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1821,7 +1821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc538fd0c2db91a42aab1857e2a5419a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GOToInteractWith1: {fileID: 5042041933249961066}
+  GOToInteractWith1: {fileID: 2164249931162890433}
   buttonAction1: 2
   GOToInteractWith2: {fileID: 6757408068873987789}
   buttonAction2: 1
@@ -2284,6 +2284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301bae981d87335439c914572d4f9e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initiateInteractionGO: {fileID: 2164249931162890433}
 --- !u!1 &6757408069907237689
 GameObject:
   m_ObjectHideFlags: 0

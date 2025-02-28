@@ -2995,6 +2995,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: CollectionTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 1075122049953665042, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1355553913731740908, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: WordsLearnedGO
       value: 
@@ -3039,6 +3043,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5653631220592244975, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+      propertyPath: GOToInteractWith2
+      value: 
+      objectReference: {fileID: 2117629961}
     - target: {fileID: 5940680923197920280, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: WordsLearnedGO
       value: 
@@ -3150,13 +3158,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4999667875665457949, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 6757408068873987789, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
 --- !u!4 &251023116 stripped
 Transform:
@@ -407609,6 +407611,11 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0019472837, y: 0.23911703}
   m_Size: {x: 0.88955474, y: 0.94407725}
   m_Direction: 0
+--- !u!1 &2117629961 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2164249931162890433, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+  m_PrefabInstance: {fileID: 251023115}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5896580665786163271
 PrefabInstance:
   m_ObjectHideFlags: 0

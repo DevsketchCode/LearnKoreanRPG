@@ -235,36 +235,36 @@ namespace Assets.Scripts.Collectables
             }
 
             //-------------------------------------------------------
-            if (panelBackground != null)
-            {
-                showAnswerButton = panelBackground.Find("Button_Show").gameObject;
-                correctButton = panelBackground.Find("Button_Correct").gameObject;
-                incorrectButton = panelBackground.Find("Button_Incorrect").gameObject;
-            }
+            //if (panelBackground != null)
+            //{
+            //    showAnswerButton = panelBackground.Find("Button_Show").gameObject;
+            //    correctButton = panelBackground.Find("Button_Correct").gameObject;
+            //    incorrectButton = panelBackground.Find("Button_Incorrect").gameObject;
+            //}
 
-            if (englishTextObject != null && showAnswerButton != null && correctButton != null && incorrectButton !)
-            {
-                InteractionButton interaction = gameObject.AddComponent<InteractionButton>();
+            //if (englishTextObject != null && showAnswerButton != null && correctButton != null && incorrectButton !)
+            //{
+            //    InteractionButton interaction = gameObject.AddComponent<InteractionButton>();
 
-                if (selectedLevel == WordsLearned.WordKnowledgeLevel.Known || selectedLevel == WordsLearned.WordKnowledgeLevel.Mastered)
-                {
-                    Debug.Log("Adjust Answer Visibility");
+            //    if (selectedLevel == WordsLearned.WordKnowledgeLevel.Known || selectedLevel == WordsLearned.WordKnowledgeLevel.Mastered)
+            //    {
+            //        Debug.Log("Adjust Answer Visibility");
                     
-                    interaction.ShowHideGO(englishTextObject.gameObject, InteractionButton.ButtonAction.Hide);
+            //        interaction.ShowHideGO(englishTextObject.gameObject, InteractionButton.ButtonAction.Hide);
 
-                    interaction.ShowHideGO(showAnswerButton, InteractionButton.ButtonAction.Show);
-                    interaction.ShowHideGO(correctButton, InteractionButton.ButtonAction.Show);
-                    interaction.ShowHideGO(incorrectButton, InteractionButton.ButtonAction.Show);
-                }
-                else
-                {
-                    interaction.ShowHideGO(showAnswerButton, InteractionButton.ButtonAction.Hide);
-                    interaction.ShowHideGO(correctButton, InteractionButton.ButtonAction.Hide);
-                    interaction.ShowHideGO(incorrectButton, InteractionButton.ButtonAction.Hide);
+            //        interaction.ShowHideGO(showAnswerButton, InteractionButton.ButtonAction.Show);
+            //        interaction.ShowHideGO(correctButton, InteractionButton.ButtonAction.Show);
+            //        interaction.ShowHideGO(incorrectButton, InteractionButton.ButtonAction.Show);
+            //    }
+            //    else
+            //    {
+            //        interaction.ShowHideGO(showAnswerButton, InteractionButton.ButtonAction.Hide);
+            //        interaction.ShowHideGO(correctButton, InteractionButton.ButtonAction.Hide);
+            //        interaction.ShowHideGO(incorrectButton, InteractionButton.ButtonAction.Hide);
 
-                    interaction.ShowHideGO(englishTextObject.gameObject, InteractionButton.ButtonAction.Show);
-                }
-            }
+            //        interaction.ShowHideGO(englishTextObject.gameObject, InteractionButton.ButtonAction.Show);
+            //    }
+            //}
 
 
 
