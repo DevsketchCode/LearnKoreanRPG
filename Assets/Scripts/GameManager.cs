@@ -118,7 +118,9 @@ public class GameManager : MonoBehaviour
             Debug.Log("--- WordsLearnedDictionary Contents (Press 'P' to Refresh) ---");
             foreach (var pair in wordsLearnedDictionary)
             {
-                Debug.Log($"Word: '{pair.Key}', AltLang: {pair.Value.altLangWord}, Knowledge Level: {pair.Value.KnowledgeLevel}"); // Access properties of WordData object
+                // Debug.Log($"Word: '{pair.Key}', AltLang: {pair.Value.altLangWord}, WordType: {pair.Value.wordDataType}, Knowledge Level: {pair.Value.KnowledgeLevel}"); // Access properties of WordData object
+
+                Debug.Log($"Word: '{pair.Key}'\nWord Data: {pair.Value}"); // Directly use the WordData object, with its ToString override
             }
             Debug.Log("--- End of Dictionary ---");
         }

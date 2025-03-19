@@ -17,7 +17,7 @@ namespace Assets.Scripts.Collectables
         }
 
         [SerializeField] private WordKnowledgeLevel wordKnowledgeLevel; // Backing field is now SerializedField and private
-
+        [SerializeField] private WordData.WordDataType wordDataType;
         [SerializeField] private int familiarExperience = 0;
         [SerializeField] private int knownExperience = 0;
         [SerializeField] private int masteredExperience = 0;
@@ -204,7 +204,7 @@ namespace Assets.Scripts.Collectables
             }
             else
             {
-                wordData = new WordData(learnedWord_alt, selectedLevel); // Create new WordData with selected level
+                wordData = new WordData(wordDataType, learnedWord_alt, selectedLevel); // Create new WordData with selected level
                 GameManager.Instance.wordsLearnedDictionary.Add(learnedWord_eng, wordData); // Add to dictionary
                 isNewWord = true;
                 Debug.Log($"Word added to WordsLearnedDictionary (new entry). English: '{learnedWord_eng}', AltLang: '{learnedWord_alt}', Knowledge Level: {selectedLevel}");
@@ -319,18 +319,24 @@ namespace Assets.Scripts.Collectables
             Image familiarButtonImage = buttonFamiliar.GetComponent<Image>();
             Image knownButtonImage = buttonKnown.GetComponent<Image>();
             Image masteredButtonImage = buttonMastered.GetComponent<Image>();
+            Image initiateInteractionCanvasImage = this.transform.parent.Find("InitiateInteractionCanvas").Find("Button_InitiateInteraction").GetComponent<Image>();
 
             if (familiarButtonImage == null || knownButtonImage == null || masteredButtonImage == null)
             {
                 Debug.LogError($"[WordsLearned - UpdateKnowledgeLevelButtonColor] Image component MISSING on one or more Knowledge Level Buttons for word: '{learnedWord_eng}'. UI update skipped.");
                 return; // Exit if Image component is missing!
             }
+            else if (initiateInteractionCanvasImage == null)
+            {
+                Debug.LogError($"[WordsLearned - UpdateKnowledgeLevelButtonColor] InitiateInteractionCanvasImage component MISSING for word: '{learnedWord_eng}'. UI update skipped.");
+                return; // Exit if InitiateInteractionCanvasImage Image component is missing!
+            }
 
             // Reset all buttons to default color first
             familiarButtonImage.color = newWordColor;
             knownButtonImage.color = newWordColor;
             masteredButtonImage.color = newWordColor;
-
+            initiateInteractionCanvasImage.color = newWordColor;
 
             switch (WordKnowledgeLevelProp) // Use the Property here!
             {
@@ -339,12 +345,15 @@ namespace Assets.Scripts.Collectables
                     break;
                 case WordKnowledgeLevel.Familiar:
                     familiarButtonImage.color = familiarWordColor;
+                    initiateInteractionCanvasImage.color = familiarWordColor;
                     break;
                 case WordKnowledgeLevel.Known:
                     knownButtonImage.color = knownWordColor;
+                    initiateInteractionCanvasImage.color = knownWordColor;
                     break;
                 case WordKnowledgeLevel.Mastered:
                     masteredButtonImage.color = masteredWordColor;
+                    initiateInteractionCanvasImage.color = masteredWordColor;
                     break;
                 default:
                     Debug.LogWarning($"[WordsLearned - UpdateKnowledgeLevelButtonColor] Unknown WordKnowledgeLevel: {WordKnowledgeLevelProp} for word: '{learnedWord_eng}'. No button highlighted.");
