@@ -1,0 +1,270 @@
+Key,Language,English,Complex,Romanized,Phonetic,Type,POS,Gender,Tense,Formality,Category,SubCategory,Unit,Lesson,AudioKey
+anim_pet_cat,Korean,Cat,고양이,goyangi,go-yang-i,Word,Noun,NA,NA,NA,Animals,Pets,2,4,kr_anim_cat
+anim_pet_dog,Korean,Dog,개,gae,gae,Word,Noun,NA,NA,NA,Animals,Pets,2,4,kr_anim_dog
+anim_wild_bird,Korean,Bird,새,sae,sae,Word,Noun,NA,NA,NA,Animals,Wild,2,4,kr_anim_bird
+basics_honor_tobe_for,Korean,To be (Honorific),계시다,gyesida,gye-si-da,Word,Honorific,NA,Present,Formal,Basics,Honorifics,1,1,kr_basics_tobe_for
+bld_com_grocery,Korean,Grocery Store,식료품점,singnyopumjeom,sing-nyo-pum-jeom,Word,Noun,NA,NA,NA,Buildings,Commercial,1,2,kr_bld_grocery
+bld_com_market,Korean,Market,시장,sijang,si-jang,Word,Noun,NA,NA,NA,Buildings,Commercial,1,2,kr_bld_market
+bld_com_store,Korean,Store,가게,gage,ga-ge,Word,Noun,NA,NA,NA,Buildings,Commercial,1,2,kr_bld_store
+bld_res_house,Korean,House,집,jip,jip,Word,Noun,NA,NA,NA,Buildings,Residential,1,2,kr_bld_house
+emer_incid_accident,Korean,Accident,사고,sago,sa-go,Word,Noun,NA,NA,NA,Emergency,Incidents,3,2,kr_emer_accident
+emer_incid_fire,Korean,Fire,불,bul,bul,Word,Noun,NA,NA,NA,Emergency,Incidents,3,2,kr_emer_fire
+emer_pub_fire_station,Korean,Fire Station,소방서,sobangseo,so-bang-seo,Word,Noun,NA,NA,NA,Emergency,Public,3,2,kr_emer_fire_station
+emer_pub_hospital,Korean,Hospital,병원,byeongwon,byeong-won,Word,Noun,NA,NA,NA,Emergency,Public,3,2,kr_emer_hospital
+emer_pub_police_station,Korean,Police Station,경찰서,gyeongchalseo,gyeong-chal-seo,Word,Noun,NA,NA,NA,Emergency,Public,3,2,kr_emer_police_station
+food_dish_salad,Korean,Salad,샐러드,saelleodeu,sael-leo-deu,Word,Noun,NA,NA,NA,Food,Dishes,2,3,kr_food_salad
+food_dish_soup,Korean,Soup,국,guk,guk,Word,Noun,NA,NA,NA,Food,Dishes,2,3,kr_food_soup
+food_fruit_apple,Korean,Apple,사과,sagwa,sa-gwa,Word,Noun,NA,NA,NA,Food,Fruits,2,2,kr_food_apple
+food_fruit_banana,Korean,Banana,바나나,banana,ba-na-na,Word,Noun,NA,NA,NA,Food,Fruits,2,2,kr_food_banana
+food_fruit_grapes,Korean,Grapes,포도,podo,po-do,Word,Noun,NA,NA,NA,Food,Fruits,2,2,kr_food_grapes
+food_fruit_mango,Korean,Mango,망고,manggo,mang-go,Word,Noun,NA,NA,NA,Food,Fruits,2,2,kr_food_mango
+food_fruit_orange,Korean,Orange,오렌지,orenji,o-ren-ji,Word,Noun,NA,NA,NA,Food,Fruits,2,2,kr_food_orange
+food_fruit_pineapple,Korean,Pineapple,파인애플,paine-peul,pa-in-ae-peul,Word,Noun,NA,NA,NA,Food,Fruits,2,2,kr_food_pineapple
+food_meat_beef,Korean,Beef,소고기,sogogi,so-go-gi,Word,Noun,NA,NA,NA,Food,Meats,2,3,kr_food_beef
+food_meat_chicken,Korean,Chicken,닭,dak,dak,Word,Noun,NA,NA,NA,Food,Meats,2,3,kr_food_chicken
+food_meat_fish,Korean,Fish,물고기,mulgogi,mul-go-gi,Word,Noun,NA,NA,NA,Food,Meats,2,3,kr_food_fish
+food_meat_turkey,Korean,Turkey,칠면조,chilmyeonjo,chil-myeon-jo,Word,Noun,NA,NA,NA,Food,Meats,2,3,kr_food_turkey
+furn_bed_bed,Korean,Bed,침대,chimdae,chim-dae,Word,Noun,NA,NA,NA,Furniture,Bedroom,2,1,kr_furn_bed
+furn_bed_blanket,Korean,Blanket,담요,damyo,dam-yo,Word,Noun,NA,NA,NA,Furniture,Bedroom,2,1,kr_furn_blanket
+furn_bed_pillow,Korean,Pillow,베개,begae,be-gae,Word,Noun,NA,NA,NA,Furniture,Bedroom,2,1,kr_furn_pillow
+furn_struc_door,Korean,Door,문,mun,mun,Word,Noun,NA,NA,NA,Furniture,Structure,2,1,kr_furn_door
+furn_struc_window,Korean,Window,창문,changmun,chang-mun,Word,Noun,NA,NA,NA,Furniture,Structure,2,1,kr_furn_window
+gram_part_subject_marker,Korean,Subject Marker,이/가,i/ga,i/ga,Particle,Particle,NA,NA,NA,Grammar,Particles,1,1,kr_gram_subject_marker
+greet_gen_hello_inf,Korean,Hello (Hi),안녕,annyeong,an-nyeong,Phrase,NA,NA,NA,Informal,Greetings,General,1,1,kr_greet_hello_inf
+greet_gen_hello_pol,Korean,Hello,안녕하세요,annyeonghaseyo,an-nyeong-ha-se-yo,Phrase,NA,NA,NA,Polite,Greetings,General,1,1,kr_greet_hello_pol
+nature_plant_tree,Korean,Tree,나무,namu,na-mu,Word,Noun,NA,NA,NA,Nature,Plants,1,2,kr_nature_tree
+num_val_1,Korean,One,하나,hana,ha-na,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,kr_num_1
+num_val_10,Korean,Ten,열,yeol,yeol,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,kr_num_10
+num_val_100,Korean,One hundred,백,baek,baek,Word,Noun,NA,NA,NA,Numbers,Large,1,5,kr_num_100
+num_val_1000,Korean,One thousand,천,cheon,cheon,Word,Noun,NA,NA,NA,Numbers,Large,1,5,kr_num_1000
+num_val_11,Korean,Eleven,열하나,yeolhana,yeol-ha-na,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,kr_num_11
+num_val_12,Korean,Twelve,열둘,yeoldul,yeol-dul,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,kr_num_12
+num_val_13,Korean,Thirteen,열셋,yeolset,yeol-set,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,kr_num_13
+num_val_14,Korean,Fourteen,열넷,yeolnet,yeol-let,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,kr_num_14
+num_val_15,Korean,Fifteen,열다섯,yeoldaseot,yeol-da-seot,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,kr_num_15
+num_val_16,Korean,Sixteen,열여섯,yeolyeoseot,yeol-lyeo-seot,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,kr_num_16
+num_val_17,Korean,Seventeen,열일곱,yeolilgop,yeol-il-gop,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,kr_num_17
+num_val_18,Korean,Eighteen,열여덟,yeolyeodeolp,yeol-yeo-deol,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,kr_num_18
+num_val_19,Korean,Nineteen,열아홉,yeolahop,yeol-a-hop,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,kr_num_19
+num_val_1bil,Korean,One billion,십억,sibeok,si-beok,Word,Noun,NA,NA,NA,Numbers,Large,1,5,kr_num_1bil
+num_val_1mil,Korean,One million,백만,baekman,baeng-man,Word,Noun,NA,NA,NA,Numbers,Large,1,5,kr_num_1mil
+num_val_2,Korean,Two,둘,dul,dul,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,kr_num_2
+num_val_20,Korean,Twenty,스물,seumul,seu-mul,Word,Noun,NA,NA,NA,Numbers,Tens,1,4,kr_num_20
+num_val_3,Korean,Three,삼,sam,sam,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,kr_num_3
+num_val_30,Korean,Thirty,서른,seoreun,seo-reun,Word,Noun,NA,NA,NA,Numbers,Tens,1,5,kr_num_30
+num_val_4,Korean,Four,넷,net,net,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,kr_num_4
+num_val_40,Korean,Forty,마흔,maheun,ma-heun,Word,Noun,NA,NA,NA,Numbers,Tens,1,5,kr_num_40
+num_val_5,Korean,Five,다섯,daseot,da-seot,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,kr_num_5
+num_val_50,Korean,Fifty,쉰,swin,swin,Word,Noun,NA,NA,NA,Numbers,Tens,1,5,kr_num_50
+num_val_6,Korean,Six,육,yuk,yuk,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,kr_num_6
+num_val_60,Korean,Sixty,예순,yesun,ye-sun,Word,Noun,NA,NA,NA,Numbers,Tens,1,5,kr_num_60
+num_val_7,Korean,Seven,일곱,ilgop,il-gop,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,kr_num_7
+num_val_70,Korean,Seventy,일흔,ilheun,il-heun,Word,Noun,NA,NA,NA,Numbers,Tens,1,5,kr_num_70
+num_val_8,Korean,Eight,여덟,yeodeolp,yeo-deol,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,kr_num_8
+num_val_80,Korean,Eighty,여든,yeodeun,yeo-deun,Word,Noun,NA,NA,NA,Numbers,Tens,1,5,kr_num_80
+num_val_9,Korean,Nine,아홉,ahop,a-hop,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,kr_num_9
+num_val_90,Korean,Ninety,아흔,aheun,a-heun,Word,Noun,NA,NA,NA,Numbers,Tens,1,5,kr_num_90
+ppl_gen_man,Korean,Man,남자,namja,nam-ja,Word,Noun,Male,NA,NA,People,General,1,1,kr_ppl_man
+ppl_gen_woman,Korean,Woman,여자,yeoja,yeo-ja,Word,Noun,Female,NA,NA,People,General,1,1,kr_ppl_woman
+shop_equip_cart,Korean,Shopping Cart,쇼핑 카트,syoping kateu,sho-ping ka-teu,Word,Noun,NA,NA,NA,Shopping,Equipment,1,1,kr_shop_cart
+shop_equip_register,Korean,Cash Register,계산기,gyesangi,gye-san-gi,Word,Noun,NA,NA,NA,Shopping,Equipment,1,1,kr_shop_register
+shop_peop_cashier,Korean,Cashier,계산원,gyesanwon,gye-san-won,Word,Noun,NA,NA,NA,Shopping,People,1,1,kr_shop_cashier
+shop_trans_give_inf,Korean,Give me this.,이거 줘,igeo jwo,i-geo-jwo,Sentence,NA,NA,NA,Informal,Shopping,Transaction,3,3,kr_shop_give_inf
+shop_trans_howmuch_for,Korean,How much is this?,이것은 얼마입니까?,igeoseun eolmayimnikka?,i-geot-seun-eol-ma-im-ni-kka?,Question,NA,NA,NA,Formal,Shopping,Transaction,3,3,kr_shop_howmuch_for
+shop_trans_howmuch_inf,Korean,How much is this?,이거 얼마야?,igeo eolmaya?,i-geo-eol-ma-ya?,Question,NA,NA,NA,Informal,Shopping,Transaction,3,3,kr_shop_howmuch_inf
+shop_trans_howmuch_pol,Korean,How much is this?,이거 얼마예요?,igeo eolmayeyo?,i-geo-eol-ma-ye-yo?,Question,NA,NA,NA,Polite,Shopping,Transaction,3,3,kr_shop_howmuch_pol
+shop_trans_want_pol,Korean,I want this please.,이거 주세요,igeo juseyo,i-geo-ju-se-yo,Sentence,NA,NA,NA,Polite,Shopping,Transaction,3,3,kr_shop_want_pol
+shop_trans_wouldlike_for,Korean,I would like this.,이것을 원합니다,igeoseul wonhamnida,i-geot-seul-won-ham-ni-da,Sentence,NA,NA,NA,Formal,Shopping,Transaction,3,3,kr_shop_wouldlike_for
+tran_emer_ambulance,Korean,Ambulance,구급차,gugeupcha,gu-geup-cha,Word,Noun,NA,NA,NA,Transport,Emergency,3,1,kr_tran_ambulance
+tran_land_car,Korean,Car,자동차,jadongcha,ja-dong-cha,Word,Noun,NA,NA,NA,Transport,Land,3,1,kr_tran_car
+tran_land_truck,Korean,Truck,트럭,teureok,teu-reok,Word,Noun,NA,NA,NA,Transport,Land,3,1,kr_tran_truck
+tran_land_van,Korean,Van,봉고차,bonggocha,bong-go-cha,Word,Noun,NA,NA,NA,Transport,Land,3,1,kr_tran_van
+weat_cond_cloudy_for,Korean,It's cloudy.,흐린 날씨입니다,heurin nalssiyimnida,heu-rin-nal-ssi-im-ni-da,Sentence,NA,NA,Present,Formal,Weather,Condition,3,4,kr_weat_cloudy_for
+weat_cond_cloudy_inf,Korean,It's cloudy.,날씨 흐려,nalssi heuryeo,nal-ssi-heu-ryeo,Sentence,NA,NA,Present,Informal,Weather,Condition,3,4,kr_weat_cloudy_inf
+weat_cond_cloudy_pol,Korean,It's cloudy.,날씨가 흐려요,nalssiga heuryeoyo,nal-ssi-ga-heu-ryeo-yo,Sentence,NA,NA,Present,Polite,Weather,Condition,3,4,kr_weat_cloudy_pol
+weat_cond_sunny_for,Korean,It's sunny.,날씨가 맑습니다,nalssiga malkseumnida,nal-ssi-ga-mak-seum-ni-da,Sentence,NA,NA,Present,Formal,Weather,Condition,3,4,kr_weat_sunny_for
+weat_cond_sunny_inf,Korean,It's sunny.,날씨 좋아,nalssi joa,nal-ssi-jo-a,Sentence,NA,NA,Present,Informal,Weather,Condition,3,4,kr_weat_sunny_inf
+weat_cond_sunny_pol,Korean,It's sunny.,날씨가 맑아요,nalssiga malgayo,nal-ssi-ga-mal-ga-yo,Sentence,NA,NA,Present,Polite,Weather,Condition,3,4,kr_weat_sunny_pol
+weat_precip_raining_for,Korean,It's raining.,비가 오고 있습니다,biga ogo itseumnida,bi-ga-o-go-it-seum-ni-da,Sentence,NA,NA,Present,Formal,Weather,Precipitation,3,4,kr_weat_raining_for
+weat_precip_raining_inf,Korean,It's raining.,비 와,bi wa,bi-wa,Sentence,NA,NA,Present,Informal,Weather,Precipitation,3,4,kr_weat_raining_inf
+weat_precip_raining_pol,Korean,It's raining.,비가 오고 있어요,biga ogo isseoyo,bi-ga-o-go-it-seo-yo,Sentence,NA,NA,Present,Polite,Weather,Precipitation,3,4,kr_weat_raining_pol
+anim_pet_cat,Tagalog,Cat,Pusa,,poo-sah,Word,Noun,NA,NA,NA,Animals,Pets,2,4,tg_anim_cat
+anim_pet_dog,Tagalog,Dog,Aso,,ah-soh,Word,Noun,NA,NA,NA,Animals,Pets,2,4,tg_anim_dog
+anim_wild_bird,Tagalog,Bird,Ibon,,ee-bon,Word,Noun,NA,NA,NA,Animals,Wild,2,4,tg_anim_bird
+basics_honor_tobe_for,Tagalog,To be (Honorific),Maging (po),,mah-geeng-poh,Word,Honorific,NA,Present,Formal,Basics,Honorifics,1,1,tg_basics_tobe_for
+bld_com_grocery,Tagalog,Grocery Store,Groserya,,groh-seh-ryah,Word,Noun,NA,NA,NA,Buildings,Commercial,1,2,tg_bld_grocery
+bld_com_market,Tagalog,Market,Palengke,,pah-leng-keh,Word,Noun,NA,NA,NA,Buildings,Commercial,1,2,tg_bld_market
+bld_com_store,Tagalog,Store,Tindahan,,teen-dah-han,Word,Noun,NA,NA,NA,Buildings,Commercial,1,2,tg_bld_store
+bld_res_house,Tagalog,House,Bahay,,bah-hai,Word,Noun,NA,NA,NA,Buildings,Residential,1,2,tg_bld_house
+emer_incid_accident,Tagalog,Accident,Aksidente,,ak-see-den-teh,Word,Noun,NA,NA,NA,Emergency,Incidents,3,2,tg_emer_accident
+emer_incid_fire,Tagalog,Fire,Sunog,,soo-nog,Word,Noun,NA,NA,NA,Emergency,Incidents,3,2,tg_emer_fire
+emer_pub_fire_station,Tagalog,Fire Station,Istasyon ng Bumbero,,ees-tas-yon-nang-boom-beh-roh,Word,Noun,NA,NA,NA,Emergency,Public,3,2,tg_emer_fire_station
+emer_pub_hospital,Tagalog,Hospital,Ospital,,os-pee-tal,Word,Noun,NA,NA,NA,Emergency,Public,3,2,tg_emer_hospital
+emer_pub_police_station,Tagalog,Police Station,Istasyon ng Pulis,,ees-tas-yon-nang-poo-lis,Word,Noun,NA,NA,NA,Emergency,Public,3,2,tg_emer_police_station
+food_dish_salad,Tagalog,Salad,Ensalada,,en-sah-lah-dah,Word,Noun,NA,NA,NA,Food,Dishes,2,3,tg_food_salad
+food_dish_soup,Tagalog,Soup,Sopas,,soh-pas,Word,Noun,NA,NA,NA,Food,Dishes,2,3,tg_food_soup
+food_fruit_apple,Tagalog,Apple,Mansanas,,man-sah-nahs,Word,Noun,NA,NA,NA,Food,Fruits,2,2,tg_food_apple
+food_fruit_banana,Tagalog,Banana,Saging,,sah-ging,Word,Noun,NA,NA,NA,Food,Fruits,2,2,tg_food_banana
+food_fruit_grapes,Tagalog,Grapes,Ubas,,oo-bahs,Word,Noun,NA,NA,NA,Food,Fruits,2,2,tg_food_grapes
+food_fruit_mango,Tagalog,Mango,Mangga,,mang-gah,Word,Noun,NA,NA,NA,Food,Fruits,2,2,tg_food_mango
+food_fruit_orange,Tagalog,Orange,Kahel,,kah-hel,Word,Noun,NA,NA,NA,Food,Fruits,2,2,tg_food_orange
+food_fruit_pineapple,Tagalog,Pineapple,Pinya,,peen-yah,Word,Noun,NA,NA,NA,Food,Fruits,2,2,tg_food_pineapple
+food_meat_beef,Tagalog,Beef,Baka,,bah-kah,Word,Noun,NA,NA,NA,Food,Meats,2,3,tg_food_beef
+food_meat_chicken,Tagalog,Chicken,Manok,,mah-nok,Word,Noun,NA,NA,NA,Food,Meats,2,3,tg_food_chicken
+food_meat_fish,Tagalog,Fish,Isda,,ees-dah,Word,Noun,NA,NA,NA,Food,Meats,2,3,tg_food_fish
+food_meat_turkey,Tagalog,Turkey,Pabo,,pah-boh,Word,Noun,NA,NA,NA,Food,Meats,2,3,tg_food_turkey
+furn_bed_bed,Tagalog,Bed,Kama,,kah-mah,Word,Noun,NA,NA,NA,Furniture,Bedroom,2,1,tg_furn_bed
+furn_bed_blanket,Tagalog,Blanket,Kumot,,koo-moht,Word,Noun,NA,NA,NA,Furniture,Bedroom,2,1,tg_furn_blanket
+furn_bed_pillow,Tagalog,Pillow,Unan,,oo-nan,Word,Noun,NA,NA,NA,Furniture,Bedroom,2,1,tg_furn_pillow
+furn_struc_door,Tagalog,Door,Pinto,,pin-toh,Word,Noun,NA,NA,NA,Furniture,Structure,2,1,tg_furn_door
+furn_struc_window,Tagalog,Window,Bintana,,bin-tah-nah,Word,Noun,NA,NA,NA,Furniture,Structure,2,1,tg_furn_window
+gram_affix_actor_focus,Tagalog,Verb Actor Focus,-um-,-um-,oom,Word,Affix,NA,NA,NA,Grammar,Affixes,1,1,tg_gram_actor_focus
+gram_det_subject_marker,Tagalog,The (Subject),Ang,ang,ang,Word,Determiner,NA,NA,NA,Grammar,Markers,1,1,tg_gram_det_subject
+gram_part_subject_marker,Tagalog,Subject Marker,Ang,,ang,Particle,Particle,NA,NA,NA,Grammar,Particles,1,1,tg_gram_subject_marker
+greet_gen_hello_inf,Tagalog,Hello (Hi),Kumusta,,koo-moos-tah,Phrase,NA,NA,NA,Informal,Greetings,General,1,1,tg_greet_hello_inf
+greet_gen_hello_pol,Tagalog,Hello,Kumusta po,,koo-moos-tah-poh,Phrase,NA,NA,NA,Polite,Greetings,General,1,1,tg_greet_hello_pol
+nature_plant_tree,Tagalog,Tree,Puno,,poo-noh,Word,Noun,NA,NA,NA,Nature,Plants,1,2,tg_nature_tree
+num_val_1,Tagalog,One,Isa,,ee-sah,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,tg_num_1
+num_val_10,Tagalog,Ten,Sampu,,sam-poo,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,tg_num_10
+num_val_100,Tagalog,One hundred,Sandaan,,san-dah-ahn,Word,Noun,NA,NA,NA,Numbers,Large,1,5,tg_num_100
+num_val_1000,Tagalog,One thousand,Isang libo,,ee-sang-lee-boh,Word,Noun,NA,NA,NA,Numbers,Large,1,5,tg_num_1000
+num_val_11,Tagalog,Eleven,Labing-isa,,lah-bing-ee-sah,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,tg_num_11
+num_val_12,Tagalog,Twelve,Labindalawa,,lah-bin-dah-lah-wah,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,tg_num_12
+num_val_13,Tagalog,Thirteen,Labintatlo,,lah-bin-tat-loh,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,tg_num_13
+num_val_14,Tagalog,Fourteen,Labing-apat,,lah-bing-ah-pat,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,tg_num_14
+num_val_15,Tagalog,Fifteen,Labinlima,,lah-bin-lee-mah,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,tg_num_15
+num_val_16,Tagalog,Sixteen,Labing-anim,,lah-bing-ah-neem,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,tg_num_16
+num_val_17,Tagalog,Seventeen,Labimpito,,lah-bim-pee-toh,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,tg_num_17
+num_val_18,Tagalog,Eighteen,Labing-walo,,lah-bing-wah-loh,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,tg_num_18
+num_val_19,Tagalog,Nineteen,Labingsiyam,,lah-bing-see-yam,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,tg_num_19
+num_val_1bil,Tagalog,One billion,Isang bilyon,,ee-sang-bil-yon,Word,Noun,NA,NA,NA,Numbers,Large,1,5,tg_num_1bil
+num_val_1mil,Tagalog,One million,Isang milyon,,ee-sang-mil-yon,Word,Noun,NA,NA,NA,Numbers,Large,1,5,tg_num_1mil
+num_val_2,Tagalog,Two,Dalawa,,dah-lah-wah,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,tg_num_2
+num_val_20,Tagalog,Twenty,Dalawampu,,dah-lah-wam-poo,Word,Noun,NA,NA,NA,Numbers,Tens,1,4,tg_num_20
+num_val_3,Tagalog,Three,Tatlo,,tat-loh,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,tg_num_3
+num_val_30,Tagalog,Thirty,Tatlumpu,,tat-loom-poo,Word,Noun,NA,NA,NA,Numbers,Tens,1,5,tg_num_30
+num_val_4,Tagalog,Four,Apat,,ah-paht,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,tg_num_4
+num_val_40,Tagalog,Forty,Apatnapu,,ah-pat-nah-poo,Word,Noun,NA,NA,NA,Numbers,Tens,1,5,tg_num_40
+num_val_5,Tagalog,Five,Lima,,lee-mah,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,tg_num_5
+num_val_50,Tagalog,Fifty,Limampu,,lee-mam-poo,Word,Noun,NA,NA,NA,Numbers,Tens,1,5,tg_num_50
+num_val_6,Tagalog,Six,Anim,,ah-neem,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,tg_num_6
+num_val_60,Tagalog,Sixty,Animnapu,,ah-neem-nah-poo,Word,Noun,NA,NA,NA,Numbers,Tens,1,5,tg_num_60
+num_val_7,Tagalog,Seven,Pito,,pee-toh,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,tg_num_7
+num_val_70,Tagalog,Seventy,Pitumpu,,pee-toom-poo,Word,Noun,NA,NA,NA,Numbers,Tens,1,5,tg_num_70
+num_val_8,Tagalog,Eight,Walo,,wah-loh,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,tg_num_8
+num_val_80,Tagalog,Eighty,Walumpu,,wah-loom-poo,Word,Noun,NA,NA,NA,Numbers,Tens,1,5,tg_num_80
+num_val_9,Tagalog,Nine,Siyam,,see-yahm,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,tg_num_9
+num_val_90,Tagalog,Ninety,Siyamnapu,,see-yam-nah-poo,Word,Noun,NA,NA,NA,Numbers,Tens,1,5,tg_num_90
+ppl_gen_man,Tagalog,Man,Lalaki,Lalaki,la-la-ki,Word,Noun,Male,NA,NA,People,General,1,1,tg_ppl_man
+ppl_gen_woman,Tagalog,Woman,Babae,Babae,ba-ba-e,Word,Noun,Female,NA,NA,People,General,1,1,tg_ppl_woman
+shop_equip_cart,Tagalog,Shopping Cart,Kariton sa pamimili,Kariton sa pamimili,ka-ri-ton sa pa-mi-mi-li,Word,Noun,NA,NA,NA,Shopping,Equipment,1,1,tg_shop_cart
+shop_equip_register,Tagalog,Cash Register,Kaha rehistradora,Kaha rehistradora,ka-ha re-his-tra-do-ra,Word,Noun,NA,NA,NA,Shopping,Equipment,1,1,tg_shop_register
+shop_peop_cashier,Tagalog,Cashier,Kahera,Kahera,ka-he-ra,Word,Noun,Female,NA,NA,Shopping,People,1,1,tg_shop_cashier
+shop_trans_give_inf,Tagalog,Give me this.,Pahingi nito.,,pah-hing-ee-nee-toh,Sentence,NA,NA,NA,Informal,Shopping,Transaction,3,3,tg_shop_give_inf
+shop_trans_howmuch_for,Tagalog,How much is this?,Magkano po ito?,,mag-kah-noh-poh-ee-toh,Question,NA,NA,NA,Formal,Shopping,Transaction,3,3,tg_shop_howmuch_for
+shop_trans_howmuch_inf,Tagalog,How much is this?,Magkano ito?,,mag-kah-noh-ee-toh,Question,NA,NA,NA,Informal,Shopping,Transaction,3,3,tg_shop_howmuch_inf
+shop_trans_howmuch_pol,Tagalog,How much is this?,Magkano po ito?,,mag-kah-noh-poh-ee-toh,Question,NA,NA,NA,Polite,Shopping,Transaction,3,3,tg_shop_howmuch_pol
+shop_trans_want_pol,Tagalog,I want this please.,Gusto ko po nito.,,goos-toh-koh-poh-nee-toh,Sentence,NA,NA,NA,Polite,Shopping,Transaction,3,3,tg_shop_want_pol
+shop_trans_wouldlike_for,Tagalog,I would like this.,Nais ko po nito.,,nah-ees-koh-poh-nee-toh,Sentence,NA,NA,NA,Formal,Shopping,Transaction,3,3,tg_shop_wouldlike_for
+tran_emer_ambulance,Tagalog,Ambulance,Ambulansya,,am-boo-lans-yah,Word,Noun,NA,NA,NA,Transport,Emergency,3,1,tg_tran_ambulance
+tran_land_car,Tagalog,Car,Kotse,,koh-cheh,Word,Noun,NA,NA,NA,Transport,Land,3,1,tg_tran_car
+tran_land_truck,Tagalog,Truck,Trak,,trak,Word,Noun,NA,NA,NA,Transport,Land,3,1,tg_tran_truck
+tran_land_van,Tagalog,Van,Ban,,ban,Word,Noun,NA,NA,NA,Transport,Land,3,1,tg_tran_van
+weat_cond_cloudy_for,Tagalog,It's cloudy.,Maulap po ang panahon,,mah-oo-lap-poh-ang-pah-nah-hon,Sentence,NA,NA,Present,Formal,Weather,Condition,3,4,tg_weat_cloudy_for
+weat_cond_cloudy_inf,Tagalog,It's cloudy.,Maulap,,mah-oo-lap,Sentence,NA,NA,Present,Informal,Weather,Condition,3,4,tg_weat_cloudy_inf
+weat_cond_cloudy_pol,Tagalog,It's cloudy.,Maulap po,,mah-oo-lap-poh,Sentence,NA,NA,Present,Polite,Weather,Condition,3,4,tg_weat_cloudy_pol
+weat_cond_sunny_for,Tagalog,It's sunny.,Maaraw po ang panahon,,mah-ah-rau-poh-ang-pah-nah-hon,Sentence,NA,NA,Present,Formal,Weather,Condition,3,4,tg_weat_sunny_for
+weat_cond_sunny_inf,Tagalog,It's sunny.,Maaraw,,mah-ah-rau,Sentence,NA,NA,Present,Informal,Weather,Condition,3,4,tg_weat_sunny_inf
+weat_cond_sunny_pol,Tagalog,It's sunny.,Maaraw po,,mah-ah-rau-poh,Sentence,NA,NA,Present,Polite,Weather,Condition,3,4,tg_weat_sunny_pol
+weat_precip_raining_for,Tagalog,It's raining.,Umuulan po,,oo-moo-oo-lan-poh,Sentence,NA,NA,Present,Formal,Weather,Precipitation,3,4,tg_weat_raining_for
+weat_precip_raining_inf,Tagalog,It's raining.,Umuulan,,oo-moo-oo-lan,Sentence,NA,NA,Present,Informal,Weather,Precipitation,3,4,tg_weat_raining_inf
+weat_precip_raining_pol,Tagalog,It's raining.,Umuulan po,,oo-moo-oo-lan-poh,Sentence,NA,NA,Present,Polite,Weather,Precipitation,3,4,tg_weat_raining_pol
+anim_pet_cat,Ilocano,Cat,Pusa,,poo-sah,Word,Noun,NA,NA,NA,Animals,Pets,2,4,il_anim_cat
+anim_pet_dog,Ilocano,Dog,Aso,,ah-soh,Word,Noun,NA,NA,NA,Animals,Pets,2,4,il_anim_dog
+anim_wild_bird,Ilocano,Bird,Billit,,beel-leet,Word,Noun,NA,NA,NA,Animals,Wild,2,4,il_anim_bird
+basics_honor_tobe_for,Ilocano,To be (Honorific),Maysa (po),,mai-sah-poh,Word,Honorific,NA,Present,Formal,Basics,Honorifics,1,1,il_basics_tobe_for
+bld_com_grocery,Ilocano,Grocery Store,Groserya,,groh-seh-ryah,Word,Noun,NA,NA,NA,Buildings,Commercial,1,2,il_bld_grocery
+bld_com_market,Ilocano,Market,Tianggi,,tyang-gee,Word,Noun,NA,NA,NA,Buildings,Commercial,1,2,il_bld_market
+bld_com_store,Ilocano,Store,Tindahan,,teen-dah-han,Word,Noun,NA,NA,NA,Buildings,Commercial,1,2,il_bld_store
+bld_res_house,Ilocano,House,Balay,,bah-lai,Word,Noun,NA,NA,NA,Buildings,Residential,1,2,il_bld_house
+emer_incid_accident,Ilocano,Accident,Disgrasya,,dis-gras-yah,Word,Noun,NA,NA,NA,Emergency,Incidents,3,2,il_emer_accident
+emer_incid_fire,Ilocano,Fire,Puor,,poor,Word,Noun,NA,NA,NA,Emergency,Incidents,3,2,il_emer_fire
+emer_pub_fire_station,Ilocano,Fire Station,Estasyon ti Bumbero,,es-tas-yon-tee-boom-beh-roh,Word,Noun,NA,NA,NA,Emergency,Public,3,2,il_emer_fire_station
+emer_pub_hospital,Ilocano,Hospital,Ospital,,os-pee-tal,Word,Noun,NA,NA,NA,Emergency,Public,3,2,il_emer_hospital
+emer_pub_police_station,Ilocano,Police Station,Estasyon ti Polis,,es-tas-yon-tee-po-lis,Word,Noun,NA,NA,NA,Emergency,Public,3,2,il_emer_police_station
+food_dish_salad,Ilocano,Salad,Ensalada,,en-sah-lah-dah,Word,Noun,NA,NA,NA,Food,Dishes,2,3,il_food_salad
+food_dish_soup,Ilocano,Soup,Sopas,,soh-pas,Word,Noun,NA,NA,NA,Food,Dishes,2,3,il_food_soup
+food_fruit_apple,Ilocano,Apple,Mansanas,,man-sah-nahs,Word,Noun,NA,NA,NA,Food,Fruits,2,2,il_food_apple
+food_fruit_banana,Ilocano,Banana,Saba,,sah-bah,Word,Noun,NA,NA,NA,Food,Fruits,2,2,il_food_banana
+food_fruit_grapes,Ilocano,Grapes,Ubas,,oo-bahs,Word,Noun,NA,NA,NA,Food,Fruits,2,2,il_food_grapes
+food_fruit_mango,Ilocano,Mango,Mangga,,mang-gah,Word,Noun,NA,NA,NA,Food,Fruits,2,2,il_food_mango
+food_fruit_orange,Ilocano,Orange,Kahel,,kah-hel,Word,Noun,NA,NA,NA,Food,Fruits,2,2,il_food_orange
+food_fruit_pineapple,Ilocano,Pineapple,Pinya,,peen-yah,Word,Noun,NA,NA,NA,Food,Fruits,2,2,il_food_pineapple
+food_meat_beef,Ilocano,Beef,Karne ti baka,,kar-neh-tee-bah-kah,Word,Noun,NA,NA,NA,Food,Meats,2,3,il_food_beef
+food_meat_chicken,Ilocano,Chicken,Manok,,mah-nok,Word,Noun,NA,NA,NA,Food,Meats,2,3,il_food_chicken
+food_meat_fish,Ilocano,Fish,Sida,,see-dah,Word,Noun,NA,NA,NA,Food,Meats,2,3,il_food_fish
+food_meat_turkey,Ilocano,Turkey,Pabo,,pah-boh,Word,Noun,NA,NA,NA,Food,Meats,2,3,il_food_turkey
+furn_bed_bed,Ilocano,Bed,Katre,,kaht-reh,Word,Noun,NA,NA,NA,Furniture,Bedroom,2,1,il_furn_bed
+furn_bed_blanket,Ilocano,Blanket,Ules,,oo-less,Word,Noun,NA,NA,NA,Furniture,Bedroom,2,1,il_furn_blanket
+furn_bed_pillow,Ilocano,Pillow,Pungan,,poo-ngan,Word,Noun,NA,NA,NA,Furniture,Bedroom,2,1,il_furn_pillow
+furn_struc_door,Ilocano,Door,Ridaw,,ree-dau,Word,Noun,NA,NA,NA,Furniture,Structure,2,1,il_furn_door
+furn_struc_window,Ilocano,Window,Tawa,,tah-wah,Word,Noun,NA,NA,NA,Furniture,Structure,2,1,il_furn_window
+gram_part_subject_marker,Ilocano,Subject Marker,Ti,,tee,Particle,Particle,NA,NA,NA,Grammar,Particles,1,1,il_gram_subject_marker
+greet_gen_hello_inf,Ilocano,Hello (Hi),Kumusta,,koo-moos-tah,Phrase,NA,NA,NA,Informal,Greetings,General,1,1,il_greet_hello_inf
+greet_gen_hello_pol,Ilocano,Hello,Kumusta kayo,,koo-moos-tah-kah-yoh,Phrase,NA,NA,NA,Polite,Greetings,General,1,1,il_greet_hello_pol
+nature_plant_tree,Ilocano,Tree,Kayu,,kah-yoo,Word,Noun,NA,NA,NA,Nature,Plants,1,2,il_nature_tree
+num_val_1,Ilocano,One,Maysa,,mai-sah,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,il_num_1
+num_val_10,Ilocano,Ten,Sangapulo,,sah-ngah-poo-loh,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,il_num_10
+num_val_100,Ilocano,One hundred,Sangagasut,,sang-gah-gah-soot,Word,Noun,NA,NA,NA,Numbers,Large,1,5,il_num_100
+num_val_1000,Ilocano,One thousand,Sangaribu,,sang-gah-ree-boo,Word,Noun,NA,NA,NA,Numbers,Large,1,5,il_num_1000
+num_val_11,Ilocano,Eleven,Sangapulo ket maysa,,sang-gah-poo-loh-ket-mai-sah,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,il_num_11
+num_val_12,Ilocano,Twelve,Sangapulo ket dua,,sang-gah-poo-loh-ket-doo-wah,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,il_num_12
+num_val_13,Ilocano,Thirteen,Sangapulo ket tallo,,sang-gah-poo-loh-ket-tal-loh,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,il_num_13
+num_val_14,Ilocano,Fourteen,Sangapulo ket uppat,,sang-gah-poo-loh-ket-oop-pat,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,il_num_14
+num_val_15,Ilocano,Fifteen,Sangapulo ket lima,,sang-gah-poo-loh-ket-lee-mah,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,il_num_15
+num_val_16,Ilocano,Sixteen,Sangapulo ket innem,,sang-gah-poo-loh-ket-een-nem,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,il_num_16
+num_val_17,Ilocano,Seventeen,Sangapulo ket pito,,sang-gah-poo-loh-ket-pee-toh,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,il_num_17
+num_val_18,Ilocano,Eighteen,Sangapulo ket walo,,sang-gah-poo-loh-ket-wah-loh,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,il_num_18
+num_val_19,Ilocano,Nineteen,Sangapulo ket siam,,sang-gah-poo-loh-ket-see-yam,Word,Noun,NA,NA,NA,Numbers,Teens,1,4,il_num_19
+num_val_1bil,Ilocano,One billion,Sangabilyon,,sang-gah-bil-yon,Word,Noun,NA,NA,NA,Numbers,Large,1,5,il_num_1bil
+num_val_1mil,Ilocano,One million,Sangamilyon,,sang-gah-mil-yon,Word,Noun,NA,NA,NA,Numbers,Large,1,5,il_num_1mil
+num_val_2,Ilocano,Two,Duwa,,doo-wah,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,il_num_2
+num_val_20,Ilocano,Twenty,Duwapulo,,doo-wah-poo-loh,Word,Noun,NA,NA,NA,Numbers,Tens,1,4,il_num_20
+num_val_3,Ilocano,Three,Tallo,,tal-loh,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,il_num_3
+num_val_30,Ilocano,Thirty,Tallopulo,,tal-loh-poo-loh,Word,Noun,NA,NA,NA,Numbers,Tens,1,5,il_num_30
+num_val_4,Ilocano,Four,Uppat,,oop-paht,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,il_num_4
+num_val_40,Ilocano,Forty,Uppat a pulo,,oop-pat-ah-poo-loh,Word,Noun,NA,NA,NA,Numbers,Tens,1,5,il_num_40
+num_val_5,Ilocano,Five,Lima,,lee-mah,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,il_num_5
+num_val_50,Ilocano,Fifty,Limapulo,,lee-mah-poo-loh,Word,Noun,NA,NA,NA,Numbers,Tens,1,5,il_num_50
+num_val_6,Ilocano,Six,Innem,,een-nehm,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,il_num_6
+num_val_60,Ilocano,Sixty,Innem a pulo,,een-nem-ah-poo-loh,Word,Noun,NA,NA,NA,Numbers,Tens,1,5,il_num_60
+num_val_7,Ilocano,Seven,Pito,,pee-toh,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,il_num_7
+num_val_70,Ilocano,Seventy,Pitopulo,,pee-toh-poo-loh,Word,Noun,NA,NA,NA,Numbers,Tens,1,5,il_num_70
+num_val_8,Ilocano,Eight,Walo,,wah-loh,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,il_num_8
+num_val_80,Ilocano,Eighty,Walopulo,,wah-loh-poo-loh,Word,Noun,NA,NA,NA,Numbers,Tens,1,5,il_num_80
+num_val_9,Ilocano,Nine,Siam,,see-yahm,Word,Noun,NA,NA,NA,Numbers,Sino/Native,1,3,il_num_9
+num_val_90,Ilocano,Ninety,Siam a pulo,,see-yam-ah-poo-loh,Word,Noun,NA,NA,NA,Numbers,Tens,1,5,il_num_90
+ppl_gen_man,Ilocano,Man,Lalaki,Lalaki,la-la-ki,Word,Noun,Male,NA,NA,People,General,1,1,il_ppl_man
+ppl_gen_woman,Ilocano,Woman,Babai,Babai,ba-ba-i,Word,Noun,Female,NA,NA,People,General,1,1,il_ppl_woman
+shop_equip_cart,Ilocano,Shopping Cart,Karting ti panaggatang,Karting ti panaggatang,kar-ting ti pa-nag-ga-tang,Word,Noun,NA,NA,NA,Shopping,Equipment,1,1,il_shop_cart
+shop_equip_register,Ilocano,Cash Register,Kaha,Kaha,ka-ha,Word,Noun,NA,NA,NA,Shopping,Equipment,1,1,il_shop_register
+shop_peop_cashier,Ilocano,Cashier,Kashier,Kashier,ka-shier,Word,Noun,NA,NA,NA,Shopping,People,1,1,il_shop_cashier
+shop_trans_give_inf,Ilocano,Give me this.,Ikkannak daytoy.,,ik-kan-nak-dai-toy,Sentence,NA,NA,NA,Informal,Shopping,Transaction,3,3,il_shop_give_inf
+shop_trans_howmuch_for,Ilocano,How much is this?,Mano daytoy apo?,,mah-noh-dai-toy-ah-po,Question,NA,NA,NA,Formal,Shopping,Transaction,3,3,il_shop_howmuch_for
+shop_trans_howmuch_inf,Ilocano,How much is this?,Mano daytoy?,,mah-noh-dai-toy,Question,NA,NA,NA,Informal,Shopping,Transaction,3,3,il_shop_howmuch_inf
+shop_trans_howmuch_pol,Ilocano,How much is this?,Mano daytoy apo?,,mah-noh-dai-toy-ah-po,Question,NA,NA,NA,Polite,Shopping,Transaction,3,3,il_shop_howmuch_pol
+shop_trans_want_pol,Ilocano,I want this please.,Kayat ko daytoy.,,kah-yat-koh-dai-toy,Sentence,NA,NA,NA,Polite,Shopping,Transaction,3,3,il_shop_want_pol
+shop_trans_wouldlike_for,Ilocano,I would like this.,Kayat ko daytoy.,,kah-yat-koh-dai-toy,Sentence,NA,NA,NA,Formal,Shopping,Transaction,3,3,il_shop_wouldlike_for
+tran_emer_ambulance,Ilocano,Ambulance,Ambulansya,,am-boo-lans-yah,Word,Noun,NA,NA,NA,Transport,Emergency,3,1,il_tran_ambulance
+tran_land_car,Ilocano,Car,Kotse,,koh-cheh,Word,Noun,NA,NA,NA,Transport,Land,3,1,il_tran_car
+tran_land_truck,Ilocano,Truck,Trak,,trak,Word,Noun,NA,NA,NA,Transport,Land,3,1,il_tran_truck
+tran_land_van,Ilocano,Van,Ban,,ban,Word,Noun,NA,NA,NA,Transport,Land,3,1,il_tran_van
+weat_cond_cloudy_for,Ilocano,It's cloudy.,Naimbag ti panawen,,nah-eem-bag-tee-pah-nah-wen,Sentence,NA,NA,Present,Formal,Weather,Condition,3,4,il_weat_cloudy_for
+weat_cond_cloudy_inf,Ilocano,It's cloudy.,Naimbag,,nah-eem-bag,Sentence,NA,NA,Present,Informal,Weather,Condition,3,4,il_weat_cloudy_inf
+weat_cond_cloudy_pol,Ilocano,It's cloudy.,Naimbag apo,,nah-eem-bag-ah-po,Sentence,NA,NA,Present,Polite,Weather,Condition,3,4,il_weat_cloudy_pol
+weat_cond_sunny_for,Ilocano,It's sunny.,Napudot ti panawen,,nah-poo-dot-tee-pah-nah-wen,Sentence,NA,NA,Present,Formal,Weather,Condition,3,4,il_weat_sunny_for
+weat_cond_sunny_inf,Ilocano,It's sunny.,Napudot,,nah-poo-dot,Sentence,NA,NA,Present,Informal,Weather,Condition,3,4,il_weat_sunny_inf
+weat_cond_sunny_pol,Ilocano,It's sunny.,Napudot apo,,nah-poo-dot-ah-po,Sentence,NA,NA,Present,Polite,Weather,Condition,3,4,il_weat_sunny_pol
+weat_precip_raining_for,Ilocano,It's raining.,Ag-ut-udan apo,,ag-oot-oo-dan-ah-po,Sentence,NA,NA,Present,Formal,Weather,Precipitation,3,4,il_weat_raining_for
+weat_precip_raining_inf,Ilocano,It's raining.,Ag-ut-udan,,ag-oot-oo-dan,Sentence,NA,NA,Present,Informal,Weather,Precipitation,3,4,il_weat_raining_inf
+weat_precip_raining_pol,Ilocano,It's raining.,Ag-ut-udan apo,,ag-oot-oo-dan-ah-po,Sentence,NA,NA,Present,Polite,Weather,Precipitation,3,4,il_weat_raining_pol

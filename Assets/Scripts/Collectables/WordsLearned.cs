@@ -16,23 +16,30 @@ namespace Assets.Scripts.Collectables
             Mastered    // Fluent knowledge, automatic recall
         }
 
-        [SerializeField] private WordKnowledgeLevel wordKnowledgeLevel; // Backing field is now SerializedField and private
-        [SerializeField] private WordData.WordDataType wordDataType;
-        [SerializeField] private int familiarExperience = 0;
-        [SerializeField] private int knownExperience = 0;
-        [SerializeField] private int masteredExperience = 0;
+        [Header("Data References")]
+        [SerializeField] private LanguageDatabase masterDB; // Assign MasterLanguageDB here
+        private WordData currentWordData; // Stores the full metadata for this object
+
+        [Header("State")]
+        [SerializeField] private WordKnowledgeLevel wordKnowledgeLevel;
+        private WordData.WordDataType wordDataType; // Now synced from DB
+
+        [Header("Experience Rewards")]
+        [SerializeField] private int familiarExperience = 10;
+        [SerializeField] private int knownExperience = 25;
+        [SerializeField] private int masteredExperience = 50;
+
+        [Header("UI References")]
         private TextMeshPro englishWordTextPro; // Reference for English TextPro
         private TextMeshPro altLangWordTextPro;  // Reference for Alternate Language TextPro
         private string learnedWord_eng;
         private string learnedWord_alt;
-        private GameObject showAnswerButton;
-        private GameObject correctButton;
-        private GameObject incorrectButton;
 
-        [Header("UI Button Integration")] // Add a header in inspector for organization
+        [Header("UI Button Integration")]
         private Button buttonFamiliar; // buttons will be dynamically set
         private Button buttonKnown;
         private Button buttonMastered;
+
         public Color newWordColor = Color.white;         // Set colors in inspector
         public Color familiarWordColor = Color.yellow;
         public Color knownWordColor = Color.cyan;
@@ -59,67 +66,116 @@ namespace Assets.Scripts.Collectables
         protected override void Awake() // Use Awake to get the references early
         {
             base.Awake();
-
-            // Debug.Log("Ultimate ParentObjectName: " + transform.parent.parent.name);
-            panelBackground = transform.parent.Find("PopupCanvas").Find("Panel_Background");
-            if (panelBackground != null)
-            {
-                englishTextObject = panelBackground.Find("Text_English");
-                if (englishTextObject != null)
-                {
-                    // Debug.Log($"[WordsLearned - Awake] Text_English FOUND: {englishTextObject.name}"); // Success Log for englishTextObject
-                    englishWordTextPro = englishTextObject.GetComponent<TextMeshPro>();
-                    if (englishWordTextPro == null)
-                    {
-                        Debug.LogError("TextMeshProUGUI component NOT found on Text_English!");
-                    }
-                    else
-                    {
-                        learnedWord_eng = englishWordTextPro.text;
-                        Debug.Log($"[WordsLearned - Awake] Initialized English Word: '{learnedWord_eng}' for object: {gameObject.transform.parent.parent.name}");
-                    }
-                }
-                else
-                {
-                    Debug.LogError("Text_English not found under Panel_Background!");
-                }
-
-                Transform altLangTextObject = panelBackground.Find("Text_AltLang");
-                if (altLangTextObject != null)
-                {
-                    // Debug.Log($"[WordsLearned - Awake] Text_AltLang FOUND: {altLangTextObject.name}"); // Success Log for altLangTextObject
-                    altLangWordTextPro = altLangTextObject.GetComponent<TextMeshPro>();
-                    if (altLangWordTextPro == null)
-                    {
-                        Debug.LogError("TextMeshProUGUI component NOT found on Text_AltLang!");
-                    }
-                }
-                else
-                {
-                    Debug.LogError("Text_AltLang not found under Panel_Background!");
-                }
-
-                // Dynamically Find Buttons
-                buttonFamiliar = panelBackground.Find("Button_Familiar").GetComponent<Button>();
-                if (buttonFamiliar == null) Debug.LogError("Button_Familiar NOT found under Panel_Background!");
-                buttonKnown = panelBackground.Find("Button_Known").GetComponent<Button>();
-                if (buttonKnown == null) Debug.LogError("Button_Known NOT found under Panel_Background!");
-                buttonMastered = panelBackground.Find("Button_Mastered").GetComponent<Button>();
-                if (buttonMastered == null) Debug.LogError("Button_Mastered NOT found under Panel_Background!");
-            }
-            else
-            {
-                Debug.LogError("Panel_Background not found under PopupCanvas under Translation!");
-            }
+            SetupUIReferences();
         }
 
         protected override void Start()
         {
             base.Start();
+            InitializeFromDatabase();
             UpdateKnowledgeLevelFromDictionary(); // Initialize knowledge level from dictionary on Start
             UpdateKnowledgeLevelButtonColor(); // Initial button color update on Start
         }
 
+        private void InitializeFromDatabase()
+        {
+            if (masterDB == null)
+            {
+                Debug.LogError($"[WordsLearned] MasterDB is missing on {gameObject.name}!");
+                return;
+            }
+
+            // This looks for WordDisplay on the parent object
+            WordDisplay parentDisplay = GetComponentInParent<WordDisplay>();
+
+            if (parentDisplay != null)
+            {
+                // Use the key from the parent instead of the local CollectableID
+                CollectableID = parentDisplay.wordID;
+                Debug.Log($"[WordsLearned] Found key '{CollectableID}' from Parent ({transform.parent.name})");
+            }
+            else
+            {
+                Debug.LogWarning($"[WordsLearned] No WordDisplay found on parent of {gameObject.name}. Falling back to local CollectableID.");
+            }
+
+            // Determine user language - Defaulting to Korean if not set
+            string targetLang = PlayerPrefs.GetString("TargetLanguage", "Korean");
+
+            // CollectableID inherited from Collectable.cs is used as the lookup Key
+            currentWordData = masterDB.GetWord(CollectableID, targetLang);
+
+            if (currentWordData != null)
+            {
+                learnedWord_eng = currentWordData.english;
+                learnedWord_alt = currentWordData.complex; // Hangul/etc
+                this.wordDataType = currentWordData.wordDataType;
+
+                // Set the UI Text from the Database
+                if (englishWordTextPro != null) englishWordTextPro.text = learnedWord_eng;
+                if (altLangWordTextPro != null) altLangWordTextPro.text = learnedWord_alt;
+
+                Debug.Log($"[WordsLearned] Successfully loaded {targetLang} data for {CollectableID}");
+            }
+            else
+            {
+                Debug.LogWarning($"[WordsLearned] No entry found for ID: {CollectableID} in {targetLang}");
+            }
+        }
+
+        private void SetupUIReferences()
+        {
+            // Debug.Log("Ultimate ParentObjectName: " + transform.parent.parent.name);
+
+            panelBackground = transform.parent.Find("PopupCanvas")?.Find("Panel_Background");
+
+            if (panelBackground != null)
+            {
+                // --- English Text Check ---
+                englishTextObject = panelBackground.Find("Text_English");
+                if (englishTextObject != null)
+                {
+                    englishWordTextPro = englishTextObject.GetComponent<TextMeshPro>();
+                    if (englishWordTextPro == null)
+                    {
+                        Debug.LogError($"[WordsLearned] TextMeshPro component NOT found on {englishTextObject.name}!");
+                    }
+                }
+                else
+                {
+                    Debug.LogError($"[WordsLearned] Text_English not found under Panel_Background on {gameObject.name}!");
+                }
+
+                // --- Alt Language Text Check ---
+                Transform altLangTextObject = panelBackground.Find("Text_AltLang");
+                if (altLangTextObject != null)
+                {
+                    altLangWordTextPro = altLangTextObject.GetComponent<TextMeshPro>();
+                    if (altLangWordTextPro == null)
+                    {
+                        Debug.LogError($"[WordsLearned] TextMeshPro component NOT found on {altLangTextObject.name}!");
+                    }
+                }
+                else
+                {
+                    Debug.LogError($"[WordsLearned] Text_AltLang not found under Panel_Background on {gameObject.name}!");
+                }
+
+                // --- Buttons Check ---
+                buttonFamiliar = panelBackground.Find("Button_Familiar")?.GetComponent<Button>();
+                if (buttonFamiliar == null) Debug.LogError($"[WordsLearned] Button_Familiar NOT found under Panel_Background on {gameObject.name}!");
+
+                buttonKnown = panelBackground.Find("Button_Known")?.GetComponent<Button>();
+                if (buttonKnown == null) Debug.LogError($"[WordsLearned] Button_Known NOT found under Panel_Background on {gameObject.name}!");
+
+                buttonMastered = panelBackground.Find("Button_Mastered")?.GetComponent<Button>();
+                if (buttonMastered == null) Debug.LogError($"[WordsLearned] Button_Mastered NOT found under Panel_Background on {gameObject.name}!");
+            }
+            else
+            {
+                Debug.LogError($"[WordsLearned] Panel_Background not found under PopupCanvas for {gameObject.name}!");
+            }
+        }
 
         protected override void OnCollect()
         {
@@ -127,6 +183,20 @@ namespace Assets.Scripts.Collectables
             {
                 Debug.LogError("GameManager.instance is NULL! Cannot collect word.");
                 return;
+            }
+
+            // Safety check: if for some reason the word never loaded, stop the crash
+            if (string.IsNullOrEmpty(learnedWord_eng))
+            {
+                Debug.LogWarning($"[WordsLearned] {gameObject.name} has no word data. Trying to re-initialize...");
+                InitializeFromDatabase();
+
+                if (string.IsNullOrEmpty(learnedWord_eng))
+                {
+                    Debug.LogError("Re-initialization failed. Aborting collection to prevent crash.");
+                    Debug.LogError($"[WordsLearned] Cannot collect. '{gameObject.name}' has no valid English word assigned. Check if CollectableID matches CSV Key.");
+                    return;
+                }
             }
 
             // Check persistent 'IsLearned' flag in GameManager dictionary
@@ -173,9 +243,9 @@ namespace Assets.Scripts.Collectables
 
             if (GameManager.Instance.wordsLearnedDictionary.ContainsKey(learnedWord_eng))
             {
-                WordData wordData = GameManager.Instance.wordsLearnedDictionary[learnedWord_eng];
+                WordData savedData = GameManager.Instance.wordsLearnedDictionary[learnedWord_eng];
                 //wordKnowledgeLevel = wordData.KnowledgeLevel; // DO NOT set backing field directly!
-                WordKnowledgeLevelProp = wordData.KnowledgeLevel; // Use property setter to trigger UI update
+                WordKnowledgeLevelProp = savedData.KnowledgeLevel; // Use property setter to trigger UI update
                 Debug.Log($"[WordsLearned - UpdateKnowledgeLevelFromDictionary] Loaded knowledge level '{WordKnowledgeLevelProp}' from dictionary for word: '{learnedWord_eng}'.");
 
                 // Crucially, we don't need to set a persistent 'wordLearned' flag here in WordsLearned.cs anymore!
@@ -192,25 +262,37 @@ namespace Assets.Scripts.Collectables
         // Called this when a button is clicked
         public void FinalizeWordCollection(WordKnowledgeLevel selectedLevel)
         {
-            WordData wordData;
+            WordData sessionData;
 
             // Debug.Log($"[WordsLearned - FinalizeWordCollection] START - Word: '{learnedWord_eng}', knowledgeLevelAlreadySelected: {knowledgeLevelAlreadySelected}"); // **DEBUG LOG - START**
 
+            // Use a unique composite key so Korean "Tree" and Spanish "Tree" are tracked separately
+            string uniqueSaveKey = currentWordData.key + "_" + currentWordData.language;
+
             // Get or Add word pair to WordsLearnedDictionary in GameManager
-            if (GameManager.Instance.wordsLearnedDictionary.ContainsKey(learnedWord_eng))
+            if (GameManager.Instance.wordsLearnedDictionary.ContainsKey(uniqueSaveKey))
             {
-                wordData = GameManager.Instance.wordsLearnedDictionary[learnedWord_eng]; // Get existing WordData
+                sessionData = GameManager.Instance.wordsLearnedDictionary[uniqueSaveKey]; // Get existing WordData
                 isNewWord = false;
             }
             else
             {
-                wordData = new WordData(wordDataType, learnedWord_alt, selectedLevel); // Create new WordData with selected level
-                GameManager.Instance.wordsLearnedDictionary.Add(learnedWord_eng, wordData); // Add to dictionary
+                // Create a copy of the Master Data for the user's save session
+                sessionData = new WordData(
+                    currentWordData.key, currentWordData.language, currentWordData.english,
+                    currentWordData.complex, currentWordData.romanized, currentWordData.phonetic,
+                    currentWordData.wordDataType, currentWordData.partOfSpeech, currentWordData.gender, currentWordData.tense,
+                    currentWordData.formality, currentWordData.category, currentWordData.subCategory, currentWordData.unit, currentWordData.lesson, currentWordData.voiceId,
+                    selectedLevel
+                );
+
+                // Add to dictionary
+                GameManager.Instance.wordsLearnedDictionary.Add(uniqueSaveKey, sessionData); 
                 isNewWord = true;
                 Debug.Log($"Word added to WordsLearnedDictionary (new entry). English: '{learnedWord_eng}', AltLang: '{learnedWord_alt}', Knowledge Level: {selectedLevel}");
             }
 
-            WordKnowledgeLevel previousLevel = wordData.KnowledgeLevel; // **Get the PREVIOUS knowledge level**
+            WordKnowledgeLevel previousLevel = sessionData.KnowledgeLevel; // **Get the PREVIOUS knowledge level**
 
             // Exit early if the knowledge levels match.  Same button clicked.
             if (previousLevel == selectedLevel && !isNewWord)
@@ -220,13 +302,9 @@ namespace Assets.Scripts.Collectables
             }
 
             WordKnowledgeLevelProp = selectedLevel; // Use property setter to set level AND update UI
-            wordData.KnowledgeLevel = selectedLevel; // Get or Add word pair to WordsLearnedDictionary in GameManager
+            sessionData.KnowledgeLevel = selectedLevel; // Get or Add word pair to WordsLearnedDictionary in GameManager
 
-            int previousLevelExp = (isNewWord) ? 0 : GetExperienceForLevel(previousLevel); // Get experience for PREVIOUS level
-            int selectedLevelExp = GetExperienceForLevel(selectedLevel); // Get experience for SELECTED level
-
-            int experienceDifference = selectedLevelExp - previousLevelExp; // Calculate the DIFFERENCE
-
+            int experienceDifference = GetExperienceForLevel(selectedLevel) - (isNewWord ? 0 : GetExperienceForLevel(previousLevel)); // Calculate the DIFFERENCE
             GameManager.Instance.Experience += experienceDifference; // Apply the EXPERIENCE DIFFERENCE
 
             if (isNewWord)
@@ -234,45 +312,7 @@ namespace Assets.Scripts.Collectables
                 GameManager.Instance.WordsLearned++; // Increment word count
             }
 
-            //-------------------------------------------------------
-            //if (panelBackground != null)
-            //{
-            //    showAnswerButton = panelBackground.Find("Button_Show").gameObject;
-            //    correctButton = panelBackground.Find("Button_Correct").gameObject;
-            //    incorrectButton = panelBackground.Find("Button_Incorrect").gameObject;
-            //}
-
-            //if (englishTextObject != null && showAnswerButton != null && correctButton != null && incorrectButton !)
-            //{
-            //    InteractionButton interaction = gameObject.AddComponent<InteractionButton>();
-
-            //    if (selectedLevel == WordsLearned.WordKnowledgeLevel.Known || selectedLevel == WordsLearned.WordKnowledgeLevel.Mastered)
-            //    {
-            //        Debug.Log("Adjust Answer Visibility");
-                    
-            //        interaction.ShowHideGO(englishTextObject.gameObject, InteractionButton.ButtonAction.Hide);
-
-            //        interaction.ShowHideGO(showAnswerButton, InteractionButton.ButtonAction.Show);
-            //        interaction.ShowHideGO(correctButton, InteractionButton.ButtonAction.Show);
-            //        interaction.ShowHideGO(incorrectButton, InteractionButton.ButtonAction.Show);
-            //    }
-            //    else
-            //    {
-            //        interaction.ShowHideGO(showAnswerButton, InteractionButton.ButtonAction.Hide);
-            //        interaction.ShowHideGO(correctButton, InteractionButton.ButtonAction.Hide);
-            //        interaction.ShowHideGO(incorrectButton, InteractionButton.ButtonAction.Hide);
-
-            //        interaction.ShowHideGO(englishTextObject.gameObject, InteractionButton.ButtonAction.Show);
-            //    }
-            //}
-
-
-
-
-
-            // ----------------------------------------------------
-
-            wordData.IsLearned = true; // PERSISTENTLY set IsLearned flag in WordData to TRUE!
+            sessionData.IsLearned = true; // PERSISTENTLY set IsLearned flag in WordData to TRUE!
 
             //Debug.Log($"[WordsLearned - FinalizeWordCollection] END: Word '{learnedWord_eng}' collection finalized at level: {selectedLevel}. WordsLearned: {GameManager.Instance.WordsLearned}, Experience: {GameManager.Instance.Experience}");
 
@@ -361,6 +401,13 @@ namespace Assets.Scripts.Collectables
             }
 
             Debug.Log($"[WordsLearned - UpdateKnowledgeLevelButtonColor] Button colors updated for word: '{learnedWord_eng}' to level: {WordKnowledgeLevelProp}");
+        }
+
+        // Text to Speech Implementation
+        public void OnSpeakerButtonClick()
+        {
+            // currentWordData is the data for the word currently being shown
+            TTSManager.Instance.Speak(currentWordData);
         }
 
     }

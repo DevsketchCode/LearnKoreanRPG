@@ -61,6 +61,22 @@ public class Collectable : MonoBehaviour
             return;
         }
 
+        // If this is a word, make sure we are using the correct ID from WordDisplay
+        if (collectionType == CollectionType.WordsLearned)
+        {
+            var wordDisplay = GetComponent<WordDisplay>();
+            if (wordDisplay != null)
+            {
+                CollectableID = wordDisplay.wordID;
+            }
+        }
+
+        if (string.IsNullOrEmpty(CollectableID))
+        {
+            Debug.LogError($"Collectable on {gameObject.name} has no ID!");
+            return;
+        }
+
         GameManager.Instance.CollectableStates[CollectableID] = true;
         PlayerPrefs.SetInt("Collectable_" + CollectableID, 1); // Save to PlayerPrefs.
         PlayerPrefs.Save();

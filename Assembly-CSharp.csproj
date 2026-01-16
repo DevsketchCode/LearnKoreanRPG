@@ -74,17 +74,20 @@
     <Compile Include="Assets\Scripts\FloatingText.cs" />
     <Compile Include="Assets\Scripts\Character\Player.cs" />
     <Compile Include="Assets\Scripts\TextBox.cs" />
+    <Compile Include="Assets\Scripts\LanguageDatabase.cs" />
     <Compile Include="Assets\Scripts\Collectables\WordData.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
     <Compile Include="Assets\GooglePlayPlugins\com.google.play.integrity\Samples\IntegrityTestApp\Scripts\FakeIntegrityVerifierServer.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuButton.cs" />
     <Compile Include="Assets\Scripts\Collidable.cs" />
     <Compile Include="Assets\MoveByTouch.cs" />
+    <Compile Include="Assets\Scripts\TTSManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Collectables\InteractionButton.cs" />
     <Compile Include="Assets\GooglePlayPlugins\com.google.play.integrity\Samples\IntegrityTestApp\Scripts\RequestIntegrityTokenAction.cs" />
     <Compile Include="Assets\Scripts\Collectable.cs" />
     <Compile Include="Assets\Scripts\ChangeSpriteManager.cs" />
+    <Compile Include="Assets\Scripts\Collectables\WordDisplay.cs" />
     <Compile Include="Assets\Scripts\TextColliderManager.cs" />
     <Compile Include="Assets\Scripts\Collectables\WordsLearned.cs" />
   </ItemGroup>

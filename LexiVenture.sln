@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Play.Common", "Googl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Play.Integrity", "Google.Play.Integrity.csproj", "{A9370F32-FD54-D90F-B474-3747D68BB82D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Play.Core", "Google.Play.Core.csproj", "{EFBFEBD3-C327-CFC9-829E-8EE6B8B02BE7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{97770E72-9B07-C1D1-3824-7EBBA4C3117E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Play.Core", "Google.Play.Core.csproj", "{EFBFEBD3-C327-CFC9-829E-8EE6B8B02BE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,14 +29,14 @@ Global
 		{A9370F32-FD54-D90F-B474-3747D68BB82D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9370F32-FD54-D90F-B474-3747D68BB82D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9370F32-FD54-D90F-B474-3747D68BB82D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EFBFEBD3-C327-CFC9-829E-8EE6B8B02BE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EFBFEBD3-C327-CFC9-829E-8EE6B8B02BE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EFBFEBD3-C327-CFC9-829E-8EE6B8B02BE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EFBFEBD3-C327-CFC9-829E-8EE6B8B02BE7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{97770E72-9B07-C1D1-3824-7EBBA4C3117E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{97770E72-9B07-C1D1-3824-7EBBA4C3117E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97770E72-9B07-C1D1-3824-7EBBA4C3117E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97770E72-9B07-C1D1-3824-7EBBA4C3117E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFBFEBD3-C327-CFC9-829E-8EE6B8B02BE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFBFEBD3-C327-CFC9-829E-8EE6B8B02BE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFBFEBD3-C327-CFC9-829E-8EE6B8B02BE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFBFEBD3-C327-CFC9-829E-8EE6B8B02BE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

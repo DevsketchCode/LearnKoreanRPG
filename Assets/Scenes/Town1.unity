@@ -214,6 +214,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -291,6 +292,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &190097769
 TilemapRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -309,6 +311,8 @@ TilemapRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -330,9 +334,11 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 200547149
   m_SortingLayer: 1
   m_SortingOrder: 10
+  m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -340,7 +346,6 @@ TilemapRenderer:
   m_SortOrder: 0
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
-  m_MaskInteraction: 0
 --- !u!1839735485 &190097770
 Tilemap:
   m_ObjectHideFlags: 0
@@ -2991,6 +2996,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1726769148}
     m_Modifications:
+    - target: {fileID: 89928675224732831, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+      propertyPath: wordID
+      value: ppl_gen_woman
+      objectReference: {fileID: 0}
     - target: {fileID: 476019250563964079, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: m_TagString
       value: CollectionTrigger
@@ -3005,7 +3014,7 @@ PrefabInstance:
       objectReference: {fileID: 1084601667}
     - target: {fileID: 1571399207034261016, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: m_text
-      value: "\uC5EC\uC131"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2164249931162890433, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: m_IsActive
@@ -3312,6 +3321,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -3388,6 +3398,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &394283199
 TilemapRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3406,6 +3417,8 @@ TilemapRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3427,9 +3440,11 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 200547149
   m_SortingLayer: 1
   m_SortingOrder: 1
+  m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -3437,7 +3452,6 @@ TilemapRenderer:
   m_SortOrder: 0
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
-  m_MaskInteraction: 0
 --- !u!1839735485 &394283200
 Tilemap:
   m_ObjectHideFlags: 0
@@ -3778,6 +3792,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -3914,6 +3929,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -4174,13 +4190,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2042321911}
     m_Modifications:
+    - target: {fileID: 89928675224732831, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+      propertyPath: wordID
+      value: nature_plant_tree
+      objectReference: {fileID: 0}
     - target: {fileID: 476019250563964079, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: m_TagString
       value: CollectionTrigger
       objectReference: {fileID: 0}
     - target: {fileID: 1571399207034261016, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: m_text
-      value: "\uB098\uBB34"
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2164249931162890433, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3634624653620086199, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715877052223720416, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5042041933249961066, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6757408068601412892, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4248,7 +4284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7444233824161255653, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: CollectableID
-      value: 5605e5b1-ab6a-40e1-b8ba-e2a847728cf9
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4383,6 +4419,7 @@ BoxCollider2D:
   m_EdgeRadius: 0
 --- !u!212 &999506065
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4401,6 +4438,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4422,9 +4461,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 200547149
   m_SortingLayer: 1
   m_SortingOrder: 1
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 1437931539, guid: cbb19f0c9eb8ce04db91d823cd32335c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4434,7 +4475,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &999506066
 Transform:
@@ -4590,6 +4630,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -4872,6 +4913,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -5069,6 +5111,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -5318,6 +5361,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &1666038021
 TilemapRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5336,6 +5380,8 @@ TilemapRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5357,9 +5403,11 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 200547149
   m_SortingLayer: 1
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -5367,7 +5415,6 @@ TilemapRenderer:
   m_SortOrder: 0
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
-  m_MaskInteraction: 0
 --- !u!1839735485 &1666038022
 Tilemap:
   m_ObjectHideFlags: 0
@@ -407163,6 +407210,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -407224,6 +407272,7 @@ GameObject:
   m_IsActive: 1
 --- !u!212 &1726769147
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -407242,6 +407291,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -407263,9 +407314,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 623664531
   m_SortingLayer: 3
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 356740888, guid: 1b67609ec7a69f24482da63c084e5de2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -407275,7 +407328,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1726769148
 Transform:
@@ -407347,6 +407399,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 999506066}
     m_Modifications:
+    - target: {fileID: 89928675224732831, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+      propertyPath: wordID
+      value: bld_com_market
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571399207034261016, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1899354533763006928, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: m_SortingOrder
       value: 45
@@ -407467,6 +407527,7 @@ GameObject:
   m_IsActive: 1
 --- !u!212 &2042321910
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -407485,6 +407546,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -407506,9 +407569,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 200547149
   m_SortingLayer: 1
   m_SortingOrder: 2
+  m_MaskInteraction: 0
   m_Sprite: {fileID: -864984035, guid: cbb19f0c9eb8ce04db91d823cd32335c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -407518,7 +407583,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &2042321911
 Transform:

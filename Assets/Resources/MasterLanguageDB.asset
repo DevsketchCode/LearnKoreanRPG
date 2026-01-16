@@ -1,0 +1,4588 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c98ccb17fdd5f49a51fd413832358b, type: 3}
+  m_Name: MasterLanguageDB
+  m_EditorClassIdentifier: Assembly-CSharp::LanguageDatabase
+  allEntries:
+  - key: anim_pet_cat
+    language: Korean
+    english: Cat
+    complex: "\uACE0\uC591\uC774"
+    romanized: goyangi
+    phonetic: go-yang-i
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Animals
+    subCategory: Pets
+    unit: 2
+    lesson: 4
+    voiceId: kr_anim_cat
+    KnowledgeLevel: 0
+  - key: anim_pet_dog
+    language: Korean
+    english: Dog
+    complex: "\uAC1C"
+    romanized: gae
+    phonetic: gae
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Animals
+    subCategory: Pets
+    unit: 2
+    lesson: 4
+    voiceId: kr_anim_dog
+    KnowledgeLevel: 0
+  - key: anim_wild_bird
+    language: Korean
+    english: Bird
+    complex: "\uC0C8"
+    romanized: sae
+    phonetic: sae
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Animals
+    subCategory: Wild
+    unit: 2
+    lesson: 4
+    voiceId: kr_anim_bird
+    KnowledgeLevel: 0
+  - key: basics_honor_tobe_for
+    language: Korean
+    english: To be (Honorific)
+    complex: "\uACC4\uC2DC\uB2E4"
+    romanized: gyesida
+    phonetic: gye-si-da
+    wordDataType: 3
+    partOfSpeech: 6
+    gender: 2
+    tense: 2
+    formality: 4
+    category: Basics
+    subCategory: Honorifics
+    unit: 1
+    lesson: 1
+    voiceId: kr_basics_tobe_for
+    KnowledgeLevel: 0
+  - key: bld_com_grocery
+    language: Korean
+    english: Grocery Store
+    complex: "\uC2DD\uB8CC\uD488\uC810"
+    romanized: singnyopumjeom
+    phonetic: sing-nyo-pum-jeom
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Buildings
+    subCategory: Commercial
+    unit: 1
+    lesson: 2
+    voiceId: kr_bld_grocery
+    KnowledgeLevel: 0
+  - key: bld_com_market
+    language: Korean
+    english: Market
+    complex: "\uC2DC\uC7A5"
+    romanized: sijang
+    phonetic: si-jang
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Buildings
+    subCategory: Commercial
+    unit: 1
+    lesson: 2
+    voiceId: kr_bld_market
+    KnowledgeLevel: 0
+  - key: bld_com_store
+    language: Korean
+    english: Store
+    complex: "\uAC00\uAC8C"
+    romanized: gage
+    phonetic: ga-ge
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Buildings
+    subCategory: Commercial
+    unit: 1
+    lesson: 2
+    voiceId: kr_bld_store
+    KnowledgeLevel: 0
+  - key: bld_res_house
+    language: Korean
+    english: House
+    complex: "\uC9D1"
+    romanized: jip
+    phonetic: jip
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Buildings
+    subCategory: Residential
+    unit: 1
+    lesson: 2
+    voiceId: kr_bld_house
+    KnowledgeLevel: 0
+  - key: emer_incid_accident
+    language: Korean
+    english: Accident
+    complex: "\uC0AC\uACE0"
+    romanized: sago
+    phonetic: sa-go
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Emergency
+    subCategory: Incidents
+    unit: 3
+    lesson: 2
+    voiceId: kr_emer_accident
+    KnowledgeLevel: 0
+  - key: emer_incid_fire
+    language: Korean
+    english: Fire
+    complex: "\uBD88"
+    romanized: bul
+    phonetic: bul
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Emergency
+    subCategory: Incidents
+    unit: 3
+    lesson: 2
+    voiceId: kr_emer_fire
+    KnowledgeLevel: 0
+  - key: emer_pub_fire_station
+    language: Korean
+    english: Fire Station
+    complex: "\uC18C\uBC29\uC11C"
+    romanized: sobangseo
+    phonetic: so-bang-seo
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Emergency
+    subCategory: Public
+    unit: 3
+    lesson: 2
+    voiceId: kr_emer_fire_station
+    KnowledgeLevel: 0
+  - key: emer_pub_hospital
+    language: Korean
+    english: Hospital
+    complex: "\uBCD1\uC6D0"
+    romanized: byeongwon
+    phonetic: byeong-won
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Emergency
+    subCategory: Public
+    unit: 3
+    lesson: 2
+    voiceId: kr_emer_hospital
+    KnowledgeLevel: 0
+  - key: emer_pub_police_station
+    language: Korean
+    english: Police Station
+    complex: "\uACBD\uCC30\uC11C"
+    romanized: gyeongchalseo
+    phonetic: gyeong-chal-seo
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Emergency
+    subCategory: Public
+    unit: 3
+    lesson: 2
+    voiceId: kr_emer_police_station
+    KnowledgeLevel: 0
+  - key: food_dish_salad
+    language: Korean
+    english: Salad
+    complex: "\uC0D0\uB7EC\uB4DC"
+    romanized: saelleodeu
+    phonetic: sael-leo-deu
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Dishes
+    unit: 2
+    lesson: 3
+    voiceId: kr_food_salad
+    KnowledgeLevel: 0
+  - key: food_dish_soup
+    language: Korean
+    english: Soup
+    complex: "\uAD6D"
+    romanized: guk
+    phonetic: guk
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Dishes
+    unit: 2
+    lesson: 3
+    voiceId: kr_food_soup
+    KnowledgeLevel: 0
+  - key: food_fruit_apple
+    language: Korean
+    english: Apple
+    complex: "\uC0AC\uACFC"
+    romanized: sagwa
+    phonetic: sa-gwa
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Fruits
+    unit: 2
+    lesson: 2
+    voiceId: kr_food_apple
+    KnowledgeLevel: 0
+  - key: food_fruit_banana
+    language: Korean
+    english: Banana
+    complex: "\uBC14\uB098\uB098"
+    romanized: banana
+    phonetic: ba-na-na
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Fruits
+    unit: 2
+    lesson: 2
+    voiceId: kr_food_banana
+    KnowledgeLevel: 0
+  - key: food_fruit_grapes
+    language: Korean
+    english: Grapes
+    complex: "\uD3EC\uB3C4"
+    romanized: podo
+    phonetic: po-do
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Fruits
+    unit: 2
+    lesson: 2
+    voiceId: kr_food_grapes
+    KnowledgeLevel: 0
+  - key: food_fruit_mango
+    language: Korean
+    english: Mango
+    complex: "\uB9DD\uACE0"
+    romanized: manggo
+    phonetic: mang-go
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Fruits
+    unit: 2
+    lesson: 2
+    voiceId: kr_food_mango
+    KnowledgeLevel: 0
+  - key: food_fruit_orange
+    language: Korean
+    english: Orange
+    complex: "\uC624\uB80C\uC9C0"
+    romanized: orenji
+    phonetic: o-ren-ji
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Fruits
+    unit: 2
+    lesson: 2
+    voiceId: kr_food_orange
+    KnowledgeLevel: 0
+  - key: food_fruit_pineapple
+    language: Korean
+    english: Pineapple
+    complex: "\uD30C\uC778\uC560\uD50C"
+    romanized: paine-peul
+    phonetic: pa-in-ae-peul
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Fruits
+    unit: 2
+    lesson: 2
+    voiceId: kr_food_pineapple
+    KnowledgeLevel: 0
+  - key: food_meat_beef
+    language: Korean
+    english: Beef
+    complex: "\uC18C\uACE0\uAE30"
+    romanized: sogogi
+    phonetic: so-go-gi
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Meats
+    unit: 2
+    lesson: 3
+    voiceId: kr_food_beef
+    KnowledgeLevel: 0
+  - key: food_meat_chicken
+    language: Korean
+    english: Chicken
+    complex: "\uB2ED"
+    romanized: dak
+    phonetic: dak
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Meats
+    unit: 2
+    lesson: 3
+    voiceId: kr_food_chicken
+    KnowledgeLevel: 0
+  - key: food_meat_fish
+    language: Korean
+    english: Fish
+    complex: "\uBB3C\uACE0\uAE30"
+    romanized: mulgogi
+    phonetic: mul-go-gi
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Meats
+    unit: 2
+    lesson: 3
+    voiceId: kr_food_fish
+    KnowledgeLevel: 0
+  - key: food_meat_turkey
+    language: Korean
+    english: Turkey
+    complex: "\uCE60\uBA74\uC870"
+    romanized: chilmyeonjo
+    phonetic: chil-myeon-jo
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Meats
+    unit: 2
+    lesson: 3
+    voiceId: kr_food_turkey
+    KnowledgeLevel: 0
+  - key: furn_bed_bed
+    language: Korean
+    english: Bed
+    complex: "\uCE68\uB300"
+    romanized: chimdae
+    phonetic: chim-dae
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Furniture
+    subCategory: Bedroom
+    unit: 2
+    lesson: 1
+    voiceId: kr_furn_bed
+    KnowledgeLevel: 0
+  - key: furn_bed_blanket
+    language: Korean
+    english: Blanket
+    complex: "\uB2F4\uC694"
+    romanized: damyo
+    phonetic: dam-yo
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Furniture
+    subCategory: Bedroom
+    unit: 2
+    lesson: 1
+    voiceId: kr_furn_blanket
+    KnowledgeLevel: 0
+  - key: furn_bed_pillow
+    language: Korean
+    english: Pillow
+    complex: "\uBCA0\uAC1C"
+    romanized: begae
+    phonetic: be-gae
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Furniture
+    subCategory: Bedroom
+    unit: 2
+    lesson: 1
+    voiceId: kr_furn_pillow
+    KnowledgeLevel: 0
+  - key: furn_struc_door
+    language: Korean
+    english: Door
+    complex: "\uBB38"
+    romanized: mun
+    phonetic: mun
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Furniture
+    subCategory: Structure
+    unit: 2
+    lesson: 1
+    voiceId: kr_furn_door
+    KnowledgeLevel: 0
+  - key: furn_struc_window
+    language: Korean
+    english: Window
+    complex: "\uCC3D\uBB38"
+    romanized: changmun
+    phonetic: chang-mun
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Furniture
+    subCategory: Structure
+    unit: 2
+    lesson: 1
+    voiceId: kr_furn_window
+    KnowledgeLevel: 0
+  - key: gram_part_subject_marker
+    language: Korean
+    english: Subject Marker
+    complex: "\uC774/\uAC00"
+    romanized: i/ga
+    phonetic: i/ga
+    wordDataType: 5
+    partOfSpeech: 5
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Grammar
+    subCategory: Particles
+    unit: 1
+    lesson: 1
+    voiceId: kr_gram_subject_marker
+    KnowledgeLevel: 0
+  - key: greet_gen_hello_inf
+    language: Korean
+    english: Hello (Hi)
+    complex: "\uC548\uB155"
+    romanized: annyeong
+    phonetic: an-nyeong
+    wordDataType: 0
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 0
+    category: Greetings
+    subCategory: General
+    unit: 1
+    lesson: 1
+    voiceId: kr_greet_hello_inf
+    KnowledgeLevel: 0
+  - key: greet_gen_hello_pol
+    language: Korean
+    english: Hello
+    complex: "\uC548\uB155\uD558\uC138\uC694"
+    romanized: annyeonghaseyo
+    phonetic: an-nyeong-ha-se-yo
+    wordDataType: 0
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 3
+    category: Greetings
+    subCategory: General
+    unit: 1
+    lesson: 1
+    voiceId: kr_greet_hello_pol
+    KnowledgeLevel: 0
+  - key: nature_plant_tree
+    language: Korean
+    english: Tree
+    complex: "\uB098\uBB34"
+    romanized: namu
+    phonetic: na-mu
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Nature
+    subCategory: Plants
+    unit: 1
+    lesson: 2
+    voiceId: kr_nature_tree
+    KnowledgeLevel: 0
+  - key: num_val_1
+    language: Korean
+    english: One
+    complex: "\uD558\uB098"
+    romanized: hana
+    phonetic: ha-na
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: kr_num_1
+    KnowledgeLevel: 0
+  - key: num_val_10
+    language: Korean
+    english: Ten
+    complex: "\uC5F4"
+    romanized: yeol
+    phonetic: yeol
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: kr_num_10
+    KnowledgeLevel: 0
+  - key: num_val_100
+    language: Korean
+    english: One hundred
+    complex: "\uBC31"
+    romanized: baek
+    phonetic: baek
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Large
+    unit: 1
+    lesson: 5
+    voiceId: kr_num_100
+    KnowledgeLevel: 0
+  - key: num_val_1000
+    language: Korean
+    english: One thousand
+    complex: "\uCC9C"
+    romanized: cheon
+    phonetic: cheon
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Large
+    unit: 1
+    lesson: 5
+    voiceId: kr_num_1000
+    KnowledgeLevel: 0
+  - key: num_val_11
+    language: Korean
+    english: Eleven
+    complex: "\uC5F4\uD558\uB098"
+    romanized: yeolhana
+    phonetic: yeol-ha-na
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: kr_num_11
+    KnowledgeLevel: 0
+  - key: num_val_12
+    language: Korean
+    english: Twelve
+    complex: "\uC5F4\uB458"
+    romanized: yeoldul
+    phonetic: yeol-dul
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: kr_num_12
+    KnowledgeLevel: 0
+  - key: num_val_13
+    language: Korean
+    english: Thirteen
+    complex: "\uC5F4\uC14B"
+    romanized: yeolset
+    phonetic: yeol-set
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: kr_num_13
+    KnowledgeLevel: 0
+  - key: num_val_14
+    language: Korean
+    english: Fourteen
+    complex: "\uC5F4\uB137"
+    romanized: yeolnet
+    phonetic: yeol-let
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: kr_num_14
+    KnowledgeLevel: 0
+  - key: num_val_15
+    language: Korean
+    english: Fifteen
+    complex: "\uC5F4\uB2E4\uC12F"
+    romanized: yeoldaseot
+    phonetic: yeol-da-seot
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: kr_num_15
+    KnowledgeLevel: 0
+  - key: num_val_16
+    language: Korean
+    english: Sixteen
+    complex: "\uC5F4\uC5EC\uC12F"
+    romanized: yeolyeoseot
+    phonetic: yeol-lyeo-seot
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: kr_num_16
+    KnowledgeLevel: 0
+  - key: num_val_17
+    language: Korean
+    english: Seventeen
+    complex: "\uC5F4\uC77C\uACF1"
+    romanized: yeolilgop
+    phonetic: yeol-il-gop
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: kr_num_17
+    KnowledgeLevel: 0
+  - key: num_val_18
+    language: Korean
+    english: Eighteen
+    complex: "\uC5F4\uC5EC\uB35F"
+    romanized: yeolyeodeolp
+    phonetic: yeol-yeo-deol
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: kr_num_18
+    KnowledgeLevel: 0
+  - key: num_val_19
+    language: Korean
+    english: Nineteen
+    complex: "\uC5F4\uC544\uD649"
+    romanized: yeolahop
+    phonetic: yeol-a-hop
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: kr_num_19
+    KnowledgeLevel: 0
+  - key: num_val_1bil
+    language: Korean
+    english: One billion
+    complex: "\uC2ED\uC5B5"
+    romanized: sibeok
+    phonetic: si-beok
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Large
+    unit: 1
+    lesson: 5
+    voiceId: kr_num_1bil
+    KnowledgeLevel: 0
+  - key: num_val_1mil
+    language: Korean
+    english: One million
+    complex: "\uBC31\uB9CC"
+    romanized: baekman
+    phonetic: baeng-man
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Large
+    unit: 1
+    lesson: 5
+    voiceId: kr_num_1mil
+    KnowledgeLevel: 0
+  - key: num_val_2
+    language: Korean
+    english: Two
+    complex: "\uB458"
+    romanized: dul
+    phonetic: dul
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: kr_num_2
+    KnowledgeLevel: 0
+  - key: num_val_20
+    language: Korean
+    english: Twenty
+    complex: "\uC2A4\uBB3C"
+    romanized: seumul
+    phonetic: seu-mul
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 4
+    voiceId: kr_num_20
+    KnowledgeLevel: 0
+  - key: num_val_3
+    language: Korean
+    english: Three
+    complex: "\uC0BC"
+    romanized: sam
+    phonetic: sam
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: kr_num_3
+    KnowledgeLevel: 0
+  - key: num_val_30
+    language: Korean
+    english: Thirty
+    complex: "\uC11C\uB978"
+    romanized: seoreun
+    phonetic: seo-reun
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 5
+    voiceId: kr_num_30
+    KnowledgeLevel: 0
+  - key: num_val_4
+    language: Korean
+    english: Four
+    complex: "\uB137"
+    romanized: net
+    phonetic: net
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: kr_num_4
+    KnowledgeLevel: 0
+  - key: num_val_40
+    language: Korean
+    english: Forty
+    complex: "\uB9C8\uD754"
+    romanized: maheun
+    phonetic: ma-heun
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 5
+    voiceId: kr_num_40
+    KnowledgeLevel: 0
+  - key: num_val_5
+    language: Korean
+    english: Five
+    complex: "\uB2E4\uC12F"
+    romanized: daseot
+    phonetic: da-seot
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: kr_num_5
+    KnowledgeLevel: 0
+  - key: num_val_50
+    language: Korean
+    english: Fifty
+    complex: "\uC270"
+    romanized: swin
+    phonetic: swin
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 5
+    voiceId: kr_num_50
+    KnowledgeLevel: 0
+  - key: num_val_6
+    language: Korean
+    english: Six
+    complex: "\uC721"
+    romanized: yuk
+    phonetic: yuk
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: kr_num_6
+    KnowledgeLevel: 0
+  - key: num_val_60
+    language: Korean
+    english: Sixty
+    complex: "\uC608\uC21C"
+    romanized: yesun
+    phonetic: ye-sun
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 5
+    voiceId: kr_num_60
+    KnowledgeLevel: 0
+  - key: num_val_7
+    language: Korean
+    english: Seven
+    complex: "\uC77C\uACF1"
+    romanized: ilgop
+    phonetic: il-gop
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: kr_num_7
+    KnowledgeLevel: 0
+  - key: num_val_70
+    language: Korean
+    english: Seventy
+    complex: "\uC77C\uD754"
+    romanized: ilheun
+    phonetic: il-heun
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 5
+    voiceId: kr_num_70
+    KnowledgeLevel: 0
+  - key: num_val_8
+    language: Korean
+    english: Eight
+    complex: "\uC5EC\uB35F"
+    romanized: yeodeolp
+    phonetic: yeo-deol
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: kr_num_8
+    KnowledgeLevel: 0
+  - key: num_val_80
+    language: Korean
+    english: Eighty
+    complex: "\uC5EC\uB4E0"
+    romanized: yeodeun
+    phonetic: yeo-deun
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 5
+    voiceId: kr_num_80
+    KnowledgeLevel: 0
+  - key: num_val_9
+    language: Korean
+    english: Nine
+    complex: "\uC544\uD649"
+    romanized: ahop
+    phonetic: a-hop
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: kr_num_9
+    KnowledgeLevel: 0
+  - key: num_val_90
+    language: Korean
+    english: Ninety
+    complex: "\uC544\uD754"
+    romanized: aheun
+    phonetic: a-heun
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 5
+    voiceId: kr_num_90
+    KnowledgeLevel: 0
+  - key: ppl_gen_man
+    language: Korean
+    english: Man
+    complex: "\uB0A8\uC790"
+    romanized: namja
+    phonetic: nam-ja
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 0
+    tense: 4
+    formality: 7
+    category: People
+    subCategory: General
+    unit: 1
+    lesson: 1
+    voiceId: kr_ppl_man
+    KnowledgeLevel: 0
+  - key: ppl_gen_woman
+    language: Korean
+    english: Woman
+    complex: "\uC5EC\uC790"
+    romanized: yeoja
+    phonetic: yeo-ja
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 1
+    tense: 4
+    formality: 7
+    category: People
+    subCategory: General
+    unit: 1
+    lesson: 1
+    voiceId: kr_ppl_woman
+    KnowledgeLevel: 0
+  - key: shop_equip_cart
+    language: Korean
+    english: Shopping Cart
+    complex: "\uC1FC\uD551 \uCE74\uD2B8"
+    romanized: syoping kateu
+    phonetic: sho-ping ka-teu
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Shopping
+    subCategory: Equipment
+    unit: 1
+    lesson: 1
+    voiceId: kr_shop_cart
+    KnowledgeLevel: 0
+  - key: shop_equip_register
+    language: Korean
+    english: Cash Register
+    complex: "\uACC4\uC0B0\uAE30"
+    romanized: gyesangi
+    phonetic: gye-san-gi
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Shopping
+    subCategory: Equipment
+    unit: 1
+    lesson: 1
+    voiceId: kr_shop_register
+    KnowledgeLevel: 0
+  - key: shop_peop_cashier
+    language: Korean
+    english: Cashier
+    complex: "\uACC4\uC0B0\uC6D0"
+    romanized: gyesanwon
+    phonetic: gye-san-won
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Shopping
+    subCategory: People
+    unit: 1
+    lesson: 1
+    voiceId: kr_shop_cashier
+    KnowledgeLevel: 0
+  - key: shop_trans_give_inf
+    language: Korean
+    english: Give me this.
+    complex: "\uC774\uAC70 \uC918"
+    romanized: igeo jwo
+    phonetic: i-geo-jwo
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 0
+    category: Shopping
+    subCategory: Transaction
+    unit: 3
+    lesson: 3
+    voiceId: kr_shop_give_inf
+    KnowledgeLevel: 0
+  - key: shop_trans_howmuch_for
+    language: Korean
+    english: How much is this?
+    complex: "\uC774\uAC83\uC740 \uC5BC\uB9C8\uC785\uB2C8\uAE4C?"
+    romanized: igeoseun eolmayimnikka?
+    phonetic: i-geot-seun-eol-ma-im-ni-kka?
+    wordDataType: 2
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 4
+    category: Shopping
+    subCategory: Transaction
+    unit: 3
+    lesson: 3
+    voiceId: kr_shop_howmuch_for
+    KnowledgeLevel: 0
+  - key: shop_trans_howmuch_inf
+    language: Korean
+    english: How much is this?
+    complex: "\uC774\uAC70 \uC5BC\uB9C8\uC57C?"
+    romanized: igeo eolmaya?
+    phonetic: i-geo-eol-ma-ya?
+    wordDataType: 2
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 0
+    category: Shopping
+    subCategory: Transaction
+    unit: 3
+    lesson: 3
+    voiceId: kr_shop_howmuch_inf
+    KnowledgeLevel: 0
+  - key: shop_trans_howmuch_pol
+    language: Korean
+    english: How much is this?
+    complex: "\uC774\uAC70 \uC5BC\uB9C8\uC608\uC694?"
+    romanized: igeo eolmayeyo?
+    phonetic: i-geo-eol-ma-ye-yo?
+    wordDataType: 2
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 3
+    category: Shopping
+    subCategory: Transaction
+    unit: 3
+    lesson: 3
+    voiceId: kr_shop_howmuch_pol
+    KnowledgeLevel: 0
+  - key: shop_trans_want_pol
+    language: Korean
+    english: I want this please.
+    complex: "\uC774\uAC70 \uC8FC\uC138\uC694"
+    romanized: igeo juseyo
+    phonetic: i-geo-ju-se-yo
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 3
+    category: Shopping
+    subCategory: Transaction
+    unit: 3
+    lesson: 3
+    voiceId: kr_shop_want_pol
+    KnowledgeLevel: 0
+  - key: shop_trans_wouldlike_for
+    language: Korean
+    english: I would like this.
+    complex: "\uC774\uAC83\uC744 \uC6D0\uD569\uB2C8\uB2E4"
+    romanized: igeoseul wonhamnida
+    phonetic: i-geot-seul-won-ham-ni-da
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 4
+    category: Shopping
+    subCategory: Transaction
+    unit: 3
+    lesson: 3
+    voiceId: kr_shop_wouldlike_for
+    KnowledgeLevel: 0
+  - key: tran_emer_ambulance
+    language: Korean
+    english: Ambulance
+    complex: "\uAD6C\uAE09\uCC28"
+    romanized: gugeupcha
+    phonetic: gu-geup-cha
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Transport
+    subCategory: Emergency
+    unit: 3
+    lesson: 1
+    voiceId: kr_tran_ambulance
+    KnowledgeLevel: 0
+  - key: tran_land_car
+    language: Korean
+    english: Car
+    complex: "\uC790\uB3D9\uCC28"
+    romanized: jadongcha
+    phonetic: ja-dong-cha
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Transport
+    subCategory: Land
+    unit: 3
+    lesson: 1
+    voiceId: kr_tran_car
+    KnowledgeLevel: 0
+  - key: tran_land_truck
+    language: Korean
+    english: Truck
+    complex: "\uD2B8\uB7ED"
+    romanized: teureok
+    phonetic: teu-reok
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Transport
+    subCategory: Land
+    unit: 3
+    lesson: 1
+    voiceId: kr_tran_truck
+    KnowledgeLevel: 0
+  - key: tran_land_van
+    language: Korean
+    english: Van
+    complex: "\uBD09\uACE0\uCC28"
+    romanized: bonggocha
+    phonetic: bong-go-cha
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Transport
+    subCategory: Land
+    unit: 3
+    lesson: 1
+    voiceId: kr_tran_van
+    KnowledgeLevel: 0
+  - key: weat_cond_cloudy_for
+    language: Korean
+    english: It's cloudy.
+    complex: "\uD750\uB9B0 \uB0A0\uC528\uC785\uB2C8\uB2E4"
+    romanized: heurin nalssiyimnida
+    phonetic: heu-rin-nal-ssi-im-ni-da
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 4
+    category: Weather
+    subCategory: Condition
+    unit: 3
+    lesson: 4
+    voiceId: kr_weat_cloudy_for
+    KnowledgeLevel: 0
+  - key: weat_cond_cloudy_inf
+    language: Korean
+    english: It's cloudy.
+    complex: "\uB0A0\uC528 \uD750\uB824"
+    romanized: nalssi heuryeo
+    phonetic: nal-ssi-heu-ryeo
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 0
+    category: Weather
+    subCategory: Condition
+    unit: 3
+    lesson: 4
+    voiceId: kr_weat_cloudy_inf
+    KnowledgeLevel: 0
+  - key: weat_cond_cloudy_pol
+    language: Korean
+    english: It's cloudy.
+    complex: "\uB0A0\uC528\uAC00 \uD750\uB824\uC694"
+    romanized: nalssiga heuryeoyo
+    phonetic: nal-ssi-ga-heu-ryeo-yo
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 3
+    category: Weather
+    subCategory: Condition
+    unit: 3
+    lesson: 4
+    voiceId: kr_weat_cloudy_pol
+    KnowledgeLevel: 0
+  - key: weat_cond_sunny_for
+    language: Korean
+    english: It's sunny.
+    complex: "\uB0A0\uC528\uAC00 \uB9D1\uC2B5\uB2C8\uB2E4"
+    romanized: nalssiga malkseumnida
+    phonetic: nal-ssi-ga-mak-seum-ni-da
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 4
+    category: Weather
+    subCategory: Condition
+    unit: 3
+    lesson: 4
+    voiceId: kr_weat_sunny_for
+    KnowledgeLevel: 0
+  - key: weat_cond_sunny_inf
+    language: Korean
+    english: It's sunny.
+    complex: "\uB0A0\uC528 \uC88B\uC544"
+    romanized: nalssi joa
+    phonetic: nal-ssi-jo-a
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 0
+    category: Weather
+    subCategory: Condition
+    unit: 3
+    lesson: 4
+    voiceId: kr_weat_sunny_inf
+    KnowledgeLevel: 0
+  - key: weat_cond_sunny_pol
+    language: Korean
+    english: It's sunny.
+    complex: "\uB0A0\uC528\uAC00 \uB9D1\uC544\uC694"
+    romanized: nalssiga malgayo
+    phonetic: nal-ssi-ga-mal-ga-yo
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 3
+    category: Weather
+    subCategory: Condition
+    unit: 3
+    lesson: 4
+    voiceId: kr_weat_sunny_pol
+    KnowledgeLevel: 0
+  - key: weat_precip_raining_for
+    language: Korean
+    english: It's raining.
+    complex: "\uBE44\uAC00 \uC624\uACE0 \uC788\uC2B5\uB2C8\uB2E4"
+    romanized: biga ogo itseumnida
+    phonetic: bi-ga-o-go-it-seum-ni-da
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 4
+    category: Weather
+    subCategory: Precipitation
+    unit: 3
+    lesson: 4
+    voiceId: kr_weat_raining_for
+    KnowledgeLevel: 0
+  - key: weat_precip_raining_inf
+    language: Korean
+    english: It's raining.
+    complex: "\uBE44 \uC640"
+    romanized: bi wa
+    phonetic: bi-wa
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 0
+    category: Weather
+    subCategory: Precipitation
+    unit: 3
+    lesson: 4
+    voiceId: kr_weat_raining_inf
+    KnowledgeLevel: 0
+  - key: weat_precip_raining_pol
+    language: Korean
+    english: It's raining.
+    complex: "\uBE44\uAC00 \uC624\uACE0 \uC788\uC5B4\uC694"
+    romanized: biga ogo isseoyo
+    phonetic: bi-ga-o-go-it-seo-yo
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 3
+    category: Weather
+    subCategory: Precipitation
+    unit: 3
+    lesson: 4
+    voiceId: kr_weat_raining_pol
+    KnowledgeLevel: 0
+  - key: anim_pet_cat
+    language: Tagalog
+    english: Cat
+    complex: Pusa
+    romanized: 
+    phonetic: poo-sah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Animals
+    subCategory: Pets
+    unit: 2
+    lesson: 4
+    voiceId: tg_anim_cat
+    KnowledgeLevel: 0
+  - key: anim_pet_dog
+    language: Tagalog
+    english: Dog
+    complex: Aso
+    romanized: 
+    phonetic: ah-soh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Animals
+    subCategory: Pets
+    unit: 2
+    lesson: 4
+    voiceId: tg_anim_dog
+    KnowledgeLevel: 0
+  - key: anim_wild_bird
+    language: Tagalog
+    english: Bird
+    complex: Ibon
+    romanized: 
+    phonetic: ee-bon
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Animals
+    subCategory: Wild
+    unit: 2
+    lesson: 4
+    voiceId: tg_anim_bird
+    KnowledgeLevel: 0
+  - key: basics_honor_tobe_for
+    language: Tagalog
+    english: To be (Honorific)
+    complex: Maging (po)
+    romanized: 
+    phonetic: mah-geeng-poh
+    wordDataType: 3
+    partOfSpeech: 6
+    gender: 2
+    tense: 2
+    formality: 4
+    category: Basics
+    subCategory: Honorifics
+    unit: 1
+    lesson: 1
+    voiceId: tg_basics_tobe_for
+    KnowledgeLevel: 0
+  - key: bld_com_grocery
+    language: Tagalog
+    english: Grocery Store
+    complex: Groserya
+    romanized: 
+    phonetic: groh-seh-ryah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Buildings
+    subCategory: Commercial
+    unit: 1
+    lesson: 2
+    voiceId: tg_bld_grocery
+    KnowledgeLevel: 0
+  - key: bld_com_market
+    language: Tagalog
+    english: Market
+    complex: Palengke
+    romanized: 
+    phonetic: pah-leng-keh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Buildings
+    subCategory: Commercial
+    unit: 1
+    lesson: 2
+    voiceId: tg_bld_market
+    KnowledgeLevel: 0
+  - key: bld_com_store
+    language: Tagalog
+    english: Store
+    complex: Tindahan
+    romanized: 
+    phonetic: teen-dah-han
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Buildings
+    subCategory: Commercial
+    unit: 1
+    lesson: 2
+    voiceId: tg_bld_store
+    KnowledgeLevel: 0
+  - key: bld_res_house
+    language: Tagalog
+    english: House
+    complex: Bahay
+    romanized: 
+    phonetic: bah-hai
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Buildings
+    subCategory: Residential
+    unit: 1
+    lesson: 2
+    voiceId: tg_bld_house
+    KnowledgeLevel: 0
+  - key: emer_incid_accident
+    language: Tagalog
+    english: Accident
+    complex: Aksidente
+    romanized: 
+    phonetic: ak-see-den-teh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Emergency
+    subCategory: Incidents
+    unit: 3
+    lesson: 2
+    voiceId: tg_emer_accident
+    KnowledgeLevel: 0
+  - key: emer_incid_fire
+    language: Tagalog
+    english: Fire
+    complex: Sunog
+    romanized: 
+    phonetic: soo-nog
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Emergency
+    subCategory: Incidents
+    unit: 3
+    lesson: 2
+    voiceId: tg_emer_fire
+    KnowledgeLevel: 0
+  - key: emer_pub_fire_station
+    language: Tagalog
+    english: Fire Station
+    complex: Istasyon ng Bumbero
+    romanized: 
+    phonetic: ees-tas-yon-nang-boom-beh-roh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Emergency
+    subCategory: Public
+    unit: 3
+    lesson: 2
+    voiceId: tg_emer_fire_station
+    KnowledgeLevel: 0
+  - key: emer_pub_hospital
+    language: Tagalog
+    english: Hospital
+    complex: Ospital
+    romanized: 
+    phonetic: os-pee-tal
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Emergency
+    subCategory: Public
+    unit: 3
+    lesson: 2
+    voiceId: tg_emer_hospital
+    KnowledgeLevel: 0
+  - key: emer_pub_police_station
+    language: Tagalog
+    english: Police Station
+    complex: Istasyon ng Pulis
+    romanized: 
+    phonetic: ees-tas-yon-nang-poo-lis
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Emergency
+    subCategory: Public
+    unit: 3
+    lesson: 2
+    voiceId: tg_emer_police_station
+    KnowledgeLevel: 0
+  - key: food_dish_salad
+    language: Tagalog
+    english: Salad
+    complex: Ensalada
+    romanized: 
+    phonetic: en-sah-lah-dah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Dishes
+    unit: 2
+    lesson: 3
+    voiceId: tg_food_salad
+    KnowledgeLevel: 0
+  - key: food_dish_soup
+    language: Tagalog
+    english: Soup
+    complex: Sopas
+    romanized: 
+    phonetic: soh-pas
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Dishes
+    unit: 2
+    lesson: 3
+    voiceId: tg_food_soup
+    KnowledgeLevel: 0
+  - key: food_fruit_apple
+    language: Tagalog
+    english: Apple
+    complex: Mansanas
+    romanized: 
+    phonetic: man-sah-nahs
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Fruits
+    unit: 2
+    lesson: 2
+    voiceId: tg_food_apple
+    KnowledgeLevel: 0
+  - key: food_fruit_banana
+    language: Tagalog
+    english: Banana
+    complex: Saging
+    romanized: 
+    phonetic: sah-ging
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Fruits
+    unit: 2
+    lesson: 2
+    voiceId: tg_food_banana
+    KnowledgeLevel: 0
+  - key: food_fruit_grapes
+    language: Tagalog
+    english: Grapes
+    complex: Ubas
+    romanized: 
+    phonetic: oo-bahs
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Fruits
+    unit: 2
+    lesson: 2
+    voiceId: tg_food_grapes
+    KnowledgeLevel: 0
+  - key: food_fruit_mango
+    language: Tagalog
+    english: Mango
+    complex: Mangga
+    romanized: 
+    phonetic: mang-gah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Fruits
+    unit: 2
+    lesson: 2
+    voiceId: tg_food_mango
+    KnowledgeLevel: 0
+  - key: food_fruit_orange
+    language: Tagalog
+    english: Orange
+    complex: Kahel
+    romanized: 
+    phonetic: kah-hel
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Fruits
+    unit: 2
+    lesson: 2
+    voiceId: tg_food_orange
+    KnowledgeLevel: 0
+  - key: food_fruit_pineapple
+    language: Tagalog
+    english: Pineapple
+    complex: Pinya
+    romanized: 
+    phonetic: peen-yah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Fruits
+    unit: 2
+    lesson: 2
+    voiceId: tg_food_pineapple
+    KnowledgeLevel: 0
+  - key: food_meat_beef
+    language: Tagalog
+    english: Beef
+    complex: Baka
+    romanized: 
+    phonetic: bah-kah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Meats
+    unit: 2
+    lesson: 3
+    voiceId: tg_food_beef
+    KnowledgeLevel: 0
+  - key: food_meat_chicken
+    language: Tagalog
+    english: Chicken
+    complex: Manok
+    romanized: 
+    phonetic: mah-nok
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Meats
+    unit: 2
+    lesson: 3
+    voiceId: tg_food_chicken
+    KnowledgeLevel: 0
+  - key: food_meat_fish
+    language: Tagalog
+    english: Fish
+    complex: Isda
+    romanized: 
+    phonetic: ees-dah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Meats
+    unit: 2
+    lesson: 3
+    voiceId: tg_food_fish
+    KnowledgeLevel: 0
+  - key: food_meat_turkey
+    language: Tagalog
+    english: Turkey
+    complex: Pabo
+    romanized: 
+    phonetic: pah-boh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Meats
+    unit: 2
+    lesson: 3
+    voiceId: tg_food_turkey
+    KnowledgeLevel: 0
+  - key: furn_bed_bed
+    language: Tagalog
+    english: Bed
+    complex: Kama
+    romanized: 
+    phonetic: kah-mah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Furniture
+    subCategory: Bedroom
+    unit: 2
+    lesson: 1
+    voiceId: tg_furn_bed
+    KnowledgeLevel: 0
+  - key: furn_bed_blanket
+    language: Tagalog
+    english: Blanket
+    complex: Kumot
+    romanized: 
+    phonetic: koo-moht
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Furniture
+    subCategory: Bedroom
+    unit: 2
+    lesson: 1
+    voiceId: tg_furn_blanket
+    KnowledgeLevel: 0
+  - key: furn_bed_pillow
+    language: Tagalog
+    english: Pillow
+    complex: Unan
+    romanized: 
+    phonetic: oo-nan
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Furniture
+    subCategory: Bedroom
+    unit: 2
+    lesson: 1
+    voiceId: tg_furn_pillow
+    KnowledgeLevel: 0
+  - key: furn_struc_door
+    language: Tagalog
+    english: Door
+    complex: Pinto
+    romanized: 
+    phonetic: pin-toh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Furniture
+    subCategory: Structure
+    unit: 2
+    lesson: 1
+    voiceId: tg_furn_door
+    KnowledgeLevel: 0
+  - key: furn_struc_window
+    language: Tagalog
+    english: Window
+    complex: Bintana
+    romanized: 
+    phonetic: bin-tah-nah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Furniture
+    subCategory: Structure
+    unit: 2
+    lesson: 1
+    voiceId: tg_furn_window
+    KnowledgeLevel: 0
+  - key: gram_affix_actor_focus
+    language: Tagalog
+    english: Verb Actor Focus
+    complex: -um-
+    romanized: -um-
+    phonetic: oom
+    wordDataType: 3
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Grammar
+    subCategory: Affixes
+    unit: 1
+    lesson: 1
+    voiceId: tg_gram_actor_focus
+    KnowledgeLevel: 0
+  - key: gram_det_subject_marker
+    language: Tagalog
+    english: The (Subject)
+    complex: Ang
+    romanized: ang
+    phonetic: ang
+    wordDataType: 3
+    partOfSpeech: 8
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Grammar
+    subCategory: Markers
+    unit: 1
+    lesson: 1
+    voiceId: tg_gram_det_subject
+    KnowledgeLevel: 0
+  - key: gram_part_subject_marker
+    language: Tagalog
+    english: Subject Marker
+    complex: Ang
+    romanized: 
+    phonetic: ang
+    wordDataType: 5
+    partOfSpeech: 5
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Grammar
+    subCategory: Particles
+    unit: 1
+    lesson: 1
+    voiceId: tg_gram_subject_marker
+    KnowledgeLevel: 0
+  - key: greet_gen_hello_inf
+    language: Tagalog
+    english: Hello (Hi)
+    complex: Kumusta
+    romanized: 
+    phonetic: koo-moos-tah
+    wordDataType: 0
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 0
+    category: Greetings
+    subCategory: General
+    unit: 1
+    lesson: 1
+    voiceId: tg_greet_hello_inf
+    KnowledgeLevel: 0
+  - key: greet_gen_hello_pol
+    language: Tagalog
+    english: Hello
+    complex: Kumusta po
+    romanized: 
+    phonetic: koo-moos-tah-poh
+    wordDataType: 0
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 3
+    category: Greetings
+    subCategory: General
+    unit: 1
+    lesson: 1
+    voiceId: tg_greet_hello_pol
+    KnowledgeLevel: 0
+  - key: nature_plant_tree
+    language: Tagalog
+    english: Tree
+    complex: Puno
+    romanized: 
+    phonetic: poo-noh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Nature
+    subCategory: Plants
+    unit: 1
+    lesson: 2
+    voiceId: tg_nature_tree
+    KnowledgeLevel: 0
+  - key: num_val_1
+    language: Tagalog
+    english: One
+    complex: Isa
+    romanized: 
+    phonetic: ee-sah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: tg_num_1
+    KnowledgeLevel: 0
+  - key: num_val_10
+    language: Tagalog
+    english: Ten
+    complex: Sampu
+    romanized: 
+    phonetic: sam-poo
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: tg_num_10
+    KnowledgeLevel: 0
+  - key: num_val_100
+    language: Tagalog
+    english: One hundred
+    complex: Sandaan
+    romanized: 
+    phonetic: san-dah-ahn
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Large
+    unit: 1
+    lesson: 5
+    voiceId: tg_num_100
+    KnowledgeLevel: 0
+  - key: num_val_1000
+    language: Tagalog
+    english: One thousand
+    complex: Isang libo
+    romanized: 
+    phonetic: ee-sang-lee-boh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Large
+    unit: 1
+    lesson: 5
+    voiceId: tg_num_1000
+    KnowledgeLevel: 0
+  - key: num_val_11
+    language: Tagalog
+    english: Eleven
+    complex: Labing-isa
+    romanized: 
+    phonetic: lah-bing-ee-sah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: tg_num_11
+    KnowledgeLevel: 0
+  - key: num_val_12
+    language: Tagalog
+    english: Twelve
+    complex: Labindalawa
+    romanized: 
+    phonetic: lah-bin-dah-lah-wah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: tg_num_12
+    KnowledgeLevel: 0
+  - key: num_val_13
+    language: Tagalog
+    english: Thirteen
+    complex: Labintatlo
+    romanized: 
+    phonetic: lah-bin-tat-loh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: tg_num_13
+    KnowledgeLevel: 0
+  - key: num_val_14
+    language: Tagalog
+    english: Fourteen
+    complex: Labing-apat
+    romanized: 
+    phonetic: lah-bing-ah-pat
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: tg_num_14
+    KnowledgeLevel: 0
+  - key: num_val_15
+    language: Tagalog
+    english: Fifteen
+    complex: Labinlima
+    romanized: 
+    phonetic: lah-bin-lee-mah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: tg_num_15
+    KnowledgeLevel: 0
+  - key: num_val_16
+    language: Tagalog
+    english: Sixteen
+    complex: Labing-anim
+    romanized: 
+    phonetic: lah-bing-ah-neem
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: tg_num_16
+    KnowledgeLevel: 0
+  - key: num_val_17
+    language: Tagalog
+    english: Seventeen
+    complex: Labimpito
+    romanized: 
+    phonetic: lah-bim-pee-toh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: tg_num_17
+    KnowledgeLevel: 0
+  - key: num_val_18
+    language: Tagalog
+    english: Eighteen
+    complex: Labing-walo
+    romanized: 
+    phonetic: lah-bing-wah-loh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: tg_num_18
+    KnowledgeLevel: 0
+  - key: num_val_19
+    language: Tagalog
+    english: Nineteen
+    complex: Labingsiyam
+    romanized: 
+    phonetic: lah-bing-see-yam
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: tg_num_19
+    KnowledgeLevel: 0
+  - key: num_val_1bil
+    language: Tagalog
+    english: One billion
+    complex: Isang bilyon
+    romanized: 
+    phonetic: ee-sang-bil-yon
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Large
+    unit: 1
+    lesson: 5
+    voiceId: tg_num_1bil
+    KnowledgeLevel: 0
+  - key: num_val_1mil
+    language: Tagalog
+    english: One million
+    complex: Isang milyon
+    romanized: 
+    phonetic: ee-sang-mil-yon
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Large
+    unit: 1
+    lesson: 5
+    voiceId: tg_num_1mil
+    KnowledgeLevel: 0
+  - key: num_val_2
+    language: Tagalog
+    english: Two
+    complex: Dalawa
+    romanized: 
+    phonetic: dah-lah-wah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: tg_num_2
+    KnowledgeLevel: 0
+  - key: num_val_20
+    language: Tagalog
+    english: Twenty
+    complex: Dalawampu
+    romanized: 
+    phonetic: dah-lah-wam-poo
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 4
+    voiceId: tg_num_20
+    KnowledgeLevel: 0
+  - key: num_val_3
+    language: Tagalog
+    english: Three
+    complex: Tatlo
+    romanized: 
+    phonetic: tat-loh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: tg_num_3
+    KnowledgeLevel: 0
+  - key: num_val_30
+    language: Tagalog
+    english: Thirty
+    complex: Tatlumpu
+    romanized: 
+    phonetic: tat-loom-poo
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 5
+    voiceId: tg_num_30
+    KnowledgeLevel: 0
+  - key: num_val_4
+    language: Tagalog
+    english: Four
+    complex: Apat
+    romanized: 
+    phonetic: ah-paht
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: tg_num_4
+    KnowledgeLevel: 0
+  - key: num_val_40
+    language: Tagalog
+    english: Forty
+    complex: Apatnapu
+    romanized: 
+    phonetic: ah-pat-nah-poo
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 5
+    voiceId: tg_num_40
+    KnowledgeLevel: 0
+  - key: num_val_5
+    language: Tagalog
+    english: Five
+    complex: Lima
+    romanized: 
+    phonetic: lee-mah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: tg_num_5
+    KnowledgeLevel: 0
+  - key: num_val_50
+    language: Tagalog
+    english: Fifty
+    complex: Limampu
+    romanized: 
+    phonetic: lee-mam-poo
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 5
+    voiceId: tg_num_50
+    KnowledgeLevel: 0
+  - key: num_val_6
+    language: Tagalog
+    english: Six
+    complex: Anim
+    romanized: 
+    phonetic: ah-neem
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: tg_num_6
+    KnowledgeLevel: 0
+  - key: num_val_60
+    language: Tagalog
+    english: Sixty
+    complex: Animnapu
+    romanized: 
+    phonetic: ah-neem-nah-poo
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 5
+    voiceId: tg_num_60
+    KnowledgeLevel: 0
+  - key: num_val_7
+    language: Tagalog
+    english: Seven
+    complex: Pito
+    romanized: 
+    phonetic: pee-toh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: tg_num_7
+    KnowledgeLevel: 0
+  - key: num_val_70
+    language: Tagalog
+    english: Seventy
+    complex: Pitumpu
+    romanized: 
+    phonetic: pee-toom-poo
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 5
+    voiceId: tg_num_70
+    KnowledgeLevel: 0
+  - key: num_val_8
+    language: Tagalog
+    english: Eight
+    complex: Walo
+    romanized: 
+    phonetic: wah-loh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: tg_num_8
+    KnowledgeLevel: 0
+  - key: num_val_80
+    language: Tagalog
+    english: Eighty
+    complex: Walumpu
+    romanized: 
+    phonetic: wah-loom-poo
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 5
+    voiceId: tg_num_80
+    KnowledgeLevel: 0
+  - key: num_val_9
+    language: Tagalog
+    english: Nine
+    complex: Siyam
+    romanized: 
+    phonetic: see-yahm
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: tg_num_9
+    KnowledgeLevel: 0
+  - key: num_val_90
+    language: Tagalog
+    english: Ninety
+    complex: Siyamnapu
+    romanized: 
+    phonetic: see-yam-nah-poo
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 5
+    voiceId: tg_num_90
+    KnowledgeLevel: 0
+  - key: ppl_gen_man
+    language: Tagalog
+    english: Man
+    complex: Lalaki
+    romanized: Lalaki
+    phonetic: la-la-ki
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 0
+    tense: 4
+    formality: 7
+    category: People
+    subCategory: General
+    unit: 1
+    lesson: 1
+    voiceId: tg_ppl_man
+    KnowledgeLevel: 0
+  - key: ppl_gen_woman
+    language: Tagalog
+    english: Woman
+    complex: Babae
+    romanized: Babae
+    phonetic: ba-ba-e
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 1
+    tense: 4
+    formality: 7
+    category: People
+    subCategory: General
+    unit: 1
+    lesson: 1
+    voiceId: tg_ppl_woman
+    KnowledgeLevel: 0
+  - key: shop_equip_cart
+    language: Tagalog
+    english: Shopping Cart
+    complex: Kariton sa pamimili
+    romanized: Kariton sa pamimili
+    phonetic: ka-ri-ton sa pa-mi-mi-li
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Shopping
+    subCategory: Equipment
+    unit: 1
+    lesson: 1
+    voiceId: tg_shop_cart
+    KnowledgeLevel: 0
+  - key: shop_equip_register
+    language: Tagalog
+    english: Cash Register
+    complex: Kaha rehistradora
+    romanized: Kaha rehistradora
+    phonetic: ka-ha re-his-tra-do-ra
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Shopping
+    subCategory: Equipment
+    unit: 1
+    lesson: 1
+    voiceId: tg_shop_register
+    KnowledgeLevel: 0
+  - key: shop_peop_cashier
+    language: Tagalog
+    english: Cashier
+    complex: Kahera
+    romanized: Kahera
+    phonetic: ka-he-ra
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 1
+    tense: 4
+    formality: 7
+    category: Shopping
+    subCategory: People
+    unit: 1
+    lesson: 1
+    voiceId: tg_shop_cashier
+    KnowledgeLevel: 0
+  - key: shop_trans_give_inf
+    language: Tagalog
+    english: Give me this.
+    complex: Pahingi nito.
+    romanized: 
+    phonetic: pah-hing-ee-nee-toh
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 0
+    category: Shopping
+    subCategory: Transaction
+    unit: 3
+    lesson: 3
+    voiceId: tg_shop_give_inf
+    KnowledgeLevel: 0
+  - key: shop_trans_howmuch_for
+    language: Tagalog
+    english: How much is this?
+    complex: Magkano po ito?
+    romanized: 
+    phonetic: mag-kah-noh-poh-ee-toh
+    wordDataType: 2
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 4
+    category: Shopping
+    subCategory: Transaction
+    unit: 3
+    lesson: 3
+    voiceId: tg_shop_howmuch_for
+    KnowledgeLevel: 0
+  - key: shop_trans_howmuch_inf
+    language: Tagalog
+    english: How much is this?
+    complex: Magkano ito?
+    romanized: 
+    phonetic: mag-kah-noh-ee-toh
+    wordDataType: 2
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 0
+    category: Shopping
+    subCategory: Transaction
+    unit: 3
+    lesson: 3
+    voiceId: tg_shop_howmuch_inf
+    KnowledgeLevel: 0
+  - key: shop_trans_howmuch_pol
+    language: Tagalog
+    english: How much is this?
+    complex: Magkano po ito?
+    romanized: 
+    phonetic: mag-kah-noh-poh-ee-toh
+    wordDataType: 2
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 3
+    category: Shopping
+    subCategory: Transaction
+    unit: 3
+    lesson: 3
+    voiceId: tg_shop_howmuch_pol
+    KnowledgeLevel: 0
+  - key: shop_trans_want_pol
+    language: Tagalog
+    english: I want this please.
+    complex: Gusto ko po nito.
+    romanized: 
+    phonetic: goos-toh-koh-poh-nee-toh
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 3
+    category: Shopping
+    subCategory: Transaction
+    unit: 3
+    lesson: 3
+    voiceId: tg_shop_want_pol
+    KnowledgeLevel: 0
+  - key: shop_trans_wouldlike_for
+    language: Tagalog
+    english: I would like this.
+    complex: Nais ko po nito.
+    romanized: 
+    phonetic: nah-ees-koh-poh-nee-toh
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 4
+    category: Shopping
+    subCategory: Transaction
+    unit: 3
+    lesson: 3
+    voiceId: tg_shop_wouldlike_for
+    KnowledgeLevel: 0
+  - key: tran_emer_ambulance
+    language: Tagalog
+    english: Ambulance
+    complex: Ambulansya
+    romanized: 
+    phonetic: am-boo-lans-yah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Transport
+    subCategory: Emergency
+    unit: 3
+    lesson: 1
+    voiceId: tg_tran_ambulance
+    KnowledgeLevel: 0
+  - key: tran_land_car
+    language: Tagalog
+    english: Car
+    complex: Kotse
+    romanized: 
+    phonetic: koh-cheh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Transport
+    subCategory: Land
+    unit: 3
+    lesson: 1
+    voiceId: tg_tran_car
+    KnowledgeLevel: 0
+  - key: tran_land_truck
+    language: Tagalog
+    english: Truck
+    complex: Trak
+    romanized: 
+    phonetic: trak
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Transport
+    subCategory: Land
+    unit: 3
+    lesson: 1
+    voiceId: tg_tran_truck
+    KnowledgeLevel: 0
+  - key: tran_land_van
+    language: Tagalog
+    english: Van
+    complex: Ban
+    romanized: 
+    phonetic: ban
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Transport
+    subCategory: Land
+    unit: 3
+    lesson: 1
+    voiceId: tg_tran_van
+    KnowledgeLevel: 0
+  - key: weat_cond_cloudy_for
+    language: Tagalog
+    english: It's cloudy.
+    complex: Maulap po ang panahon
+    romanized: 
+    phonetic: mah-oo-lap-poh-ang-pah-nah-hon
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 4
+    category: Weather
+    subCategory: Condition
+    unit: 3
+    lesson: 4
+    voiceId: tg_weat_cloudy_for
+    KnowledgeLevel: 0
+  - key: weat_cond_cloudy_inf
+    language: Tagalog
+    english: It's cloudy.
+    complex: Maulap
+    romanized: 
+    phonetic: mah-oo-lap
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 0
+    category: Weather
+    subCategory: Condition
+    unit: 3
+    lesson: 4
+    voiceId: tg_weat_cloudy_inf
+    KnowledgeLevel: 0
+  - key: weat_cond_cloudy_pol
+    language: Tagalog
+    english: It's cloudy.
+    complex: Maulap po
+    romanized: 
+    phonetic: mah-oo-lap-poh
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 3
+    category: Weather
+    subCategory: Condition
+    unit: 3
+    lesson: 4
+    voiceId: tg_weat_cloudy_pol
+    KnowledgeLevel: 0
+  - key: weat_cond_sunny_for
+    language: Tagalog
+    english: It's sunny.
+    complex: Maaraw po ang panahon
+    romanized: 
+    phonetic: mah-ah-rau-poh-ang-pah-nah-hon
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 4
+    category: Weather
+    subCategory: Condition
+    unit: 3
+    lesson: 4
+    voiceId: tg_weat_sunny_for
+    KnowledgeLevel: 0
+  - key: weat_cond_sunny_inf
+    language: Tagalog
+    english: It's sunny.
+    complex: Maaraw
+    romanized: 
+    phonetic: mah-ah-rau
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 0
+    category: Weather
+    subCategory: Condition
+    unit: 3
+    lesson: 4
+    voiceId: tg_weat_sunny_inf
+    KnowledgeLevel: 0
+  - key: weat_cond_sunny_pol
+    language: Tagalog
+    english: It's sunny.
+    complex: Maaraw po
+    romanized: 
+    phonetic: mah-ah-rau-poh
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 3
+    category: Weather
+    subCategory: Condition
+    unit: 3
+    lesson: 4
+    voiceId: tg_weat_sunny_pol
+    KnowledgeLevel: 0
+  - key: weat_precip_raining_for
+    language: Tagalog
+    english: It's raining.
+    complex: Umuulan po
+    romanized: 
+    phonetic: oo-moo-oo-lan-poh
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 4
+    category: Weather
+    subCategory: Precipitation
+    unit: 3
+    lesson: 4
+    voiceId: tg_weat_raining_for
+    KnowledgeLevel: 0
+  - key: weat_precip_raining_inf
+    language: Tagalog
+    english: It's raining.
+    complex: Umuulan
+    romanized: 
+    phonetic: oo-moo-oo-lan
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 0
+    category: Weather
+    subCategory: Precipitation
+    unit: 3
+    lesson: 4
+    voiceId: tg_weat_raining_inf
+    KnowledgeLevel: 0
+  - key: weat_precip_raining_pol
+    language: Tagalog
+    english: It's raining.
+    complex: Umuulan po
+    romanized: 
+    phonetic: oo-moo-oo-lan-poh
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 3
+    category: Weather
+    subCategory: Precipitation
+    unit: 3
+    lesson: 4
+    voiceId: tg_weat_raining_pol
+    KnowledgeLevel: 0
+  - key: anim_pet_cat
+    language: Ilocano
+    english: Cat
+    complex: Pusa
+    romanized: 
+    phonetic: poo-sah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Animals
+    subCategory: Pets
+    unit: 2
+    lesson: 4
+    voiceId: il_anim_cat
+    KnowledgeLevel: 0
+  - key: anim_pet_dog
+    language: Ilocano
+    english: Dog
+    complex: Aso
+    romanized: 
+    phonetic: ah-soh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Animals
+    subCategory: Pets
+    unit: 2
+    lesson: 4
+    voiceId: il_anim_dog
+    KnowledgeLevel: 0
+  - key: anim_wild_bird
+    language: Ilocano
+    english: Bird
+    complex: Billit
+    romanized: 
+    phonetic: beel-leet
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Animals
+    subCategory: Wild
+    unit: 2
+    lesson: 4
+    voiceId: il_anim_bird
+    KnowledgeLevel: 0
+  - key: basics_honor_tobe_for
+    language: Ilocano
+    english: To be (Honorific)
+    complex: Maysa (po)
+    romanized: 
+    phonetic: mai-sah-poh
+    wordDataType: 3
+    partOfSpeech: 6
+    gender: 2
+    tense: 2
+    formality: 4
+    category: Basics
+    subCategory: Honorifics
+    unit: 1
+    lesson: 1
+    voiceId: il_basics_tobe_for
+    KnowledgeLevel: 0
+  - key: bld_com_grocery
+    language: Ilocano
+    english: Grocery Store
+    complex: Groserya
+    romanized: 
+    phonetic: groh-seh-ryah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Buildings
+    subCategory: Commercial
+    unit: 1
+    lesson: 2
+    voiceId: il_bld_grocery
+    KnowledgeLevel: 0
+  - key: bld_com_market
+    language: Ilocano
+    english: Market
+    complex: Tianggi
+    romanized: 
+    phonetic: tyang-gee
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Buildings
+    subCategory: Commercial
+    unit: 1
+    lesson: 2
+    voiceId: il_bld_market
+    KnowledgeLevel: 0
+  - key: bld_com_store
+    language: Ilocano
+    english: Store
+    complex: Tindahan
+    romanized: 
+    phonetic: teen-dah-han
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Buildings
+    subCategory: Commercial
+    unit: 1
+    lesson: 2
+    voiceId: il_bld_store
+    KnowledgeLevel: 0
+  - key: bld_res_house
+    language: Ilocano
+    english: House
+    complex: Balay
+    romanized: 
+    phonetic: bah-lai
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Buildings
+    subCategory: Residential
+    unit: 1
+    lesson: 2
+    voiceId: il_bld_house
+    KnowledgeLevel: 0
+  - key: emer_incid_accident
+    language: Ilocano
+    english: Accident
+    complex: Disgrasya
+    romanized: 
+    phonetic: dis-gras-yah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Emergency
+    subCategory: Incidents
+    unit: 3
+    lesson: 2
+    voiceId: il_emer_accident
+    KnowledgeLevel: 0
+  - key: emer_incid_fire
+    language: Ilocano
+    english: Fire
+    complex: Puor
+    romanized: 
+    phonetic: poor
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Emergency
+    subCategory: Incidents
+    unit: 3
+    lesson: 2
+    voiceId: il_emer_fire
+    KnowledgeLevel: 0
+  - key: emer_pub_fire_station
+    language: Ilocano
+    english: Fire Station
+    complex: Estasyon ti Bumbero
+    romanized: 
+    phonetic: es-tas-yon-tee-boom-beh-roh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Emergency
+    subCategory: Public
+    unit: 3
+    lesson: 2
+    voiceId: il_emer_fire_station
+    KnowledgeLevel: 0
+  - key: emer_pub_hospital
+    language: Ilocano
+    english: Hospital
+    complex: Ospital
+    romanized: 
+    phonetic: os-pee-tal
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Emergency
+    subCategory: Public
+    unit: 3
+    lesson: 2
+    voiceId: il_emer_hospital
+    KnowledgeLevel: 0
+  - key: emer_pub_police_station
+    language: Ilocano
+    english: Police Station
+    complex: Estasyon ti Polis
+    romanized: 
+    phonetic: es-tas-yon-tee-po-lis
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Emergency
+    subCategory: Public
+    unit: 3
+    lesson: 2
+    voiceId: il_emer_police_station
+    KnowledgeLevel: 0
+  - key: food_dish_salad
+    language: Ilocano
+    english: Salad
+    complex: Ensalada
+    romanized: 
+    phonetic: en-sah-lah-dah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Dishes
+    unit: 2
+    lesson: 3
+    voiceId: il_food_salad
+    KnowledgeLevel: 0
+  - key: food_dish_soup
+    language: Ilocano
+    english: Soup
+    complex: Sopas
+    romanized: 
+    phonetic: soh-pas
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Dishes
+    unit: 2
+    lesson: 3
+    voiceId: il_food_soup
+    KnowledgeLevel: 0
+  - key: food_fruit_apple
+    language: Ilocano
+    english: Apple
+    complex: Mansanas
+    romanized: 
+    phonetic: man-sah-nahs
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Fruits
+    unit: 2
+    lesson: 2
+    voiceId: il_food_apple
+    KnowledgeLevel: 0
+  - key: food_fruit_banana
+    language: Ilocano
+    english: Banana
+    complex: Saba
+    romanized: 
+    phonetic: sah-bah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Fruits
+    unit: 2
+    lesson: 2
+    voiceId: il_food_banana
+    KnowledgeLevel: 0
+  - key: food_fruit_grapes
+    language: Ilocano
+    english: Grapes
+    complex: Ubas
+    romanized: 
+    phonetic: oo-bahs
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Fruits
+    unit: 2
+    lesson: 2
+    voiceId: il_food_grapes
+    KnowledgeLevel: 0
+  - key: food_fruit_mango
+    language: Ilocano
+    english: Mango
+    complex: Mangga
+    romanized: 
+    phonetic: mang-gah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Fruits
+    unit: 2
+    lesson: 2
+    voiceId: il_food_mango
+    KnowledgeLevel: 0
+  - key: food_fruit_orange
+    language: Ilocano
+    english: Orange
+    complex: Kahel
+    romanized: 
+    phonetic: kah-hel
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Fruits
+    unit: 2
+    lesson: 2
+    voiceId: il_food_orange
+    KnowledgeLevel: 0
+  - key: food_fruit_pineapple
+    language: Ilocano
+    english: Pineapple
+    complex: Pinya
+    romanized: 
+    phonetic: peen-yah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Fruits
+    unit: 2
+    lesson: 2
+    voiceId: il_food_pineapple
+    KnowledgeLevel: 0
+  - key: food_meat_beef
+    language: Ilocano
+    english: Beef
+    complex: Karne ti baka
+    romanized: 
+    phonetic: kar-neh-tee-bah-kah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Meats
+    unit: 2
+    lesson: 3
+    voiceId: il_food_beef
+    KnowledgeLevel: 0
+  - key: food_meat_chicken
+    language: Ilocano
+    english: Chicken
+    complex: Manok
+    romanized: 
+    phonetic: mah-nok
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Meats
+    unit: 2
+    lesson: 3
+    voiceId: il_food_chicken
+    KnowledgeLevel: 0
+  - key: food_meat_fish
+    language: Ilocano
+    english: Fish
+    complex: Sida
+    romanized: 
+    phonetic: see-dah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Meats
+    unit: 2
+    lesson: 3
+    voiceId: il_food_fish
+    KnowledgeLevel: 0
+  - key: food_meat_turkey
+    language: Ilocano
+    english: Turkey
+    complex: Pabo
+    romanized: 
+    phonetic: pah-boh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Food
+    subCategory: Meats
+    unit: 2
+    lesson: 3
+    voiceId: il_food_turkey
+    KnowledgeLevel: 0
+  - key: furn_bed_bed
+    language: Ilocano
+    english: Bed
+    complex: Katre
+    romanized: 
+    phonetic: kaht-reh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Furniture
+    subCategory: Bedroom
+    unit: 2
+    lesson: 1
+    voiceId: il_furn_bed
+    KnowledgeLevel: 0
+  - key: furn_bed_blanket
+    language: Ilocano
+    english: Blanket
+    complex: Ules
+    romanized: 
+    phonetic: oo-less
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Furniture
+    subCategory: Bedroom
+    unit: 2
+    lesson: 1
+    voiceId: il_furn_blanket
+    KnowledgeLevel: 0
+  - key: furn_bed_pillow
+    language: Ilocano
+    english: Pillow
+    complex: Pungan
+    romanized: 
+    phonetic: poo-ngan
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Furniture
+    subCategory: Bedroom
+    unit: 2
+    lesson: 1
+    voiceId: il_furn_pillow
+    KnowledgeLevel: 0
+  - key: furn_struc_door
+    language: Ilocano
+    english: Door
+    complex: Ridaw
+    romanized: 
+    phonetic: ree-dau
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Furniture
+    subCategory: Structure
+    unit: 2
+    lesson: 1
+    voiceId: il_furn_door
+    KnowledgeLevel: 0
+  - key: furn_struc_window
+    language: Ilocano
+    english: Window
+    complex: Tawa
+    romanized: 
+    phonetic: tah-wah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Furniture
+    subCategory: Structure
+    unit: 2
+    lesson: 1
+    voiceId: il_furn_window
+    KnowledgeLevel: 0
+  - key: gram_part_subject_marker
+    language: Ilocano
+    english: Subject Marker
+    complex: Ti
+    romanized: 
+    phonetic: tee
+    wordDataType: 5
+    partOfSpeech: 5
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Grammar
+    subCategory: Particles
+    unit: 1
+    lesson: 1
+    voiceId: il_gram_subject_marker
+    KnowledgeLevel: 0
+  - key: greet_gen_hello_inf
+    language: Ilocano
+    english: Hello (Hi)
+    complex: Kumusta
+    romanized: 
+    phonetic: koo-moos-tah
+    wordDataType: 0
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 0
+    category: Greetings
+    subCategory: General
+    unit: 1
+    lesson: 1
+    voiceId: il_greet_hello_inf
+    KnowledgeLevel: 0
+  - key: greet_gen_hello_pol
+    language: Ilocano
+    english: Hello
+    complex: Kumusta kayo
+    romanized: 
+    phonetic: koo-moos-tah-kah-yoh
+    wordDataType: 0
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 3
+    category: Greetings
+    subCategory: General
+    unit: 1
+    lesson: 1
+    voiceId: il_greet_hello_pol
+    KnowledgeLevel: 0
+  - key: nature_plant_tree
+    language: Ilocano
+    english: Tree
+    complex: Kayu
+    romanized: 
+    phonetic: kah-yoo
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Nature
+    subCategory: Plants
+    unit: 1
+    lesson: 2
+    voiceId: il_nature_tree
+    KnowledgeLevel: 0
+  - key: num_val_1
+    language: Ilocano
+    english: One
+    complex: Maysa
+    romanized: 
+    phonetic: mai-sah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: il_num_1
+    KnowledgeLevel: 0
+  - key: num_val_10
+    language: Ilocano
+    english: Ten
+    complex: Sangapulo
+    romanized: 
+    phonetic: sah-ngah-poo-loh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: il_num_10
+    KnowledgeLevel: 0
+  - key: num_val_100
+    language: Ilocano
+    english: One hundred
+    complex: Sangagasut
+    romanized: 
+    phonetic: sang-gah-gah-soot
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Large
+    unit: 1
+    lesson: 5
+    voiceId: il_num_100
+    KnowledgeLevel: 0
+  - key: num_val_1000
+    language: Ilocano
+    english: One thousand
+    complex: Sangaribu
+    romanized: 
+    phonetic: sang-gah-ree-boo
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Large
+    unit: 1
+    lesson: 5
+    voiceId: il_num_1000
+    KnowledgeLevel: 0
+  - key: num_val_11
+    language: Ilocano
+    english: Eleven
+    complex: Sangapulo ket maysa
+    romanized: 
+    phonetic: sang-gah-poo-loh-ket-mai-sah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: il_num_11
+    KnowledgeLevel: 0
+  - key: num_val_12
+    language: Ilocano
+    english: Twelve
+    complex: Sangapulo ket dua
+    romanized: 
+    phonetic: sang-gah-poo-loh-ket-doo-wah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: il_num_12
+    KnowledgeLevel: 0
+  - key: num_val_13
+    language: Ilocano
+    english: Thirteen
+    complex: Sangapulo ket tallo
+    romanized: 
+    phonetic: sang-gah-poo-loh-ket-tal-loh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: il_num_13
+    KnowledgeLevel: 0
+  - key: num_val_14
+    language: Ilocano
+    english: Fourteen
+    complex: Sangapulo ket uppat
+    romanized: 
+    phonetic: sang-gah-poo-loh-ket-oop-pat
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: il_num_14
+    KnowledgeLevel: 0
+  - key: num_val_15
+    language: Ilocano
+    english: Fifteen
+    complex: Sangapulo ket lima
+    romanized: 
+    phonetic: sang-gah-poo-loh-ket-lee-mah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: il_num_15
+    KnowledgeLevel: 0
+  - key: num_val_16
+    language: Ilocano
+    english: Sixteen
+    complex: Sangapulo ket innem
+    romanized: 
+    phonetic: sang-gah-poo-loh-ket-een-nem
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: il_num_16
+    KnowledgeLevel: 0
+  - key: num_val_17
+    language: Ilocano
+    english: Seventeen
+    complex: Sangapulo ket pito
+    romanized: 
+    phonetic: sang-gah-poo-loh-ket-pee-toh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: il_num_17
+    KnowledgeLevel: 0
+  - key: num_val_18
+    language: Ilocano
+    english: Eighteen
+    complex: Sangapulo ket walo
+    romanized: 
+    phonetic: sang-gah-poo-loh-ket-wah-loh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: il_num_18
+    KnowledgeLevel: 0
+  - key: num_val_19
+    language: Ilocano
+    english: Nineteen
+    complex: Sangapulo ket siam
+    romanized: 
+    phonetic: sang-gah-poo-loh-ket-see-yam
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Teens
+    unit: 1
+    lesson: 4
+    voiceId: il_num_19
+    KnowledgeLevel: 0
+  - key: num_val_1bil
+    language: Ilocano
+    english: One billion
+    complex: Sangabilyon
+    romanized: 
+    phonetic: sang-gah-bil-yon
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Large
+    unit: 1
+    lesson: 5
+    voiceId: il_num_1bil
+    KnowledgeLevel: 0
+  - key: num_val_1mil
+    language: Ilocano
+    english: One million
+    complex: Sangamilyon
+    romanized: 
+    phonetic: sang-gah-mil-yon
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Large
+    unit: 1
+    lesson: 5
+    voiceId: il_num_1mil
+    KnowledgeLevel: 0
+  - key: num_val_2
+    language: Ilocano
+    english: Two
+    complex: Duwa
+    romanized: 
+    phonetic: doo-wah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: il_num_2
+    KnowledgeLevel: 0
+  - key: num_val_20
+    language: Ilocano
+    english: Twenty
+    complex: Duwapulo
+    romanized: 
+    phonetic: doo-wah-poo-loh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 4
+    voiceId: il_num_20
+    KnowledgeLevel: 0
+  - key: num_val_3
+    language: Ilocano
+    english: Three
+    complex: Tallo
+    romanized: 
+    phonetic: tal-loh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: il_num_3
+    KnowledgeLevel: 0
+  - key: num_val_30
+    language: Ilocano
+    english: Thirty
+    complex: Tallopulo
+    romanized: 
+    phonetic: tal-loh-poo-loh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 5
+    voiceId: il_num_30
+    KnowledgeLevel: 0
+  - key: num_val_4
+    language: Ilocano
+    english: Four
+    complex: Uppat
+    romanized: 
+    phonetic: oop-paht
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: il_num_4
+    KnowledgeLevel: 0
+  - key: num_val_40
+    language: Ilocano
+    english: Forty
+    complex: Uppat a pulo
+    romanized: 
+    phonetic: oop-pat-ah-poo-loh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 5
+    voiceId: il_num_40
+    KnowledgeLevel: 0
+  - key: num_val_5
+    language: Ilocano
+    english: Five
+    complex: Lima
+    romanized: 
+    phonetic: lee-mah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: il_num_5
+    KnowledgeLevel: 0
+  - key: num_val_50
+    language: Ilocano
+    english: Fifty
+    complex: Limapulo
+    romanized: 
+    phonetic: lee-mah-poo-loh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 5
+    voiceId: il_num_50
+    KnowledgeLevel: 0
+  - key: num_val_6
+    language: Ilocano
+    english: Six
+    complex: Innem
+    romanized: 
+    phonetic: een-nehm
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: il_num_6
+    KnowledgeLevel: 0
+  - key: num_val_60
+    language: Ilocano
+    english: Sixty
+    complex: Innem a pulo
+    romanized: 
+    phonetic: een-nem-ah-poo-loh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 5
+    voiceId: il_num_60
+    KnowledgeLevel: 0
+  - key: num_val_7
+    language: Ilocano
+    english: Seven
+    complex: Pito
+    romanized: 
+    phonetic: pee-toh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: il_num_7
+    KnowledgeLevel: 0
+  - key: num_val_70
+    language: Ilocano
+    english: Seventy
+    complex: Pitopulo
+    romanized: 
+    phonetic: pee-toh-poo-loh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 5
+    voiceId: il_num_70
+    KnowledgeLevel: 0
+  - key: num_val_8
+    language: Ilocano
+    english: Eight
+    complex: Walo
+    romanized: 
+    phonetic: wah-loh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: il_num_8
+    KnowledgeLevel: 0
+  - key: num_val_80
+    language: Ilocano
+    english: Eighty
+    complex: Walopulo
+    romanized: 
+    phonetic: wah-loh-poo-loh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 5
+    voiceId: il_num_80
+    KnowledgeLevel: 0
+  - key: num_val_9
+    language: Ilocano
+    english: Nine
+    complex: Siam
+    romanized: 
+    phonetic: see-yahm
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Sino/Native
+    unit: 1
+    lesson: 3
+    voiceId: il_num_9
+    KnowledgeLevel: 0
+  - key: num_val_90
+    language: Ilocano
+    english: Ninety
+    complex: Siam a pulo
+    romanized: 
+    phonetic: see-yam-ah-poo-loh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Numbers
+    subCategory: Tens
+    unit: 1
+    lesson: 5
+    voiceId: il_num_90
+    KnowledgeLevel: 0
+  - key: ppl_gen_man
+    language: Ilocano
+    english: Man
+    complex: Lalaki
+    romanized: Lalaki
+    phonetic: la-la-ki
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 0
+    tense: 4
+    formality: 7
+    category: People
+    subCategory: General
+    unit: 1
+    lesson: 1
+    voiceId: il_ppl_man
+    KnowledgeLevel: 0
+  - key: ppl_gen_woman
+    language: Ilocano
+    english: Woman
+    complex: Babai
+    romanized: Babai
+    phonetic: ba-ba-i
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 1
+    tense: 4
+    formality: 7
+    category: People
+    subCategory: General
+    unit: 1
+    lesson: 1
+    voiceId: il_ppl_woman
+    KnowledgeLevel: 0
+  - key: shop_equip_cart
+    language: Ilocano
+    english: Shopping Cart
+    complex: Karting ti panaggatang
+    romanized: Karting ti panaggatang
+    phonetic: kar-ting ti pa-nag-ga-tang
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Shopping
+    subCategory: Equipment
+    unit: 1
+    lesson: 1
+    voiceId: il_shop_cart
+    KnowledgeLevel: 0
+  - key: shop_equip_register
+    language: Ilocano
+    english: Cash Register
+    complex: Kaha
+    romanized: Kaha
+    phonetic: ka-ha
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Shopping
+    subCategory: Equipment
+    unit: 1
+    lesson: 1
+    voiceId: il_shop_register
+    KnowledgeLevel: 0
+  - key: shop_peop_cashier
+    language: Ilocano
+    english: Cashier
+    complex: Kashier
+    romanized: Kashier
+    phonetic: ka-shier
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Shopping
+    subCategory: People
+    unit: 1
+    lesson: 1
+    voiceId: il_shop_cashier
+    KnowledgeLevel: 0
+  - key: shop_trans_give_inf
+    language: Ilocano
+    english: Give me this.
+    complex: Ikkannak daytoy.
+    romanized: 
+    phonetic: ik-kan-nak-dai-toy
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 0
+    category: Shopping
+    subCategory: Transaction
+    unit: 3
+    lesson: 3
+    voiceId: il_shop_give_inf
+    KnowledgeLevel: 0
+  - key: shop_trans_howmuch_for
+    language: Ilocano
+    english: How much is this?
+    complex: Mano daytoy apo?
+    romanized: 
+    phonetic: mah-noh-dai-toy-ah-po
+    wordDataType: 2
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 4
+    category: Shopping
+    subCategory: Transaction
+    unit: 3
+    lesson: 3
+    voiceId: il_shop_howmuch_for
+    KnowledgeLevel: 0
+  - key: shop_trans_howmuch_inf
+    language: Ilocano
+    english: How much is this?
+    complex: Mano daytoy?
+    romanized: 
+    phonetic: mah-noh-dai-toy
+    wordDataType: 2
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 0
+    category: Shopping
+    subCategory: Transaction
+    unit: 3
+    lesson: 3
+    voiceId: il_shop_howmuch_inf
+    KnowledgeLevel: 0
+  - key: shop_trans_howmuch_pol
+    language: Ilocano
+    english: How much is this?
+    complex: Mano daytoy apo?
+    romanized: 
+    phonetic: mah-noh-dai-toy-ah-po
+    wordDataType: 2
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 3
+    category: Shopping
+    subCategory: Transaction
+    unit: 3
+    lesson: 3
+    voiceId: il_shop_howmuch_pol
+    KnowledgeLevel: 0
+  - key: shop_trans_want_pol
+    language: Ilocano
+    english: I want this please.
+    complex: Kayat ko daytoy.
+    romanized: 
+    phonetic: kah-yat-koh-dai-toy
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 3
+    category: Shopping
+    subCategory: Transaction
+    unit: 3
+    lesson: 3
+    voiceId: il_shop_want_pol
+    KnowledgeLevel: 0
+  - key: shop_trans_wouldlike_for
+    language: Ilocano
+    english: I would like this.
+    complex: Kayat ko daytoy.
+    romanized: 
+    phonetic: kah-yat-koh-dai-toy
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 4
+    formality: 4
+    category: Shopping
+    subCategory: Transaction
+    unit: 3
+    lesson: 3
+    voiceId: il_shop_wouldlike_for
+    KnowledgeLevel: 0
+  - key: tran_emer_ambulance
+    language: Ilocano
+    english: Ambulance
+    complex: Ambulansya
+    romanized: 
+    phonetic: am-boo-lans-yah
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Transport
+    subCategory: Emergency
+    unit: 3
+    lesson: 1
+    voiceId: il_tran_ambulance
+    KnowledgeLevel: 0
+  - key: tran_land_car
+    language: Ilocano
+    english: Car
+    complex: Kotse
+    romanized: 
+    phonetic: koh-cheh
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Transport
+    subCategory: Land
+    unit: 3
+    lesson: 1
+    voiceId: il_tran_car
+    KnowledgeLevel: 0
+  - key: tran_land_truck
+    language: Ilocano
+    english: Truck
+    complex: Trak
+    romanized: 
+    phonetic: trak
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Transport
+    subCategory: Land
+    unit: 3
+    lesson: 1
+    voiceId: il_tran_truck
+    KnowledgeLevel: 0
+  - key: tran_land_van
+    language: Ilocano
+    english: Van
+    complex: Ban
+    romanized: 
+    phonetic: ban
+    wordDataType: 3
+    partOfSpeech: 0
+    gender: 2
+    tense: 4
+    formality: 7
+    category: Transport
+    subCategory: Land
+    unit: 3
+    lesson: 1
+    voiceId: il_tran_van
+    KnowledgeLevel: 0
+  - key: weat_cond_cloudy_for
+    language: Ilocano
+    english: It's cloudy.
+    complex: Naimbag ti panawen
+    romanized: 
+    phonetic: nah-eem-bag-tee-pah-nah-wen
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 4
+    category: Weather
+    subCategory: Condition
+    unit: 3
+    lesson: 4
+    voiceId: il_weat_cloudy_for
+    KnowledgeLevel: 0
+  - key: weat_cond_cloudy_inf
+    language: Ilocano
+    english: It's cloudy.
+    complex: Naimbag
+    romanized: 
+    phonetic: nah-eem-bag
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 0
+    category: Weather
+    subCategory: Condition
+    unit: 3
+    lesson: 4
+    voiceId: il_weat_cloudy_inf
+    KnowledgeLevel: 0
+  - key: weat_cond_cloudy_pol
+    language: Ilocano
+    english: It's cloudy.
+    complex: Naimbag apo
+    romanized: 
+    phonetic: nah-eem-bag-ah-po
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 3
+    category: Weather
+    subCategory: Condition
+    unit: 3
+    lesson: 4
+    voiceId: il_weat_cloudy_pol
+    KnowledgeLevel: 0
+  - key: weat_cond_sunny_for
+    language: Ilocano
+    english: It's sunny.
+    complex: Napudot ti panawen
+    romanized: 
+    phonetic: nah-poo-dot-tee-pah-nah-wen
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 4
+    category: Weather
+    subCategory: Condition
+    unit: 3
+    lesson: 4
+    voiceId: il_weat_sunny_for
+    KnowledgeLevel: 0
+  - key: weat_cond_sunny_inf
+    language: Ilocano
+    english: It's sunny.
+    complex: Napudot
+    romanized: 
+    phonetic: nah-poo-dot
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 0
+    category: Weather
+    subCategory: Condition
+    unit: 3
+    lesson: 4
+    voiceId: il_weat_sunny_inf
+    KnowledgeLevel: 0
+  - key: weat_cond_sunny_pol
+    language: Ilocano
+    english: It's sunny.
+    complex: Napudot apo
+    romanized: 
+    phonetic: nah-poo-dot-ah-po
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 3
+    category: Weather
+    subCategory: Condition
+    unit: 3
+    lesson: 4
+    voiceId: il_weat_sunny_pol
+    KnowledgeLevel: 0
+  - key: weat_precip_raining_for
+    language: Ilocano
+    english: It's raining.
+    complex: Ag-ut-udan apo
+    romanized: 
+    phonetic: ag-oot-oo-dan-ah-po
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 4
+    category: Weather
+    subCategory: Precipitation
+    unit: 3
+    lesson: 4
+    voiceId: il_weat_raining_for
+    KnowledgeLevel: 0
+  - key: weat_precip_raining_inf
+    language: Ilocano
+    english: It's raining.
+    complex: Ag-ut-udan
+    romanized: 
+    phonetic: ag-oot-oo-dan
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 0
+    category: Weather
+    subCategory: Precipitation
+    unit: 3
+    lesson: 4
+    voiceId: il_weat_raining_inf
+    KnowledgeLevel: 0
+  - key: weat_precip_raining_pol
+    language: Ilocano
+    english: It's raining.
+    complex: Ag-ut-udan apo
+    romanized: 
+    phonetic: ag-oot-oo-dan-ah-po
+    wordDataType: 1
+    partOfSpeech: 12
+    gender: 2
+    tense: 2
+    formality: 3
+    category: Weather
+    subCategory: Precipitation
+    unit: 3
+    lesson: 4
+    voiceId: il_weat_raining_pol
+    KnowledgeLevel: 0

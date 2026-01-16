@@ -61,6 +61,7 @@
     <Analyzer Include="D:\Programs\Unity\Hub\Editor\6000.3.4f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Editor\LanguageImporter.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Editor\DynamicJoystickEditor.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Editor\JoystickEditor.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
