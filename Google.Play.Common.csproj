@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{D53AD4C7-42E7-E3FF-2C31-29DD2CDDDA03}</ProjectGuid>
+    <ProjectGuid>{5C1F16CA-A4EC-3FCC-1536-71BE4B0B83AB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Google.Play.Common</AssemblyName>

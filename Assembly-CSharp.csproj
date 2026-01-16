@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{4E543F29-E629-9B20-07AE-9B16149E26D1}</ProjectGuid>
+    <ProjectGuid>{AEDDDA5B-B8FB-3D0B-3EB7-7D41537EC904}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -1267,24 +1267,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.AdaptivePerformance.Samsung.Android">
-      <HintPath>Library\ScriptAssemblies\Unity.AdaptivePerformance.Samsung.Android.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.AdaptivePerformance.Samsung.Android.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.AdaptivePerformance.Samsung.Android.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.2D.Aseprite.Common">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Aseprite.Common.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.2D.PixelPerfect">
       <HintPath>Library\ScriptAssemblies\Unity.2D.PixelPerfect.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.AdaptivePerformance.Simulator.VRR.Extension">
-      <HintPath>Library\ScriptAssemblies\Unity.AdaptivePerformance.Simulator.VRR.Extension.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
@@ -1430,15 +1418,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Google.Play.Common.csproj">
-      <Project>{D53AD4C7-42E7-E3FF-2C31-29DD2CDDDA03}</Project>
+      <Project>{5C1F16CA-A4EC-3FCC-1536-71BE4B0B83AB}</Project>
       <Name>Google.Play.Common</Name>
     </ProjectReference>
     <ProjectReference Include="Google.Play.Integrity.csproj">
-      <Project>{EBC39791-6F10-D4C1-EC79-AEC90136E936}</Project>
+      <Project>{A9370F32-FD54-D90F-B474-3747D68BB82D}</Project>
       <Name>Google.Play.Integrity</Name>
     </ProjectReference>
     <ProjectReference Include="Google.Play.Core.csproj">
-      <Project>{14BF8B94-B51C-E5B4-9B9E-DA235472E071}</Project>
+      <Project>{EFBFEBD3-C327-CFC9-829E-8EE6B8B02BE7}</Project>
       <Name>Google.Play.Core</Name>
     </ProjectReference>
   </ItemGroup>

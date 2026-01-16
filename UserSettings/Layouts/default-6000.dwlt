@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Project Settings
+  m_Title: Console
   m_RootView: {fileID: 8}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -69,15 +69,15 @@ MonoBehaviour:
     y: 0
     width: 589
     height: 441
-  m_MinSize: {x: 232, y: 276}
-  m_MaxSize: {x: 10002, y: 10026}
-  m_ActualView: {fileID: 27}
+  m_MinSize: {x: 102, y: 126}
+  m_MaxSize: {x: 4002, y: 4026}
+  m_ActualView: {fileID: 26}
   m_Panes:
   - {fileID: 26}
   - {fileID: 27}
   - {fileID: 16}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 56}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 62
+  controlID: 295
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 119
+  controlID: 345
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 112}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 33
+  controlID: 259
   draggingID: 0
 --- !u!114 &12
 MonoBehaviour:
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 56}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 34
+  controlID: 260
   draggingID: 0
 --- !u!114 &13
 MonoBehaviour:
@@ -359,7 +359,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 43
+    y: 0
     width: 1920
     height: 36
   m_SerializedDataModeController:
@@ -790,7 +790,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 79
+    y: 24
     width: 993
     height: 466
   m_SerializedDataModeController:
@@ -856,7 +856,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 571
+    y: 24
     width: 762
     height: 415
   m_SerializedDataModeController:
@@ -1809,8 +1809,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1352
-    y: 79
+    x: 1353
+    y: 24
     width: 567
     height: 907
   m_SerializedDataModeController:
@@ -1860,8 +1860,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Hierarchy\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 994
-    y: 79
+    x: 995
+    y: 24
     width: 356
     height: 466
   m_SerializedDataModeController:
@@ -1880,8 +1880,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs:
-      - m_Data: 29700
+      m_SelectedIDs: []
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
@@ -2676,8 +2675,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Console\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 763
-    y: 571
+    x: 764
+    y: 24
     width: 587
     height: 415
   m_SerializedDataModeController:
@@ -2742,7 +2741,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -2752,49 +2751,48 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Scripts
+  - Assets
   m_LastFoldersGridSize: 96
-  m_LastProjectPath: D:\Projects\Unity\LearnKoreanRPG_Mobile
+  m_LastProjectPath: D:\Projects\Unity\LexiVenture
   m_LockTracker:
     m_IsLocked: 0
   m_LastLocalAssetsSearchArea: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 383}
+    scrollPos: {x: 0, y: 143}
     m_SelectedIDs:
-    - m_Data: 40894
+    - m_Data: 40874
     m_LastClickedID:
-      m_Data: 40894
+      m_Data: 40874
     m_ExpandedIDs:
     - m_Data: 0
+    - m_Data: 40822
+    - m_Data: 40824
+    - m_Data: 40826
+    - m_Data: 40828
+    - m_Data: 40830
+    - m_Data: 40832
+    - m_Data: 40834
+    - m_Data: 40836
+    - m_Data: 40838
+    - m_Data: 40840
+    - m_Data: 40842
+    - m_Data: 40844
+    - m_Data: 40846
+    - m_Data: 40848
+    - m_Data: 40850
+    - m_Data: 40852
+    - m_Data: 40854
+    - m_Data: 40856
+    - m_Data: 40858
+    - m_Data: 40860
+    - m_Data: 40862
+    - m_Data: 40864
+    - m_Data: 40866
+    - m_Data: 40868
+    - m_Data: 40870
+    - m_Data: 40872
     - m_Data: 40874
     - m_Data: 40876
-    - m_Data: 40878
-    - m_Data: 40880
-    - m_Data: 40882
-    - m_Data: 40884
-    - m_Data: 40886
-    - m_Data: 40888
-    - m_Data: 40890
-    - m_Data: 40892
-    - m_Data: 40894
-    - m_Data: 40896
-    - m_Data: 40898
-    - m_Data: 40900
-    - m_Data: 40902
-    - m_Data: 40904
-    - m_Data: 40906
-    - m_Data: 40908
-    - m_Data: 40910
-    - m_Data: 40912
-    - m_Data: 40914
-    - m_Data: 40916
-    - m_Data: 40918
-    - m_Data: 40920
-    - m_Data: 40922
-    - m_Data: 40924
-    - m_Data: 40926
-    - m_Data: 40928
-    - m_Data: 1000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2827,34 +2825,34 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
+    - m_Data: 40822
+    - m_Data: 40824
+    - m_Data: 40826
+    - m_Data: 40828
+    - m_Data: 40830
+    - m_Data: 40832
+    - m_Data: 40834
+    - m_Data: 40836
+    - m_Data: 40838
+    - m_Data: 40840
+    - m_Data: 40842
+    - m_Data: 40844
+    - m_Data: 40846
+    - m_Data: 40848
+    - m_Data: 40850
+    - m_Data: 40852
+    - m_Data: 40854
+    - m_Data: 40856
+    - m_Data: 40858
+    - m_Data: 40860
+    - m_Data: 40862
+    - m_Data: 40864
+    - m_Data: 40866
+    - m_Data: 40868
+    - m_Data: 40870
+    - m_Data: 40872
     - m_Data: 40874
     - m_Data: 40876
-    - m_Data: 40878
-    - m_Data: 40880
-    - m_Data: 40882
-    - m_Data: 40884
-    - m_Data: 40886
-    - m_Data: 40888
-    - m_Data: 40890
-    - m_Data: 40892
-    - m_Data: 40894
-    - m_Data: 40896
-    - m_Data: 40898
-    - m_Data: 40900
-    - m_Data: 40902
-    - m_Data: 40904
-    - m_Data: 40906
-    - m_Data: 40908
-    - m_Data: 40910
-    - m_Data: 40912
-    - m_Data: 40914
-    - m_Data: 40916
-    - m_Data: 40918
-    - m_Data: 40920
-    - m_Data: 40922
-    - m_Data: 40924
-    - m_Data: 40926
-    - m_Data: 40928
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2882,8 +2880,8 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
     m_SelectedInstanceIDs:
-    - m_Data: 29700
-    m_LastClickedInstanceID: 29700
+    - m_Data: -2606
+    m_LastClickedInstanceID: -2606
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: []
     m_RenameOverlay:
@@ -2911,7 +2909,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 113}
+    m_ScrollPosition: {x: 0, y: 139}
     m_GridSize: 96
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 246

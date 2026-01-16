@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{EBC39791-6F10-D4C1-EC79-AEC90136E936}</ProjectGuid>
+    <ProjectGuid>{A9370F32-FD54-D90F-B474-3747D68BB82D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Google.Play.Integrity</AssemblyName>
@@ -1220,11 +1220,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Google.Play.Common.csproj">
-      <Project>{D53AD4C7-42E7-E3FF-2C31-29DD2CDDDA03}</Project>
+      <Project>{5C1F16CA-A4EC-3FCC-1536-71BE4B0B83AB}</Project>
       <Name>Google.Play.Common</Name>
     </ProjectReference>
     <ProjectReference Include="Google.Play.Core.csproj">
-      <Project>{14BF8B94-B51C-E5B4-9B9E-DA235472E071}</Project>
+      <Project>{EFBFEBD3-C327-CFC9-829E-8EE6B8B02BE7}</Project>
       <Name>Google.Play.Core</Name>
     </ProjectReference>
   </ItemGroup>

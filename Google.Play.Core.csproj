@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{14BF8B94-B51C-E5B4-9B9E-DA235472E071}</ProjectGuid>
+    <ProjectGuid>{EFBFEBD3-C327-CFC9-829E-8EE6B8B02BE7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Google.Play.Core</AssemblyName>
