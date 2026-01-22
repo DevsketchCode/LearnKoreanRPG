@@ -278,11 +278,26 @@ namespace Assets.Scripts.Collectables
             // Use a unique composite key so Korean "Tree" and Spanish "Tree" are tracked separately
             string uniqueSaveKey = currentWordData.key + "_" + currentWordData.language;
 
-            // Get or Add word pair to WordsLearnedDictionary in GameManager
-            if (GameManager.Instance.wordsLearnedDictionary.ContainsKey(uniqueSaveKey))
+            // DEBUG: Check what's in the dictionary vs what we are looking for
+            Debug.Log($"[DICTIONARY CHECK] Looking for: {uniqueSaveKey}. Dictionary Count: {GameManager.Instance.wordsLearnedDictionary.Count}");
+
+            // Get the level CURRENTLY in the save file, not the script
+            WordKnowledgeLevel previousSavedLevel = WordKnowledgeLevel.New;
+            if (GameManager.Instance.wordsLearnedDictionary.TryGetValue(uniqueSaveKey, out var existingData))
             {
-                sessionData = GameManager.Instance.wordsLearnedDictionary[uniqueSaveKey]; // Get existing WordData
+                previousSavedLevel = existingData.KnowledgeLevel;
                 isNewWord = false;
+            }
+            else
+            {
+                isNewWord = true;
+            }
+
+            // Exit early ONLY if we aren't changing anything
+            if (!isNewWord && previousSavedLevel == selectedLevel)
+            {
+                Debug.Log("No change detected. Skipping.");
+                return;
             }
             else
             {
@@ -295,13 +310,14 @@ namespace Assets.Scripts.Collectables
                     selectedLevel
                 );
 
-                // Add to dictionary
-                GameManager.Instance.wordsLearnedDictionary.Add(uniqueSaveKey, sessionData); 
-                isNewWord = true;
-                Debug.Log($"Word added to WordsLearnedDictionary (new entry). English: '{learnedWord_eng}', AltLang: '{learnedWord_alt}', Knowledge Level: {selectedLevel}");
+                // --- FIX: Use indexer instead of .Add to avoid "Key already exists" crash ---
+                GameManager.Instance.wordsLearnedDictionary[uniqueSaveKey] = sessionData;
+
+                Debug.Log($"Word added to WordsLearnedDictionary. English: '{learnedWord_eng}', AltLang: '{learnedWord_alt}', Knowledge Level: {selectedLevel}");
             }
 
-            WordKnowledgeLevel previousLevel = sessionData.KnowledgeLevel; // **Get the PREVIOUS knowledge level**
+            // **Get the PREVIOUS knowledge level** // We use previousSavedLevel here because sessionData already has the NEW level assigned from the constructor above
+            WordKnowledgeLevel previousLevel = previousSavedLevel;
 
             // Exit early if the knowledge levels match.  Same button clicked.
             if (previousLevel == selectedLevel && !isNewWord)
@@ -313,8 +329,11 @@ namespace Assets.Scripts.Collectables
             WordKnowledgeLevelProp = selectedLevel; // Use property setter to set level AND update UI
             sessionData.KnowledgeLevel = selectedLevel; // Get or Add word pair to WordsLearnedDictionary in GameManager
 
-            int experienceDifference = GetExperienceForLevel(selectedLevel) - (isNewWord ? 0 : GetExperienceForLevel(previousLevel)); // Calculate the DIFFERENCE
-            GameManager.Instance.Experience += experienceDifference; // Apply the EXPERIENCE DIFFERENCE
+            // Calculate the DIFFERENCE
+            int experienceDifference = GetExperienceForLevel(selectedLevel) - (isNewWord ? 0 : GetExperienceForLevel(previousLevel));
+
+            // Apply the EXPERIENCE DIFFERENCE
+            GameManager.Instance.Experience += experienceDifference;
 
             if (isNewWord)
             {
