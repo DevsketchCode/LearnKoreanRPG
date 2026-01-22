@@ -20,7 +20,12 @@ public class WordDisplay : MonoBehaviour
     public void RefreshText()
     {
         // 1. Get the current language from settings (default to Korean)
-        string currentLanguage = PlayerPrefs.GetString("SelectedLanguage", "Korean");
+        string savedLang = PlayerPrefs.GetString("SelectedLanguage", "Korean");
+        if (!System.Enum.TryParse(savedLang, out WordData.Language currentLanguage))
+        {
+            // If the string doesn't match any enum, default to Korean
+            currentLanguage = WordData.Language.Korean;
+        }
 
         // 2. Pull the specific data from your already-parsed ScriptableObject
         WordData data = masterDB.GetWord(wordID, currentLanguage);

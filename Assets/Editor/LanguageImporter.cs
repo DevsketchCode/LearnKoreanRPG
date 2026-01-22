@@ -60,7 +60,7 @@ public class LanguageImporter
                 // Ensure WordData.cs constructor matches this order
                 WordData entry = new WordData(
                     c[0].Trim(),                               // key
-                    c[1].Trim(),                               // language
+                    ParseEnum<WordData.Language>(c[1]),        // language
                     c[2].Trim(),                               // english
                     c[3].Trim(),                               // complex (Hangul)
                     c[4].Trim(),                               // romanized
@@ -70,11 +70,12 @@ public class LanguageImporter
                     ParseEnum<WordData.Gender>(c[8]),          // gender
                     ParseEnum<WordData.Tense>(c[9]),           // tense
                     ParseEnum<WordData.Formality>(c[10]),      // formality
-                    c[11].Trim(),                              // category
-                    c[12].Trim(),                              // subCategory
-                    ParseInt(c[13]),                           // unit
-                    ParseInt(c[14]),                           // lesson
-                    c[15].Trim()                               // voiceId / AudioKey
+                    ParseEnum<WordData.Plural>(c[11]),         // plural
+                    c[12].Trim(),                              // category
+                    c[13].Trim(),                              // subCategory
+                    ParseInt(c[14]),                           // unit
+                    ParseInt(c[15]),                           // lesson
+                    c[16].Trim()                               // voiceId / AudioKey
                 );
 
                 db.allEntries.Add(entry);

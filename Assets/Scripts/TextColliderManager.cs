@@ -1,3 +1,4 @@
+using Assets.Scripts.Collectables;
 using UnityEngine;
 
 public class TextColliderManager : MonoBehaviour
@@ -33,12 +34,35 @@ public class TextColliderManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (initiateInteractionGO != null && collision.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            //Debug.Log("TRIGGER IS ALIVE");
-            initiateInteractionGO.SetActive(true); // Enable the GameObject
+            // Reach into the parent to find the WordsLearned script
+            // The 'true' argument tells Unity to find the script even if the GameObject is disabled
+            WordsLearned wordsLearned = transform.parent.GetComponentInChildren<WordsLearned>(true);
 
-            popupCanvasGO.SetActive(false); // Enable the GameObject
+            if (wordsLearned != null)
+            {
+                // Force the word to re-check the GameManager dictionary right now
+                // We will need to make this method public in the next step
+                wordsLearned.UpdateKnowledgeLevelFromDictionary();
+
+                // FORCE the UI to refresh its colors right now
+                // I'm adding a call to the color update method here
+                wordsLearned.UpdateKnowledgeLevelButtonColor();
+
+                Debug.Log($"[TextColliderManager] Refreshed data for {wordsLearned.CollectableID}.");
+            }
+            else
+            {
+                Debug.LogError($"[COLLIDER] Could not find WordsLearned script in parent of {gameObject.name}!");
+            }
+
+            if (initiateInteractionGO != null)
+            {
+                //Debug.Log("TRIGGER IS ALIVE");
+                initiateInteractionGO.SetActive(true); // Enable the GameObject
+                popupCanvasGO.SetActive(false);
+            }
         }
     }
 

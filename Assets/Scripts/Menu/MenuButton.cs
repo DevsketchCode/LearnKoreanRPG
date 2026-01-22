@@ -61,7 +61,7 @@ namespace Assets.Scripts.Menu
             switch (buttonName)
             {
                 case "Button-NewGame":
-                    this.Action(ButtonActions.New, "Town1"); // Now passing ButtonActions.New to 'Action' makes sense
+                    this.Action(ButtonActions.New, "Home"); // Now passing ButtonActions.New to 'Action' makes sense
                     break;
                 case "Button-MainMenu":
                     this.Action(ButtonActions.MainMenu, "MainMenu");

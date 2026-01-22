@@ -100,7 +100,12 @@ namespace Assets.Scripts.Collectables
             }
 
             // Determine user language - Defaulting to Korean if not set
-            string targetLang = PlayerPrefs.GetString("TargetLanguage", "Korean");
+            string savedLang = PlayerPrefs.GetString("SelectedLanguage", "Korean");
+            if (!System.Enum.TryParse(savedLang, out WordData.Language targetLang))
+            {
+                // If the string doesn't match any enum, default to Korean
+                targetLang = WordData.Language.Korean;
+            }
 
             // CollectableID inherited from Collectable.cs is used as the lookup Key
             currentWordData = masterDB.GetWord(CollectableID, targetLang);
@@ -199,10 +204,13 @@ namespace Assets.Scripts.Collectables
                 }
             }
 
+            // --- KEY LOGIC: Using composite key to check persistent 'IsLearned' flag ---
+            string uniqueSaveKey = currentWordData != null ? currentWordData.key + "_" + currentWordData.language : learnedWord_eng;
+
             // Check persistent 'IsLearned' flag in GameManager dictionary
-            if (GameManager.Instance.wordsLearnedDictionary.ContainsKey(learnedWord_eng) && GameManager.Instance.wordsLearnedDictionary[learnedWord_eng].IsLearned)
+            if (GameManager.Instance.wordsLearnedDictionary.ContainsKey(uniqueSaveKey) && GameManager.Instance.wordsLearnedDictionary[uniqueSaveKey].IsLearned)
             {
-                Debug.Log($"[WordsLearned - OnCollect] Word ALREADY LEARNED (persistent data) for {gameObject.name}. Ignoring trigger.");
+                Debug.Log($"[WordsLearned - OnCollect] Word ALREADY LEARNED (persistent data) for {gameObject.name}, key: {uniqueSaveKey}. Ignoring trigger.");
                 base.OnCollect(); // Still call base.OnCollect to handle potential timed actions
                 return; // Exit early if already learned
             }
@@ -227,7 +235,7 @@ namespace Assets.Scripts.Collectables
         }
 
         // Initialize knowledge level from dictionary on Start/Load
-        private void UpdateKnowledgeLevelFromDictionary()
+        public void UpdateKnowledgeLevelFromDictionary()
         {
             if (GameManager.Instance == null)
             {
@@ -235,26 +243,27 @@ namespace Assets.Scripts.Collectables
                 return;
             }
 
-            if (string.IsNullOrEmpty(learnedWord_eng))
+            // --- KEY LOGIC: Match the Save Key used in Finalize ---
+            if (currentWordData == null)
             {
-                Debug.LogError("[WordsLearned - UpdateKnowledgeLevelFromDictionary] learnedWord_eng is NULL or empty! Cannot retrieve data from dictionary.");
+                Debug.LogError("[WordsLearned - UpdateKnowledgeLevelFromDictionary] currentWordData is NULL! Cannot build save key.");
                 return;
             }
+            string uniqueSaveKey = currentWordData.key + "_" + currentWordData.language;
 
-            if (GameManager.Instance.wordsLearnedDictionary.ContainsKey(learnedWord_eng))
+            if (GameManager.Instance.wordsLearnedDictionary.ContainsKey(uniqueSaveKey))
             {
-                WordData savedData = GameManager.Instance.wordsLearnedDictionary[learnedWord_eng];
+                WordData savedData = GameManager.Instance.wordsLearnedDictionary[uniqueSaveKey];
                 //wordKnowledgeLevel = wordData.KnowledgeLevel; // DO NOT set backing field directly!
                 WordKnowledgeLevelProp = savedData.KnowledgeLevel; // Use property setter to trigger UI update
-                Debug.Log($"[WordsLearned - UpdateKnowledgeLevelFromDictionary] Loaded knowledge level '{WordKnowledgeLevelProp}' from dictionary for word: '{learnedWord_eng}'.");
+                Debug.Log($"[WordsLearned - UpdateKnowledgeLevelFromDictionary] Loaded knowledge level '{WordKnowledgeLevelProp}' from dictionary for key: '{uniqueSaveKey}'.");
 
                 // Crucially, we don't need to set a persistent 'wordLearned' flag here in WordsLearned.cs anymore!
                 // The 'IsLearned' flag in WordData in the dictionary is now the persistent source of truth.
-
             }
             else
             {
-                Debug.Log($"[WordsLearned - UpdateKnowledgeLevelFromDictionary] Word '{learnedWord_eng}' NOT found in dictionary on Start. Starting as 'New'.");
+                Debug.Log($"[WordsLearned - UpdateKnowledgeLevelFromDictionary] Key '{uniqueSaveKey}' NOT found in dictionary on Start. Starting as 'New'.");
                 WordKnowledgeLevelProp = WordKnowledgeLevel.New; // Default to New if not in dictionary
             }
         }
@@ -282,7 +291,7 @@ namespace Assets.Scripts.Collectables
                     currentWordData.key, currentWordData.language, currentWordData.english,
                     currentWordData.complex, currentWordData.romanized, currentWordData.phonetic,
                     currentWordData.wordDataType, currentWordData.partOfSpeech, currentWordData.gender, currentWordData.tense,
-                    currentWordData.formality, currentWordData.category, currentWordData.subCategory, currentWordData.unit, currentWordData.lesson, currentWordData.voiceId,
+                    currentWordData.formality, currentWordData.plural, currentWordData.category, currentWordData.subCategory, currentWordData.unit, currentWordData.lesson, currentWordData.voiceId,
                     selectedLevel
                 );
 
@@ -348,7 +357,7 @@ namespace Assets.Scripts.Collectables
             Debug.Log($"[WordsLearned - SetKnowledgeLevel] Word '{learnedWord_eng}' knowledge level set to: {WordKnowledgeLevelProp} (triggered by button or load)");
         }
 
-        private void UpdateKnowledgeLevelButtonColor()
+        public void UpdateKnowledgeLevelButtonColor()
         {
             if (buttonFamiliar == null || buttonKnown == null || buttonMastered == null)
             {

@@ -13,7 +13,7 @@ public class TTSManager : MonoBehaviour
     {
         // Use "Complex" for Korean, "English" for English, etc.
         string textToSpeak = data.complex;
-        string langCode = (data.language == "Korean") ? "ko" : "en";
+        string langCode = (data.language == WordData.Language.Korean) ? "ko" : "en";
 
         StartCoroutine(DownloadAndPlay(textToSpeak, langCode));
     }
