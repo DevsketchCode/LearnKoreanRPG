@@ -46,7 +46,7 @@ public class TextColliderManager : MonoBehaviour
                 // We will need to make this method public in the next step
                 wordsLearned.UpdateKnowledgeLevelFromDictionary();
 
-                // FORCE the UI to refresh its colors right now
+                // Force the UI to refresh its colors right now
                 // I'm adding a call to the color update method here
                 wordsLearned.UpdateKnowledgeLevelButtonColor();
 
