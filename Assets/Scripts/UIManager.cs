@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public TMP_Text Text_DebugPlayerY;
 
     public GameManager gameManager;
+    public GameObject popupTranslationCanvas;
 
     private string debugPrefs;
 

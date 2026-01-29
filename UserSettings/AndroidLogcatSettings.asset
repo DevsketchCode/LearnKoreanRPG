@@ -2,8 +2,8 @@
     "m_SelectedDeviceId": "29261FDH300D8D",
     "m_SelectedProcess": {
         "deviceId": "29261FDH300D8D",
-        "name": "com.devsketch.unity.learnkoreanrpg",
-        "processId": 9115,
+        "name": "com.devsketch.lexiconlane",
+        "processId": 31820,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -78,6 +78,12 @@
             "deviceId": "29261FDH300D8D",
             "name": "com.devsketch.unity.learnkoreanrpg",
             "processId": 9115,
+            "exited": false
+        },
+        {
+            "deviceId": "29261FDH300D8D",
+            "name": "com.devsketch.lexiconlane",
+            "processId": 31820,
             "exited": false
         }
     ],

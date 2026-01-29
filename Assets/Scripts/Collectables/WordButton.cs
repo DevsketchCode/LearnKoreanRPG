@@ -40,6 +40,14 @@ public class WordButton : MonoBehaviour
     public void OnButtonClicked() // Call this function when the button is clicked (set in Button's OnClick event in Inspector)
     {
         Debug.Log("Button Clicked");
+
+        // Play the bounce
+        UIJuice juice = GetComponent<UIJuice>();
+        if (juice != null)
+        {
+            juice.PlayButtonClick();
+        }
+
         FinalizeWordCollectionForWord();
     }
 

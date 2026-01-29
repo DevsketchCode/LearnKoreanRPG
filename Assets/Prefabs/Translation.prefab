@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc538fd0c2db91a42aab1857e2a5419a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GOToInteractWith1: {fileID: 6757408069907237689}
+  GOToInteractWith1: {fileID: 0}
   buttonAction1: 1
   GOToInteractWith2: {fileID: 2164249931162890433}
   buttonAction2: 2
@@ -1582,7 +1582,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 177373291
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 51
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
@@ -2241,7 +2241,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 177373291
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 51
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}

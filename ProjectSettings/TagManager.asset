@@ -57,6 +57,9 @@ TagManager:
   - name: Foreground
     uniqueID: 2396728039
     locked: 0
+  - name: MainUI
+    uniqueID: 1258439293
+    locked: 0
   - name: TextBox
     uniqueID: 177373291
     locked: 0
