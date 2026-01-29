@@ -121,11 +121,30 @@ namespace Assets.Scripts.Collectables
                 if (altLangWordTextPro != null) altLangWordTextPro.text = learnedWord_alt;
 
                 Debug.Log($"[WordsLearned] Successfully loaded {targetLang} data for {CollectableID}");
+
+                PushDataToButtons();
             }
             else
             {
                 Debug.LogWarning($"[WordsLearned] No entry found for ID: {CollectableID} in {targetLang}");
             }
+        }
+
+        // Handshakes with child WordButtons to prevent "Sibling Not Found" errors
+        private void PushDataToButtons()
+        {
+            // Find all WordButtons that are children of the panel
+            WordButton[] buttons = GetComponentsInChildren<WordButton>(true);
+
+            foreach (WordButton btn in buttons)
+            {
+                // Assign the English key and the reference to this script
+                btn.InitializeButton(learnedWord_eng);
+
+                // Ensure the button knows which object to call Finalize on
+                if (btn.WordsLearnedGO == null) btn.WordsLearnedGO = this.gameObject;
+            }
+            Debug.Log($"[WordsLearned] Pushed '{learnedWord_eng}' to {buttons.Length} buttons.");
         }
 
         private void SetupUIReferences()
@@ -335,9 +354,15 @@ namespace Assets.Scripts.Collectables
             // Apply the EXPERIENCE DIFFERENCE
             GameManager.Instance.Experience += experienceDifference;
 
-            if (isNewWord)
+            if (isNewWord && selectedLevel != WordKnowledgeLevel.New)
             {
-                GameManager.Instance.WordsLearned++; // Increment word count
+                // Word is totally new to the dictionary and being set to a learned level
+                GameManager.Instance.WordsLearned++;
+            }
+            else if (!isNewWord && selectedLevel == WordKnowledgeLevel.New && previousLevel != WordKnowledgeLevel.New)
+            {
+                // Word was previously learned but is now being reset to "New"
+                GameManager.Instance.WordsLearned--;
             }
 
             sessionData.IsLearned = true; // PERSISTENTLY set IsLearned flag in WordData to TRUE!
