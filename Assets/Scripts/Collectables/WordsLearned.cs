@@ -30,8 +30,8 @@ namespace Assets.Scripts.Collectables
         [SerializeField] private int masteredExperience = 50;
 
         [Header("UI References")]
-        private TextMeshPro englishWordTextPro; // Reference for English TextPro
-        private TextMeshPro altLangWordTextPro;  // Reference for Alternate Language TextPro
+        private TextMeshProUGUI englishWordTextPro; // Reference for English TextPro
+        private TextMeshProUGUI altLangWordTextPro;  // Reference for Alternate Language TextPro
         private string learnedWord_eng;
         private string learnedWord_alt;
 
@@ -56,6 +56,9 @@ namespace Assets.Scripts.Collectables
             set
             {
                 wordKnowledgeLevel = value; // Set the backing field
+
+                // Ensure the Glow_Highlights are found even if the UI was just enabled
+                SetupUIReferences();
 
                 Debug.Log($"[WordsLearned - WordKnowledgeLevelProp SET] Word: '{learnedWord_eng}', Knowledge Level: {wordKnowledgeLevel}");
 
@@ -142,7 +145,7 @@ namespace Assets.Scripts.Collectables
                 btn.InitializeButton(learnedWord_eng);
 
                 // Ensure the button knows which object to call Finalize on
-                if (btn.WordsLearnedGO == null) btn.WordsLearnedGO = this.gameObject;
+                btn.WordsLearnedGO = this.gameObject;
             }
             Debug.Log($"[WordsLearned] Pushed '{learnedWord_eng}' to {buttons.Length} buttons.");
         }
@@ -151,56 +154,84 @@ namespace Assets.Scripts.Collectables
         {
             // Debug.Log("Ultimate ParentObjectName: " + transform.parent.parent.name);
 
-            panelBackground = transform.parent.Find("PopupCanvas")?.Find("Panel_Background");
+            // Find the persistent UIManager in the scene
+            UIManager uiManager = Object.FindAnyObjectByType<UIManager>();
 
-            if (panelBackground != null)
+            if (uiManager != null)
             {
-                // --- English Text Check ---
-                englishTextObject = panelBackground.Find("Text_English");
-                if (englishTextObject != null)
-                {
-                    englishWordTextPro = englishTextObject.GetComponent<TextMeshPro>();
-                    if (englishWordTextPro == null)
-                    {
-                        Debug.LogError($"[WordsLearned] TextMeshPro component NOT found on {englishTextObject.name}!");
-                    }
-                }
-                else
-                {
-                    Debug.LogError($"[WordsLearned] Text_English not found under Panel_Background on {gameObject.name}!");
-                }
-
-                // --- Alt Language Text Check ---
-                Transform altLangTextObject = panelBackground.Find("Text_AltLang");
-                if (altLangTextObject != null)
-                {
-                    altLangWordTextPro = altLangTextObject.GetComponent<TextMeshPro>();
-                    if (altLangWordTextPro == null)
-                    {
-                        Debug.LogError($"[WordsLearned] TextMeshPro component NOT found on {altLangTextObject.name}!");
-                    }
-                }
-                else
-                {
-                    Debug.LogError($"[WordsLearned] Text_AltLang not found under Panel_Background on {gameObject.name}!");
-                }
-
-                // --- Buttons Check ---
-                buttonFamiliar = panelBackground.Find("Button_Familiar")?.GetComponent<Button>();
-                if (buttonFamiliar == null) Debug.LogError($"[WordsLearned] Button_Familiar NOT found under Panel_Background on {gameObject.name}!");
-
-                buttonKnown = panelBackground.Find("Button_Known")?.GetComponent<Button>();
-                if (buttonKnown == null) Debug.LogError($"[WordsLearned] Button_Known NOT found under Panel_Background on {gameObject.name}!");
-
-                buttonMastered = panelBackground.Find("Button_Mastered")?.GetComponent<Button>();
-                if (buttonMastered == null) Debug.LogError($"[WordsLearned] Button_Mastered NOT found under Panel_Background on {gameObject.name}!");
+                // Access the PopupCanvas through the UIManager reference
+                // Then find Panel_Background within that Canvas
+                panelBackground = uiManager.popupTranslationCanvas?.transform.Find("Panel_Background");
             }
             else
             {
-                Debug.LogError($"[WordsLearned] Panel_Background not found under PopupCanvas for {gameObject.name}!");
+                Debug.LogError($"[WordsLearned] UIManager not found in scene for {gameObject.name}!");
+                return;
+            }
+
+            if (panelBackground != null && uiManager != null)
+            {
+                // --- English Text Check ---
+                // Using the direct reference from UIManager instead of hardcoded path
+                Transform translationPanel = uiManager.translationPanel;
+
+                if (translationPanel != null)
+                {
+                    englishTextObject = translationPanel.Find("Text_English");
+                    if (englishTextObject != null)
+                    {
+                        englishWordTextPro = englishTextObject.GetComponent<TextMeshProUGUI>(); // Changed to TextMeshProUGUI for Canvas UI
+                        if (englishWordTextPro == null)
+                        {
+                            Debug.LogError($"[WordsLearned] TextMeshPro component NOT found on {englishTextObject.name}!");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError($"[WordsLearned] Text_English not found under Panel_Translation on {gameObject.name}!");
+                    }
+
+                    // --- Alt Language Text Check ---
+                    Transform altLangTextObject = translationPanel.Find("Text_AltLang");
+                    if (altLangTextObject != null)
+                    {
+                        altLangWordTextPro = altLangTextObject.GetComponent<TextMeshProUGUI>(); // Changed to TextMeshProUGUI for Canvas UI
+                        if (altLangWordTextPro == null)
+                        {
+                            Debug.LogError($"[WordsLearned] TextMeshPro component NOT found on {altLangTextObject.name}!");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError($"[WordsLearned] Text_AltLang not found under Panel_Translation on {gameObject.name}!");
+                    }
+                }
+
+                // --- Buttons Check ---
+                // Using the direct reference from UIManager instead of hardcoded path
+                Transform familiarityPanel = uiManager.familiarityPanel;
+
+                if (familiarityPanel != null)
+                {
+                    buttonFamiliar = familiarityPanel.Find("FamiliarButton/Button_Familiar")?.GetComponent<Button>();
+                    if (buttonFamiliar == null) Debug.LogError($"[WordsLearned] Button_Familiar NOT found under Panel_Familiarity on {gameObject.name}!");
+
+                    buttonKnown = familiarityPanel.Find("KnownButton/Button_Known")?.GetComponent<Button>();
+                    if (buttonKnown == null) Debug.LogError($"[WordsLearned] Button_Known NOT found under Panel_Familiarity on {gameObject.name}!");
+
+                    buttonMastered = familiarityPanel.Find("MasteredButton/Button_Mastered")?.GetComponent<Button>();
+                    if (buttonMastered == null) Debug.LogError($"[WordsLearned] Button_Mastered NOT found under Panel_Familiarity on {gameObject.name}!");
+                }
+                else
+                {
+                    Debug.LogError($"[WordsLearned] Panel_Familiarity not found via UIManager reference on {gameObject.name}!");
+                }
+            }
+            else
+            {
+                Debug.LogError($"[WordsLearned] Panel_Background not found under UIManager's PopupCanvas for {gameObject.name}!");
             }
         }
-
         protected override void OnCollect()
         {
             if (GameManager.Instance == null)
@@ -246,6 +277,16 @@ namespace Assets.Scripts.Collectables
                     return; // Cannot proceed without the words
                 }
             }
+
+            // Find all WordButtons in the scene (which are on the UIManager) and assign THIS object as the reference
+            WordButton[] uiButtons = Object.FindObjectsByType<WordButton>(FindObjectsSortMode.None);
+            foreach (WordButton btn in uiButtons)
+            {
+                btn.WordsLearnedGO = this.gameObject;
+                btn.InitializeButton(learnedWord_eng);
+            }
+
+            Debug.Log($"[WordsLearned - OnCollect] Handshake Complete. UI Buttons linked to {gameObject.name}.");
 
             // Word is now "activated" and waiting for button press. Do NOT increment WordsLearned/Experience or set knowledge level here!
             // This object will remain active and visible until a WordButton associated with it is clicked.
@@ -318,6 +359,19 @@ namespace Assets.Scripts.Collectables
                 Debug.Log("No change detected. Skipping.");
                 return;
             }
+
+            // REMOVE FROM DICTIONARY IF RESET TO NEW
+            if (selectedLevel == WordKnowledgeLevel.New)
+            {
+                if (GameManager.Instance.wordsLearnedDictionary.ContainsKey(uniqueSaveKey))
+                {
+                    GameManager.Instance.wordsLearnedDictionary.Remove(uniqueSaveKey);
+                    Debug.Log($"[WordsLearned] Removed {uniqueSaveKey} from dictionary (Reset to New).");
+                }
+
+                // We set sessionData to null or dummy here because we are removing the entry
+                sessionData = null;
+            }
             else
             {
                 // Create a copy of the Master Data for the user's save session
@@ -329,7 +383,7 @@ namespace Assets.Scripts.Collectables
                     selectedLevel
                 );
 
-                // --- FIX: Use indexer instead of .Add to avoid "Key already exists" crash ---
+                // --- Use indexer instead of .Add to avoid "Key already exists" crash ---
                 GameManager.Instance.wordsLearnedDictionary[uniqueSaveKey] = sessionData;
 
                 Debug.Log($"Word added to WordsLearnedDictionary. English: '{learnedWord_eng}', AltLang: '{learnedWord_alt}', Knowledge Level: {selectedLevel}");
@@ -346,7 +400,12 @@ namespace Assets.Scripts.Collectables
             }
 
             WordKnowledgeLevelProp = selectedLevel; // Use property setter to set level AND update UI
-            sessionData.KnowledgeLevel = selectedLevel; // Get or Add word pair to WordsLearnedDictionary in GameManager
+
+            // Ensure sessionData isn't null before setting level (it will be null if selectedLevel is New)
+            if (sessionData != null)
+            {
+                sessionData.KnowledgeLevel = selectedLevel; // Get or Add word pair to WordsLearnedDictionary in GameManager
+            }
 
             // Calculate the DIFFERENCE
             int experienceDifference = GetExperienceForLevel(selectedLevel) - (isNewWord ? 0 : GetExperienceForLevel(previousLevel));
@@ -354,23 +413,49 @@ namespace Assets.Scripts.Collectables
             // Apply the EXPERIENCE DIFFERENCE
             GameManager.Instance.Experience += experienceDifference;
 
-            if (isNewWord && selectedLevel != WordKnowledgeLevel.New)
+            // 1. If we are moving FROM 'New' TO a 'Learned' level (Familiar/Known/Mastered)
+            if (previousLevel == WordKnowledgeLevel.New && selectedLevel != WordKnowledgeLevel.New)
             {
-                // Word is totally new to the dictionary and being set to a learned level
                 GameManager.Instance.WordsLearned++;
+                Debug.Log("[WordsLearned] Incrementing count: Word moved from New to Learned.");
             }
-            else if (!isNewWord && selectedLevel == WordKnowledgeLevel.New && previousLevel != WordKnowledgeLevel.New)
+            // 2. If we are moving FROM a 'Learned' level BACK to 'New'
+            else if (previousLevel != WordKnowledgeLevel.New && selectedLevel == WordKnowledgeLevel.New)
             {
-                // Word was previously learned but is now being reset to "New"
-                GameManager.Instance.WordsLearned--;
+                // Safety check to prevent going below 0
+                if (GameManager.Instance.WordsLearned > 0)
+                {
+                    GameManager.Instance.WordsLearned--;
+                    Debug.Log("[WordsLearned] Decrementing count: Word reset to New.");
+                }
+
+                // --- THE "RESURRECTION" FIX: Reactivate visuals and collider ---
+                if (GetComponent<Collider2D>()) GetComponent<Collider2D>().enabled = true;
+                foreach (Renderer r in GetComponentsInChildren<Renderer>()) r.enabled = true;
+                Debug.Log($"[WordsLearned] Reactivated Collider and Renderers for {gameObject.name}");
             }
 
-            sessionData.IsLearned = true; // PERSISTENTLY set IsLearned flag in WordData to TRUE!
+            if (sessionData != null)
+            {
+                sessionData.IsLearned = (selectedLevel != WordKnowledgeLevel.New); // PERSISTENTLY set IsLearned flag in WordData to TRUE!
+            }
 
             //Debug.Log($"[WordsLearned - FinalizeWordCollection] END: Word '{learnedWord_eng}' collection finalized at level: {selectedLevel}. WordsLearned: {GameManager.Instance.WordsLearned}, Experience: {GameManager.Instance.Experience}");
 
             // Optionally disable/destroy the Collectable object after successful finalization.
-            base.OnCollect(); // Call base.OnCollect to handle object disabling/destruction
+            
+            // Call base.OnCollect so that the GameManager saves the scene state
+            // and the Collectable state is recorded, regardless of the level chosen.
+            base.OnCollect();
+
+            // If it's New, we immediately "Undo" the deactivation/hiding that base.OnCollect just did
+            if (selectedLevel == WordKnowledgeLevel.New)
+            {
+                if (GetComponent<Collider2D>()) GetComponent<Collider2D>().enabled = true;
+                foreach (Renderer r in GetComponentsInChildren<Renderer>(true)) r.enabled = true;
+
+                Debug.Log($"[WordsLearned] Word reset to New. Reactivating {gameObject.name} visuals.");
+            }
         }
 
         private int GetExperienceForLevel(WordKnowledgeLevel level)
@@ -409,6 +494,10 @@ namespace Assets.Scripts.Collectables
                 return; // Exit if buttons are missing!
             }
 
+            // Note: If you don't have a specific 'buttonNew' reference variable, we find it via the sibling of buttonFamiliar
+            GameObject buttonNewGO = buttonFamiliar.transform.parent.parent.Find("NewButton/Button_New")?.gameObject;
+            Image newButtonImage = buttonNewGO?.GetComponent<Image>();
+
             Image familiarButtonImage = buttonFamiliar.GetComponent<Image>();
             Image knownButtonImage = buttonKnown.GetComponent<Image>();
             Image masteredButtonImage = buttonMastered.GetComponent<Image>();
@@ -425,28 +514,47 @@ namespace Assets.Scripts.Collectables
                 return; // Exit if InitiateInteractionCanvasImage Image component is missing!
             }
 
+            // --- Sibling Glow Handling ---
+            // Find the sibling glow objects under the same parent as the buttons
+            GameObject newGlow = buttonNewGO?.transform.parent.Find("Glow_Highlight")?.gameObject;
+            GameObject familiarGlow = buttonFamiliar.transform.parent.Find("Glow_Highlight")?.gameObject;
+            GameObject knownGlow = buttonKnown.transform.parent.Find("Glow_Highlight")?.gameObject;
+            GameObject masteredGlow = buttonMastered.transform.parent.Find("Glow_Highlight")?.gameObject;
+
             // Reset all buttons to default color first
+            if (newButtonImage != null) newButtonImage.color = newWordColor;
             familiarButtonImage.color = newWordColor;
             knownButtonImage.color = newWordColor;
             masteredButtonImage.color = newWordColor;
             initiateInteractionCanvasImage.color = newWordColor;
 
+            // Reset all glows to disabled
+            if (newGlow != null) newGlow.SetActive(false);
+            if (familiarGlow != null) familiarGlow.SetActive(false);
+            if (knownGlow != null) knownGlow.SetActive(false);
+            if (masteredGlow != null) masteredGlow.SetActive(false);
+
             switch (WordKnowledgeLevelProp) // Use the Property here!
             {
                 case WordKnowledgeLevel.New:
-                    // No button is highlighted for "New" level
+                    // Highlight the New button and its glow
+                    if (newButtonImage != null) newButtonImage.color = newWordColor;
+                    if (newGlow != null) newGlow.SetActive(true);
                     break;
                 case WordKnowledgeLevel.Familiar:
                     familiarButtonImage.color = familiarWordColor;
                     initiateInteractionCanvasImage.color = familiarWordColor;
+                    if (familiarGlow != null) familiarGlow.SetActive(true); // Enable sibling glow
                     break;
                 case WordKnowledgeLevel.Known:
                     knownButtonImage.color = knownWordColor;
                     initiateInteractionCanvasImage.color = knownWordColor;
+                    if (knownGlow != null) knownGlow.SetActive(true); // Enable sibling glow
                     break;
                 case WordKnowledgeLevel.Mastered:
                     masteredButtonImage.color = masteredWordColor;
                     initiateInteractionCanvasImage.color = masteredWordColor;
+                    if (masteredGlow != null) masteredGlow.SetActive(true); // Enable sibling glow
                     break;
                 default:
                     Debug.LogWarning($"[WordsLearned - UpdateKnowledgeLevelButtonColor] Unknown WordKnowledgeLevel: {WordKnowledgeLevelProp} for word: '{learnedWord_eng}'. No button highlighted.");

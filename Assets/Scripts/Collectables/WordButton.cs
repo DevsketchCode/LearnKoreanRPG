@@ -63,19 +63,30 @@ public class WordButton : MonoBehaviour
 
     private void FinalizeWordCollectionForWord()
     {
+        // Safety Net: If WordsLearnedGO is missing, try to find the active WordsLearned script in the scene
         if (WordsLearnedGO == null)
         {
-            Debug.LogError($"[WordButton - FinalizeWordCollectionForWord] WordsLearnedGO is NOT assigned in Inspector for button: {gameObject.name}! Cannot finalize collection.");
-            return;
+            // Reach out across the scene to find the world trigger currently active
+            WordsLearned foundScript = Object.FindAnyObjectByType<WordsLearned>();
+            if (foundScript != null)
+            {
+                WordsLearnedGO = foundScript.gameObject;
+            }
+            else
+            {
+                Debug.LogError($"[WordButton - FinalizeWordCollectionForWord] WordsLearnedGO is NOT assigned in Inspector for button: {gameObject.name}! Cannot finalize collection.");
+                return;
+            }
         }
 
+        // Now that we definitely have a GO (or returned early), get the script component
         WordsLearned wordsLearnedScript = WordsLearnedGO.GetComponent<WordsLearned>();
+
         if (wordsLearnedScript == null)
         {
-            Debug.LogError($"[WordButton - FinalizeWordCollectionForWord] WordsLearned component NOT found on WordsLearnedGO for button: {gameObject.name}!");
+            Debug.LogError($"[WordButton] WordsLearned component NOT found on {WordsLearnedGO.name}!");
             return;
         }
-
 
         wordsLearnedScript.FinalizeWordCollection(newKnowledgeLevel); // **Call the NEW FinalizeWordCollection function in WordsLearned.cs!**
 

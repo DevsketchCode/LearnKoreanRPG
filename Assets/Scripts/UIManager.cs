@@ -14,6 +14,9 @@ public class UIManager : MonoBehaviour
     public GameManager gameManager;
     public GameObject popupTranslationCanvas;
 
+    public Transform familiarityPanel;
+    public Transform translationPanel;
+
     private string debugPrefs;
 
     private void Awake()

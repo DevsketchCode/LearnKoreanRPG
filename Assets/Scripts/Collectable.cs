@@ -14,7 +14,8 @@ public class Collectable : MonoBehaviour
     {
         None,
         Deactivate,
-        Destroy
+        Destroy,
+        HideVisuals // Keep the script alive but hide the object
     }
 
     [SerializeField] private CollectionType collectionType = CollectionType.Item;
@@ -31,14 +32,9 @@ public class Collectable : MonoBehaviour
             UnityEditor.EditorUtility.SetDirty(gameObject);
         }
 #endif
-
-        // No need to call Initialize() here anymore.  GameManager handles it.
     }
 
-    protected virtual void Start()
-    {
-        // No need for coroutine or any other initialization here.
-    }
+    protected virtual void Start() { }
 
     protected virtual void OnTriggerEnter2D(Collider2D coll)
     {
@@ -48,10 +44,7 @@ public class Collectable : MonoBehaviour
         }
     }
 
-    public void Initialize()
-    {
-        // Now, GameManager's InitializeCollectables will have already handled this.
-    }
+    public void Initialize() { }
 
     protected virtual void OnCollect()
     {
@@ -61,7 +54,6 @@ public class Collectable : MonoBehaviour
             return;
         }
 
-        // If this is a word, make sure we are using the correct ID from WordDisplay
         if (collectionType == CollectionType.WordsLearned)
         {
             var wordDisplay = GetComponent<WordDisplay>();
@@ -78,28 +70,34 @@ public class Collectable : MonoBehaviour
         }
 
         GameManager.Instance.CollectableStates[CollectableID] = true;
-        PlayerPrefs.SetInt("Collectable_" + CollectableID, 1); // Save to PlayerPrefs.
+        PlayerPrefs.SetInt("Collectable_" + CollectableID, 1);
         PlayerPrefs.Save();
 
-        GameManager.Instance.SaveState(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, "", Vector3.zero, new Bounds()); // Pass new Bounds() as portalBounds
+        GameManager.Instance.SaveState(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, "", Vector3.zero, new Bounds());
 
-        // Deactivation ran in Collectable.cs
         ShouldDeactivateOnCollect();
     }
 
-    // **NEW: Virtual method to control deactivation behavior**
     protected void ShouldDeactivateOnCollect()
     {
-        if (actionOnCollect == ActionOnCollect.Deactivate) // **NEW: Conditional deactivation based on virtual method**
+        if (actionOnCollect == ActionOnCollect.Deactivate)
         {
-            Debug.Log("Collectable.cs: ShouldDeactivateOnCollect: Should Deactivate" + actionOnCollect.ToString());
-            gameObject.SetActive(false); // **Deactivate only if ShouldDeactivateOnCollect() returns true**
+            gameObject.SetActive(false);
         }
         else if (actionOnCollect == ActionOnCollect.Destroy)
         {
-            Debug.Log("Collectable.cs: ShouldDeactivateOnCollect: Should Destroy" + actionOnCollect.ToString());
             Destroy(gameObject);
         }
-        Debug.Log("Collectable.cs ShouldDeactivateOnCollect hit.");
+        else if (actionOnCollect == ActionOnCollect.HideVisuals)
+        {
+            // Disable only collider and renderer so scripts stay active
+            if (GetComponent<Collider2D>()) GetComponent<Collider2D>().enabled = false;
+            if (GetComponent<Renderer>()) GetComponent<Renderer>().enabled = false;
+
+            // Also check children for renderers (like graphics/sprites)
+            foreach (Renderer r in GetComponentsInChildren<Renderer>()) r.enabled = false;
+
+            Debug.Log($"[Collectable] {gameObject.name} hidden via HideVisuals. Script is still alive.");
+        }
     }
 }

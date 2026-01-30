@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectionType: 3
   CollectableID: 
-  actionOnCollect: 1
+  actionOnCollect: 3
   masterDB: {fileID: 11400000, guid: 5fc489c4c58ae0b4a852081d9264bff8, type: 2}
   wordKnowledgeLevel: 0
   familiarExperience: 50
@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc538fd0c2db91a42aab1857e2a5419a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiManager: {fileID: 0}
   GOToInteractWith1: {fileID: 0}
   buttonAction1: 1
   GOToInteractWith2: {fileID: 2164249931162890433}
@@ -1828,6 +1829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc538fd0c2db91a42aab1857e2a5419a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiManager: {fileID: 0}
   GOToInteractWith1: {fileID: 2164249931162890433}
   buttonAction1: 2
   GOToInteractWith2: {fileID: 6757408068873987789}
@@ -2784,6 +2786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc538fd0c2db91a42aab1857e2a5419a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiManager: {fileID: 0}
   GOToInteractWith1: {fileID: 6757408069907237689}
   buttonAction1: 2
   GOToInteractWith2: {fileID: 2164249931162890433}
