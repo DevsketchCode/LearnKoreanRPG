@@ -17,10 +17,18 @@ public class UIJuice : MonoBehaviour
     public void PlayEntrance()
     {
         StopAllCoroutines();
+
+        // MOVE THE RESET HERE: Outside the coroutine.
+        // This ensures that the moment this method is called, the state is reset,
+        // even if the coroutine takes a frame to start.
+        RectTransform rect = GetComponent<RectTransform>();
+        if (rect != null) rect.localScale = Vector3.zero;
+        if (canvasGroup != null) canvasGroup.alpha = 0;
+
         StartCoroutine(EntranceRoutine());
     }
 
-     private IEnumerator EntranceRoutine()
+    private IEnumerator EntranceRoutine()
     {
         // Ensure we have the RectTransform reference
         RectTransform rect = GetComponent<RectTransform>();

@@ -18,7 +18,8 @@ namespace Assets.Scripts.Collectables
 
         [Header("Data References")]
         [SerializeField] private LanguageDatabase masterDB; // Assign MasterLanguageDB here
-        private WordData currentWordData; // Stores the full metadata for this object
+        public WordData currentWordData; // Stores the full metadata for this object
+        public string currentWordID;
 
         [Header("State")]
         [SerializeField] private WordKnowledgeLevel wordKnowledgeLevel;
@@ -32,8 +33,8 @@ namespace Assets.Scripts.Collectables
         [Header("UI References")]
         private TextMeshProUGUI englishWordTextPro; // Reference for English TextPro
         private TextMeshProUGUI altLangWordTextPro;  // Reference for Alternate Language TextPro
-        private string learnedWord_eng;
-        private string learnedWord_alt;
+        public string learnedWord_eng;
+        public string learnedWord_alt;
 
         [Header("UI Button Integration")]
         private Button buttonFamiliar; // buttons will be dynamically set
@@ -80,7 +81,7 @@ namespace Assets.Scripts.Collectables
             UpdateKnowledgeLevelButtonColor(); // Initial button color update on Start
         }
 
-        private void InitializeFromDatabase()
+        public void InitializeFromDatabase()
         {
             if (masterDB == null)
             {
@@ -94,7 +95,9 @@ namespace Assets.Scripts.Collectables
             if (parentDisplay != null)
             {
                 // Use the key from the parent instead of the local CollectableID
+                //CollectableID = parentDisplay.wordID;
                 CollectableID = parentDisplay.wordID;
+
                 Debug.Log($"[WordsLearned] Found key '{CollectableID}' from Parent ({transform.parent.name})");
             }
             else
@@ -119,9 +122,6 @@ namespace Assets.Scripts.Collectables
                 learnedWord_alt = currentWordData.complex; // Hangul/etc
                 this.wordDataType = currentWordData.wordDataType;
 
-                // Set the UI Text from the Database
-                if (englishWordTextPro != null) englishWordTextPro.text = learnedWord_eng;
-                if (altLangWordTextPro != null) altLangWordTextPro.text = learnedWord_alt;
 
                 Debug.Log($"[WordsLearned] Successfully loaded {targetLang} data for {CollectableID}");
 
@@ -232,21 +232,38 @@ namespace Assets.Scripts.Collectables
                 Debug.LogError($"[WordsLearned] Panel_Background not found under UIManager's PopupCanvas for {gameObject.name}!");
             }
         }
-        protected override void OnCollect()
+        public override void OnCollect()
         {
-            if (GameManager.Instance == null)
+            // 1. Instant access via Singleton
+            // We use UIManager.Instance to ensure we are talking to the correct scene instance without searching
+            if (UIManager.Instance == null)
             {
-                Debug.LogError("GameManager.instance is NULL! Cannot collect word.");
+                Debug.LogError("UIManager.Instance is NULL! Ensure a UIManager exists in the scene and has a Singleton Awake() setup.");
                 return;
             }
 
-            // Safety check: if for some reason the word never loaded, stop the crash
-            if (string.IsNullOrEmpty(learnedWord_eng))
+            // 2. Now check the instance-based lock
+            // This uses the Singleton to ensure only one study session happens at a time
+            if (UIManager.Instance.IsStudySessionActive)
             {
-                Debug.LogWarning($"[WordsLearned] {gameObject.name} has no word data. Trying to re-initialize...");
-                InitializeFromDatabase();
+                Debug.Log($"[WordsLearned] Session busy. Ignoring trigger from {gameObject.name} because another session is active.");
+                return;
+            }
 
-                if (string.IsNullOrEmpty(learnedWord_eng))
+            if (GameManager.Instance == null)
+            {
+                Debug.LogError("GameManager.instance is NULL!");
+                return;
+            }
+
+            InitializeFromDatabase();
+
+            // Safety check: if for some reason the word never loaded, stop the crash
+            if (currentWordData == null || string.IsNullOrEmpty(learnedWord_eng))
+            {
+                Debug.LogWarning($"[WordsLearned] {gameObject.name} data missing or null. Initializing from database...");
+
+                if (currentWordData == null || string.IsNullOrEmpty(learnedWord_eng))
                 {
                     Debug.LogError("Re-initialization failed. Aborting collection to prevent crash.");
                     Debug.LogError($"[WordsLearned] Cannot collect. '{gameObject.name}' has no valid English word assigned. Check if CollectableID matches CSV Key.");
@@ -254,44 +271,71 @@ namespace Assets.Scripts.Collectables
                 }
             }
 
+            // --- Refresh the Knowledge Level from the Dictionary right before packaging ---
+            // This ensures we don't send "New" if the trigger didn't update the level yet.
+            UpdateKnowledgeLevelFromDictionary();
+
             // --- KEY LOGIC: Using composite key to check persistent 'IsLearned' flag ---
+            // Now that we've initialized above, currentWordData.key is guaranteed to be valid
             string uniqueSaveKey = currentWordData != null ? currentWordData.key + "_" + currentWordData.language : learnedWord_eng;
+
+            // --- NEW ARCHITECTURE: Package and Start Session ---
+            // Instead of manually updating labels and finding buttons here, we hand a data package 
+            // to the ActiveTranslationManager. It will manage the UI state from now on.
+
+            // Use a local variable 'session' instead of the static 'ActiveTranslationSession.activeSession'
+            // to prevent other objects from overwriting this data during the frame.
+            ActiveTranslationSession session = new ActiveTranslationSession
+            {
+                // Pulling directly from the refreshed currentWordData object
+                wordID = this.CollectableID, // The ID from the DB (e.g., tree_01)
+                english = this.learnedWord_eng,
+                altLang = this.learnedWord_alt,
+                collectableID = this.CollectableID, // The internal ID (people_general_woman...)
+                currentLevel = this.WordKnowledgeLevelProp,
+                sourceScript = this // Reference back to this script so the Manager can call Finalize later
+            };
+
+            if (ActiveTranslationManager.Instance != null)
+            {
+                // Debug session info to verify data before sending
+                Debug.Log($"[WordsLearned - OnCollect] Packaging: ID={session.wordID}, ENG={session.english}, ALT={session.altLang}, Level={session.currentLevel}");
+
+                // Pass the localized session, the specific gameObject, and the specific currentWordData
+                ActiveTranslationManager.Instance.StartSession(session, this.gameObject, this.currentWordData);
+                Debug.Log($"[WordsLearned - OnCollect] Session sent to ActiveTranslationManager for: {learnedWord_eng}");
+            }
+            else
+            {
+                Debug.LogError("ActiveTranslationManager.Instance is NULL! Cannot start study session.");
+            }
 
             // Check persistent 'IsLearned' flag in GameManager dictionary
             if (GameManager.Instance.wordsLearnedDictionary.ContainsKey(uniqueSaveKey) && GameManager.Instance.wordsLearnedDictionary[uniqueSaveKey].IsLearned)
             {
                 Debug.Log($"[WordsLearned - OnCollect] Word ALREADY LEARNED (persistent data) for {gameObject.name}, key: {uniqueSaveKey}. Ignoring trigger.");
+
                 base.OnCollect(); // Still call base.OnCollect to handle potential timed actions
                 return; // Exit early if already learned
             }
 
-            // Get words if they aren't already fetched (to be safe, in case Awake didn't run in time in some edge cases)
-            if (string.IsNullOrEmpty(learnedWord_eng) || string.IsNullOrEmpty(learnedWord_alt))
+            // Word is now "activated" and waiting for button press via the Manager. 
+            // This object will remain active and visible until the Manager calls FinalizeWordCollection.
+        }
+
+        // Call this when the player clicks a "Close" button or finishes collecting
+        public void ReturnToWorldPrompt()
+        {
+            // Find the InitiateInteractionCanvas which is a sibling of this script's object
+            Transform interactionCanvas = transform.parent.Find("InitiateInteractionCanvas");
+
+            if (interactionCanvas != null)
             {
-                if (englishWordTextPro != null) learnedWord_eng = englishWordTextPro.text;
-                if (altLangWordTextPro != null) learnedWord_alt = altLangWordTextPro.text;
+                //UIManager.Instance.IsStudySessionActive = false; // Release the lock
 
-                if (string.IsNullOrEmpty(learnedWord_eng) || string.IsNullOrEmpty(learnedWord_alt))
-                {
-                    Debug.LogError($"[WordsLearned - OnCollect] Could not retrieve English or AltLang word text for: {gameObject.name}!");
-                    return; // Cannot proceed without the words
-                }
+                interactionCanvas.gameObject.SetActive(true);
+                Debug.Log($"[WordsLearned] Re-enabling interaction prompt for {learnedWord_eng}");
             }
-
-            // Find all WordButtons in the scene (which are on the UIManager) and assign THIS object as the reference
-            WordButton[] uiButtons = Object.FindObjectsByType<WordButton>(FindObjectsSortMode.None);
-            foreach (WordButton btn in uiButtons)
-            {
-                btn.WordsLearnedGO = this.gameObject;
-                btn.InitializeButton(learnedWord_eng);
-            }
-
-            Debug.Log($"[WordsLearned - OnCollect] Handshake Complete. UI Buttons linked to {gameObject.name}.");
-
-            // Word is now "activated" and waiting for button press. Do NOT increment WordsLearned/Experience or set knowledge level here!
-            // This object will remain active and visible until a WordButton associated with it is clicked.
-
-            // The Collectable.OnCollect() method already handles everything else (destroying/disabling the object etc.)
         }
 
         // Initialize knowledge level from dictionary on Start/Load
@@ -442,8 +486,13 @@ namespace Assets.Scripts.Collectables
 
             //Debug.Log($"[WordsLearned - FinalizeWordCollection] END: Word '{learnedWord_eng}' collection finalized at level: {selectedLevel}. WordsLearned: {GameManager.Instance.WordsLearned}, Experience: {GameManager.Instance.Experience}");
 
-            // Optionally disable/destroy the Collectable object after successful finalization.
-            
+            // Set this BEFORE calling base.OnCollect() to ensure 
+            // the Handshake is finished before the object is disabled
+            UIManager.Instance.IsStudySessionActive = false;
+            UIManager.Instance.activeWordScript = null;
+
+            ReturnToWorldPrompt();
+
             // Call base.OnCollect so that the GameManager saves the scene state
             // and the Collectable state is recorded, regardless of the level chosen.
             base.OnCollect();
@@ -455,6 +504,13 @@ namespace Assets.Scripts.Collectables
                 foreach (Renderer r in GetComponentsInChildren<Renderer>(true)) r.enabled = true;
 
                 Debug.Log($"[WordsLearned] Word reset to New. Reactivating {gameObject.name} visuals.");
+            }
+
+            // RELEASE THE LOCK so the next object can be collected
+            if (UIManager.Instance != null)
+            {
+                UIManager.Instance.IsStudySessionActive = false;
+                UIManager.Instance.activeWordScript = null;
             }
         }
 
@@ -570,6 +626,5 @@ namespace Assets.Scripts.Collectables
             // currentWordData is the data for the word currently being shown
             TTSManager.Instance.Speak(currentWordData);
         }
-
     }
 }

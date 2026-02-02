@@ -8,33 +8,50 @@ public class WordDisplay : MonoBehaviour
     [SerializeField] private LanguageDatabase masterDB;
     [SerializeField] public string wordID; // Manually set this to "tree_01" etc. in inspector
 
-    [Header("UI Target")]
-    [SerializeField] private TextMeshPro altLangTextMesh;
+    [Header("UI Target (World Space)")]
+    [SerializeField] private TextMeshProUGUI popupEnglish; // The UI text in the popup (set dynamically)
+    [SerializeField] private TextMeshProUGUI popupAltLang; // The UI text in the popup (set dynamically)
 
     void Start()
     {
         RefreshText();
     }
 
-    // Call this on Start or whenever you change the language in a menu
     public void RefreshText()
     {
-        // 1. Get the current language from settings (default to Korean)
         string savedLang = PlayerPrefs.GetString("SelectedLanguage", "Korean");
         if (!System.Enum.TryParse(savedLang, out WordData.Language currentLanguage))
         {
-            // If the string doesn't match any enum, default to Korean
             currentLanguage = WordData.Language.Korean;
         }
 
-        // 2. Pull the specific data from your already-parsed ScriptableObject
+        if (masterDB == null)
+        {
+            Debug.LogError($"[WordDisplay] masterDB is NULL on {gameObject.name}!");
+            return;
+        }
+
         WordData data = masterDB.GetWord(wordID, currentLanguage);
 
         if (data != null)
         {
-            // 3. Update the TextMeshPro with the "Complex" (Hangul) string
-            altLangTextMesh.text = data.complex;
-            Debug.Log($"Displaying {currentLanguage} for {wordID}: {data.complex}");
+            // UPDATED: Use the Singleton Instance instead of searching the scene.
+            // This ensures we are hitting the correct UI Manager immediately.
+            if (UIManager.Instance != null && UIManager.Instance.translationPanel != null)
+            {
+                // Find Text_English and Text_AltLang under the translationPanel on the Singleton Instance
+                popupEnglish = UIManager.Instance.translationPanel.Find("Text_English")?.GetComponent<TextMeshProUGUI>();
+                popupAltLang = UIManager.Instance.translationPanel.Find("Text_AltLang")?.GetComponent<TextMeshProUGUI>();
+
+                if (popupEnglish != null) popupEnglish.text = data.english;
+                if (popupAltLang != null) popupAltLang.text = data.complex;
+
+                Debug.Log($"[WordDisplay] Populated UIManager Popup for {wordID} via Singleton Instance");
+            }
+            else if (UIManager.Instance == null)
+            {
+                Debug.LogError($"[WordDisplay] UIManager.Instance is NULL! Cannot update UI for {wordID}");
+            }
         }
         else
         {

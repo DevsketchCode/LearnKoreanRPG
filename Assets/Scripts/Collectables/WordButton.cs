@@ -8,39 +8,6 @@ public class WordButton : MonoBehaviour
     public WordsLearned.WordKnowledgeLevel newKnowledgeLevel; // Set this to Known or Mastered in Inspector for each button type
     public GameObject WordsLearnedGO;
 
-    private void Awake() // Use Awake to ensure Text_English is found early
-    {
-
-        // Just leave this empty or remove it. 
-        // We will receive our englishWordKey from the parent script now.
-
-        // Find the sibling Text_English object
-        //Transform textEnglishTransform = transform.parent.Find("Text_English"); // Assuming Text_English is a direct sibling (adjust path if needed)
-
-        //if (textEnglishTransform != null)
-        //{
-        //    TextMeshPro textMeshPro = textEnglishTransform.GetComponent<TextMeshPro>();
-        //    if (textMeshPro != null)
-        //    {
-        //        englishWordKey = textMeshPro.text; // Get the text from Text_English and set englishWordKey
-        //        Debug.Log($"[WordButton - Awake] Found Text_English: '{englishWordKey}' for button: {gameObject.name}"); // Debug log to confirm
-        //    }
-        //    else
-        //    {
-        //        Debug.LogError($"[WordButton - Awake] TextMeshPro component NOT found on Text_English sibling for button: {gameObject.name}!");
-        //    }
-        //}
-        //else
-        //{
-        //    Debug.LogError($"[WordButton - Awake] Sibling Text_English NOT found for button: {gameObject.name}! Make sure Text_English is a sibling under the same parent.");
-        //}
-
-        //if (string.IsNullOrEmpty(englishWordKey))
-        //{
-        //    Debug.LogError($"[WordButton - Awake] englishWordKey is EMPTY after trying to get it from Text_English for button: {gameObject.name}!");
-        //}
-    }
-
     public void InitializeButton(string wordKey)
     {
         englishWordKey = wordKey;
@@ -58,44 +25,49 @@ public class WordButton : MonoBehaviour
             juice.PlayButtonClick();
         }
 
-        FinalizeWordCollectionForWord();
+        // NEW ARCHITECTURE:
+        // Instead of calling a local Finalize method that relies on UIManager.activeWordScript,
+        // we delegate the entire completion process to the ActiveTranslationManager.
+        //if (ActiveTranslationManager.Instance != null && ActiveTranslationManager.Instance.IsSessionActive)
+        //{
+        //    // The button simply tells the manager what level was picked
+        //    ActiveTranslationManager.Instance.CompleteSession(this.newKnowledgeLevel);
+        //}
+        //else
+        //{
+            // Falling back to local finalize if needed for debugging, but CompleteSession handles this now
+            FinalizeWordCollectionForWord();
+        //}
     }
 
     private void FinalizeWordCollectionForWord()
     {
-        // Safety Net: If WordsLearnedGO is missing, try to find the active WordsLearned script in the scene
-        if (WordsLearnedGO == null)
+        // 1. Cache the reference locally so it can't turn null mid-execution
+        // Check both UIManager and ActiveTranslationManager for redundancy
+        WordsLearned activeScript = null;
+
+        if (ActiveTranslationManager.Instance != null && ActiveTranslationManager.Instance.CurrentSession != null)
         {
-            // Reach out across the scene to find the world trigger currently active
-            WordsLearned foundScript = Object.FindAnyObjectByType<WordsLearned>();
-            if (foundScript != null)
-            {
-                WordsLearnedGO = foundScript.gameObject;
-            }
-            else
-            {
-                Debug.LogError($"[WordButton - FinalizeWordCollectionForWord] WordsLearnedGO is NOT assigned in Inspector for button: {gameObject.name}! Cannot finalize collection.");
-                return;
-            }
+            activeScript = ActiveTranslationManager.Instance.CurrentSession.sourceScript;
+        }
+        else if (UIManager.Instance != null)
+        {
+            activeScript = UIManager.Instance.activeWordScript;
         }
 
-        // Now that we definitely have a GO (or returned early), get the script component
-        WordsLearned wordsLearnedScript = WordsLearnedGO.GetComponent<WordsLearned>();
-
-        if (wordsLearnedScript == null)
+        if (activeScript != null)
         {
-            Debug.LogError($"[WordButton] WordsLearned component NOT found on {WordsLearnedGO.name}!");
-            return;
+            // 2. Perform the logic using the local variable
+            activeScript.FinalizeWordCollection(newKnowledgeLevel);
+
+            // 3. Use the local variable for logging to avoid the NullReference
+            Debug.Log($"[WordButton] Called Finalize for: {activeScript.learnedWord_eng}");
+            Debug.Log($"[ActiveWordScript] CollectableID: {activeScript.CollectableID}");
         }
-
-        wordsLearnedScript.FinalizeWordCollection(newKnowledgeLevel); // **Call the NEW FinalizeWordCollection function in WordsLearned.cs!**
-
-        // OPTIONAL:  You might want to disable the buttons or the popup after a button is clicked,
-        // or handle any other UI cleanup here.  For example:
-        // transform.parent.gameObject.SetActive(false); // Disable the entire popup panel.
-        // gameObject.GetComponent<Button>().interactable = false; // Disable just this button.
-
-        Debug.Log($"[WordButton - FinalizeWordCollectionForWord] FinalizeWordCollection called in WordsLearned.cs for word: '{englishWordKey}', level: {newKnowledgeLevel}.");
+        else
+        {
+            Debug.LogError("[WordButton] No active word script found in UIManager or ActiveTranslationManager!");
+        }
     }
 
     // Function not currently used, but leaving it, as this function will update the WordKnowledgeLevel elsewhere other than the buttons if needed
@@ -107,23 +79,33 @@ public class WordButton : MonoBehaviour
             return;
         }
 
-        if (GameManager.Instance.wordsLearnedDictionary.ContainsKey(englishWordKey)) // Make sure the word exists in the dictionary
+        // We use the English word key from the ActiveSession if the local one is empty
+        string keyToUse = englishWordKey;
+        if (string.IsNullOrEmpty(keyToUse) && ActiveTranslationManager.Instance.IsSessionActive)
         {
-            WordData wordData = GameManager.Instance.wordsLearnedDictionary[englishWordKey]; // Get the WordData object from the dictionary
+            keyToUse = ActiveTranslationManager.Instance.CurrentSession.english;
+        }
+
+        if (GameManager.Instance.wordsLearnedDictionary.ContainsKey(keyToUse)) // Make sure the word exists in the dictionary
+        {
+            WordData wordData = GameManager.Instance.wordsLearnedDictionary[keyToUse]; // Get the WordData object from the dictionary
             wordData.KnowledgeLevel = level; // **Update the knowledgeLevel property of the WordData object!**
+
+            // Note: We still use the cached WordsLearnedGO here if assigned, 
+            // but for the study session, FinalizeWordCollectionForWord handles the logic via UIManager
             if (WordsLearnedGO != null)
             {
                 WordsLearnedGO.GetComponent<WordsLearned>().WordKnowledgeLevelProp = level;
             }
-            
-            Debug.Log($"[WordButton] Knowledge level updated for word '{englishWordKey}' to: {level}");
+
+            Debug.Log($"[WordButton] Knowledge level updated for word '{keyToUse}' to: {level}");
 
             // OPTIONAL: Update UI to reflect the new knowledge level (e.g., change button color)
             // ... code to update button appearance based on level ...
         }
         else
         {
-            Debug.LogError($"[WordButton] Word '{englishWordKey}' not found in wordsLearnedDictionary!");
+            Debug.LogError($"[WordButton] Word '{keyToUse}' not found in wordsLearnedDictionary!");
         }
     }
 }

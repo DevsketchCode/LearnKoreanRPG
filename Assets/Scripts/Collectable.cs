@@ -25,6 +25,8 @@ public class Collectable : MonoBehaviour
 
     protected virtual void Awake()
     {
+        // If not WordsLearned, then it should have a Random Generated CollectableID
+        // that can be used for the game to determine which of the same object was collected
 #if UNITY_EDITOR
         if (string.IsNullOrEmpty(CollectableID))
         {
@@ -40,26 +42,33 @@ public class Collectable : MonoBehaviour
     {
         if (coll.CompareTag("Player"))
         {
-            OnCollect();
+            // OnCollect(); // REMOVE THIS LINE
+            // The trigger should only handle showing the interaction UI
         }
     }
 
     public void Initialize() { }
 
-    protected virtual void OnCollect()
+    public virtual void OnCollect()
     {
         if (GameManager.Instance == null)
         {
             Debug.LogError("GameManager.instance is NULL! Cannot collect.");
             return;
         }
-
+        // If not WordsLearned, then it should have a Random Generated CollectableID
+        // that can be used for the game to determine which of the same object was collected
         if (collectionType == CollectionType.WordsLearned)
         {
-            var wordDisplay = GetComponent<WordDisplay>();
+            // FIX: Look in parent first to match WordsLearned logic
+            var wordDisplay = GetComponentInParent<WordDisplay>();
             if (wordDisplay != null)
             {
-                CollectableID = wordDisplay.wordID;
+                // Only update if it's currently empty or different
+                if (string.IsNullOrEmpty(CollectableID) || CollectableID != wordDisplay.wordID)
+                {
+                    CollectableID = wordDisplay.wordID;
+                }
             }
         }
 

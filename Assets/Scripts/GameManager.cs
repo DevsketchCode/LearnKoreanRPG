@@ -190,16 +190,17 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("Experience", experience);
         PlayerPrefs.SetInt("WordsLearned", numberWordsLearned);
 
-        if (uiManager == null)
+        // Using Singleton Instance instead of FindObjectOfType
+        if (UIManager.Instance == null)
         {
-            // Debug.Log("UIMANAGER was NULL");
-            uiManager = FindObjectOfType<UIManager>(); // Find the UIManager
+            // If the instance isn't found, we default the debug window to false
+            // Debug.Log("UIManager.Instance was NULL during SaveState");
             PlayerPrefs.SetString("DebugWindow", "False");
         }
-
-        if (uiManager != null)
+        else
         {
-            PlayerPrefs.SetString("DebugWindow", uiManager.ActivateDebugWindow.ToString());
+            // Use the Singleton Instance to get the current state of the Debug Window
+            PlayerPrefs.SetString("DebugWindow", UIManager.Instance.ActivateDebugWindow.ToString());
         }
 
         PlayerPrefs.SetString("SaveState", "True");
@@ -210,6 +211,8 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.Save();
         Debug.Log("SCENE SAVED!! Scene: " + activeScene);
         Debug.Log($"[SaveState] Scene: {activeScene} SAVED. PlayerPrefs DebugWindow: {PlayerPrefs.GetString("DebugWindow")}");
+
+        DebugPrintAllSavedData();
     }
 
     public void LoadState(Scene scene)
@@ -405,5 +408,37 @@ public class GameManager : MonoBehaviour
     public void ClearPlayerPrefs()
     {
         PlayerPrefs.DeleteAll();
+    }
+
+    [ContextMenu("Debug: Print All Saved Word Data")] // This allows you to run it from the Inspector!
+    public void DebugPrintAllSavedData()
+    {
+        Debug.Log("======= [PLAYERPREFS SAVED DATA REPORT] =======");
+
+        // 1. Print the serialized CollectableStates Dictionary
+        //string rawStates = PlayerPrefs.GetString("CollectableStates", "EMPTY");
+        //Debug.Log($"--- Raw CollectableStates String ---\n{rawStates}");
+
+        // 2. Iterate through your actual runtime Dictionary to see what is currently active
+        // Debug.Log("--- Current Runtime CollectableStates Dictionary ---");
+        // foreach (var pair in CollectableStates)
+        // {
+        //    Debug.Log($"ID: {pair.Key} | IsCollected: {pair.Value}");
+        // }
+
+        // 3. Check the wordsLearnedDictionary (WordData Objects)
+        Debug.Log("--- Runtime wordsLearnedDictionary (Metadata) ---");
+        if (wordsLearnedDictionary.Count == 0) Debug.Log("Dictionary is empty.");
+        foreach (var pair in wordsLearnedDictionary)
+        {
+            Debug.Log($"Word Key: {pair.Key} | Level: {pair.Value.KnowledgeLevel} | IsLearned: {pair.Value.IsLearned}");
+        }
+
+        // 4. Global Stats
+        Debug.Log("--- Global Progress Stats ---");
+        Debug.Log($"WordsLearned Count: {PlayerPrefs.GetInt("WordsLearned", 0)}");
+        Debug.Log($"Experience: {PlayerPrefs.GetInt("Experience", 0)}");
+
+        Debug.Log("===============================================");
     }
 }

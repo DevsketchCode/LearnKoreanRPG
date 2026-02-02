@@ -31,6 +31,9 @@ public class SetInstanceGUID : EditorWindow
                     guidComponent = targetObject.AddComponent<WordsLearned>();
                 }
 
+                // If not WordsLearned, then it should have a Random Generated CollectableID
+                // that can be used for the game to determine which of the same object was collected
+
                 // Generate a new GUID and assign it to the CollectableID.
                 guidComponent.CollectableID = System.Guid.NewGuid().ToString();
 

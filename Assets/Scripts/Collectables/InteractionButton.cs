@@ -34,7 +34,9 @@ namespace Assets.Scripts.Collectables
 
         public void Start()
         {
-            if (uiManager == null) uiManager = FindObjectOfType<UIManager>();
+            // UPDATED: Using Singleton Instance to find the UIManager.
+            // This is safer and more performant than FindObjectOfType.
+            if (uiManager == null) uiManager = UIManager.Instance;
 
             if (uiManager != null && uiManager.popupTranslationCanvas != null)
             {
@@ -43,16 +45,42 @@ namespace Assets.Scripts.Collectables
         }
         public void OnButtonClicked() // Call this function when the button is clicked (set in Button's OnClick event in Inspector)
         {
-            Debug.Log("Button Clicked");
+            ActiveTranslationManager.Instance.ActiveGameObject = this.transform.root.gameObject;
+            // 1. Get the WordsLearned script from the parent of the button
+            // Try to find the script on the root of this object's hierarchy
+            // (This works better if the button is a child of the Tree/Woman object)
+            WordsLearned localWordScript = transform.root.GetComponentInChildren<WordsLearned>();
+            if (localWordScript != null)
+            {
+                Debug.Log($"[InteractionButton] Button Clicked for: {localWordScript.gameObject.name}");
+
+                // This call MUST happen to package the data and trigger the Manager's StartSession
+                localWordScript.OnCollect();
+            }
+
+            Debug.Log("Button Clicked: Interaction GameObject: " + GOToInteractWith1.name + ", Action1: " + buttonAction1 + ", Action2: " + buttonAction2);
             if (GOToInteractWith1 != null)
             {
                 ShowHideGO(GOToInteractWith1, buttonAction1);
             }
 
+            if (GOToInteractWith2 == null) 
+            {
+                // Get the active Game Object if there is one
+                GOToInteractWith2 = ActiveTranslationManager.Instance.ActiveGameObject;
+
+                // Get the InitiateInteraction object if the active object was found
+                if (GOToInteractWith2 != null && GOToInteractWith2.name == "CollectionTrigger")
+                {
+                    // Get the sibling of CollectionTrigger
+                    GOToInteractWith2 = GOToInteractWith2.transform.parent.Find("InitiateInteractionCanvas").gameObject;
+                }
+            }
+
             if (GOToInteractWith2 != null)
             {
                 ShowHideGO(GOToInteractWith2, buttonAction2);
-            }
+            } 
 
             if (GOToInteractWith3 != null)
             {
@@ -62,13 +90,20 @@ namespace Assets.Scripts.Collectables
 
         public void ShowHideGO(GameObject go, ButtonAction btnAction)
         {
-            UIJuice juice = go.GetComponentInChildren<UIJuice>();
+            // 1. Find the juice script on the child (Panel_Background)
+            UIJuice juice = go.GetComponentInChildren<UIJuice>(true); // 'true' finds it even if inactive
+            Debug.Log("[ALERT] UIJuice GameObject: " + go.name);
 
             if (go.activeSelf && (btnAction == ButtonAction.ToggleShowHide || btnAction == ButtonAction.Hide))
             {
-                if (juice != null)
+                // Clear session ONLY if we are actually Hiding
+                if (UIManager.Instance != null && go == UIManager.Instance.popupTranslationCanvas)
                 {
-                    // Play the exit, then set active to false when done
+                    ActiveTranslationManager.Instance.ClearSession();
+                }
+
+                if (juice != null && go.activeInHierarchy) // Check activeInHierarchy to prevent Coroutine error
+                {
                     juice.PlayExit(() => go.SetActive(false));
                 }
                 else
@@ -76,11 +111,25 @@ namespace Assets.Scripts.Collectables
                     go.SetActive(false);
                 }
             }
-            else if (!go.activeSelf && (btnAction == ButtonAction.Show))
+            else if (btnAction == ButtonAction.Show || btnAction == ButtonAction.ToggleShowHide)
             {
+                // Even if 'go' is already active, we force the scale reset here.
+                if (juice != null)
+                {
+                    // Reset the specific child that was shrunk to 0
+                    juice.gameObject.transform.localScale = Vector3.one;
+
+                    // If the juice script added a CanvasGroup, reset that too
+                    if (juice.TryGetComponent<CanvasGroup>(out CanvasGroup cg))
+                    {
+                        cg.alpha = 1f;
+                    }
+                }
+
+                // Ensure the parent is active
                 go.SetActive(true);
 
-                // If the object we just turned on has the Juice script, play it!
+                // Play the entrance (which will start from 0 because of the internal code)
                 if (juice != null)
                 {
                     juice.PlayEntrance();

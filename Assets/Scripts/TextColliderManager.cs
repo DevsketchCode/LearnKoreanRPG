@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class TextColliderManager : MonoBehaviour
 {
-    private GameObject popupCanvasGO; // Store the GameObject
     public GameObject initiateInteractionGO;  // Store the GameObject
 
     private void Awake()
@@ -12,18 +11,17 @@ public class TextColliderManager : MonoBehaviour
 
         if (parent != null)
         {
-
-            // Find the PopupCanvas GameObject by name (or tag, if preferred)
-            popupCanvasGO = parent.Find("PopupCanvas").gameObject; // Get the GameObject
-
             if (initiateInteractionGO == null)
             {
-                Debug.LogError("InitiateInteractiveCanvas GameObject not found as a sibling of TextTrigger!");
-            }
-
-            if (popupCanvasGO == null)
-            {
-                Debug.LogError("PopupCanvas GameObject not found as a sibling of TextTrigger!");
+                Transform interactionTransform = parent.Find("InitiateInteractionCanvas");
+                if (interactionTransform != null)
+                {
+                    initiateInteractionGO = interactionTransform.gameObject;
+                }
+                else
+                {
+                    Debug.LogError("InitiateInteractiveCanvas GameObject not found as a sibling of TextTrigger!");
+                }
             }
         }
         else
@@ -36,48 +34,47 @@ public class TextColliderManager : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            // Reach into the parent to find the WordsLearned script
-            // The 'true' argument tells Unity to find the script even if the GameObject is disabled
+            // 1. Show the "..." interaction prompt
+            if (initiateInteractionGO != null) initiateInteractionGO.SetActive(true);
+
+            // 2. Get the word script on THIS object
             WordsLearned wordsLearned = transform.parent.GetComponentInChildren<WordsLearned>(true);
 
             if (wordsLearned != null)
             {
-                // Force the word to re-check the GameManager dictionary right now
-                // We will need to make this method public in the next step
+                // Update visuals ONLY
                 wordsLearned.UpdateKnowledgeLevelFromDictionary();
-
-                // Force the UI to refresh its colors right now
-                // I'm adding a call to the color update method here
                 wordsLearned.UpdateKnowledgeLevelButtonColor();
-
-                Debug.Log($"[TextColliderManager] Refreshed data for {wordsLearned.CollectableID}.");
-            }
-            else
-            {
-                Debug.LogError($"[COLLIDER] Could not find WordsLearned script in parent of {gameObject.name}!");
-            }
-
-            if (initiateInteractionGO != null)
-            {
-                //Debug.Log("TRIGGER IS ALIVE");
-                initiateInteractionGO.SetActive(true); // Enable the GameObject
-                popupCanvasGO.SetActive(false);
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (initiateInteractionGO != null && collision.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            //Debug.Log("TRIGGER IS GOODBYE");
-            initiateInteractionGO.SetActive(false); // Disable the GameObject
-        }
+            if (initiateInteractionGO != null)
+            {
+                initiateInteractionGO.SetActive(false);
+            }
 
-        if (popupCanvasGO != null && collision.CompareTag("Player"))
-        {
-            //Debug.Log("TRIGGER IS GOODBYE");
-            popupCanvasGO.SetActive(false); // Disable the GameObject
+            if (UIManager.Instance != null)
+            {
+                // IMPORTANT: Only clear the lock if the window is NOT currently open.
+                // If the window is open, let the WordButton handle the unlock.
+                if (!UIManager.Instance.IsStudySessionActive)
+                {
+                    // Only clear if THIS word was the one being tracked
+                    WordsLearned wordsLearned = transform.parent.GetComponentInChildren<WordsLearned>(true);
+                    if (UIManager.Instance.activeWordScript == wordsLearned)
+                    {
+                        UIManager.Instance.activeWordScript = null;
+                    }
+                }
+
+                // If the player walks away, hide the prompt, but don't force-close 
+                // the translation window if they are still clicking buttons.
+            }
         }
     }
 }
