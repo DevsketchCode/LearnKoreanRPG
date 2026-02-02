@@ -166,4 +166,52 @@ public class UIJuice : MonoBehaviour
         }
         rect.localScale = target;
     }
+
+    public void PlayPulse()
+    {
+        StopAllCoroutines();
+        StartCoroutine(PulseRoutine());
+    }
+
+    public void PlayShake()
+    {
+        StopAllCoroutines();
+        StartCoroutine(ShakeRoutine());
+    }
+
+    private IEnumerator PulseRoutine()
+    {
+        RectTransform rect = GetComponent<RectTransform>();
+        Vector3 originalScale = targetScale;
+        float duration = 0.2f;
+        float elapsed = 0;
+
+        // Grow then shrink
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float curve = Mathf.Sin((elapsed / duration) * Mathf.PI);
+            rect.localScale = originalScale + (Vector3.one * (curve * 0.2f));
+            yield return null;
+        }
+        rect.localScale = originalScale;
+    }
+
+    private IEnumerator ShakeRoutine()
+    {
+        RectTransform rect = GetComponent<RectTransform>();
+        Vector3 originalPos = rect.anchoredPosition;
+        float duration = 0.3f;
+        float elapsed = 0;
+        float strength = 10f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float x = Mathf.Sin(elapsed * 50f) * strength * (1 - (elapsed / duration));
+            rect.anchoredPosition = originalPos + new Vector3(x, 0, 0);
+            yield return null;
+        }
+        rect.anchoredPosition = originalPos;
+    }
 }

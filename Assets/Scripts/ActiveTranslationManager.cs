@@ -37,29 +37,6 @@ public class ActiveTranslationManager : MonoBehaviour
         Debug.Log($"[ActiveTranslationManager] Session STARTED for: {CurrentSession.english}");
     }
 
-    public void CompleteSession(WordsLearned.WordKnowledgeLevel selectedLevel)
-    {
-        // 1. Guard against null session
-        if (CurrentSession == null)
-        {
-            Debug.LogError("[ActiveTranslationManager] Cannot complete session: CurrentSession is null!");
-            return;
-        }
-
-        // 2. Guard against missing script reference
-        if (CurrentSession.sourceScript != null)
-        {
-            CurrentSession.sourceScript.FinalizeWordCollection(selectedLevel);
-        }
-        else
-        {
-            Debug.LogError("[ActiveTranslationManager] SourceScript is missing from session!");
-        }
-
-        // 3. Always clean up
-        ClearSession();
-    }
-
     public void ClearSession()
     {
         // Log what we are clearing so we can track the "Ghost" data

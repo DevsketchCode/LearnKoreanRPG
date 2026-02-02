@@ -45,7 +45,9 @@ namespace Assets.Scripts.Collectables
         }
         public void OnButtonClicked() // Call this function when the button is clicked (set in Button's OnClick event in Inspector)
         {
-            ActiveTranslationManager.Instance.ActiveGameObject = this.transform.root.gameObject;
+            // Get the active Game Object if there is one, this is crucial for closing the window
+            GOToInteractWith2 = ActiveTranslationManager.Instance.ActiveGameObject;
+
             // 1. Get the WordsLearned script from the parent of the button
             // Try to find the script on the root of this object's hierarchy
             // (This works better if the button is a child of the Tree/Woman object)
@@ -58,6 +60,7 @@ namespace Assets.Scripts.Collectables
                 localWordScript.OnCollect();
             }
 
+
             Debug.Log("Button Clicked: Interaction GameObject: " + GOToInteractWith1.name + ", Action1: " + buttonAction1 + ", Action2: " + buttonAction2);
             if (GOToInteractWith1 != null)
             {
@@ -66,9 +69,6 @@ namespace Assets.Scripts.Collectables
 
             if (GOToInteractWith2 == null) 
             {
-                // Get the active Game Object if there is one
-                GOToInteractWith2 = ActiveTranslationManager.Instance.ActiveGameObject;
-
                 // Get the InitiateInteraction object if the active object was found
                 if (GOToInteractWith2 != null && GOToInteractWith2.name == "CollectionTrigger")
                 {

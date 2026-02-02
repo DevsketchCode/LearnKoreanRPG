@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1693152041791013125}
   m_Layer: 8
   m_Name: Tree
-  m_TagString: Untagged
+  m_TagString: LearningObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -261,10 +261,6 @@ PrefabInstance:
       propertyPath: m_text
       value: Tree
       objectReference: {fileID: 0}
-    - target: {fileID: 6757408068891538938, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
-      propertyPath: txtCanvas
-      value: 
-      objectReference: {fileID: 6637725511635868007}
     - target: {fileID: 6757408069907237689, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -285,10 +281,5 @@ PrefabInstance:
 --- !u!4 &6637725510869659457 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6757408068601412892, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
-  m_PrefabInstance: {fileID: 133651106331316829}
-  m_PrefabAsset: {fileID: 0}
---- !u!223 &6637725511635868007 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 6757408069907237690, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
   m_PrefabInstance: {fileID: 133651106331316829}
   m_PrefabAsset: {fileID: 0}

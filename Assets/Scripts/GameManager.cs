@@ -11,7 +11,9 @@ public class GameManager : MonoBehaviour
 
     // Events for notifying other scripts about changes
     public event Action<int> OnWordsLearnedChanged;
+    public event Action<int> OnWordsLearnedDiffChanged;
     public event Action<int> OnExperienceChanged;
+    public event Action<int> OnExperienceDiffChanged;
 
     // Player related
     public GameObject playerPrefab;
@@ -51,6 +53,12 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        if (floatingTextManager == null && uiManager != null)
+        {
+            // Try to get it from the UIManager if it's sitting there
+            floatingTextManager = uiManager.GetComponent<FloatingTextManager>();
+        }
 
         // Find or instantiate the player
         playerGO = GameObject.FindGameObjectWithTag("Player");
@@ -140,9 +148,9 @@ public class GameManager : MonoBehaviour
     }
 
     // Helper methods
-    public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)
+    public void ShowText(string msg, Color color, Vector3 position, Vector3 motion, float duration)
     {
-        floatingTextManager.Show(msg, fontSize, color, position, motion, duration);
+        floatingTextManager.Show(msg, color, position, motion, duration);
     }
 
     public void SaveState(string activeScene, string enteredFrom, Vector3 portalPosition, Bounds portalBounds) // Added portalBounds parameter
@@ -278,11 +286,20 @@ public class GameManager : MonoBehaviour
         get => numberWordsLearned; // Expression body for getter
         set
         {
+            // Calculate the difference (+1 or -1)
+            int difference = value - numberWordsLearned;
+
             numberWordsLearned = value;
             PlayerPrefs.SetInt("WordsLearned", numberWordsLearned);
             PlayerPrefs.Save();
 
             OnWordsLearnedChanged?.Invoke(numberWordsLearned);
+
+            // Fire the juice event if there was a change
+            if (difference != 0)
+            {
+                OnWordsLearnedDiffChanged?.Invoke(difference);
+            }
         }
     }
 
@@ -292,11 +309,20 @@ public class GameManager : MonoBehaviour
         get => experience; // Expression body for getter
         set
         {
+            int difference = value - experience; // Calculate the change
             experience = value;
             PlayerPrefs.SetInt("Experience", experience);
             PlayerPrefs.Save();
 
+            // Fire the standard event for the total number
             OnExperienceChanged?.Invoke(experience);
+
+            // Just fire the event with the difference
+            // The UIManager will handle the floating text
+            if (difference != 0)
+            {
+                OnExperienceDiffChanged?.Invoke(difference);
+            }
         }
     }
 
