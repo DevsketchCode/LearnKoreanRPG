@@ -128,7 +128,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // --- NEW: Centralized UI Update Method ---
+    // Centralized UI Update Method
     // This is called by ActiveTranslationManager to populate the labels
     public void UpdateUI(string english, string altLang)
     {
@@ -145,7 +145,7 @@ public class UIManager : MonoBehaviour
         if (englishText != null) englishText.text = english;
         if (altLangText != null) altLangText.text = altLang;
 
-        // 1. Find the UI Image component (Destination)
+        // Find the UI Image component (Destination)
         // It must be under Panel_Object/Sprite
         Transform spriteTransform = translationPanel.parent.Find("Panel_Object/Image_Sprite");
         Image uiImage = spriteTransform?.GetComponent<Image>();
@@ -155,12 +155,12 @@ public class UIManager : MonoBehaviour
             GameObject activeGO = ActiveTranslationManager.Instance.ActiveGameObject.transform.root.gameObject;
             if (activeGO != null)
             {
-                // 2. Get the Sprite from the World Object's SpriteRenderer (Source)
+                // Get the Sprite from the World Object's SpriteRenderer (Source)
                 SpriteRenderer worldSR = activeGO.GetComponentInChildren<SpriteRenderer>();
 
                 if (worldSR != null)
                 {
-                    // 3. The Handshake: Set the UI image to match the world sprite
+                    // Set the UI image to match the world sprite
                     uiImage.sprite = worldSR.sprite;
 
                     // Ensure visibility
@@ -179,11 +179,11 @@ public class UIManager : MonoBehaviour
 
     private void HandleXPJuice(int diff)
     {
-        // 1. Determine color and prefix based on gain/loss
+        // Determine color and prefix based on gain/loss
         Color juiceColor = diff > 0 ? Color.green : Color.red;
         string prefix = diff > 0 ? "+" : "";
 
-        // 2. Trigger the Floating Text via GameManager's helper
+        // Trigger the Floating Text via GameManager's helper
         if (gameManager.playerGO != null)
         {
             gameManager.ShowText(
@@ -195,7 +195,7 @@ public class UIManager : MonoBehaviour
             );
         }
 
-        // 3. Pulse the Translation Panel if it's open
+        // Pulse the Translation Panel if it's open
         if (popupTranslationCanvas != null && popupTranslationCanvas.activeSelf)
         {
             UIJuice juice = popupTranslationCanvas.GetComponentInChildren<UIJuice>();

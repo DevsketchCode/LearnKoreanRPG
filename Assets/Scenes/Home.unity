@@ -6261,63 +6261,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &972807721
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 972807723}
-  - component: {fileID: 972807722}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &972807722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 972807721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8e3bc197e410a14fa7fd990519d95ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 1313478014}
-  playerGO: {fileID: 1313478014}
-  playerSprites: []
-  attachmentSprites: []
-  attachmentPrices: 
-  xpTable: 
-  playerControls: {fileID: 0}
-  floatingTextManager: {fileID: 8760968376095685191}
-  uiManager: {fileID: 1298095183}
-  koreanWon: 0
-  experience: 0
-  numberWordsLearned: 0
-  freshStart: 1
---- !u!4 &972807723
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 972807721}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &999506063
 GameObject:
   m_ObjectHideFlags: 0
@@ -6761,11 +6704,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3657cd975631100449fff9ad1ba684d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1313478014 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2598131675361597003, guid: dc16bac2bebcb1749b8f4ca224cf4279, type: 3}
-  m_PrefabInstance: {fileID: 5896580665786163271}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1313478018 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3664601899525802695, guid: dc16bac2bebcb1749b8f4ca224cf4279, type: 3}
@@ -6984,7 +6922,10 @@ MonoBehaviour:
     subCategory: 
     unit: 0
     lesson: 0
-    voiceId: 
+    audioKey: 
+    notes: 
+    example_english: 
+    example_altLang: 
     KnowledgeLevel: 0
 --- !u!4 &1545528981
 Transform:
@@ -15404,7 +15345,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 64650589158708930, guid: 2e1a1ecd26f36ed49af5775479a813ce, type: 3}
       propertyPath: wordID
-      value: food_fruits_pineapple_word_noun
+      value: nature_plants_tree_word_noun
       objectReference: {fileID: 0}
     - target: {fileID: 2758918441249273993, guid: 2e1a1ecd26f36ed49af5775479a813ce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15664,6 +15605,14 @@ PrefabInstance:
       propertyPath: sceneToLoad
       value: Town1
       objectReference: {fileID: 0}
+    - target: {fileID: 7290430024778752786, guid: 59fa47f5a39533e40ab94f50200e5795, type: 3}
+      propertyPath: targetPortalName
+      value: LevelChanger-Home_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7290430024778752786, guid: 59fa47f5a39533e40ab94f50200e5795, type: 3}
+      propertyPath: EnterSceneByGoing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7562709029609661538, guid: 59fa47f5a39533e40ab94f50200e5795, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -15722,7 +15671,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8596369738410458004, guid: 59fa47f5a39533e40ab94f50200e5795, type: 3}
       propertyPath: m_Name
-      value: LevelChanger-Town
+      value: LevelChanger-Town1_01
       objectReference: {fileID: 0}
     - target: {fileID: 8596369738410458004, guid: 59fa47f5a39533e40ab94f50200e5795, type: 3}
       propertyPath: m_IsActive
@@ -15875,23 +15824,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1552965df85fea8469cd9556b02a522e, type: 3}
---- !u!114 &8760968376095685191 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5363301572352281466, guid: 1552965df85fea8469cd9556b02a522e, type: 3}
-  m_PrefabInstance: {fileID: 8760968376095685190}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 217cac7843817b3459591386905368e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FloatingTextManager
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1450013815}
-  - {fileID: 972807723}
   - {fileID: 8760968376095685190}
   - {fileID: 1545528981}
   - {fileID: 359748737}

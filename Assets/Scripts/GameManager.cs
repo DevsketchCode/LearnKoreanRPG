@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System; // Required for Action
 using Assets.Scripts.Collectables;
+using NUnit.Framework.Constraints;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     // Player related
     public GameObject playerPrefab;
     public GameObject playerGO;
+    public float playerOffsetFromPortal = 2.0f;
 
     // Resources
     public List<Sprite> playerSprites;
@@ -33,10 +35,13 @@ public class GameManager : MonoBehaviour
 
 
     // Game data
-    public int koreanWon;
+    public string currentLanguage = "KR"; // Default language prefix
+    public int money;
     public int experience;
     public int numberWordsLearned;
     private Vector3 player1WorldPos; // Changed to private as it's only used internally
+    public bool loadingFromMenu = false;
+    public string pendingSceneName;
 
     // Collectable tracking
     public Dictionary<string, bool> CollectableStates = new Dictionary<string, bool>(); // More descriptive name
@@ -46,26 +51,32 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        string sceneName = SceneManager.GetActiveScene().name;
+
         // Singleton pattern implementation
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
+        
         Instance = this;
 
-        if (floatingTextManager == null && uiManager != null)
+        if (sceneName != "_MainMenu")
         {
-            // Try to get it from the UIManager if it's sitting there
-            floatingTextManager = uiManager.GetComponent<FloatingTextManager>();
-        }
+            if (floatingTextManager == null && uiManager != null)
+            {
+                // Try to get it from the UIManager if it's sitting there
+                floatingTextManager = uiManager.GetComponent<FloatingTextManager>();
+            }
 
-        // Find or instantiate the player
-        playerGO = GameObject.FindGameObjectWithTag("Player");
-        if (playerGO == null)
-        {
-            playerGO = Instantiate(playerPrefab);
-            playerGO.tag = "Player";
+            // Find or instantiate the player
+            playerGO = GameObject.FindGameObjectWithTag("Player");
+            if (playerGO == null)
+            {
+                playerGO = Instantiate(playerPrefab);
+                playerGO.tag = "Player";
+            }
         }
 
         // Subscribe to scene loaded event
@@ -96,26 +107,33 @@ public class GameManager : MonoBehaviour
         }
 
         // Load game data from PlayerPrefs
-        numberWordsLearned = PlayerPrefs.GetInt("WordsLearned", 0);
-        koreanWon = PlayerPrefs.GetInt("KoreanWon", 0);
-        experience = PlayerPrefs.GetInt("Experience", 0);
+        string prefix = currentLanguage + "_";
+
+        numberWordsLearned = PlayerPrefs.GetInt(prefix + "WordsLearned", 0);
+        money = PlayerPrefs.GetInt(prefix + "Money", 0);
+        experience = PlayerPrefs.GetInt(prefix + "Experience", 0);
     }
 
     private void Start()
     {
-        // Get PlayerMovement reference in Start (more efficient)
-        GameObject playerGameObject = GameObject.FindGameObjectWithTag("Player"); // Find Player GO
-        if (playerGameObject != null)
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        if (sceneName != "_MainMenu")
         {
-            playerControls = playerGameObject.GetComponent<Player>(); // Get PlayerMovement component
-            if (playerControls == null)
+            // Get PlayerMovement reference in Start (more efficient)
+            GameObject playerGameObject = GameObject.FindGameObjectWithTag("Player"); // Find Player GO
+            if (playerGameObject != null)
             {
-                Debug.LogError("PlayerMovement script not found on Player GameObject!");
+                playerControls = playerGameObject.GetComponent<Player>(); // Get PlayerMovement component
+                if (playerControls == null)
+                {
+                    Debug.LogError("PlayerMovement script not found on Player GameObject!");
+                }
             }
-        }
-        else
-        {
-            Debug.LogError("Player GameObject not found with tag 'Player'!");
+            else
+            {
+                Debug.LogError("Player GameObject not found with tag 'Player'!");
+            }
         }
     }
 
@@ -142,8 +160,43 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log($"[OnSceneLoaded] Scene Loaded: {scene.name}, Mode: {mode}, Time: {Time.time} - SceneLoadCompleted"); 
+        Debug.Log($"[OnSceneLoaded] Scene Loaded: {scene.name}");
+
+        // 1. Prevent logic from running on the Main Menu
+        if (scene.name == "_MainMenu") // Ensure this matches your menu scene name exactly
+        {
+            return;
+        }
+
+        // 2. Find the UIManager in the NEW scene
+        // This allows you to have a fresh UI for every level while the GameManager persists
+        uiManager = FindObjectOfType<UIManager>();
+        if (uiManager != null)
+        {
+            floatingTextManager = uiManager.GetComponent<FloatingTextManager>();
+        }
+
+        // 3. Handle Player Spawning
+        playerGO = GameObject.FindGameObjectWithTag("Player");
+        if (playerGO == null)
+        {
+            playerGO = Instantiate(playerPrefab);
+            playerGO.tag = "Player";
+        }
+
+        // 4. Update Player Controls reference
+        playerControls = playerGO.GetComponent<Player>();
+
+        // 5. Load the specific language state and player position
         LoadState(scene);
+
+        // Tell the player they just spawned so they can start their "immunity" cooldown
+        if (playerControls != null)
+        {
+            playerControls.OnSpawn();
+        }
+
+        // 6. Initialize world objects (Triggers, Words, etc.)
         InitializeCollectables();
     }
 
@@ -153,7 +206,7 @@ public class GameManager : MonoBehaviour
         floatingTextManager.Show(msg, color, position, motion, duration);
     }
 
-    public void SaveState(string activeScene, string enteredFrom, Vector3 portalPosition, Bounds portalBounds) // Added portalBounds parameter
+    public void SaveState(string activeScene, string enterSceneByGoing, string targetPortal, Vector3 portalPosition, Bounds portalBounds) // Added portalBounds parameter
     {
         // Find the player
         playerGO = GameObject.FindGameObjectWithTag("Player");
@@ -163,46 +216,49 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        // Create a prefix based on the current language to isolate save data
+        string prefix = currentLanguage + "_";
+
         player1WorldPos = playerGO.transform.position;
-        // Don't need to save the player position at this time for any other scene.
-        if(activeScene == "Town1")
+
+        // --- 1. GLOBAL PERMANENT SAVE (For Title Screen) ---
+        PlayerPrefs.SetString(prefix + "LastScene", activeScene);
+        PlayerPrefs.SetFloat(prefix + activeScene + "PlayerPosX", player1WorldPos.x);
+        PlayerPrefs.SetFloat(prefix + activeScene + "PlayerPosY", player1WorldPos.y);
+
+        // GLOBAL POSITION SAVE: Save player position for EVERY scene
+        // --- 2. TRANSITION SAVE (For Scene-to-Scene Portal) ---
+        if (portalBounds != default(Bounds))
         {
-            // Debug logs for loading (before offset)
-            //Debug.Log($"[LoadState - Town1] Loaded PlayerPosX: {PlayerPrefs.GetFloat("PlayerPosX")}, PlayerPosY: {PlayerPrefs.GetFloat("PlayerPosY")}");
+            // Save the NAME of the door in the next scene (e.g., "HomeDoor")
+            PlayerPrefs.SetString("TargetPortalName", targetPortal);
 
+            // Save which scene that door lives in
+            PlayerPrefs.SetString("TransitionForScene", pendingSceneName);
 
-            // Save player position - With Offset
-            PlayerPrefs.SetFloat("PlayerPosX", portalBounds.center.x);
+            // Save which direction we are "entering" from to help LoadState calculate the offset
+            PlayerPrefs.SetString("EnterSceneByGoing", enterSceneByGoing);
 
-            if (enteredFrom == "Bottom")
-            {
-                PlayerPrefs.SetFloat("PlayerPosY", (portalBounds.min.y - 0.5f));
-            }
-            else if (enteredFrom == "Top")
-            {
-                PlayerPrefs.SetFloat("PlayerPosY", (portalBounds.max.y + 0.5f));
-            } 
-            else
-            {
-                PlayerPrefs.SetFloat("PlayerPosY", player1WorldPos.y);
-            }
+            // Mark that we have a transition waiting
+            PlayerPrefs.SetInt("HasTransition", 1);
 
-            //Debug.Log($"[LoadState - Town1] Position after Y and X offset: X={player1WorldPos.x}, Y={player1WorldPos.y}"); // Log position after offsets
+            loadingFromMenu = false;
+        }
+        else
+        {
+            // If we saved manually (like via Menu), clear any pending portal transitions
+            PlayerPrefs.SetInt("HasTransition", 0);
         }
 
-        // Debug.Log($"[SaveState] Scene: {activeScene}, Leaving from: {enteredFrom}, Saving Player Pos: X={player1WorldPos.x}, Y={player1WorldPos.y}, LevelChanger Y={portalPosition.y}, LevelChanger MinX={portalBounds.min.x}, LevelChanger MaxX={portalBounds.max.x}");
-        // Debug.Log($"[SaveState] Saved PlayerPosX: {PlayerPrefs.GetFloat("PlayerPosX")}, PlayerPosY: {PlayerPrefs.GetFloat("PlayerPosY")}");
-
-        // Save game data (rest is fine)
-        PlayerPrefs.SetInt("KoreanWon", koreanWon);
-        PlayerPrefs.SetInt("Experience", experience);
-        PlayerPrefs.SetInt("WordsLearned", numberWordsLearned);
+        // Save game data (now using language prefix)
+        PlayerPrefs.SetInt(prefix + "Money", money);
+        PlayerPrefs.SetInt(prefix + "Experience", experience);
+        PlayerPrefs.SetInt(prefix + "WordsLearned", numberWordsLearned);
 
         // Using Singleton Instance instead of FindObjectOfType
         if (UIManager.Instance == null)
         {
             // If the instance isn't found, we default the debug window to false
-            // Debug.Log("UIManager.Instance was NULL during SaveState");
             PlayerPrefs.SetString("DebugWindow", "False");
         }
         else
@@ -211,13 +267,15 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetString("DebugWindow", UIManager.Instance.ActivateDebugWindow.ToString());
         }
 
-        PlayerPrefs.SetString("SaveState", "True");
+        // Mark that a save exists for this language
+        PlayerPrefs.SetString(prefix + "SaveState", "True");
 
         // Save collectable states (rest is fine)
         SaveCollectableStates();
 
         PlayerPrefs.Save();
-        Debug.Log("SCENE SAVED!! Scene: " + activeScene);
+        Debug.Log("Last Saved Scene was: " + PlayerPrefs.GetString(prefix + "LastScene"));
+        Debug.Log($"SCENE SAVED!! Language: {currentLanguage} Scene: {activeScene}");
         Debug.Log($"[SaveState] Scene: {activeScene} SAVED. PlayerPrefs DebugWindow: {PlayerPrefs.GetString("DebugWindow")}");
 
         DebugPrintAllSavedData();
@@ -225,59 +283,141 @@ public class GameManager : MonoBehaviour
 
     public void LoadState(Scene scene)
     {
-        Debug.Log($"[LoadState] Loading Scene: {scene.name}");
 
-        if (!PlayerPrefs.HasKey("SaveState"))
+        Debug.Log($"[HANDSHAKE DEBUG] Checking for scene: {scene.name}");
+        Debug.Log($"[HANDSHAKE DEBUG] TransitionForScene is: {PlayerPrefs.GetString("TransitionForScene")}");
+        Debug.Log($"[HANDSHAKE DEBUG] HasTransition is: {PlayerPrefs.GetInt("HasTransition")}");
+
+        string targetName = PlayerPrefs.GetString("TargetPortalName");
+
+        Debug.Log($"[LoadState] Loading Scene: {scene.name} for Language: {currentLanguage}");
+
+        string prefix = currentLanguage + "_";
+
+        // Check for Save Data and Transition status upfront
+        bool hasSaveData = PlayerPrefs.HasKey(prefix + "SaveState");
+        bool hasActiveTransition = PlayerPrefs.GetInt("HasTransition", 0) == 1;
+        bool isTransitionForThisScene = PlayerPrefs.GetString("TransitionForScene") == scene.name;
+
+        // Load language-specific stats ONLY if they exist
+        if (hasSaveData)
         {
-            Debug.Log("No save data found. Player will start at default position.");
-            InitializeCollectables();
-            return;
+            money = PlayerPrefs.GetInt(prefix + "Money");
+            experience = PlayerPrefs.GetInt(prefix + "Experience");
+            numberWordsLearned = PlayerPrefs.GetInt(prefix + "WordsLearned");
+        }
+        else
+        {
+            // If no save, we don't 'return' yet because we might be in a Portal Transition
+            Debug.Log($"No save data found for {currentLanguage}. Proceeding to check for transitions.");
         }
 
-        koreanWon = PlayerPrefs.GetInt("KoreanWon");
-        experience = PlayerPrefs.GetInt("Experience");
-        numberWordsLearned = PlayerPrefs.GetInt("WordsLearned");
-
-        if (scene.name == "Town1")
+        // --- POSITION SELECTION LOGIC ---
+        if (loadingFromMenu && hasSaveData)
         {
-            player1WorldPos = new Vector3(PlayerPrefs.GetFloat("PlayerPosX"), PlayerPrefs.GetFloat("PlayerPosY"), 0);
+            // 1. Loading from Title Screen: Use the absolute last spot saved
+            string previousScene = PlayerPrefs.GetString(prefix + "LastScene", scene.name);
+            player1WorldPos = new Vector3(PlayerPrefs.GetFloat(prefix + previousScene + "PlayerPosX"), PlayerPrefs.GetFloat(prefix + previousScene + "PlayerPosY"), 0);
+            loadingFromMenu = false; // Reset the flag
+            PlayerPrefs.SetInt("HasTransition", 0); // Clear portal data
+        }
+        else if (hasActiveTransition && isTransitionForThisScene)
+        {
+            // PATH B: Portal Transition
+            GameObject targetPortal = GameObject.Find(targetName);
 
-            // Find or instantiate the player.
+            // If Find fails, try one more time by searching all objects (slower but foolproof for first-load)
+            if (targetPortal == null)
+            {
+                LevelChanger[] allPortals = Resources.FindObjectsOfTypeAll<LevelChanger>();
+                foreach (var p in allPortals)
+                {
+                    if (p.name == targetName)
+                    {
+                        targetPortal = p.gameObject;
+                        break;
+                    }
+                }
+            }
+
+            Debug.Log($"[HANDSHAKE START] Searching for portal named: '{targetName}'");
+
+            if (targetPortal != null)
+            {
+                Vector3 spawnPos = targetPortal.transform.position;
+                string direction = PlayerPrefs.GetString("EnterSceneByGoing");
+
+                if (direction == "Up") spawnPos.y += playerOffsetFromPortal;
+                else if (direction == "Down") spawnPos.y -= playerOffsetFromPortal;
+                else if (direction == "Left") spawnPos.x -= playerOffsetFromPortal;
+                else if (direction == "Right") spawnPos.x += playerOffsetFromPortal;
+
+                player1WorldPos = spawnPos;
+                Debug.Log($"[HANDSHAKE SUCCESS] Found {targetName}. Spawning at {player1WorldPos}");
+
+                // Clear transition after successful use
+                PlayerPrefs.SetInt("HasTransition", 0);
+            }
+        }
+        else if (hasSaveData)
+        {
+            // PATH C: Fallback (This only runs if Path A and B didn't)
+            player1WorldPos.x = PlayerPrefs.GetFloat(prefix + scene.name + "PlayerPosX");
+            player1WorldPos.y = PlayerPrefs.GetFloat(prefix + scene.name + "PlayerPosY");
+            Debug.Log($"[PATH C] Using saved position for {scene.name}");
+        }
+        else
+        {
+            // NO SAVE AND NO TRANSITION: Fresh Start/Default Position
+            Debug.Log("No save data or transition found. Starting at default scene position.");
+            // If playerGO already exists in the scene, keep its current position, else use zero
             playerGO = GameObject.FindGameObjectWithTag("Player");
-            if (playerGO == null)
-            {
-                playerGO = Instantiate(playerPrefab);
-                playerGO.tag = "Player";
-            }
+            player1WorldPos = playerGO != null ? playerGO.transform.position : Vector3.zero;
 
-            if (playerGO != null)
-            {
-                playerGO.transform.position = player1WorldPos; // Set player position - NOW with Y and X offset
-            }
-            if (playerControls != null)
-            {
-                playerControls.EnableMovement();
-            }
-
-            //Debug.Log($"[LoadState - Town1] Setting Player Position: X={playerGO.transform.position.x}, Y={playerGO.transform.position.y} (GameObject)"); // Log final player position from GameObject
+            InitializeCollectables();
+            // We don't return here anymore so the final move logic can run
         }
-        if (uiManager == null)
+
+        // FINAL MOVE: Apply the position once
+        playerGO = GameObject.FindGameObjectWithTag("Player");
+        if (playerGO == null)
         {
-            // Debug.Log("UIMANAGER was NULL");
-            uiManager = FindObjectOfType<UIManager>(); // Find the UIManager
+            playerGO = Instantiate(playerPrefab);
+            playerGO.tag = "Player";
         }
 
-        if (uiManager != null)
+        // APPLY POSITION ONCE
+        playerGO.transform.position = player1WorldPos;
+
+        // RE-LINK CONTROLS
+        playerControls = playerGO.GetComponent<Player>();
+        if (playerControls != null)
         {
-            // Debug.Log("UIMANAGER EXISTS: Before: " + uiManager.ActivateDebugWindow);
-            uiManager.ActivateDebugWindow = (PlayerPrefs.GetString("DebugWindow") == "True");
-            // Debug.Log("UIMANAGER EXISTS: After: " + uiManager.ActivateDebugWindow);
+            playerControls.EnableMovement();
         }
+
+        Debug.Log("[LOAD STATE] Scene: " + scene.name + ", Player Position: " + player1WorldPos.ToString());
+
+        // UI and Collectable logic...
+        if (uiManager == null) uiManager = FindObjectOfType<UIManager>(); // Find the UIManager
+        if (uiManager != null) uiManager.ActivateDebugWindow = (PlayerPrefs.GetString("DebugWindow") == "True");
 
         LoadCollectableStates();
         InitializeCollectables();
-        //Debug.Log("Loading Complete for " + scene.name + ". Experience: " + experience + " // Words Learned: " + numberWordsLearned);
-        Debug.Log($"[LoadState] Scene: {scene.name} PlayerPrefs DebugWindow: {PlayerPrefs.GetString("DebugWindow")}");
+        Debug.Log($"[LoadState] Scene: {scene.name} Load Complete. Pos: {player1WorldPos}");
+    }
+
+    public void SaveAndGoToMainMenu()
+    {
+        // 1. Get the current scene name
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        // 2. Trigger the existing SaveState logic. 
+        // We pass empty/default values for portal params because we are doing a manual save.
+        SaveState(currentScene, "", "", Vector3.zero, new Bounds());
+
+        // 3. Load the Main Menu
+        SceneManager.LoadScene("_MainMenu");
     }
 
     // WordsLearned property with event firing
@@ -334,6 +474,7 @@ public class GameManager : MonoBehaviour
 
     private void LoadCollectableStates()
     {
+        Debug.Log("LoadCollectableStates for Scene: " + GameManager.Instance.pendingSceneName);
         string collectableStatesString = PlayerPrefs.GetString("CollectableStates", "");
         CollectableStates = StringToDictionary(collectableStatesString);
     }
@@ -363,7 +504,7 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            // **NEW CODE - WordsLearned Specific Handling - ADD THIS BLOCK**
+            // WordsLearned Specific Handling
             if (collectable is WordsLearned wordObject) // Check if it's a WordsLearned object
             {
                 string englishWord = wordObject.GetEnglishWord(); // **Need to create GetEnglishWord() function in WordsLearned.cs - Step B**
@@ -381,12 +522,15 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
+
                     // Word is in scene, but no saved data in dictionary (maybe a new word in this scene instance)
-                    Debug.Log($"[InitializeCollectables] No saved data found in dictionary for word: '{englishWord}' in scene. Keeping default 'New' level.");
+
+                    // Debug.Log($"[InitializeCollectables] No saved data found in dictionary for word: '{englishWord} : {collectable.transform.root.name}' in scene. Keeping default 'New' level.");
+                    
                     // It will remain at its default "New" level, which is fine for newly instantiated words or words not yet learned.
                 }
             }
-            // **End of NEW CODE - WordsLearned Specific Handling**
+            // End of WordsLearned Specific Handling
         }
     }
 
@@ -466,5 +610,21 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Experience: {PlayerPrefs.GetInt("Experience", 0)}");
 
         Debug.Log("===============================================");
+    }
+
+    // This ensures that whenever a player exits (even via a menu in the middle of a level), their progress is saved first.
+    public void QuitGame()
+    {
+        Debug.Log("GameManager handling Quit...");
+
+        // 1. Always save before leaving! 
+        // We pass nulls/defaults because we just want a snapshot of current stats/pos
+        SaveState(SceneManager.GetActiveScene().name, "", "", Vector3.zero, new Bounds());
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }

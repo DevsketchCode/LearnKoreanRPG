@@ -61,7 +61,7 @@ namespace Assets.Scripts.Collectables
                 // Ensure the Glow_Highlights are found even if the UI was just enabled
                 SetupUIReferences();
 
-                Debug.Log($"[WordsLearned - WordKnowledgeLevelProp SET] Word: '{learnedWord_eng}', Knowledge Level: {wordKnowledgeLevel}");
+                // Debug.Log($"[WordsLearned - WordKnowledgeLevelProp SET] Word: '{learnedWord_eng}', Knowledge Level: {wordKnowledgeLevel}");
 
                 UpdateKnowledgeLevelButtonColor(); // Call UI update function here!
             }
@@ -98,7 +98,7 @@ namespace Assets.Scripts.Collectables
                 //CollectableID = parentDisplay.wordID;
                 CollectableID = parentDisplay.wordID;
 
-                Debug.Log($"[WordsLearned] Found key '{CollectableID}' from Parent ({transform.parent.name})");
+                // Debug.Log($"[WordsLearned] Found key '{CollectableID}' from Parent ({transform.parent.name})");
             }
             else
             {
@@ -106,7 +106,7 @@ namespace Assets.Scripts.Collectables
             }
 
             // Determine user language - Defaulting to Korean if not set
-            string savedLang = PlayerPrefs.GetString("SelectedLanguage", "Korean");
+            string savedLang = PlayerPrefs.GetString("SelectedLanguage");
             if (!System.Enum.TryParse(savedLang, out WordData.Language targetLang))
             {
                 // If the string doesn't match any enum, default to Korean
@@ -123,7 +123,7 @@ namespace Assets.Scripts.Collectables
                 this.wordDataType = currentWordData.wordDataType;
 
 
-                Debug.Log($"[WordsLearned] Successfully loaded {targetLang} data for {CollectableID}");
+                // Debug.Log($"[WordsLearned] Successfully loaded {targetLang} data for {CollectableID}");
 
                 PushDataToButtons();
             }
@@ -147,7 +147,7 @@ namespace Assets.Scripts.Collectables
                 // Ensure the button knows which object to call Finalize on
                 btn.WordsLearnedGO = this.gameObject;
             }
-            Debug.Log($"[WordsLearned] Pushed '{learnedWord_eng}' to {buttons.Length} buttons.");
+            // Debug.Log($"[WordsLearned] Pushed '{learnedWord_eng}' to {buttons.Length} buttons.");
         }
 
         private void SetupUIReferences()
@@ -246,7 +246,7 @@ namespace Assets.Scripts.Collectables
             // This uses the Singleton to ensure only one study session happens at a time
             if (UIManager.Instance.IsStudySessionActive)
             {
-                Debug.Log($"[WordsLearned] Session busy. Ignoring trigger from {gameObject.name} because another session is active.");
+                Debug.LogWarning($"[WordsLearned] Session busy. Ignoring trigger from {gameObject.name} because another session is active.");
                 return;
             }
 
@@ -299,11 +299,11 @@ namespace Assets.Scripts.Collectables
             if (ActiveTranslationManager.Instance != null)
             {
                 // Debug session info to verify data before sending
-                Debug.Log($"[WordsLearned - OnCollect] Packaging: ID={session.wordID}, ENG={session.english}, ALT={session.altLang}, Level={session.currentLevel}");
+                // Debug.Log($"[WordsLearned - OnCollect] Packaging: ID={session.wordID}, ENG={session.english}, ALT={session.altLang}, Level={session.currentLevel}");
 
                 // Pass the localized session, the specific gameObject, and the specific currentWordData
                 ActiveTranslationManager.Instance.StartSession(session, this.gameObject, this.currentWordData);
-                Debug.Log($"[WordsLearned - OnCollect] Session sent to ActiveTranslationManager for: {learnedWord_eng}");
+                // Debug.Log($"[WordsLearned - OnCollect] Session sent to ActiveTranslationManager for: {learnedWord_eng}");
             }
             else
             {
@@ -360,14 +360,14 @@ namespace Assets.Scripts.Collectables
                 WordData savedData = GameManager.Instance.wordsLearnedDictionary[uniqueSaveKey];
                 //wordKnowledgeLevel = wordData.KnowledgeLevel; // DO NOT set backing field directly!
                 WordKnowledgeLevelProp = savedData.KnowledgeLevel; // Use property setter to trigger UI update
-                Debug.Log($"[WordsLearned - UpdateKnowledgeLevelFromDictionary] Loaded knowledge level '{WordKnowledgeLevelProp}' from dictionary for key: '{uniqueSaveKey}'.");
+                // Debug.Log($"[WordsLearned - UpdateKnowledgeLevelFromDictionary] Loaded knowledge level '{WordKnowledgeLevelProp}' from dictionary for key: '{uniqueSaveKey}'.");
 
                 // Crucially, we don't need to set a persistent 'wordLearned' flag here in WordsLearned.cs anymore!
                 // The 'IsLearned' flag in WordData in the dictionary is now the persistent source of truth.
             }
             else
             {
-                Debug.Log($"[WordsLearned - UpdateKnowledgeLevelFromDictionary] Key '{uniqueSaveKey}' NOT found in dictionary on Start. Starting as 'New'.");
+                Debug.LogWarning($"[WordsLearned - UpdateKnowledgeLevelFromDictionary] Key '{uniqueSaveKey}' NOT found in dictionary on Start. Starting as 'New'.");
                 WordKnowledgeLevelProp = WordKnowledgeLevel.New; // Default to New if not in dictionary
             }
         }
@@ -383,7 +383,7 @@ namespace Assets.Scripts.Collectables
             string uniqueSaveKey = currentWordData.key + "_" + currentWordData.language;
 
             // DEBUG: Check what's in the dictionary vs what we are looking for
-            Debug.Log($"[DICTIONARY CHECK] Looking for: {uniqueSaveKey}. Dictionary Count: {GameManager.Instance.wordsLearnedDictionary.Count}");
+            // Debug.Log($"[DICTIONARY CHECK] Looking for: {uniqueSaveKey}. Dictionary Count: {GameManager.Instance.wordsLearnedDictionary.Count}");
 
             // Get the level CURRENTLY in the save file, not the script
             WordKnowledgeLevel previousSavedLevel = WordKnowledgeLevel.New;
@@ -423,7 +423,7 @@ namespace Assets.Scripts.Collectables
                     currentWordData.key, currentWordData.language, currentWordData.english,
                     currentWordData.complex, currentWordData.romanized, currentWordData.phonetic,
                     currentWordData.wordDataType, currentWordData.partOfSpeech, currentWordData.gender, currentWordData.tense,
-                    currentWordData.formality, currentWordData.plural, currentWordData.category, currentWordData.subCategory, currentWordData.unit, currentWordData.lesson, currentWordData.voiceId,
+                    currentWordData.formality, currentWordData.plural, currentWordData.category, currentWordData.subCategory, currentWordData.unit, currentWordData.lesson, currentWordData.audioKey, currentWordData.notes, currentWordData.example_english, currentWordData.example_altLang,
                     selectedLevel
                 );
 
@@ -532,7 +532,7 @@ namespace Assets.Scripts.Collectables
 
         public string GetEnglishWord() 
         {
-            Debug.Log($"[WordsLearned - GetEnglishWord] Returning English word: '{learnedWord_eng}' for object: {gameObject.transform.parent.parent.name}");
+            // Debug.Log($"[WordsLearned - GetEnglishWord] Returning English word: '{learnedWord_eng}' for object: {gameObject.transform.parent.parent.name}");
             return learnedWord_eng;
         }
 
@@ -617,7 +617,7 @@ namespace Assets.Scripts.Collectables
                     break;
             }
 
-            Debug.Log($"[WordsLearned - UpdateKnowledgeLevelButtonColor] Button colors updated for word: '{learnedWord_eng}' to level: {WordKnowledgeLevelProp}");
+            // Debug.Log($"[WordsLearned - UpdateKnowledgeLevelButtonColor] Button colors updated for word: '{learnedWord_eng}' to level: {WordKnowledgeLevelProp}");
         }
 
         // Text to Speech Implementation

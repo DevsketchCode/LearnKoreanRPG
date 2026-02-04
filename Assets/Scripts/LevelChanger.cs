@@ -4,14 +4,15 @@ using UnityEngine.SceneManagement;
 public class LevelChanger : Collidable
 {
     public string sceneToLoad;
-    public enum EnteredFromDropdown
+    public enum EnterSceneByGoingDropdown
     {
-        Top, 
-        Bottom, 
+        Up, 
+        Down, 
         Left, 
         Right
     }
-    public EnteredFromDropdown EnteredFrom;
+    public EnterSceneByGoingDropdown EnterSceneByGoing;
+    public string targetPortalName;
     public Animator animator;
     private BoxCollider2D boxCollider2d; // Add reference to BoxCollider2D
     private bool sceneLoadingInitiated = false; // Track if scene loading has begun
@@ -49,55 +50,52 @@ public class LevelChanger : Collidable
 
         if (coll.CompareTag("Player"))
         {
+            // Check if the player is allowed to teleport yet
+            if (player != null && !player.CanTransition())
+            {
+                return; // Exit if they just spawned
+            }
+
             sceneLoadingInitiated = true; // If OnCollide is somehow called again very quickly, the early exit condition will prevent a second scene load
 
+            GameManager.Instance.pendingSceneName = sceneToLoad;
             string currentSceneName = SceneManager.GetActiveScene().name;
 
-            Debug.Log($"[LevelChanger] Player collided with LevelChanger. Current Scene: {currentSceneName}, Scene to Load: {sceneToLoad}, EnteredFrom: {EnteredFrom}");
+            Debug.Log($"[LevelChanger] Player collided with LevelChanger. Current Scene: {currentSceneName}, Scene to Load: {sceneToLoad}, EnterSceneByGoing: {EnterSceneByGoing}");
 
             // **DISABLE PLAYER MOVEMENT IMMEDIATELY on collision**
             if (player != null)
             {
                 player.DisableMovement();
-                
             }
             else
             {
                 Debug.LogError("PlayerMovement reference is null in Portal, cannot disable movement!");
             }
 
-            if (sceneToLoad == "Town1") // Entering Town1
+            // 1. Tell the GameManager which scene we are EXPECTING to load
+            PlayerPrefs.SetString("TransitionForScene", sceneToLoad);
+            // 2. Flip the switch to tell LoadState to use Path B (The Handshake)
+            PlayerPrefs.SetInt("HasTransition", 1);
+            // 3. Ensure the portal name is exactly what we want to find
+            PlayerPrefs.SetString("TargetPortalName", targetPortalName);
+
+            PlayerPrefs.SetString("EnterSceneByGoing", EnterSceneByGoing.ToString());
+            Debug.Log($"[LevelChanger] Saving state for {currentSceneName}. Transitioning to {sceneToLoad} via {targetPortalName}");
+
+            // We must call SaveState so GameManager knows the bounds of the portal we are currently using
+            if (boxCollider2d != null)
             {
-                PlayerPrefs.SetString("LastEnteredFrom", EnteredFrom.ToString());
-                PlayerPrefs.Save();
-                Debug.Log($"[LevelChanger - Town1 Entry] Saving EnteredFrom: {EnteredFrom} as LastEnteredFrom when entering Town1");
+                GameManager.Instance.SaveState(currentSceneName, EnterSceneByGoing.ToString(), targetPortalName, transform.position, boxCollider2d.bounds);
+                Debug.Log($"[LevelChanger] Saving state for {currentSceneName}. Transitioning to {sceneToLoad} via {targetPortalName}");
             }
-            else if (currentSceneName == "Town1") // Leaving Town1 - Pass LevelChanger position and bounds
+            else
             {
-                if (boxCollider2d != null)
-                {
-                    GameManager.Instance.SaveState(currentSceneName, EnteredFrom.ToString(), transform.position, boxCollider2d.bounds); // Pass LevelChanger position and bounds
-                    Debug.Log($"[LevelChanger - Town1 Exit] Passing EnteredFrom: {EnteredFrom}, LevelChanger Position: {transform.position.y}, LevelChanger Bounds: MinX={boxCollider2d.bounds.min.x}, MaxX={boxCollider2d.bounds.max.x} to SaveState when leaving Town1");
-                }
-                else
-                {
-                    Debug.LogError("BoxCollider2D is null on LevelChanger, cannot save bounds!");
-                    GameManager.Instance.SaveState(currentSceneName, EnteredFrom.ToString(), transform.position, new Bounds()); // Pass default Bounds if collider missing (error case)
-                }
+                Debug.LogError("BoxCollider2D is null on LevelChanger, cannot save bounds!");
+                GameManager.Instance.SaveState(currentSceneName, EnterSceneByGoing.ToString(), targetPortalName, transform.position, new Bounds());
             }
-            else // Leaving other scene
-            {
-                if (boxCollider2d != null)
-                {
-                    GameManager.Instance.SaveState(currentSceneName, EnteredFrom.ToString(), transform.position, boxCollider2d.bounds); // Pass LevelChanger position and bounds
-                    Debug.Log($"[LevelChanger - Other Scene Exit] Passing EnteredFrom: {EnteredFrom}, LevelChanger Position: {transform.position.y}, LevelChanger Bounds: MinX={boxCollider2d.bounds.min.x}, MaxX={boxCollider2d.bounds.max.x} to SaveState when leaving scene: {currentSceneName} (not Town1)");
-                }
-                else
-                {
-                    Debug.LogError("BoxCollider2D is null on LevelChanger, cannot save bounds!");
-                    GameManager.Instance.SaveState(currentSceneName, EnteredFrom.ToString(), transform.position, new Bounds()); // Pass default Bounds if collider missing
-                }
-            }
+
+            PlayerPrefs.Save();
 
             // Disable LevelChanger Collider IMMEDIATELY!
             if (boxCollider2d != null)

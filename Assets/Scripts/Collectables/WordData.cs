@@ -67,7 +67,10 @@ public class WordData
     public int unit;
     public int lesson;
 
-    public string voiceId; // To be used by the TTS Engine
+    public string audioKey; // To be used by the TTS Engine
+    public string notes; 
+    public string example_english;
+    public string example_altLang;
 
     // Learning State
     public WordsLearned.WordKnowledgeLevel KnowledgeLevel;
@@ -78,8 +81,8 @@ public class WordData
     // Constructor (optional, but good practice to initialize)
     public WordData(string key, Language language, string english, string complex,
                     string romanized, string phonetic, WordDataType type, PartOfSpeech pos,
-                    Gender gender, Tense tense, Formality formality, Plural plural, string category, string subCategory, int unit, int lesson, string voiceId,
-                    Assets.Scripts.Collectables.WordsLearned.WordKnowledgeLevel knowledgeLevel = Assets.Scripts.Collectables.WordsLearned.WordKnowledgeLevel.New)
+                    Gender gender, Tense tense, Formality formality, Plural plural, string category, string subCategory, int unit, int lesson, string audioKey, string notes, string example_english, string example_altLang,
+                    WordsLearned.WordKnowledgeLevel knowledgeLevel = WordsLearned.WordKnowledgeLevel.New)
     {
         this.key = key;
         this.language = language;
@@ -97,7 +100,10 @@ public class WordData
         this.subCategory = subCategory;
         this.unit = unit;
         this.lesson = lesson;
-        this.voiceId = voiceId;
+        this.audioKey = audioKey;
+        this.notes = notes;
+        this.example_english = example_english;
+        this.example_altLang = example_altLang;
 
         this.KnowledgeLevel = knowledgeLevel;
         this.IsLearned = false;

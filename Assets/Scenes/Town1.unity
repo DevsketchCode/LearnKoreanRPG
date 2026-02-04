@@ -119,6 +119,80 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &172149499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 172149501}
+  - component: {fileID: 172149500}
+  m_Layer: 0
+  m_Name: ActiveTranslationManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &172149500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172149499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 991a00d38b4ea194c85e2f3a857fbbbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActiveTranslationManager
+  CurrentSession:
+    wordID: 
+    english: 
+    altLang: 
+    collectableID: 
+    currentLevel: 0
+    sourceScript: {fileID: 0}
+  ActiveGameObject: {fileID: 0}
+  ActiveWordData:
+    key: 
+    language: 0
+    english: 
+    complex: 
+    romanized: 
+    phonetic: 
+    wordDataType: 0
+    partOfSpeech: 17
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 2
+    category: 
+    subCategory: 
+    unit: 0
+    lesson: 0
+    audioKey: 
+    notes: 
+    example_english: 
+    example_altLang: 
+    KnowledgeLevel: 0
+--- !u!4 &172149501
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172149499}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1100.5585, y: 486.46234, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &190097767
 GameObject:
   m_ObjectHideFlags: 0
@@ -2892,7 +2966,7 @@ PrefabInstance:
     - target: {fileID: 6757408068891538938, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: txtCanvas
       value: 
-      objectReference: {fileID: 330834400}
+      objectReference: {fileID: 0}
     - target: {fileID: 6757408069907237689, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: m_Name
       value: PopupCanvas
@@ -2937,11 +3011,6 @@ PrefabInstance:
 --- !u!4 &251023116 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6757408068601412892, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
-  m_PrefabInstance: {fileID: 251023115}
-  m_PrefabAsset: {fileID: 0}
---- !u!223 &330834400 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 6757408069907237690, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
   m_PrefabInstance: {fileID: 251023115}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &359748735
@@ -3715,7 +3784,7 @@ GameObject:
   - component: {fileID: 1053753053}
   - component: {fileID: 1053753052}
   m_Layer: 8
-  m_Name: Building_House_Blue
+  m_Name: Building_Home_Blue_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3926,6 +3995,10 @@ PrefabInstance:
       propertyPath: sceneToLoad
       value: Home
       objectReference: {fileID: 0}
+    - target: {fileID: 7290430024778752786, guid: 59fa47f5a39533e40ab94f50200e5795, type: 3}
+      propertyPath: targetPortalName
+      value: LevelChanger-Town1_01
+      objectReference: {fileID: 0}
     - target: {fileID: 7562709029609661538, guid: 59fa47f5a39533e40ab94f50200e5795, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -3984,7 +4057,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8596369738410458004, guid: 59fa47f5a39533e40ab94f50200e5795, type: 3}
       propertyPath: m_Name
-      value: LevelChanger-House
+      value: LevelChanger-Home_01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4243,7 +4316,7 @@ PrefabInstance:
     - target: {fileID: 6757408068891538938, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: txtCanvas
       value: 
-      objectReference: {fileID: 1539935127}
+      objectReference: {fileID: 0}
     - target: {fileID: 6757408069907237689, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4281,11 +4354,6 @@ Transform:
 --- !u!1 &1539935126 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 476019250563964079, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
-  m_PrefabInstance: {fileID: 1539935124}
-  m_PrefabAsset: {fileID: 0}
---- !u!223 &1539935127 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 6757408069907237690, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
   m_PrefabInstance: {fileID: 1539935124}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1539935128
@@ -4387,7 +4455,7 @@ PrefabInstance:
     - target: {fileID: 6757408068891538938, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: txtCanvas
       value: 
-      objectReference: {fileID: 1566910052}
+      objectReference: {fileID: 0}
     - target: {fileID: 6757408069907237689, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4412,11 +4480,6 @@ PrefabInstance:
 --- !u!4 &1566910051 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6757408068601412892, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
-  m_PrefabInstance: {fileID: 1566910050}
-  m_PrefabAsset: {fileID: 0}
---- !u!223 &1566910052 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 6757408069907237690, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
   m_PrefabInstance: {fileID: 1566910050}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1666038019
@@ -406316,7 +406379,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.973, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 251023116}
@@ -406443,7 +406506,7 @@ PrefabInstance:
     - target: {fileID: 6757408068891538938, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: txtCanvas
       value: 
-      objectReference: {fileID: 1796409365}
+      objectReference: {fileID: 0}
     - target: {fileID: 6757408069907237689, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -406476,11 +406539,6 @@ PrefabInstance:
 --- !u!4 &1771663560 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6757408068601412892, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
-  m_PrefabInstance: {fileID: 1771663559}
-  m_PrefabAsset: {fileID: 0}
---- !u!223 &1796409365 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 6757408069907237690, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
   m_PrefabInstance: {fileID: 1771663559}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2117629961 stripped
@@ -406579,11 +406637,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3664601899525802695, guid: dc16bac2bebcb1749b8f4ca224cf4279, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.368
       objectReference: {fileID: 0}
     - target: {fileID: 3664601899525802695, guid: dc16bac2bebcb1749b8f4ca224cf4279, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.952
       objectReference: {fileID: 0}
     - target: {fileID: 3664601899525802695, guid: dc16bac2bebcb1749b8f4ca224cf4279, type: 3}
       propertyPath: m_LocalPosition.z
@@ -406701,6 +406759,10 @@ PrefabInstance:
       propertyPath: EnteredFrom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7290430024778752786, guid: 59fa47f5a39533e40ab94f50200e5795, type: 3}
+      propertyPath: targetPortalName
+      value: LevelChanger-Town1_01
+      objectReference: {fileID: 0}
     - target: {fileID: 7562709029609661538, guid: 59fa47f5a39533e40ab94f50200e5795, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -406759,7 +406821,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8596369738410458004, guid: 59fa47f5a39533e40ab94f50200e5795, type: 3}
       propertyPath: m_Name
-      value: LevelChanger-Market
+      value: LevelChanger-Market_01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -406772,6 +406834,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1450013815}
   - {fileID: 590673440}
+  - {fileID: 172149501}
   - {fileID: 359748737}
   - {fileID: 5896580665786163271}
   - {fileID: 7478579003251482303}

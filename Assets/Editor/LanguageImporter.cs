@@ -47,10 +47,10 @@ public class LanguageImporter
             // you'll eventually need a more robust CSV parser.
             string[] c = line.Split(',');
 
-            // SAFETY: We now expect 16 columns (Index 0 to 15)
-            if (c.Length < 16)
+            // SAFETY: We now expect 20 columns (Index 0 to 19)
+            if (c.Length < 20)
             {
-                Debug.LogWarning($"Line {i} only has {c.Length} columns. Needs 16. Skipping.");
+                Debug.LogWarning($"Line {i} only has {c.Length} columns. Needs 20. Skipping.");
                 continue;
             }
 
@@ -75,7 +75,11 @@ public class LanguageImporter
                     c[13].Trim(),                              // subCategory
                     ParseInt(c[14]),                           // unit
                     ParseInt(c[15]),                           // lesson
-                    c[16].Trim()                               // voiceId / AudioKey
+                    c[16].Trim(),                              // audioKey
+                    c[17].Trim(),                              // notes
+                    c[18].Trim(),                              // example_english
+                    c[19].Trim()                               // example_altLang
+
                 );
 
                 db.allEntries.Add(entry);

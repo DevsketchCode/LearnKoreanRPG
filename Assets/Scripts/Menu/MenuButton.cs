@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Menu
@@ -12,45 +7,8 @@ namespace Assets.Scripts.Menu
     {
         enum ButtonActions
         {
-            New,
-            Continue,
             MainMenu,
             StartGameScene, // Renamed from Load
-            Save,
-            Settings,
-            Exit
-        }
-
-        private void Action(ButtonActions buttonAction, string sceneName) // Keep name as 'Action' if you intend to add more actions later
-        {
-            Debug.Log("Action Accessed: " + buttonAction.ToString() + " SCENE: " + sceneName);
-            switch (buttonAction)
-            {
-                case ButtonActions.New: // Handle 'New' action (scene loading in this case)
-                case ButtonActions.StartGameScene: // Also handle 'StartGameScene' (renamed from Load) the same way
-                case ButtonActions.MainMenu: // Also handle 'MainMenu' the same way
-                    SceneManager.LoadScene(sceneName);
-                    break;
-                case ButtonActions.Continue:
-                    // Implement Continue game logic here
-                    Debug.Log("Continue game action");
-                    break;
-
-                case ButtonActions.Save:
-                    // Implement Save game logic here
-                    Debug.Log("Save game action");
-                    break;
-                case ButtonActions.Settings:
-                    // Implement Settings menu logic here
-                    Debug.Log("Settings menu action");
-                    break;
-                case ButtonActions.Exit:
-                    // Exit is already handled in QuitGame()
-                    break;
-                default:
-                    Debug.LogWarning($"Unknown ButtonAction: {buttonAction}");
-                    break;
-            }
         }
 
         public void OnClick()
@@ -60,35 +18,46 @@ namespace Assets.Scripts.Menu
 
             switch (buttonName)
             {
-                case "Button-NewGame":
-                    this.Action(ButtonActions.New, "Home"); // Now passing ButtonActions.New to 'Action' makes sense
+                case "Button-StartGame": // The "Continue" or "Play" button
+                    if (GameManager.Instance != null)
+                    {
+                        // We let GameManager handle the scene loading logic 
+                        // because it knows the prefix and the LastScene
+                        string prefix = GameManager.Instance.currentLanguage + "_";
+
+                        // 1. Tell GameManager we are loading the absolute save
+                        GameManager.Instance.loadingFromMenu = true;
+
+                        string lastScene = PlayerPrefs.GetString(prefix + "LastScene");
+                        SceneManager.LoadScene(lastScene);
+                    }
                     break;
+
                 case "Button-MainMenu":
-                    this.Action(ButtonActions.MainMenu, "MainMenu");
+                    if (GameManager.Instance != null)
+                    {
+                        // GameManager handles the snapshot save and the scene load
+                        GameManager.Instance.SaveAndGoToMainMenu();
+                    }
+                    else
+                    {
+                        // Fallback: If for some reason GameManager is missing, just load the scene
+                        SceneManager.LoadScene("_MainMenu");
+                    }
                     break;
-                case "Button-Continue":
-                    this.Action(ButtonActions.Continue, ""); // No scene name needed for 'Continue' action (yet)
-                    break;
-                case "Button-Settings":
-                    this.Action(ButtonActions.Settings, ""); // No scene name needed for 'Settings' (yet)
-                    break;
-                case "Button-Exit":
-                    QuitGame();
+
+                case "Button-Quit":
+                    if (GameManager.Instance != null)
+                    {
+                        GameManager.Instance.QuitGame();
+                    }
+                    else
+                    {
+                        // Fallback for Title Screen if GameManager isn't awake yet
+                        Application.Quit();
+                    }
                     break;
             }
-        }
-
-        public void QuitGame() // Public function that can be called by a button
-        {
-            Debug.Log("Quitting Application..."); // Optional: Debug log before quitting
-
-#if UNITY_EDITOR
-            // If running in the Unity Editor, stop play mode instead of quitting the application
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-            // In a standalone build, quit the application
-            Application.Quit();
-#endif
         }
     }
 }

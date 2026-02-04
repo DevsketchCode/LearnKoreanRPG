@@ -35,7 +35,7 @@ public class WordDisplay : MonoBehaviour
 
         if (data != null)
         {
-            // UPDATED: Use the Singleton Instance instead of searching the scene.
+            // Use the Singleton Instance instead of searching the scene.
             // This ensures we are hitting the correct UI Manager immediately.
             if (UIManager.Instance != null && UIManager.Instance.translationPanel != null)
             {
@@ -46,7 +46,7 @@ public class WordDisplay : MonoBehaviour
                 if (popupEnglish != null) popupEnglish.text = data.english;
                 if (popupAltLang != null) popupAltLang.text = data.complex;
 
-                Debug.Log($"[WordDisplay] Populated UIManager Popup for {wordID} via Singleton Instance");
+                // Debug.Log($"[WordDisplay] Populated UIManager Popup for {wordID} via Singleton Instance");
             }
             else if (UIManager.Instance == null)
             {

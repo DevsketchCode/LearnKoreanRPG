@@ -82,7 +82,7 @@ public class Collectable : MonoBehaviour
         PlayerPrefs.SetInt("Collectable_" + CollectableID, 1);
         PlayerPrefs.Save();
 
-        GameManager.Instance.SaveState(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, "", Vector3.zero, new Bounds());
+        GameManager.Instance.SaveState(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, "", "",Vector3.zero, new Bounds());
 
         ShouldDeactivateOnCollect();
     }

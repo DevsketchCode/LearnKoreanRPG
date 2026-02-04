@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\LanguageDatabase.cs" />
     <Compile Include="Assets\Scripts\Collectables\WordData.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
+    <Compile Include="Assets\Scripts\Menu\MainMenuManager.cs" />
     <Compile Include="Assets\GooglePlayPlugins\com.google.play.integrity\Samples\IntegrityTestApp\Scripts\FakeIntegrityVerifierServer.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuButton.cs" />
     <Compile Include="Assets\Scripts\Collidable.cs" />

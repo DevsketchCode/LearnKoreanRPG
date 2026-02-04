@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
     public float joystickDeadZone = 0.1f; // Adjust this value as needed
     public bool canMove = true; // Flag to control movement
 
+    private float lastSpawnTime;
+    private float spawnImmunityDuration = 1.0f; // 1 second of portal immunity
+
     private void Start()
     {
         joystick = FindFirstObjectByType<Joystick>();
@@ -74,5 +77,16 @@ public class Player : MonoBehaviour
     {
         canMove = true;
         Debug.Log("[PlayerMovement] Movement ENABLED");
+    }
+
+    public void OnSpawn()
+    {
+        lastSpawnTime = Time.time;
+        Debug.Log("Player spawned/repositioned. Immunity active.");
+    }
+    public bool CanTransition()
+    {
+        // Returns true only if 1 second has passed since OnSpawn was called
+        return Time.time > lastSpawnTime + spawnImmunityDuration;
     }
 }
