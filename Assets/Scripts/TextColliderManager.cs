@@ -35,7 +35,16 @@ public class TextColliderManager : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             // 1. Show the "..." interaction prompt
-            if (initiateInteractionGO != null) initiateInteractionGO.SetActive(true);
+            if (initiateInteractionGO != null)
+            {
+                initiateInteractionGO.SetActive(true);
+                var juice = initiateInteractionGO.GetComponent<UIJuice>();
+                if (juice != null)
+                {
+                    juice.PlayEntrance();
+                    juice.PlayPulseLoop(); // This will stop the entrance and start pulsing
+                }
+            }
 
             // 2. Get the word script on THIS object
             WordsLearned wordsLearned = transform.parent.GetComponentInChildren<WordsLearned>(true);

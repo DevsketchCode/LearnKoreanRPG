@@ -616,11 +616,13 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("GameManager handling Quit...");
-
-        // 1. Always save before leaving! 
-        // We pass nulls/defaults because we just want a snapshot of current stats/pos
-        SaveState(SceneManager.GetActiveScene().name, "", "", Vector3.zero, new Bounds());
-
+        if (SceneManager.GetActiveScene().name != "_MainMenu")
+        {
+            Debug.Log("Game saves throughout the game, not on game quit (from menu)");
+            // 1. Always save before leaving! 
+            // We pass nulls/defaults because we just want a snapshot of current stats/pos
+            SaveState(SceneManager.GetActiveScene().name, "", "", Vector3.zero, new Bounds());
+        }
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else

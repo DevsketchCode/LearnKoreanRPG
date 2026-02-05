@@ -5,6 +5,11 @@ public class UIJuice : MonoBehaviour
 {
     public float duration = 0.25f;
     public Vector3 targetScale = Vector3.one;
+
+    [Header("Pulse Settings")]
+    public float pulseSpeed = 0.8f;      // How long one breath takes
+    public float pulseIntensity = 0.1f;  // How much it grows (0.1 = 10%)
+
     private CanvasGroup canvasGroup;
 
     private void Awake()
@@ -213,5 +218,35 @@ public class UIJuice : MonoBehaviour
             yield return null;
         }
         rect.anchoredPosition = originalPos;
+    }
+
+    public void PlayPulseLoop()
+    {
+        StopAllCoroutines();
+        StartCoroutine(PulseLoopRoutine());
+    }
+
+    private IEnumerator PulseLoopRoutine()
+    {
+        RectTransform rect = GetComponent<RectTransform>();
+        Vector3 originalScale = targetScale;
+
+        // Infinite loop while the object is active
+        while (true)
+        {
+            float elapsed = 0;
+
+            while (elapsed < pulseSpeed)
+            {
+                elapsed += Time.deltaTime;
+                // Use Sin to create a smooth grow/shrink cycle
+                float curve = Mathf.Sin((elapsed / pulseSpeed) * Mathf.PI);
+
+                // Use intensity variable here
+                rect.localScale = originalScale + (Vector3.one * (curve * pulseIntensity)); // 10% growth
+                yield return null;
+            }
+            yield return new WaitForSeconds(0.1f); // Tiny pause between pulses
+        }
     }
 }

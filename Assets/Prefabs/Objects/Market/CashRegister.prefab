@@ -187,7 +187,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 89928675224732831, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: wordID
-      value: shopping_equipment_shoppingcart_word_noun
+      value: shopping_people_cashier_word_noun
       objectReference: {fileID: 0}
     - target: {fileID: 476019250563964079, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: m_TagString

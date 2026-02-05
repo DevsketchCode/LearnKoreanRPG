@@ -55,6 +55,132 @@ MonoBehaviour:
     example_english: 
     example_altLang: 
     KnowledgeLevel: 0
+  - key: furniture_lighting_lamp_word_noun
+    language: 0
+    english: Lamp
+    complex: "\uB7A8\uD504"
+    romanized: raempu
+    phonetic: raem-peu
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Furniture
+    subCategory: Lighting
+    unit: 1
+    lesson: 1
+    audioKey: kr_furniture_lighting_lamp_word_noun
+    notes: 
+    example_english: Turn on the lamp.
+    example_altLang: "\uB7A8\uD504\uB97C \uCF1C\uC138\uC694."
+    KnowledgeLevel: 0
+  - key: furniture_livingroom_bookshelf_word_noun
+    language: 0
+    english: Bookshelf
+    complex: "\uCC45\uC7A5"
+    romanized: chaekjang
+    phonetic: chaek-jang
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Furniture
+    subCategory: Living Room
+    unit: 1
+    lesson: 1
+    audioKey: kr_furniture_livingroom_bookshelf_word_noun
+    notes: 
+    example_english: The bookshelf is full.
+    example_altLang: "\uCC45\uC7A5\uC774 \uAC00\uB4DD \uCC3C\uC5B4\uC694."
+    KnowledgeLevel: 0
+  - key: furniture_livingroom_chair_word_noun
+    language: 0
+    english: Chair
+    complex: "\uC758\uC790"
+    romanized: uija
+    phonetic: ui-ja
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Furniture
+    subCategory: Living Room
+    unit: 1
+    lesson: 1
+    audioKey: kr_furniture_livingroom_chair_word_noun
+    notes: 
+    example_english: This chair is small.
+    example_altLang: "\uC774 \uC758\uC790\uB294 \uC791\uC544\uC694."
+    KnowledgeLevel: 0
+  - key: furniture_livingroom_couch_word_noun
+    language: 0
+    english: Couch
+    complex: "\uC18C\uD30C"
+    romanized: sopa
+    phonetic: so-pa
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Furniture
+    subCategory: Living Room
+    unit: 1
+    lesson: 1
+    audioKey: kr_furniture_livingroom_couch_word_noun
+    notes: 
+    example_english: Sit on the couch.
+    example_altLang: "\uC18C\uD30C\uC5D0 \uC549\uC73C\uC138\uC694."
+    KnowledgeLevel: 0
+  - key: items_reading_book_word_noun
+    language: 0
+    english: Book
+    complex: "\uCC45"
+    romanized: chaek
+    phonetic: chaek
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Items
+    subCategory: Reading
+    unit: 1
+    lesson: 1
+    audioKey: kr_items_reading_book_word_noun
+    notes: 
+    example_english: I read a book.
+    example_altLang: "\uC800\uB294 \uCC45\uC744 \uC77D\uC5B4\uC694."
+    KnowledgeLevel: 0
+  - key: nature_decor_plant_word_noun
+    language: 0
+    english: Plant
+    complex: "\uC2DD\uBB3C"
+    romanized: singmul
+    phonetic: sing-mul
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Nature
+    subCategory: Decor
+    unit: 1
+    lesson: 1
+    audioKey: kr_nature_decor_plant_word_noun
+    notes: 
+    example_english: Water the plant.
+    example_altLang: "\uC2DD\uBB3C\uC5D0 \uBB3C\uC744 \uC8FC\uC138\uC694."
+    KnowledgeLevel: 0
   - key: nature_plants_tree_word_noun
     language: 0
     english: Tree
@@ -118,6 +244,27 @@ MonoBehaviour:
     example_english: 
     example_altLang: 
     KnowledgeLevel: 0
+  - key: people_jobs_cashier_word_noun
+    language: 0
+    english: Cashier
+    complex: "\uACC4\uC0B0\uC6D0"
+    romanized: gyesanwon
+    phonetic: gye-san-won
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: People
+    subCategory: Jobs
+    unit: 1
+    lesson: 1
+    audioKey: kr_people_jobs_cashier_word_noun
+    notes: 
+    example_english: Where is the cashier?
+    example_altLang: "\uACC4\uC0B0\uC6D0\uC740 \uC5B4\uB514\uC5D0 \uC788\uB098\uC694?"
+    KnowledgeLevel: 0
   - key: shopping_equipment_cashregister_word_noun
     language: 0
     english: Cash Register
@@ -160,6 +307,69 @@ MonoBehaviour:
     example_english: 
     example_altLang: 
     KnowledgeLevel: 0
+  - key: structure_interior_floor_word_noun
+    language: 0
+    english: Floor
+    complex: "\uBC14\uB2E5"
+    romanized: badak
+    phonetic: ba-dak
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Structure
+    subCategory: Interior
+    unit: 1
+    lesson: 1
+    audioKey: kr_structure_interior_floor_word_noun
+    notes: 
+    example_english: The floor is clean.
+    example_altLang: "\uBC14\uB2E5\uC774 \uAE68\uB057\uD574\uC694."
+    KnowledgeLevel: 0
+  - key: structure_interior_wall_word_noun
+    language: 0
+    english: Wall
+    complex: "\uBCBD"
+    romanized: byeok
+    phonetic: byeok
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Structure
+    subCategory: Interior
+    unit: 1
+    lesson: 1
+    audioKey: kr_structure_interior_wall_word_noun
+    notes: 
+    example_english: The wall is white.
+    example_altLang: "\uBCBD\uC774 \uD558\uC580\uC0C9\uC774\uC5D0\uC694."
+    KnowledgeLevel: 0
+  - key: structure_interior_window_word_noun
+    language: 0
+    english: Window
+    complex: "\uCC3D\uBB38"
+    romanized: changmun
+    phonetic: chang-mun
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Structure
+    subCategory: Interior
+    unit: 1
+    lesson: 1
+    audioKey: kr_structure_interior_window_word_noun
+    notes: 
+    example_english: Close the window.
+    example_altLang: "\uCC3D\uBB38\uC744 \uB2EB\uC73C\uC138\uC694."
+    KnowledgeLevel: 0
   - key: buildings_commercial_market_word_noun
     language: 1
     english: Market
@@ -201,6 +411,132 @@ MonoBehaviour:
     notes: 
     example_english: 
     example_altLang: 
+    KnowledgeLevel: 0
+  - key: furniture_lighting_lamp_word_noun
+    language: 1
+    english: Lamp
+    complex: lampara
+    romanized: NA
+    phonetic: lam-pa-ra
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Furniture
+    subCategory: Lighting
+    unit: 1
+    lesson: 1
+    audioKey: tl_furniture_lighting_lamp_word_noun
+    notes: 
+    example_english: Turn on the lamp.
+    example_altLang: Nasaan ang lampara?
+    KnowledgeLevel: 0
+  - key: furniture_livingroom_bookshelf_phrs_noun
+    language: 1
+    english: Bookshelf
+    complex: istante ng libro
+    romanized: NA
+    phonetic: is-tan-te-nang-lib-ro
+    wordDataType: 1
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Furniture
+    subCategory: Living Room
+    unit: 1
+    lesson: 1
+    audioKey: tl_furniture_livingroom_bookshelf_phrs_noun
+    notes: 
+    example_english: The bookshelf is full.
+    example_altLang: Puno ang istante ng libro.
+    KnowledgeLevel: 0
+  - key: furniture_livingroom_chair_word_noun
+    language: 1
+    english: Chair
+    complex: upuan
+    romanized: NA
+    phonetic: u-pu-an
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Furniture
+    subCategory: Living Room
+    unit: 1
+    lesson: 1
+    audioKey: tl_furniture_livingroom_chair_word_noun
+    notes: 
+    example_english: This chair is small.
+    example_altLang: Maliit ang upuan.
+    KnowledgeLevel: 0
+  - key: furniture_livingroom_couch_word_noun
+    language: 1
+    english: Couch
+    complex: sofa
+    romanized: NA
+    phonetic: so-pa
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Furniture
+    subCategory: Living Room
+    unit: 1
+    lesson: 1
+    audioKey: tl_furniture_livingroom_couch_word_noun
+    notes: 
+    example_english: Sit on the couch.
+    example_altLang: Umupo ka sa sofa.
+    KnowledgeLevel: 0
+  - key: items_reading_book_word_noun
+    language: 1
+    english: Book
+    complex: libro
+    romanized: NA
+    phonetic: lib-ro
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Items
+    subCategory: Reading
+    unit: 1
+    lesson: 1
+    audioKey: tl_items_reading_book_word_noun
+    notes: 
+    example_english: I read a book.
+    example_altLang: Nagbabasa ako ng libro.
+    KnowledgeLevel: 0
+  - key: nature_decor_plant_word_noun
+    language: 1
+    english: Plant
+    complex: halaman
+    romanized: NA
+    phonetic: ha-la-man
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Nature
+    subCategory: Decor
+    unit: 1
+    lesson: 1
+    audioKey: tl_nature_decor_plant_word_noun
+    notes: 
+    example_english: Water the plant.
+    example_altLang: Diligan mo ang halaman.
     KnowledgeLevel: 0
   - key: nature_plants_tree_word_noun
     language: 1
@@ -265,6 +601,27 @@ MonoBehaviour:
     example_english: 
     example_altLang: 
     KnowledgeLevel: 0
+  - key: people_jobs_cashier_word_noun
+    language: 1
+    english: Cashier
+    complex: kahero
+    romanized: NA
+    phonetic: ka-he-ro
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: People
+    subCategory: Jobs
+    unit: 1
+    lesson: 1
+    audioKey: tl_people_jobs_cashier_word_noun
+    notes: Spanish loanword
+    example_english: Where is the cashier?
+    example_altLang: Nasaan ang kahera?
+    KnowledgeLevel: 0
   - key: shopping_equipment_cashregister_word_noun
     language: 1
     english: Cash Register
@@ -307,6 +664,69 @@ MonoBehaviour:
     example_english: 
     example_altLang: 
     KnowledgeLevel: 0
+  - key: structure_interior_floor_word_noun
+    language: 1
+    english: Floor
+    complex: sahig
+    romanized: NA
+    phonetic: sa-hig
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Structure
+    subCategory: Interior
+    unit: 1
+    lesson: 1
+    audioKey: tl_structure_interior_floor_word_noun
+    notes: 
+    example_english: The floor is clean.
+    example_altLang: Malinis ang sahig.
+    KnowledgeLevel: 0
+  - key: structure_interior_wall_word_noun
+    language: 1
+    english: Wall
+    complex: pader
+    romanized: NA
+    phonetic: pa-der
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Structure
+    subCategory: Interior
+    unit: 1
+    lesson: 1
+    audioKey: tl_structure_interior_wall_word_noun
+    notes: 
+    example_english: The wall is white.
+    example_altLang: Puti ang pader.
+    KnowledgeLevel: 0
+  - key: structure_interior_window_word_noun
+    language: 1
+    english: Window
+    complex: bintana
+    romanized: NA
+    phonetic: bin-ta-na
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Structure
+    subCategory: Interior
+    unit: 1
+    lesson: 1
+    audioKey: tl_structure_interior_window_word_noun
+    notes: 
+    example_english: Close the window.
+    example_altLang: Isara mo ang bintana.
+    KnowledgeLevel: 0
   - key: buildings_commercial_market_word_noun
     language: 2
     english: Market
@@ -348,6 +768,132 @@ MonoBehaviour:
     notes: 
     example_english: 
     example_altLang: 
+    KnowledgeLevel: 0
+  - key: furniture_lighting_lamp_word_noun
+    language: 2
+    english: Lamp
+    complex: silaw
+    romanized: NA
+    phonetic: si-law
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Furniture
+    subCategory: Lighting
+    unit: 1
+    lesson: 1
+    audioKey: il_furniture_lighting_lamp_word_noun
+    notes: General word for light
+    example_english: Turn on the lamp.
+    example_altLang: Ayanna iti silaw?
+    KnowledgeLevel: 0
+  - key: furniture_livingroom_bookshelf_phrs_noun
+    language: 2
+    english: Bookshelf
+    complex: estante ti libro
+    romanized: NA
+    phonetic: es-tan-te-ti-lib-ro
+    wordDataType: 1
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Furniture
+    subCategory: Living Room
+    unit: 1
+    lesson: 1
+    audioKey: il_furniture_livingroom_bookshelf_phrs_noun
+    notes: 
+    example_english: The bookshelf is full.
+    example_altLang: Napno ti estante ti libro.
+    KnowledgeLevel: 0
+  - key: furniture_livingroom_chair_word_noun
+    language: 2
+    english: Chair
+    complex: tugaw
+    romanized: NA
+    phonetic: tu-gaw
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Furniture
+    subCategory: Living Room
+    unit: 1
+    lesson: 1
+    audioKey: il_furniture_livingroom_chair_word_noun
+    notes: 
+    example_english: This chair is small.
+    example_altLang: Bassit daytoy a tugaw.
+    KnowledgeLevel: 0
+  - key: furniture_livingroom_couch_word_noun
+    language: 2
+    english: Couch
+    complex: sofa
+    romanized: NA
+    phonetic: so-pa
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Furniture
+    subCategory: Living Room
+    unit: 1
+    lesson: 1
+    audioKey: il_furniture_livingroom_couch_word_noun
+    notes: 
+    example_english: Sit on the couch.
+    example_altLang: agtugawka iti sofa.
+    KnowledgeLevel: 0
+  - key: items_reading_book_word_noun
+    language: 2
+    english: Book
+    complex: libro
+    romanized: NA
+    phonetic: lib-ro
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Items
+    subCategory: Reading
+    unit: 1
+    lesson: 1
+    audioKey: il_items_reading_book_word_noun
+    notes: 
+    example_english: I read a book.
+    example_altLang: Agbasbasaak iti libro.
+    KnowledgeLevel: 0
+  - key: nature_decor_plant_word_noun
+    language: 2
+    english: Plant
+    complex: mula
+    romanized: NA
+    phonetic: mu-la
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Nature
+    subCategory: Decor
+    unit: 1
+    lesson: 1
+    audioKey: il_nature_decor_plant_word_noun
+    notes: 
+    example_english: Water the plant.
+    example_altLang: Sibugam tay mula.
     KnowledgeLevel: 0
   - key: nature_plants_tree_word_noun
     language: 2
@@ -412,6 +958,27 @@ MonoBehaviour:
     example_english: 
     example_altLang: 
     KnowledgeLevel: 0
+  - key: people_jobs_cashier_word_noun
+    language: 2
+    english: Cashier
+    complex: kaysero
+    romanized: NA
+    phonetic: kay-se-ro
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: People
+    subCategory: Jobs
+    unit: 1
+    lesson: 1
+    audioKey: il_people_jobs_cashier_word_noun
+    notes: 
+    example_english: Where is the cashier?
+    example_altLang: Ayanna iti kaysera?
+    KnowledgeLevel: 0
   - key: shopping_equipment_cashregister_word_noun
     language: 2
     english: Cash Register
@@ -453,4 +1020,67 @@ MonoBehaviour:
     notes: 
     example_english: 
     example_altLang: 
+    KnowledgeLevel: 0
+  - key: structure_interior_floor_word_noun
+    language: 2
+    english: Floor
+    complex: daler
+    romanized: NA
+    phonetic: da-ler
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Structure
+    subCategory: Interior
+    unit: 1
+    lesson: 1
+    audioKey: il_structure_interior_floor_word_noun
+    notes: 
+    example_english: The floor is clean.
+    example_altLang: nadalus ti daler.
+    KnowledgeLevel: 0
+  - key: structure_interior_wall_word_noun
+    language: 2
+    english: Wall
+    complex: diding
+    romanized: NA
+    phonetic: di-ding
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Structure
+    subCategory: Interior
+    unit: 1
+    lesson: 1
+    audioKey: il_structure_interior_wall_word_noun
+    notes: 
+    example_english: The wall is white.
+    example_altLang: Puraw ti diding.
+    KnowledgeLevel: 0
+  - key: structure_interior_window_word_noun
+    language: 2
+    english: Window
+    complex: tawa
+    romanized: NA
+    phonetic: ta-wa
+    wordDataType: 0
+    partOfSpeech: 7
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 0
+    category: Structure
+    subCategory: Interior
+    unit: 1
+    lesson: 1
+    audioKey: il_structure_interior_window_word_noun
+    notes: 
+    example_english: Close the window.
+    example_altLang: Irikepmo ti tawa.
     KnowledgeLevel: 0

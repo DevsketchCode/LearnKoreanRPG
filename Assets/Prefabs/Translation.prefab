@@ -114,10 +114,35 @@ MonoBehaviour:
   CollectableID: 
   actionOnCollect: 3
   masterDB: {fileID: 11400000, guid: 5fc489c4c58ae0b4a852081d9264bff8, type: 2}
+  currentWordData:
+    key: 
+    language: 0
+    english: 
+    complex: 
+    romanized: 
+    phonetic: 
+    wordDataType: 0
+    partOfSpeech: 17
+    gender: 2
+    tense: 4
+    formality: 8
+    plural: 2
+    category: 
+    subCategory: 
+    unit: 0
+    lesson: 0
+    audioKey: 
+    notes: 
+    example_english: 
+    example_altLang: 
+    KnowledgeLevel: 0
+  currentWordID: 
   wordKnowledgeLevel: 0
   familiarExperience: 50
   knownExperience: 100
   masteredExperience: 200
+  learnedWord_eng: 
+  learnedWord_alt: 
   newWordColor: {r: 1, g: 1, b: 1, a: 1}
   familiarWordColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   knownWordColor: {r: 0, g: 1, b: 1, a: 1}
@@ -135,6 +160,8 @@ GameObject:
   - component: {fileID: 6304654502307373064}
   - component: {fileID: 4280609166135681221}
   - component: {fileID: 5653631220592244975}
+  - component: {fileID: 1851597779228892901}
+  - component: {fileID: 6891517962341379172}
   m_Layer: 5
   m_Name: Button_InitiateInteraction
   m_TagString: Untagged
@@ -160,7 +187,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0.3, y: 0.2}
+  m_SizeDelta: {x: 0.5, y: 0.35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3537685889603619235
 CanvasRenderer:
@@ -191,7 +218,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -199,7 +226,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 50
 --- !u!114 &4280609166135681221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,7 +252,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -276,6 +303,32 @@ MonoBehaviour:
   buttonAction2: 2
   GOToInteractWith3: {fileID: 0}
   buttonAction3: 0
+--- !u!114 &1851597779228892901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075122049953665042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c93e28836158414ca7b195b99724b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIJuice
+  duration: 0.25
+  targetScale: {x: 1, y: 1, z: 1}
+--- !u!114 &6891517962341379172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075122049953665042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89dc294278bddf54f932c77831740fcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AutoJuice
 --- !u!1 &2164249931162890433
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,7 +347,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3342485063603607403
 RectTransform:
   m_ObjectHideFlags: 0
@@ -313,7 +366,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.0125, y: 0.45}
-  m_SizeDelta: {x: 0.5, y: 0.3}
+  m_SizeDelta: {x: 1, y: 0.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1899354533763006928
 Canvas:
@@ -412,7 +465,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.026}
+  m_AnchoredPosition: {x: 0, y: 0.02}
   m_SizeDelta: {x: 0.3, y: 0.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8472340715497151107
@@ -470,15 +523,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.15
-  m_fontSizeBase: 0.15
+  m_fontSize: 0.3
+  m_fontSizeBase: 0.3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -564,7 +617,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WordDisplay
   masterDB: {fileID: 11400000, guid: 5fc489c4c58ae0b4a852081d9264bff8, type: 2}
   wordID: 
-  altLangTextMesh: {fileID: 0}
+  popupEnglish: {fileID: 0}
+  popupAltLang: {fileID: 0}
 --- !u!1 &6757408068891538936
 GameObject:
   m_ObjectHideFlags: 0

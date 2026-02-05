@@ -843,7 +843,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.18867922, g: 0.18256532, b: 0.18244925, a: 0.74509805}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2243,6 +2243,7 @@ MonoBehaviour:
   languageDB: {fileID: 11400000, guid: 5fc489c4c58ae0b4a852081d9264bff8, type: 2}
   languageDropdown: {fileID: 1947553273}
   enterLaneButtonText: {fileID: 1001408695}
+  versionText: {fileID: 1650924807}
 --- !u!4 &1334114892
 Transform:
   m_ObjectHideFlags: 0
@@ -2661,8 +2662,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2745,7 +2746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 0}
   playerGO: {fileID: 0}
-  playerOffsetFromPortal: 2
+  playerOffsetFromPortal: 1
   playerSprites: []
   attachmentSprites: []
   attachmentPrices: 
@@ -2759,7 +2760,7 @@ MonoBehaviour:
   numberWordsLearned: 0
   loadingFromMenu: 0
   pendingSceneName: 
-  freshStart: 1
+  freshStart: 0
 --- !u!4 &1576100440
 Transform:
   m_ObjectHideFlags: 0
@@ -2934,7 +2935,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v. 0.32
+  m_text: vX.XX
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

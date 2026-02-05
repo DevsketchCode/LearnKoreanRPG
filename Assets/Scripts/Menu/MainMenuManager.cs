@@ -9,6 +9,7 @@ public class MainMenuManager : MonoBehaviour
     public LanguageDatabase languageDB;
     public TMP_Dropdown languageDropdown;
     public TMP_Text enterLaneButtonText;
+    public TextMeshProUGUI versionText;
 
     // Maps Language Name (e.g., "Korean") to Prefix (e.g., "KR")
     private Dictionary<string, string> languagePrefixMap = new Dictionary<string, string>();
@@ -18,6 +19,16 @@ public class MainMenuManager : MonoBehaviour
         PopulateLanguageDropdown();
         LoadLastUsedLanguage();
         UpdateStartButtonText();
+
+        if (versionText != null)
+        {
+            // Dynamically set the text to the version in Project Settings
+            versionText.text = "v" + Application.version;
+        }
+        else
+        {
+            Debug.LogWarning("Version Text reference is missing in MainMenuManager.");
+        }
     }
 
     private void LoadLastUsedLanguage()
@@ -123,6 +134,12 @@ public class MainMenuManager : MonoBehaviour
         }
 
         GameManager.Instance.loadingFromMenu = true;
+
+        UIJuice juice = GetComponent<UIJuice>();
+        if (juice != null)
+        {
+            juice.PlayButtonClick();
+        }
 
         // 3. Load the scene
         // GameManager.LoadState will automatically run on OnSceneLoaded

@@ -80,8 +80,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 200547149
-  m_SortingLayer: 1
+  m_SortingLayerID: -785696195
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1684581290390842005, guid: 14cecec88d57f554e8d2374803dc6b66, type: 3}
@@ -187,7 +187,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 89928675224732831, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: wordID
-      value: nature_plants_tree_word_noun
+      value: furniture_lighting_lamp_word_noun
       objectReference: {fileID: 0}
     - target: {fileID: 476019250563964079, guid: b5604e95f4ac53449a5585cde9b7645e, type: 3}
       propertyPath: m_TagString
