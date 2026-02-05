@@ -54,14 +54,15 @@ namespace Assets.Scripts.Collectables
             WordsLearned localWordScript = transform.root.GetComponentInChildren<WordsLearned>();
             if (localWordScript != null)
             {
-                Debug.Log($"[InteractionButton] Button Clicked for: {localWordScript.gameObject.name}");
+                // Debug.Log($"[InteractionButton] Button Clicked for: {localWordScript.gameObject.name}");
 
                 // This call MUST happen to package the data and trigger the Manager's StartSession
                 localWordScript.OnCollect();
             }
 
 
-            Debug.Log("Button Clicked: Interaction GameObject: " + GOToInteractWith1.name + ", Action1: " + buttonAction1 + ", Action2: " + buttonAction2);
+            // Debug.Log("Button Clicked: Interaction GameObject: " + GOToInteractWith1.name + ", Action1: " + buttonAction1 + ", Action2: " + buttonAction2);
+
             if (GOToInteractWith1 != null)
             {
                 ShowHideGO(GOToInteractWith1, buttonAction1);
@@ -90,9 +91,9 @@ namespace Assets.Scripts.Collectables
 
         public void ShowHideGO(GameObject go, ButtonAction btnAction)
         {
-            // 1. Find the juice script on the child (Panel_Background)
+            // Find the juice script on the child (Panel_Background)
             UIJuice juice = go.GetComponentInChildren<UIJuice>(true); // 'true' finds it even if inactive
-            Debug.Log("[ALERT] UIJuice GameObject: " + go.name);
+            // Debug.Log("[ALERT] UIJuice GameObject: " + go.name);
 
             if (go.activeSelf && (btnAction == ButtonAction.ToggleShowHide || btnAction == ButtonAction.Hide))
             {

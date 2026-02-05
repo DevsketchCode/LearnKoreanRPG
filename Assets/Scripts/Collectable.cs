@@ -106,7 +106,7 @@ public class Collectable : MonoBehaviour
             // Also check children for renderers (like graphics/sprites)
             foreach (Renderer r in GetComponentsInChildren<Renderer>()) r.enabled = false;
 
-            Debug.Log($"[Collectable] {gameObject.name} hidden via HideVisuals. Script is still alive.");
+            // Debug.Log($"[Collectable] {gameObject.name} hidden via HideVisuals. Script is still alive.");
         }
     }
 }

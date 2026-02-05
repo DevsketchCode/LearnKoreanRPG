@@ -3,6 +3,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
+using Unity.Android.Gradle.Manifest;
+using Unity.VisualScripting;
 
 namespace Assets.Scripts.Collectables
 {
@@ -277,7 +279,7 @@ namespace Assets.Scripts.Collectables
 
             // --- KEY LOGIC: Using composite key to check persistent 'IsLearned' flag ---
             // Now that we've initialized above, currentWordData.key is guaranteed to be valid
-            string uniqueSaveKey = currentWordData != null ? currentWordData.key + "_" + currentWordData.language : learnedWord_eng;
+            string uniqueSaveKey = GetUniqueKey(currentWordData, learnedWord_eng);
 
             // --- NEW ARCHITECTURE: Package and Start Session ---
             // Instead of manually updating labels and finding buttons here, we hand a data package 
@@ -353,7 +355,7 @@ namespace Assets.Scripts.Collectables
                 Debug.LogError("[WordsLearned - UpdateKnowledgeLevelFromDictionary] currentWordData is NULL! Cannot build save key.");
                 return;
             }
-            string uniqueSaveKey = currentWordData.key + "_" + currentWordData.language;
+            string uniqueSaveKey = GetUniqueKey(currentWordData, GetEnglishWord());
 
             if (GameManager.Instance.wordsLearnedDictionary.ContainsKey(uniqueSaveKey))
             {
@@ -380,7 +382,7 @@ namespace Assets.Scripts.Collectables
             // Debug.Log($"[WordsLearned - FinalizeWordCollection] START - Word: '{learnedWord_eng}', knowledgeLevelAlreadySelected: {knowledgeLevelAlreadySelected}"); // **DEBUG LOG - START**
 
             // Use a unique composite key so Korean "Tree" and Spanish "Tree" are tracked separately
-            string uniqueSaveKey = currentWordData.key + "_" + currentWordData.language;
+            string uniqueSaveKey = GetUniqueKey(currentWordData, GetEnglishWord());
 
             // DEBUG: Check what's in the dictionary vs what we are looking for
             // Debug.Log($"[DICTIONARY CHECK] Looking for: {uniqueSaveKey}. Dictionary Count: {GameManager.Instance.wordsLearnedDictionary.Count}");
@@ -512,6 +514,29 @@ namespace Assets.Scripts.Collectables
                 UIManager.Instance.IsStudySessionActive = false;
                 UIManager.Instance.activeWordScript = null;
             }
+        }
+
+        public static string GetUniqueKey(WordData data, string fallback_engWord)
+        {
+            string uniqueSaveKey = string.Empty;
+
+            if (data != null)
+            {
+                uniqueSaveKey = data.key + "_" + data.language;
+            }
+            else
+            {
+                if (fallback_engWord != string.Empty)
+                {
+                    uniqueSaveKey = fallback_engWord; // Fallback to WordData is null
+                }
+                else 
+                {
+                    Debug.LogError("[WordsLearned - GetUniqueKey] Both WordData and fallback_engWord are NULL or EMPTY! Cannot build unique key.");
+                }
+                
+            }
+            return uniqueSaveKey;
         }
 
         private int GetExperienceForLevel(WordKnowledgeLevel level)

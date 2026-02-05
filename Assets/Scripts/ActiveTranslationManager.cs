@@ -34,7 +34,7 @@ public class ActiveTranslationManager : MonoBehaviour
             UIManager.Instance.IsStudySessionActive = true;
         }
 
-        Debug.Log($"[ActiveTranslationManager] Session STARTED for: {CurrentSession.english}");
+        // Debug.Log($"[ActiveTranslationManager] Session STARTED for: {CurrentSession.english}");
     }
 
     public void ClearSession()
@@ -55,6 +55,6 @@ public class ActiveTranslationManager : MonoBehaviour
         wl.currentWordData = null; // reset current word upon leaving
         ActiveWordData = null; // reset current word upon leaving
 
-        Debug.Log($"[ActiveTranslationManager] Session CLEARED for: {oldWord}");
+        // Debug.Log($"[ActiveTranslationManager] Session CLEARED for: {oldWord}");
     }
 }

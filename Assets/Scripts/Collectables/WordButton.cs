@@ -42,7 +42,7 @@ public class WordButton : MonoBehaviour
 
     private void FinalizeWordCollectionForWord()
     {
-        // 1. Cache the reference locally so it can't turn null mid-execution
+        // Cache the reference locally so it can't turn null mid-execution
         // Check both UIManager and ActiveTranslationManager for redundancy
         WordsLearned activeScript = null;
 
@@ -57,12 +57,12 @@ public class WordButton : MonoBehaviour
 
         if (activeScript != null)
         {
-            // 2. Perform the logic using the local variable
+            // Perform the logic using the local variable
             activeScript.FinalizeWordCollection(newKnowledgeLevel);
 
-            // 3. Use the local variable for logging to avoid the NullReference
-            Debug.Log($"[WordButton] Called Finalize for: {activeScript.learnedWord_eng}");
-            Debug.Log($"[ActiveWordScript] CollectableID: {activeScript.CollectableID}");
+            // Use the local variable for logging to avoid the NullReference
+            // Debug.Log($"[WordButton] Called Finalize for: {activeScript.learnedWord_eng}");
+            // Debug.Log($"[ActiveWordScript] CollectableID: {activeScript.CollectableID}");
         }
         else
         {
@@ -98,10 +98,7 @@ public class WordButton : MonoBehaviour
                 WordsLearnedGO.GetComponent<WordsLearned>().WordKnowledgeLevelProp = level;
             }
 
-            Debug.Log($"[WordButton] Knowledge level updated for word '{keyToUse}' to: {level}");
-
-            // OPTIONAL: Update UI to reflect the new knowledge level (e.g., change button color)
-            // ... code to update button appearance based on level ...
+            // Debug.Log($"[WordButton] Knowledge level updated for word '{keyToUse}' to: {level}");
         }
         else
         {

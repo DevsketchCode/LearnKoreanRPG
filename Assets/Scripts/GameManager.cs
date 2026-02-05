@@ -16,25 +16,28 @@ public class GameManager : MonoBehaviour
     public event Action<int> OnExperienceChanged;
     public event Action<int> OnExperienceDiffChanged;
 
-    // Player related
+    [Header("Player Related")]
     public GameObject playerPrefab;
     public GameObject playerGO;
     public float playerOffsetFromPortal = 2.0f;
 
-    // Resources
+    [Header("Resources")]
     public List<Sprite> playerSprites;
     public List<Sprite> attachmentSprites;
     public List<int> attachmentPrices;
     public List<int> xpTable;
     public Dictionary<string, WordData> wordsLearnedDictionary = new Dictionary<string, WordData>();
 
-    // References
+    [Header("Databases")]
+    public LanguageDatabase masterDB;
+
+    [Header("References")]
     public Player playerControls; 
     public FloatingTextManager floatingTextManager;
     public UIManager uiManager;
 
 
-    // Game data
+    [Header("Game Data")]
     public string currentLanguage = "KR"; // Default language prefix
     public int money;
     public int experience;
@@ -43,11 +46,14 @@ public class GameManager : MonoBehaviour
     public bool loadingFromMenu = false;
     public string pendingSceneName;
 
-    // Collectable tracking
+    [Header("Collectable Tracking")]
     public Dictionary<string, bool> CollectableStates = new Dictionary<string, bool>(); // More descriptive name
 
-    // Debug flag
+    [Header("Reset")]
     public bool freshStart;
+
+    [Header("Debug")]
+    public bool debugViewDictionary = false;
 
     private void Awake()
     {
@@ -162,13 +168,13 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"[OnSceneLoaded] Scene Loaded: {scene.name}");
 
-        // 1. Prevent logic from running on the Main Menu
+        // Prevent logic from running on the Main Menu
         if (scene.name == "_MainMenu") // Ensure this matches your menu scene name exactly
         {
             return;
         }
 
-        // 2. Find the UIManager in the NEW scene
+        // Find the UIManager in the NEW scene
         // This allows you to have a fresh UI for every level while the GameManager persists
         uiManager = FindObjectOfType<UIManager>();
         if (uiManager != null)
@@ -176,7 +182,7 @@ public class GameManager : MonoBehaviour
             floatingTextManager = uiManager.GetComponent<FloatingTextManager>();
         }
 
-        // 3. Handle Player Spawning
+        // Handle Player Spawning
         playerGO = GameObject.FindGameObjectWithTag("Player");
         if (playerGO == null)
         {
@@ -184,10 +190,10 @@ public class GameManager : MonoBehaviour
             playerGO.tag = "Player";
         }
 
-        // 4. Update Player Controls reference
+        // Update Player Controls reference
         playerControls = playerGO.GetComponent<Player>();
 
-        // 5. Load the specific language state and player position
+        // Load the specific language state and player position
         LoadState(scene);
 
         // Tell the player they just spawned so they can start their "immunity" cooldown
@@ -196,7 +202,7 @@ public class GameManager : MonoBehaviour
             playerControls.OnSpawn();
         }
 
-        // 6. Initialize world objects (Triggers, Words, etc.)
+        // Initialize world objects (Triggers, Words, etc.)
         InitializeCollectables();
     }
 
@@ -273,16 +279,57 @@ public class GameManager : MonoBehaviour
         // Save collectable states (rest is fine)
         SaveCollectableStates();
 
+        // --- Dictionary Saving Section ---
+        // Create a fresh instance of our wrapper
+        KnowledgeWrapper wrapper = new KnowledgeWrapper();
+
+        // Loop through your runtime Dictionary and move data into the Wrapper's List
+        // We do this because the Dictionary itself cannot be turned into JSON directly
+        foreach (var kvp in wordsLearnedDictionary)
+        {
+            // kvp.Value is the full WordData object
+            WordData currentWord = kvp.Value;
+
+            string uniqueKey = currentWord.key + "_" + currentWord.language;
+            wrapper.words.Add(new WordSaveData
+            {
+                uniqueSaveKey = uniqueKey,
+                language = currentWord.language.ToString(),
+                level = (int)currentWord.KnowledgeLevel     // Save enum as int
+            });
+            Debug.Log("SAVE STATE: " + uniqueKey + " saved with level " + currentWord.KnowledgeLevel);
+        }
+
+        // Convert the entire wrapper object into a single JSON string
+        string json = JsonUtility.ToJson(wrapper);
+
+        // Save that string into PlayerPrefs using your language prefix
+        PlayerPrefs.SetString(prefix + "KnowledgeData", json);
+
+        // Always call Save() to ensure it writes to the physical disk
         PlayerPrefs.Save();
+
         Debug.Log("Last Saved Scene was: " + PlayerPrefs.GetString(prefix + "LastScene"));
         Debug.Log($"SCENE SAVED!! Language: {currentLanguage} Scene: {activeScene}");
         Debug.Log($"[SaveState] Scene: {activeScene} SAVED. PlayerPrefs DebugWindow: {PlayerPrefs.GetString("DebugWindow")}");
 
-        DebugPrintAllSavedData();
+        if (debugViewDictionary) DebugPrintAllSavedData();
+    }
+
+    public void ResetSessionStats()
+    {
+        money = 0;
+        experience = 0;
+        numberWordsLearned = 0;
+        wordsLearnedDictionary.Clear();
+
+        Debug.Log("[GameManager] Session stats reset for new language load.");
     }
 
     public void LoadState(Scene scene)
     {
+
+        ResetSessionStats();
 
         Debug.Log($"[HANDSHAKE DEBUG] Checking for scene: {scene.name}");
         Debug.Log($"[HANDSHAKE DEBUG] TransitionForScene is: {PlayerPrefs.GetString("TransitionForScene")}");
@@ -402,6 +449,69 @@ public class GameManager : MonoBehaviour
         if (uiManager == null) uiManager = FindObjectOfType<UIManager>(); // Find the UIManager
         if (uiManager != null) uiManager.ActivateDebugWindow = (PlayerPrefs.GetString("DebugWindow") == "True");
 
+
+        // --- Dictionary Loading Section ---
+        // Pull the JSON string from PlayerPrefs. Default to empty string if not found.
+        string json = PlayerPrefs.GetString(prefix + "KnowledgeData", "");
+
+        // Only try to process if we actually found data
+        if (!string.IsNullOrEmpty(json))
+        {
+            // Convert the JSON string back into our Wrapper object (The "List" version)
+            KnowledgeWrapper wrapper = JsonUtility.FromJson<KnowledgeWrapper>(json);
+
+            // Clear the current dictionary so we don't double-up data on scene loads
+            wordsLearnedDictionary.Clear();
+
+            // Populate the Dictionary from the Wrapper's List
+            // This restores your fast "Key-Value" access for gameplay
+            foreach (WordSaveData savedItem in wrapper.words)
+            {
+                // Find the last underscore to separate the Key from the Language
+                int lastUnderscore = savedItem.uniqueSaveKey.LastIndexOf('_');
+
+                if (lastUnderscore == -1) continue;
+
+                // Everything before the last '_' is the Key
+                string originalKey = savedItem.uniqueSaveKey.Substring(0, lastUnderscore);
+                // Everything after the last '_' is the Language
+                string languageStr = savedItem.uniqueSaveKey.Substring(lastUnderscore + 1);
+
+                // Convert string back to Enum for the DB search
+                if (!Enum.TryParse(languageStr, out WordData.Language langEnum)) continue;
+
+                // Find the word in your master database
+                WordData masterWord = masterDB.GetWord(originalKey, langEnum);
+
+                Debug.Log($"[JSON LOAD] Restoring Word: '{savedItem.uniqueSaveKey}' | Saved Level: {savedItem.level} | Language: {savedItem.language}");
+
+                if (masterWord != null)
+                {
+                    // Update the level
+                    masterWord.KnowledgeLevel = (WordsLearned.WordKnowledgeLevel)savedItem.level;
+
+                    // CRITICAL: Mark as learned so interaction logic doesn't double-count
+                    masterWord.IsLearned = true;
+
+                    // Put into dictionary
+                    wordsLearnedDictionary[savedItem.uniqueSaveKey] = masterWord;
+                }
+            }
+            if (wordsLearnedDictionary.Count == 0)
+            {
+                Debug.LogWarning("[JSON LOAD] No valid word data was restored from JSON.");
+            }
+            else
+            {
+                Debug.Log($"[JSON LOAD] Successfully restored {wordsLearnedDictionary.Count} words for {currentLanguage}");
+            }
+        }
+        else
+        {
+            Debug.Log("[JSON LOAD] No knowledge data found, starting with an empty dictionary.");
+        }
+
+
         LoadCollectableStates();
         InitializeCollectables();
         Debug.Log($"[LoadState] Scene: {scene.name} Load Complete. Pos: {player1WorldPos}");
@@ -426,11 +536,13 @@ public class GameManager : MonoBehaviour
         get => numberWordsLearned; // Expression body for getter
         set
         {
+            string prefix = currentLanguage + "_";
+
             // Calculate the difference (+1 or -1)
             int difference = value - numberWordsLearned;
 
             numberWordsLearned = value;
-            PlayerPrefs.SetInt("WordsLearned", numberWordsLearned);
+            PlayerPrefs.SetInt(prefix + "WordsLearned", numberWordsLearned);
             PlayerPrefs.Save();
 
             OnWordsLearnedChanged?.Invoke(numberWordsLearned);
@@ -449,9 +561,13 @@ public class GameManager : MonoBehaviour
         get => experience; // Expression body for getter
         set
         {
-            int difference = value - experience; // Calculate the change
+            string prefix = currentLanguage + "_";
+
+            // Calculate the change
+            int difference = value - experience; 
             experience = value;
-            PlayerPrefs.SetInt("Experience", experience);
+            
+            PlayerPrefs.SetInt(prefix + "Experience", experience);
             PlayerPrefs.Save();
 
             // Fire the standard event for the total number
@@ -583,32 +699,16 @@ public class GameManager : MonoBehaviour
     [ContextMenu("Debug: Print All Saved Word Data")] // This allows you to run it from the Inspector!
     public void DebugPrintAllSavedData()
     {
+        // Global Stats
         Debug.Log("======= [PLAYERPREFS SAVED DATA REPORT] =======");
-
-        // 1. Print the serialized CollectableStates Dictionary
-        //string rawStates = PlayerPrefs.GetString("CollectableStates", "EMPTY");
-        //Debug.Log($"--- Raw CollectableStates String ---\n{rawStates}");
-
-        // 2. Iterate through your actual runtime Dictionary to see what is currently active
-        // Debug.Log("--- Current Runtime CollectableStates Dictionary ---");
-        // foreach (var pair in CollectableStates)
-        // {
-        //    Debug.Log($"ID: {pair.Key} | IsCollected: {pair.Value}");
-        // }
-
-        // 3. Check the wordsLearnedDictionary (WordData Objects)
-        Debug.Log("--- Runtime wordsLearnedDictionary (Metadata) ---");
+        Debug.Log("============ Global Progress Stats ============");
+        Debug.Log($"WordsLearned Count: {PlayerPrefs.GetInt("WordsLearned", 0)} ||Experience: {PlayerPrefs.GetInt("Experience", 0)}");
+        Debug.Log("-WordsLearnedDictionary-");
         if (wordsLearnedDictionary.Count == 0) Debug.Log("Dictionary is empty.");
         foreach (var pair in wordsLearnedDictionary)
         {
             Debug.Log($"Word Key: {pair.Key} | Level: {pair.Value.KnowledgeLevel} | IsLearned: {pair.Value.IsLearned}");
         }
-
-        // 4. Global Stats
-        Debug.Log("--- Global Progress Stats ---");
-        Debug.Log($"WordsLearned Count: {PlayerPrefs.GetInt("WordsLearned", 0)}");
-        Debug.Log($"Experience: {PlayerPrefs.GetInt("Experience", 0)}");
-
         Debug.Log("===============================================");
     }
 
@@ -628,5 +728,48 @@ public class GameManager : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    public void HardResetLanguage(WordData.Language language)
+    {
+        string prefix = language.ToString() + "_";
+
+        // Wipe all keys associated with this language
+        PlayerPrefs.DeleteKey(prefix + "Experience");
+        PlayerPrefs.DeleteKey(prefix + "WordsLearned");
+        PlayerPrefs.DeleteKey(prefix + "Money");
+        PlayerPrefs.DeleteKey(prefix + "KnowledgeData");
+        PlayerPrefs.DeleteKey(prefix + "SaveState");
+        PlayerPrefs.DeleteKey(prefix + "LastScene");
+
+        // Wipe scene positions for this language
+        // You might need to loop through your scene names or wipe all keys containing the prefix
+
+        PlayerPrefs.Save();
+
+        // If resetting the language currently being played, reset runtime variables
+        if (currentLanguage == language.ToString())
+        {
+            ResetSessionStats(); // The method we discussed earlier
+        }
+
+        Debug.Log($"[HARD RESET] All data for {language} has been wiped.");
+    }
+
+    // Small portion of WordData just for the JSON to save Knowledge Levels
+    [Serializable]
+    public class WordSaveData 
+    {
+        public string uniqueSaveKey; // should match the unique key in WordsLearned > FinalizeWordCollection
+        public string language;
+        public int level;
+    }
+
+    [Serializable]
+    public class KnowledgeWrapper
+    {
+        // JsonUtility needs a List or Array to work; it cannot "see" a Dictionary.
+        // This List acts as the bridge between your Dictionary and the Save File.
+        public List<WordSaveData> words = new List<WordSaveData>();
     }
 }
