@@ -4,7 +4,7 @@ using System; // Required for Serializable if you want to save WordData
 [Serializable] // Optional: If you want to save WordData later using serialization
 public class WordData
 {
-    public enum Language { Korean, Tagalog, Ilocano, English }
+    public enum Language { Korean, Tagalog, Ilocano, English, None }
     public enum WordDataType { Word, Phrase, Sentence, Question, Character, Affix, Honorific, Particle } // Affix is a prefix or suffix
     public enum PartOfSpeech
     {

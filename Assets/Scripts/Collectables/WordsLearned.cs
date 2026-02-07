@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System.Collections;
-using Unity.Android.Gradle.Manifest;
-using Unity.VisualScripting;
 
 namespace Assets.Scripts.Collectables
 {

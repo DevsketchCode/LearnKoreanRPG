@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using System; // Required for Action
 using Assets.Scripts.Collectables;
 using NUnit.Framework.Constraints;
+using JetBrains.Annotations;
 
 public class GameManager : MonoBehaviour
 {
@@ -53,7 +54,8 @@ public class GameManager : MonoBehaviour
     public bool freshStart;
 
     [Header("Debug")]
-    public bool debugViewDictionary = false;
+    public bool debugMode = false;
+    public GameObject toggleCompleteReset;
 
     private void Awake()
     {
@@ -68,7 +70,7 @@ public class GameManager : MonoBehaviour
         
         Instance = this;
 
-        if (sceneName != "_MainMenu")
+        if (sceneName != "_MainMenu" && sceneName != "_Settings")
         {
             if (floatingTextManager == null && uiManager != null)
             {
@@ -96,6 +98,7 @@ public class GameManager : MonoBehaviour
         {
             freshStart = false;
             ClearPlayerPrefs();
+            ResetSessionStats();
         }
         else
         {
@@ -124,7 +127,7 @@ public class GameManager : MonoBehaviour
     {
         string sceneName = SceneManager.GetActiveScene().name;
 
-        if (sceneName != "_MainMenu")
+        if (sceneName != "_MainMenu" && sceneName != "_Settings")
         {
             // Get PlayerMovement reference in Start (more efficient)
             GameObject playerGameObject = GameObject.FindGameObjectWithTag("Player"); // Find Player GO
@@ -169,7 +172,7 @@ public class GameManager : MonoBehaviour
         Debug.Log($"[OnSceneLoaded] Scene Loaded: {scene.name}");
 
         // Prevent logic from running on the Main Menu
-        if (scene.name == "_MainMenu") // Ensure this matches your menu scene name exactly
+        if (scene.name == "_MainMenu" || scene.name == "_Settings") // Ensure this matches your menu scene name exactly
         {
             return;
         }
@@ -313,18 +316,10 @@ public class GameManager : MonoBehaviour
         Debug.Log($"SCENE SAVED!! Language: {currentLanguage} Scene: {activeScene}");
         Debug.Log($"[SaveState] Scene: {activeScene} SAVED. PlayerPrefs DebugWindow: {PlayerPrefs.GetString("DebugWindow")}");
 
-        if (debugViewDictionary) DebugPrintAllSavedData();
+        if (debugMode) DebugPrintAllSavedData();
     }
 
-    public void ResetSessionStats()
-    {
-        money = 0;
-        experience = 0;
-        numberWordsLearned = 0;
-        wordsLearnedDictionary.Clear();
 
-        Debug.Log("[GameManager] Session stats reset for new language load.");
-    }
 
     public void LoadState(Scene scene)
     {
@@ -690,10 +685,34 @@ public class GameManager : MonoBehaviour
         return dict;
     }
 
+    public void ResetSessionStats()
+    {
+        money = 0;
+        experience = 0;
+        numberWordsLearned = 0;
+        wordsLearnedDictionary.Clear();
+
+        Debug.Log("[GameManager] Session stats amd LearnedDictionary has been reset.");
+    }
     // Clear PlayerPrefs (for debugging)
     public void ClearPlayerPrefs()
     {
         PlayerPrefs.DeleteAll();
+        Debug.Log("[GameManager] PlayerPrefs has been reset");
+    }
+
+    public void CompleteReset()
+    {
+        if (debugMode)
+        {
+            ConfirmationModal confirmationModal = new ConfirmationModal();
+            confirmationModal.Show("Complete Reset??",() =>
+                {
+                    ClearPlayerPrefs();
+                    ResetSessionStats();
+                    toggleCompleteReset.SetActive(false);
+                }, true);
+        }
     }
 
     [ContextMenu("Debug: Print All Saved Word Data")] // This allows you to run it from the Inspector!
@@ -716,7 +735,7 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("GameManager handling Quit...");
-        if (SceneManager.GetActiveScene().name != "_MainMenu")
+        if (SceneManager.GetActiveScene().name != "_MainMenu" && SceneManager.GetActiveScene().name != "_Settings")
         {
             Debug.Log("Game saves throughout the game, not on game quit (from menu)");
             // 1. Always save before leaving! 
