@@ -95,7 +95,7 @@ public class UIManager : MonoBehaviour
         gameManager.OnExperienceDiffChanged += HandleXPJuice;
 
         // Initialize UI *after* subscribing and GameManager is found
-        UpdateWordsLearnedText(gameManager.WordsLearned);
+        UpdateWordsLearnedText(gameManager.TotalWordsLearned);
         UpdateExperienceText(gameManager.Experience);
     }
 
@@ -139,8 +139,9 @@ public class UIManager : MonoBehaviour
         }
 
         // Find the TextMeshPro components under the translationPanel
-        TMP_Text englishText = translationPanel.Find("Text_English")?.GetComponent<TMP_Text>();
-        TMP_Text altLangText = translationPanel.Find("Text_AltLang")?.GetComponent<TMP_Text>();
+        TMP_Text englishText = translationPanel.Find("Panel_English/Text_English")?.GetComponent<TMP_Text>();
+        TMP_Text altLangText = translationPanel.Find("Panel_AltLang/Text_AltLang")?.GetComponent<TMP_Text>();
+        TMP_Text altLangRomanizedText = translationPanel.Find("Panel_AltLang/Text_AltLang")?.GetComponent<TMP_Text>();
 
         if (englishText != null) englishText.text = english;
         if (altLangText != null) altLangText.text = altLang;

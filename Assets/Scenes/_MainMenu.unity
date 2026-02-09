@@ -2887,7 +2887,7 @@ MonoBehaviour:
   numberWordsLearned: 0
   loadingFromMenu: 0
   pendingSceneName: 
-  freshStart: 0
+  freshStart: 1
   debugMode: 0
   toggleCompleteReset: {fileID: 0}
 --- !u!4 &1576100440

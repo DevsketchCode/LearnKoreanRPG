@@ -501,16 +501,16 @@ namespace Assets.Scripts.Collectables
             // 1. If we are moving FROM 'New' TO a 'Learned' level (Familiar/Known/Mastered)
             if (previousLevel == WordKnowledgeLevel.New && selectedLevel != WordKnowledgeLevel.New)
             {
-                GameManager.Instance.WordsLearned++;
+                GameManager.Instance.TotalWordsLearned++;
                 Debug.Log("[WordsLearned] Incrementing count: Word moved from New to Learned.");
             }
             // 2. If we are moving FROM a 'Learned' level BACK to 'New'
             else if (previousLevel != WordKnowledgeLevel.New && selectedLevel == WordKnowledgeLevel.New)
             {
                 // Safety check to prevent going below 0
-                if (GameManager.Instance.WordsLearned > 0)
+                if (GameManager.Instance.TotalWordsLearned > 0)
                 {
-                    GameManager.Instance.WordsLearned--;
+                    GameManager.Instance.TotalWordsLearned--;
                     Debug.Log("[WordsLearned] Decrementing count: Word reset to New.");
                 }
 

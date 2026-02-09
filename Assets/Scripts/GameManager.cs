@@ -526,7 +526,7 @@ public class GameManager : MonoBehaviour
     }
 
     // WordsLearned property with event firing
-    public int WordsLearned
+    public int TotalWordsLearned
     {
         get => numberWordsLearned; // Expression body for getter
         set
@@ -619,17 +619,18 @@ public class GameManager : MonoBehaviour
             if (collectable is WordsLearned wordObject) // Check if it's a WordsLearned object
             {
                 string englishWord = wordObject.GetEnglishWord(); // **Need to create GetEnglishWord() function in WordsLearned.cs - Step B**
+                string uniqueKey = WordsLearned.GetUniqueKey(wordObject.currentWordData, wordObject.learnedWord_eng);
 
-                if (!string.IsNullOrEmpty(englishWord) && wordsLearnedDictionary.ContainsKey(englishWord))
+                if (!string.IsNullOrEmpty(uniqueKey) && wordsLearnedDictionary.ContainsKey(uniqueKey))
                 {
                     // We have saved data for this word in the dictionary!
-                    WordData wordData = wordsLearnedDictionary[englishWord];
+                    WordData wordData = wordsLearnedDictionary[uniqueKey];
                     WordsLearned.WordKnowledgeLevel savedKnowledgeLevel = wordData.KnowledgeLevel;
 
                     // Update the WordKnowledgeLevel on the WordsLearned script in the scene
                     wordObject.SetKnowledgeLevel(savedKnowledgeLevel); // **Use the SetKnowledgeLevel() function we created earlier**
 
-                    Debug.Log($"[InitializeCollectables] Loaded Word Knowledge Level: '{savedKnowledgeLevel}' for word: '{englishWord}' from dictionary and applied to scene object.");
+                    Debug.Log($"[InitializeCollectables] Loaded Word Knowledge Level: '{savedKnowledgeLevel}' for word: '{uniqueKey}' from dictionary and applied to scene object.");
                 }
                 else
                 {
