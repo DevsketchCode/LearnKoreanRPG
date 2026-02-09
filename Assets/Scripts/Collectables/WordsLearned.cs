@@ -31,8 +31,10 @@ namespace Assets.Scripts.Collectables
         [Header("UI References")]
         private TextMeshProUGUI englishWordTextPro; // Reference for English TextPro
         private TextMeshProUGUI altLangWordTextPro;  // Reference for Alternate Language TextPro
+        private TextMeshProUGUI altLangRomanizedWordTextPro;  // Reference for Alternate Language TextPro
         public string learnedWord_eng;
         public string learnedWord_alt;
+        public string learnedWord_alt_romanized;
 
         [Header("UI Button Integration")]
         private Button buttonFamiliar; // buttons will be dynamically set
@@ -47,6 +49,8 @@ namespace Assets.Scripts.Collectables
         private bool isNewWord = false;
         private Transform panelBackground;
         private Transform englishTextObject;
+
+        private Button audioAltLangButton;
 
         // Public Property for Knowledge Level with Setter Logic
         public WordKnowledgeLevel WordKnowledgeLevelProp // Renamed to PascalCase for property convention
@@ -118,6 +122,7 @@ namespace Assets.Scripts.Collectables
             {
                 learnedWord_eng = currentWordData.english;
                 learnedWord_alt = currentWordData.complex; // Hangul/etc
+                learnedWord_alt_romanized = currentWordData.romanized; // Romanized version if available
                 this.wordDataType = currentWordData.wordDataType;
 
 
@@ -129,6 +134,8 @@ namespace Assets.Scripts.Collectables
             {
                 Debug.LogWarning($"[WordsLearned] No entry found for ID: {CollectableID} in {targetLang}");
             }
+
+            Debug.Log($"<color=yellow>[ID Check]</color> GO:<b>{gameObject.name}</b> | Key:<b>{CollectableID}</b> | Result:<b>{learnedWord_eng}</b>", gameObject);
         }
 
         // Handshakes with child WordButtons to prevent "Sibling Not Found" errors
@@ -175,7 +182,7 @@ namespace Assets.Scripts.Collectables
 
                 if (translationPanel != null)
                 {
-                    englishTextObject = translationPanel.Find("Text_English");
+                    englishTextObject = translationPanel.Find("Panel_English/Text_English");
                     if (englishTextObject != null)
                     {
                         englishWordTextPro = englishTextObject.GetComponent<TextMeshProUGUI>(); // Changed to TextMeshProUGUI for Canvas UI
@@ -190,7 +197,7 @@ namespace Assets.Scripts.Collectables
                     }
 
                     // --- Alt Language Text Check ---
-                    Transform altLangTextObject = translationPanel.Find("Text_AltLang");
+                    Transform altLangTextObject = translationPanel.Find("Panel_AltLang/Text_AltLang");
                     if (altLangTextObject != null)
                     {
                         altLangWordTextPro = altLangTextObject.GetComponent<TextMeshProUGUI>(); // Changed to TextMeshProUGUI for Canvas UI
@@ -203,10 +210,25 @@ namespace Assets.Scripts.Collectables
                     {
                         Debug.LogError($"[WordsLearned] Text_AltLang not found under Panel_Translation on {gameObject.name}!");
                     }
+
+                    // --- Alt Language Romanized Text Check ---
+                    Transform altLangRomanizedTextObject = translationPanel.Find("Panel_AltLang/Text_AltLang_Romanized");
+                    if (altLangRomanizedTextObject != null)
+                    {
+                        altLangRomanizedWordTextPro = altLangRomanizedTextObject.GetComponent<TextMeshProUGUI>(); // Changed to TextMeshProUGUI for Canvas UI
+                        if (altLangRomanizedWordTextPro == null)
+                        {
+                            Debug.LogError($"[WordsLearned] TextMeshPro component NOT found on {altLangRomanizedTextObject.name}!");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError($"[WordsLearned] Text_AltLang_Romanized not found under Panel_Translation on {gameObject.name}!");
+                    }
                 }
 
                 // --- Buttons Check ---
-                // Using the direct reference from UIManager instead of hardcoded path
+                // Using the direct reference from UIManager
                 Transform familiarityPanel = uiManager.familiarityPanel;
 
                 if (familiarityPanel != null)
@@ -223,6 +245,14 @@ namespace Assets.Scripts.Collectables
                 else
                 {
                     Debug.LogError($"[WordsLearned] Panel_Familiarity not found via UIManager reference on {gameObject.name}!");
+                }
+
+
+                // Find the Audio Button
+                audioAltLangButton = translationPanel.Find("Button_Audio_AltLang")?.GetComponent<Button>();
+                if (audioAltLangButton == null)
+                {
+                    Debug.LogError($"[WordsLearned] Button_Audio_AltLang NOT found under Panel_Translation!");
                 }
             }
             else
@@ -273,6 +303,18 @@ namespace Assets.Scripts.Collectables
             // This ensures we don't send "New" if the trigger didn't update the level yet.
             UpdateKnowledgeLevelFromDictionary();
 
+            // --- AUDIO BUTTON ASSIGNMENT ---
+            // We do this here so the button is ready as soon as the UI panel appears
+            if (audioAltLangButton != null)
+            {
+                audioAltLangButton.onClick.RemoveAllListeners();
+                audioAltLangButton.onClick.AddListener(OnSpeakerButtonClick);
+                // Debug.Log($"[WordsLearned] Audio button linked to: {learnedWord_eng}");
+            }
+
+            // Debug exactly what this specific object thinks the UI components are
+            Debug.Log($"[UI Link Check] {learnedWord_eng} is targetting UI Object: {englishWordTextPro.gameObject.name} at path {englishWordTextPro.transform.parent.name}", englishWordTextPro.gameObject);
+
             // --- KEY LOGIC: Using composite key to check persistent 'IsLearned' flag ---
             // Now that we've initialized above, currentWordData.key is guaranteed to be valid
             string uniqueSaveKey = GetUniqueKey(currentWordData, learnedWord_eng);
@@ -289,6 +331,7 @@ namespace Assets.Scripts.Collectables
                 wordID = this.CollectableID, // The ID from the DB (e.g., tree_01)
                 english = this.learnedWord_eng,
                 altLang = this.learnedWord_alt,
+                altLang_Romanized = this.learnedWord_alt_romanized,
                 collectableID = this.CollectableID, // The internal ID (people_general_woman...)
                 currentLevel = this.WordKnowledgeLevelProp,
                 sourceScript = this // Reference back to this script so the Manager can call Finalize later
@@ -491,6 +534,12 @@ namespace Assets.Scripts.Collectables
 
             ReturnToWorldPrompt();
 
+            // Reset Audio Button Listeners to prevent "Sibling Not Found" errors if the player clicks another word before closing the panel
+            if (audioAltLangButton != null)
+            {
+                audioAltLangButton.onClick.RemoveAllListeners();
+            }
+
             // Call base.OnCollect so that the GameManager saves the scene state
             // and the Collectable state is recorded, regardless of the level chosen.
             base.OnCollect();
@@ -644,8 +693,23 @@ namespace Assets.Scripts.Collectables
         // Text to Speech Implementation
         public void OnSpeakerButtonClick()
         {
-            // currentWordData is the data for the word currently being shown
-            TTSManager.Instance.Speak(currentWordData);
+            // If the instance is null, try one last time to find it in the scene
+            if (TTSManager.Instance == null)
+            {
+                TTSManager.Instance = Object.FindAnyObjectByType<TTSManager>();
+            }
+
+            // Safety Check
+            if (TTSManager.Instance != null)
+            {
+                // currentWordData is the data for the word currently being shown
+                TTSManager.Instance.Speak(currentWordData);
+            }
+            else
+            {
+                Debug.LogError($"[WordsLearned] No TTSManager found in this scene! " +
+                               $"Make sure the Management prefab is in the Hierarchy.");
+            }
         }
     }
 }

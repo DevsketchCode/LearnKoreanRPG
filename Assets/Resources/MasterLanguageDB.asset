@@ -17,7 +17,7 @@ MonoBehaviour:
     language: 0
     english: Market
     complex: "\uC2DC\uC7A5"
-    romanized: sijang
+    romanized: si-jang
     phonetic: si-jang
     wordDataType: 0
     partOfSpeech: 7
@@ -59,7 +59,7 @@ MonoBehaviour:
     language: 0
     english: Lamp
     complex: "\uB7A8\uD504"
-    romanized: raempu
+    romanized: raem-peu
     phonetic: raem-peu
     wordDataType: 0
     partOfSpeech: 7
@@ -80,7 +80,7 @@ MonoBehaviour:
     language: 0
     english: Bookshelf
     complex: "\uCC45\uC7A5"
-    romanized: chaekjang
+    romanized: chaek-jang
     phonetic: chaek-jang
     wordDataType: 0
     partOfSpeech: 7
@@ -101,7 +101,7 @@ MonoBehaviour:
     language: 0
     english: Chair
     complex: "\uC758\uC790"
-    romanized: uija
+    romanized: ui-ja
     phonetic: ui-ja
     wordDataType: 0
     partOfSpeech: 7
@@ -122,7 +122,7 @@ MonoBehaviour:
     language: 0
     english: Couch
     complex: "\uC18C\uD30C"
-    romanized: sopa
+    romanized: so-pa
     phonetic: so-pa
     wordDataType: 0
     partOfSpeech: 7
@@ -164,7 +164,7 @@ MonoBehaviour:
     language: 0
     english: Plant
     complex: "\uC2DD\uBB3C"
-    romanized: singmul
+    romanized: sing-mul
     phonetic: sing-mul
     wordDataType: 0
     partOfSpeech: 7
@@ -185,7 +185,7 @@ MonoBehaviour:
     language: 0
     english: Tree
     complex: "\uB098\uBB34"
-    romanized: namu
+    romanized: na-mu
     phonetic: na-mu
     wordDataType: 0
     partOfSpeech: 7
@@ -206,7 +206,7 @@ MonoBehaviour:
     language: 0
     english: Man
     complex: "\uB0A8\uC790"
-    romanized: namja
+    romanized: nam-ja
     phonetic: nam-ja
     wordDataType: 0
     partOfSpeech: 7
@@ -227,7 +227,7 @@ MonoBehaviour:
     language: 0
     english: Woman
     complex: "\uC5EC\uC790"
-    romanized: yeoja
+    romanized: yeo-ja
     phonetic: yeo-ja
     wordDataType: 0
     partOfSpeech: 7
@@ -248,7 +248,7 @@ MonoBehaviour:
     language: 0
     english: Cashier
     complex: "\uACC4\uC0B0\uC6D0"
-    romanized: gyesanwon
+    romanized: gye-san-won
     phonetic: gye-san-won
     wordDataType: 0
     partOfSpeech: 7
@@ -269,7 +269,7 @@ MonoBehaviour:
     language: 0
     english: Cash Register
     complex: "\uACC4\uC0B0\uAE30"
-    romanized: gyesangi
+    romanized: gye-san-gi
     phonetic: gye-san-gi
     wordDataType: 0
     partOfSpeech: 7
@@ -290,7 +290,7 @@ MonoBehaviour:
     language: 0
     english: Shopping Cart
     complex: "\uC1FC\uD551 \uCE74\uD2B8"
-    romanized: syoping kateu
+    romanized: sho-ping ka-teu
     phonetic: sho-ping ka-teu
     wordDataType: 0
     partOfSpeech: 7
@@ -311,7 +311,7 @@ MonoBehaviour:
     language: 0
     english: Floor
     complex: "\uBC14\uB2E5"
-    romanized: badak
+    romanized: ba-dak
     phonetic: ba-dak
     wordDataType: 0
     partOfSpeech: 7
@@ -353,7 +353,7 @@ MonoBehaviour:
     language: 0
     english: Window
     complex: "\uCC3D\uBB38"
-    romanized: changmun
+    romanized: chang-mun
     phonetic: chang-mun
     wordDataType: 0
     partOfSpeech: 7
@@ -416,7 +416,7 @@ MonoBehaviour:
     language: 1
     english: Lamp
     complex: lampara
-    romanized: NA
+    romanized: 
     phonetic: lam-pa-ra
     wordDataType: 0
     partOfSpeech: 7
@@ -437,7 +437,7 @@ MonoBehaviour:
     language: 1
     english: Bookshelf
     complex: istante ng libro
-    romanized: NA
+    romanized: 
     phonetic: is-tan-te-nang-lib-ro
     wordDataType: 1
     partOfSpeech: 7
@@ -458,7 +458,7 @@ MonoBehaviour:
     language: 1
     english: Chair
     complex: upuan
-    romanized: NA
+    romanized: 
     phonetic: u-pu-an
     wordDataType: 0
     partOfSpeech: 7
@@ -479,7 +479,7 @@ MonoBehaviour:
     language: 1
     english: Couch
     complex: sofa
-    romanized: NA
+    romanized: 
     phonetic: so-pa
     wordDataType: 0
     partOfSpeech: 7
@@ -500,7 +500,7 @@ MonoBehaviour:
     language: 1
     english: Book
     complex: libro
-    romanized: NA
+    romanized: 
     phonetic: lib-ro
     wordDataType: 0
     partOfSpeech: 7
@@ -521,7 +521,7 @@ MonoBehaviour:
     language: 1
     english: Plant
     complex: halaman
-    romanized: NA
+    romanized: 
     phonetic: ha-la-man
     wordDataType: 0
     partOfSpeech: 7
@@ -563,7 +563,7 @@ MonoBehaviour:
     language: 1
     english: Man
     complex: Lalaki
-    romanized: Lalaki
+    romanized: 
     phonetic: la-la-ki
     wordDataType: 0
     partOfSpeech: 7
@@ -584,7 +584,7 @@ MonoBehaviour:
     language: 1
     english: Woman
     complex: Babae
-    romanized: Babae
+    romanized: 
     phonetic: ba-ba-e
     wordDataType: 0
     partOfSpeech: 7
@@ -605,7 +605,7 @@ MonoBehaviour:
     language: 1
     english: Cashier
     complex: kahero
-    romanized: NA
+    romanized: 
     phonetic: ka-he-ro
     wordDataType: 0
     partOfSpeech: 7
@@ -626,7 +626,7 @@ MonoBehaviour:
     language: 1
     english: Cash Register
     complex: Kaha rehistradora
-    romanized: Kaha rehistradora
+    romanized: 
     phonetic: ka-ha re-his-tra-do-ra
     wordDataType: 0
     partOfSpeech: 7
@@ -647,7 +647,7 @@ MonoBehaviour:
     language: 1
     english: Shopping Cart
     complex: Kariton sa pamimili
-    romanized: Kariton sa pamimili
+    romanized: 
     phonetic: ka-ri-ton sa pa-mi-mi-li
     wordDataType: 0
     partOfSpeech: 7
@@ -668,7 +668,7 @@ MonoBehaviour:
     language: 1
     english: Floor
     complex: sahig
-    romanized: NA
+    romanized: 
     phonetic: sa-hig
     wordDataType: 0
     partOfSpeech: 7
@@ -689,7 +689,7 @@ MonoBehaviour:
     language: 1
     english: Wall
     complex: pader
-    romanized: NA
+    romanized: 
     phonetic: pa-der
     wordDataType: 0
     partOfSpeech: 7
@@ -710,7 +710,7 @@ MonoBehaviour:
     language: 1
     english: Window
     complex: bintana
-    romanized: NA
+    romanized: 
     phonetic: bin-ta-na
     wordDataType: 0
     partOfSpeech: 7
@@ -773,7 +773,7 @@ MonoBehaviour:
     language: 2
     english: Lamp
     complex: silaw
-    romanized: NA
+    romanized: 
     phonetic: si-law
     wordDataType: 0
     partOfSpeech: 7
@@ -794,7 +794,7 @@ MonoBehaviour:
     language: 2
     english: Bookshelf
     complex: estante ti libro
-    romanized: NA
+    romanized: 
     phonetic: es-tan-te-ti-lib-ro
     wordDataType: 1
     partOfSpeech: 7
@@ -815,7 +815,7 @@ MonoBehaviour:
     language: 2
     english: Chair
     complex: tugaw
-    romanized: NA
+    romanized: 
     phonetic: tu-gaw
     wordDataType: 0
     partOfSpeech: 7
@@ -836,7 +836,7 @@ MonoBehaviour:
     language: 2
     english: Couch
     complex: sofa
-    romanized: NA
+    romanized: 
     phonetic: so-pa
     wordDataType: 0
     partOfSpeech: 7
@@ -857,7 +857,7 @@ MonoBehaviour:
     language: 2
     english: Book
     complex: libro
-    romanized: NA
+    romanized: 
     phonetic: lib-ro
     wordDataType: 0
     partOfSpeech: 7
@@ -878,7 +878,7 @@ MonoBehaviour:
     language: 2
     english: Plant
     complex: mula
-    romanized: NA
+    romanized: 
     phonetic: mu-la
     wordDataType: 0
     partOfSpeech: 7
@@ -920,7 +920,7 @@ MonoBehaviour:
     language: 2
     english: Man
     complex: Lalaki
-    romanized: Lalaki
+    romanized: 
     phonetic: la-la-ki
     wordDataType: 0
     partOfSpeech: 7
@@ -941,7 +941,7 @@ MonoBehaviour:
     language: 2
     english: Woman
     complex: Babai
-    romanized: Babai
+    romanized: 
     phonetic: ba-ba-i
     wordDataType: 0
     partOfSpeech: 7
@@ -962,7 +962,7 @@ MonoBehaviour:
     language: 2
     english: Cashier
     complex: kaysero
-    romanized: NA
+    romanized: 
     phonetic: kay-se-ro
     wordDataType: 0
     partOfSpeech: 7
@@ -983,7 +983,7 @@ MonoBehaviour:
     language: 2
     english: Cash Register
     complex: Kaha
-    romanized: Kaha
+    romanized: 
     phonetic: ka-ha
     wordDataType: 0
     partOfSpeech: 7
@@ -1004,7 +1004,7 @@ MonoBehaviour:
     language: 2
     english: Shopping Cart
     complex: Karting ti panaggatang
-    romanized: Karting ti panaggatang
+    romanized: 
     phonetic: kar-ting ti pa-nag-ga-tang
     wordDataType: 0
     partOfSpeech: 7
@@ -1025,7 +1025,7 @@ MonoBehaviour:
     language: 2
     english: Floor
     complex: daler
-    romanized: NA
+    romanized: 
     phonetic: da-ler
     wordDataType: 0
     partOfSpeech: 7
@@ -1046,7 +1046,7 @@ MonoBehaviour:
     language: 2
     english: Wall
     complex: diding
-    romanized: NA
+    romanized: 
     phonetic: di-ding
     wordDataType: 0
     partOfSpeech: 7
@@ -1067,7 +1067,7 @@ MonoBehaviour:
     language: 2
     english: Window
     complex: tawa
-    romanized: NA
+    romanized: 
     phonetic: ta-wa
     wordDataType: 0
     partOfSpeech: 7

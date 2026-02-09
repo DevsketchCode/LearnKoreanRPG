@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7128776394786793896}
   - component: {fileID: 9150989115889754309}
   m_Layer: 5
-  m_Name: Button-Confirm
+  m_Name: Button-Cancel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 8166612314918767492}
   - component: {fileID: 4067637849644043797}
   m_Layer: 5
-  m_Name: Button-Cancel
+  m_Name: Button-Confirm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3254902, g: 0.8117647, b: 0.67058825, a: 1}
+  m_Color: {r: 0.48460305, g: 0.8490566, b: 0.63921964, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -598,10 +598,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConfirmationModal
   titleText: {fileID: 3148487107017546750}
-  confirmButtonImage: {fileID: 3730323883405749362}
-  confirmButtonText: {fileID: 6473404385514240034}
-  confirmButton: {fileID: 9150989115889754309}
-  cancelButton: {fileID: 4067637849644043797}
+  confirmButtonImage: {fileID: 8166612314918767492}
+  confirmButtonText: {fileID: 6746141441603460293}
+  confirmButton: {fileID: 4067637849644043797}
+  cancelButton: {fileID: 9150989115889754309}
   useCustomColors: 0
   isAlert: 0
   customAlertBgColor: {r: 0.6980392, g: 0.1333333, b: 0.1333333, a: 1}
@@ -673,7 +673,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CANCEL
+  m_text: 'YES
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -810,7 +812,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YES
+  m_text: 'NO
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

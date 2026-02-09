@@ -2,7 +2,8 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 using Assets.Scripts.Collectables;
-using UnityEngine.UI; // Access your WordSaveData/KnowledgeWrapper
+using UnityEngine.UI;
+using System.Linq; // Access your WordSaveData/KnowledgeWrapper
 
 public class SettingsMenuManager : MonoBehaviour
 {
@@ -47,10 +48,13 @@ public class SettingsMenuManager : MonoBehaviour
             // Pull data from PlayerPrefs
             string statString = GetStatString(lang);
 
+            string prefix = lang.ToString() + "_";
+            int wordsCount = PlayerPrefs.GetInt(prefix + "WordsLearned", 0);
+
             // 3. Instantiate and Setup the row
             GameObject rowGO = Instantiate(languageStatRowPrefab, statsContentContainer);
             LanguageStatRowUI rowScript = rowGO.GetComponent<LanguageStatRowUI>();
-            rowScript.Setup(lang, statString, this);
+            rowScript.Setup(lang, statString, wordsCount, this);
         }
     }
 
@@ -96,10 +100,19 @@ public class SettingsMenuManager : MonoBehaviour
         if (string.IsNullOrEmpty(json)) return;
 
         GameManager.KnowledgeWrapper wrapper = JsonUtility.FromJson<GameManager.KnowledgeWrapper>(json);
+
+        // --- SORTING LOGIC ---
+        // Use .OrderByDescending to put highest levels (Mastered) at the top
+        // Use .OrderBy to put lowest levels (New) at the top
+        var sortedWords = wrapper.words
+                .OrderBy(w => w.level)
+                .ThenBy(w => w.uniqueSaveKey)
+                .ToList();
+
         wordListPanel.SetActive(true);
         statsListPanel.SetActive(false);
 
-        foreach (GameManager.WordSaveData savedWord in wrapper.words)
+        foreach (GameManager.WordSaveData savedWord in sortedWords)
         {
             // We need to split the key to find it in the DB (like we did in LoadState)
             int lastUnderscore = savedWord.uniqueSaveKey.LastIndexOf('_');
@@ -111,7 +124,11 @@ public class SettingsMenuManager : MonoBehaviour
             {
                 GameObject row = Instantiate(wordRowPrefab, wordListContentContainer);
                 // Row UI script should handle setting text: English, AltLang, Level
-                row.GetComponent<WordRowUI>().Setup(masterWord.english, masterWord.complex, (WordsLearned.WordKnowledgeLevel)savedWord.level);
+                row.GetComponent<WordRowUI>().Setup(
+                    masterWord.english, 
+                    masterWord.complex, 
+                    (WordsLearned.WordKnowledgeLevel)savedWord.level
+                );
             }
         }
     }

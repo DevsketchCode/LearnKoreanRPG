@@ -1,52 +1,52 @@
 Key,Language,English,Complex,Romanized,Phonetic,Type,POS,Gender,Tense,Formality,Plural,Category,SubCategory,Unit,Lesson,AudioKey,Note,Example_English,Example_AltLang
-buildings_commercial_market_word_noun,Korean,Market,시장,sijang,si-jang,Word,Noun,NA,NA,NA,NA,Buildings,Commercial,1,2,kr_buildings_commercial_market_word_noun,,,
+buildings_commercial_market_word_noun,Korean,Market,시장,si-jang,si-jang,Word,Noun,NA,NA,NA,NA,Buildings,Commercial,1,2,kr_buildings_commercial_market_word_noun,,,
 buildings_residential_house_word_noun,Korean,House,집,jip,jip,Word,Noun,NA,NA,NA,NA,Buildings,Residential,1,2,kr_buildings_residential_house_word_noun,,,
-furniture_lighting_lamp_word_noun,Korean,Lamp,램프,raempu,raem-peu,Word,Noun,NA,NA,NA,Singular,Furniture,Lighting,1,1,kr_furniture_lighting_lamp_word_noun,,Turn on the lamp.,램프를 켜세요.
-furniture_livingroom_bookshelf_word_noun,Korean,Bookshelf,책장,chaekjang,chaek-jang,Word,Noun,NA,NA,NA,Singular,Furniture,Living Room,1,1,kr_furniture_livingroom_bookshelf_word_noun,,The bookshelf is full.,책장이 가득 찼어요.
-furniture_livingroom_chair_word_noun,Korean,Chair,의자,uija,ui-ja,Word,Noun,NA,NA,NA,Singular,Furniture,Living Room,1,1,kr_furniture_livingroom_chair_word_noun,,This chair is small.,이 의자는 작아요.
-furniture_livingroom_couch_word_noun,Korean,Couch,소파,sopa,so-pa,Word,Noun,NA,NA,NA,Singular,Furniture,Living Room,1,1,kr_furniture_livingroom_couch_word_noun,,Sit on the couch.,소파에 앉으세요.
+furniture_lighting_lamp_word_noun,Korean,Lamp,램프,raem-peu,raem-peu,Word,Noun,NA,NA,NA,Singular,Furniture,Lighting,1,1,kr_furniture_lighting_lamp_word_noun,,Turn on the lamp.,램프를 켜세요.
+furniture_livingroom_bookshelf_word_noun,Korean,Bookshelf,책장,chaek-jang,chaek-jang,Word,Noun,NA,NA,NA,Singular,Furniture,Living Room,1,1,kr_furniture_livingroom_bookshelf_word_noun,,The bookshelf is full.,책장이 가득 찼어요.
+furniture_livingroom_chair_word_noun,Korean,Chair,의자,ui-ja,ui-ja,Word,Noun,NA,NA,NA,Singular,Furniture,Living Room,1,1,kr_furniture_livingroom_chair_word_noun,,This chair is small.,이 의자는 작아요.
+furniture_livingroom_couch_word_noun,Korean,Couch,소파,so-pa,so-pa,Word,Noun,NA,NA,NA,Singular,Furniture,Living Room,1,1,kr_furniture_livingroom_couch_word_noun,,Sit on the couch.,소파에 앉으세요.
 items_reading_book_word_noun,Korean,Book,책,chaek,chaek,Word,Noun,NA,NA,NA,Singular,Items,Reading,1,1,kr_items_reading_book_word_noun,,I read a book.,저는 책을 읽어요.
-nature_decor_plant_word_noun,Korean,Plant,식물,singmul,sing-mul,Word,Noun,NA,NA,NA,Singular,Nature,Decor,1,1,kr_nature_decor_plant_word_noun,,Water the plant.,식물에 물을 주세요.
-nature_plants_tree_word_noun,Korean,Tree,나무,namu,na-mu,Word,Noun,NA,NA,NA,NA,Nature,Plants,1,2,kr_nature_plants_tree_word_noun,,,
-people_general_man_word_noun,Korean,Man,남자,namja,nam-ja,Word,Noun,NA,NA,NA,NA,People,General,1,1,kr_people_general_man_word_noun,,,
-people_general_woman_word_noun,Korean,Woman,여자,yeoja,yeo-ja,Word,Noun,NA,NA,NA,NA,People,General,1,1,kr_people_general_woman_word_noun,,,
-people_jobs_cashier_word_noun,Korean,Cashier,계산원,gyesanwon,gye-san-won,Word,Noun,NA,NA,NA,Singular,People,Jobs,1,1,kr_people_jobs_cashier_word_noun,,Where is the cashier?,계산원은 어디에 있나요?
-shopping_equipment_cashregister_word_noun,Korean,Cash Register,계산기,gyesangi,gye-san-gi,Word,Noun,NA,NA,NA,NA,Shopping,Equipment,1,1,kr_shopping_equipment_cashregister_word_noun,,,
-shopping_equipment_shoppingcart_word_noun,Korean,Shopping Cart,쇼핑 카트,syoping kateu,sho-ping ka-teu,Word,Noun,NA,NA,NA,NA,Shopping,Equipment,1,1,kr_shopping_equipment_shoppingcart_word_noun,,,
-structure_interior_floor_word_noun,Korean,Floor,바닥,badak,ba-dak,Word,Noun,NA,NA,NA,Singular,Structure,Interior,1,1,kr_structure_interior_floor_word_noun,,The floor is clean.,바닥이 깨끗해요.
+nature_decor_plant_word_noun,Korean,Plant,식물,sing-mul,sing-mul,Word,Noun,NA,NA,NA,Singular,Nature,Decor,1,1,kr_nature_decor_plant_word_noun,,Water the plant.,식물에 물을 주세요.
+nature_plants_tree_word_noun,Korean,Tree,나무,na-mu,na-mu,Word,Noun,NA,NA,NA,NA,Nature,Plants,1,2,kr_nature_plants_tree_word_noun,,,
+people_general_man_word_noun,Korean,Man,남자,nam-ja,nam-ja,Word,Noun,NA,NA,NA,NA,People,General,1,1,kr_people_general_man_word_noun,,,
+people_general_woman_word_noun,Korean,Woman,여자,yeo-ja,yeo-ja,Word,Noun,NA,NA,NA,NA,People,General,1,1,kr_people_general_woman_word_noun,,,
+people_jobs_cashier_word_noun,Korean,Cashier,계산원,gye-san-won,gye-san-won,Word,Noun,NA,NA,NA,Singular,People,Jobs,1,1,kr_people_jobs_cashier_word_noun,,Where is the cashier?,계산원은 어디에 있나요?
+shopping_equipment_cashregister_word_noun,Korean,Cash Register,계산기,gye-san-gi,gye-san-gi,Word,Noun,NA,NA,NA,NA,Shopping,Equipment,1,1,kr_shopping_equipment_cashregister_word_noun,,,
+shopping_equipment_shoppingcart_word_noun,Korean,Shopping Cart,쇼핑 카트,sho-ping ka-teu,sho-ping ka-teu,Word,Noun,NA,NA,NA,NA,Shopping,Equipment,1,1,kr_shopping_equipment_shoppingcart_word_noun,,,
+structure_interior_floor_word_noun,Korean,Floor,바닥,ba-dak,ba-dak,Word,Noun,NA,NA,NA,Singular,Structure,Interior,1,1,kr_structure_interior_floor_word_noun,,The floor is clean.,바닥이 깨끗해요.
 structure_interior_wall_word_noun,Korean,Wall,벽,byeok,byeok,Word,Noun,NA,NA,NA,Singular,Structure,Interior,1,1,kr_structure_interior_wall_word_noun,,The wall is white.,벽이 하얀색이에요.
-structure_interior_window_word_noun,Korean,Window,창문,changmun,chang-mun,Word,Noun,NA,NA,NA,Singular,Structure,Interior,1,1,kr_structure_interior_window_word_noun,,Close the window.,창문을 닫으세요.
+structure_interior_window_word_noun,Korean,Window,창문,chang-mun,chang-mun,Word,Noun,NA,NA,NA,Singular,Structure,Interior,1,1,kr_structure_interior_window_word_noun,,Close the window.,창문을 닫으세요.
 buildings_commercial_market_word_noun,Tagalog,Market,Palengke,,pah-leng-keh,Word,Noun,NA,NA,NA,NA,Buildings,Commercial,1,2,tl_buildings_commercial_market_word_noun,,,
 buildings_residential_house_word_noun,Tagalog,House,Bahay,,bah-hai,Word,Noun,NA,NA,NA,NA,Buildings,Residential,1,2,tl_buildings_residential_house_word_noun,,,
-furniture_lighting_lamp_word_noun,Tagalog,Lamp,lampara,NA,lam-pa-ra,Word,Noun,NA,NA,NA,Singular,Furniture,Lighting,1,1,tl_furniture_lighting_lamp_word_noun,,Turn on the lamp.,Nasaan ang lampara?
-furniture_livingroom_bookshelf_phrs_noun,Tagalog,Bookshelf,istante ng libro,NA,is-tan-te-nang-lib-ro,Phrase,Noun,NA,NA,NA,Singular,Furniture,Living Room,1,1,tl_furniture_livingroom_bookshelf_phrs_noun,,The bookshelf is full.,Puno ang istante ng libro.
-furniture_livingroom_chair_word_noun,Tagalog,Chair,upuan,NA,u-pu-an,Word,Noun,NA,NA,NA,Singular,Furniture,Living Room,1,1,tl_furniture_livingroom_chair_word_noun,,This chair is small.,Maliit ang upuan.
-furniture_livingroom_couch_word_noun,Tagalog,Couch,sofa,NA,so-pa,Word,Noun,NA,NA,NA,Singular,Furniture,Living Room,1,1,tl_furniture_livingroom_couch_word_noun,,Sit on the couch.,Umupo ka sa sofa.
-items_reading_book_word_noun,Tagalog,Book,libro,NA,lib-ro,Word,Noun,NA,NA,NA,Singular,Items,Reading,1,1,tl_items_reading_book_word_noun,,I read a book.,Nagbabasa ako ng libro.
-nature_decor_plant_word_noun,Tagalog,Plant,halaman,NA,ha-la-man,Word,Noun,NA,NA,NA,Singular,Nature,Decor,1,1,tl_nature_decor_plant_word_noun,,Water the plant.,Diligan mo ang halaman.
+furniture_lighting_lamp_word_noun,Tagalog,Lamp,lampara,,lam-pa-ra,Word,Noun,NA,NA,NA,Singular,Furniture,Lighting,1,1,tl_furniture_lighting_lamp_word_noun,,Turn on the lamp.,Nasaan ang lampara?
+furniture_livingroom_bookshelf_phrs_noun,Tagalog,Bookshelf,istante ng libro,,is-tan-te-nang-lib-ro,Phrase,Noun,NA,NA,NA,Singular,Furniture,Living Room,1,1,tl_furniture_livingroom_bookshelf_phrs_noun,,The bookshelf is full.,Puno ang istante ng libro.
+furniture_livingroom_chair_word_noun,Tagalog,Chair,upuan,,u-pu-an,Word,Noun,NA,NA,NA,Singular,Furniture,Living Room,1,1,tl_furniture_livingroom_chair_word_noun,,This chair is small.,Maliit ang upuan.
+furniture_livingroom_couch_word_noun,Tagalog,Couch,sofa,,so-pa,Word,Noun,NA,NA,NA,Singular,Furniture,Living Room,1,1,tl_furniture_livingroom_couch_word_noun,,Sit on the couch.,Umupo ka sa sofa.
+items_reading_book_word_noun,Tagalog,Book,libro,,lib-ro,Word,Noun,NA,NA,NA,Singular,Items,Reading,1,1,tl_items_reading_book_word_noun,,I read a book.,Nagbabasa ako ng libro.
+nature_decor_plant_word_noun,Tagalog,Plant,halaman,,ha-la-man,Word,Noun,NA,NA,NA,Singular,Nature,Decor,1,1,tl_nature_decor_plant_word_noun,,Water the plant.,Diligan mo ang halaman.
 nature_plants_tree_word_noun,Tagalog,Tree,Puno,,poo-noh,Word,Noun,NA,NA,NA,NA,Nature,Plants,1,2,tl_nature_plants_tree_word_noun,,,
-people_general_man_word_noun,Tagalog,Man,Lalaki,Lalaki,la-la-ki,Word,Noun,NA,NA,NA,NA,People,General,1,1,tl_people_general_man_word_noun,,,
-people_general_woman_word_noun,Tagalog,Woman,Babae,Babae,ba-ba-e,Word,Noun,NA,NA,NA,NA,People,General,1,1,tl_people_general_woman_word_noun,,,
-people_jobs_cashier_word_noun,Tagalog,Cashier,kahero,NA,ka-he-ro,Word,Noun,NA,NA,NA,Singular,People,Jobs,1,1,tl_people_jobs_cashier_word_noun,Spanish loanword,Where is the cashier?,Nasaan ang kahera?
-shopping_equipment_cashregister_word_noun,Tagalog,Cash Register,Kaha rehistradora,Kaha rehistradora,ka-ha re-his-tra-do-ra,Word,Noun,NA,NA,NA,NA,Shopping,Equipment,1,1,tl_shopping_equipment_cashregister_word_noun,,,
-shopping_equipment_shoppingcart_word_noun,Tagalog,Shopping Cart,Kariton sa pamimili,Kariton sa pamimili,ka-ri-ton sa pa-mi-mi-li,Word,Noun,NA,NA,NA,NA,Shopping,Equipment,1,1,tl_shopping_equipment_shoppingcart_word_noun,,,
-structure_interior_floor_word_noun,Tagalog,Floor,sahig,NA,sa-hig,Word,Noun,NA,NA,NA,Singular,Structure,Interior,1,1,tl_structure_interior_floor_word_noun,,The floor is clean.,Malinis ang sahig.
-structure_interior_wall_word_noun,Tagalog,Wall,pader,NA,pa-der,Word,Noun,NA,NA,NA,Singular,Structure,Interior,1,1,tl_structure_interior_wall_word_noun,,The wall is white.,Puti ang pader.
-structure_interior_window_word_noun,Tagalog,Window,bintana,NA,bin-ta-na,Word,Noun,NA,NA,NA,Singular,Structure,Interior,1,1,tl_structure_interior_window_word_noun,,Close the window.,Isara mo ang bintana.
+people_general_man_word_noun,Tagalog,Man,Lalaki,,la-la-ki,Word,Noun,NA,NA,NA,NA,People,General,1,1,tl_people_general_man_word_noun,,,
+people_general_woman_word_noun,Tagalog,Woman,Babae,,ba-ba-e,Word,Noun,NA,NA,NA,NA,People,General,1,1,tl_people_general_woman_word_noun,,,
+people_jobs_cashier_word_noun,Tagalog,Cashier,kahero,,ka-he-ro,Word,Noun,NA,NA,NA,Singular,People,Jobs,1,1,tl_people_jobs_cashier_word_noun,Spanish loanword,Where is the cashier?,Nasaan ang kahera?
+shopping_equipment_cashregister_word_noun,Tagalog,Cash Register,Kaha rehistradora,,ka-ha re-his-tra-do-ra,Word,Noun,NA,NA,NA,NA,Shopping,Equipment,1,1,tl_shopping_equipment_cashregister_word_noun,,,
+shopping_equipment_shoppingcart_word_noun,Tagalog,Shopping Cart,Kariton sa pamimili,,ka-ri-ton sa pa-mi-mi-li,Word,Noun,NA,NA,NA,NA,Shopping,Equipment,1,1,tl_shopping_equipment_shoppingcart_word_noun,,,
+structure_interior_floor_word_noun,Tagalog,Floor,sahig,,sa-hig,Word,Noun,NA,NA,NA,Singular,Structure,Interior,1,1,tl_structure_interior_floor_word_noun,,The floor is clean.,Malinis ang sahig.
+structure_interior_wall_word_noun,Tagalog,Wall,pader,,pa-der,Word,Noun,NA,NA,NA,Singular,Structure,Interior,1,1,tl_structure_interior_wall_word_noun,,The wall is white.,Puti ang pader.
+structure_interior_window_word_noun,Tagalog,Window,bintana,,bin-ta-na,Word,Noun,NA,NA,NA,Singular,Structure,Interior,1,1,tl_structure_interior_window_word_noun,,Close the window.,Isara mo ang bintana.
 buildings_commercial_market_word_noun,Ilocano,Market,Tianggi,,tyang-gee,Word,Noun,NA,NA,NA,NA,Buildings,Commercial,1,2,il_buildings_commercial_market_word_noun,,,
 buildings_residential_house_word_noun,Ilocano,House,Balay,,bah-lai,Word,Noun,NA,NA,NA,NA,Buildings,Residential,1,2,il_buildings_residential_house_word_noun,,,
-furniture_lighting_lamp_word_noun,Ilocano,Lamp,silaw,NA,si-law,Word,Noun,NA,NA,NA,Singular,Furniture,Lighting,1,1,il_furniture_lighting_lamp_word_noun,General word for light,Turn on the lamp.,Ayanna iti silaw?
-furniture_livingroom_bookshelf_phrs_noun,Ilocano,Bookshelf,estante ti libro,NA,es-tan-te-ti-lib-ro,Phrase,Noun,NA,NA,NA,Singular,Furniture,Living Room,1,1,il_furniture_livingroom_bookshelf_phrs_noun,,The bookshelf is full.,Napno ti estante ti libro.
-furniture_livingroom_chair_word_noun,Ilocano,Chair,tugaw,NA,tu-gaw,Word,Noun,NA,NA,NA,Singular,Furniture,Living Room,1,1,il_furniture_livingroom_chair_word_noun,,This chair is small.,Bassit daytoy a tugaw.
-furniture_livingroom_couch_word_noun,Ilocano,Couch,sofa,NA,so-pa,Word,Noun,NA,NA,NA,Singular,Furniture,Living Room,1,1,il_furniture_livingroom_couch_word_noun,,Sit on the couch.,agtugawka iti sofa.
-items_reading_book_word_noun,Ilocano,Book,libro,NA,lib-ro,Word,Noun,NA,NA,NA,Singular,Items,Reading,1,1,il_items_reading_book_word_noun,,I read a book.,Agbasbasaak iti libro.
-nature_decor_plant_word_noun,Ilocano,Plant,mula,NA,mu-la,Word,Noun,NA,NA,NA,Singular,Nature,Decor,1,1,il_nature_decor_plant_word_noun,,Water the plant.,Sibugam tay mula.
+furniture_lighting_lamp_word_noun,Ilocano,Lamp,silaw,,si-law,Word,Noun,NA,NA,NA,Singular,Furniture,Lighting,1,1,il_furniture_lighting_lamp_word_noun,General word for light,Turn on the lamp.,Ayanna iti silaw?
+furniture_livingroom_bookshelf_phrs_noun,Ilocano,Bookshelf,estante ti libro,,es-tan-te-ti-lib-ro,Phrase,Noun,NA,NA,NA,Singular,Furniture,Living Room,1,1,il_furniture_livingroom_bookshelf_phrs_noun,,The bookshelf is full.,Napno ti estante ti libro.
+furniture_livingroom_chair_word_noun,Ilocano,Chair,tugaw,,tu-gaw,Word,Noun,NA,NA,NA,Singular,Furniture,Living Room,1,1,il_furniture_livingroom_chair_word_noun,,This chair is small.,Bassit daytoy a tugaw.
+furniture_livingroom_couch_word_noun,Ilocano,Couch,sofa,,so-pa,Word,Noun,NA,NA,NA,Singular,Furniture,Living Room,1,1,il_furniture_livingroom_couch_word_noun,,Sit on the couch.,agtugawka iti sofa.
+items_reading_book_word_noun,Ilocano,Book,libro,,lib-ro,Word,Noun,NA,NA,NA,Singular,Items,Reading,1,1,il_items_reading_book_word_noun,,I read a book.,Agbasbasaak iti libro.
+nature_decor_plant_word_noun,Ilocano,Plant,mula,,mu-la,Word,Noun,NA,NA,NA,Singular,Nature,Decor,1,1,il_nature_decor_plant_word_noun,,Water the plant.,Sibugam tay mula.
 nature_plants_tree_word_noun,Ilocano,Tree,Kayu,,kah-yoo,Word,Noun,NA,NA,NA,NA,Nature,Plants,1,2,il_nature_plants_tree_word_noun,,,
-people_general_man_word_noun,Ilocano,Man,Lalaki,Lalaki,la-la-ki,Word,Noun,NA,NA,NA,NA,People,General,1,1,il_people_general_man_word_noun,,,
-people_general_woman_word_noun,Ilocano,Woman,Babai,Babai,ba-ba-i,Word,Noun,NA,NA,NA,NA,People,General,1,1,il_people_general_woman_word_noun,,,
-people_jobs_cashier_word_noun,Ilocano,Cashier,kaysero,NA,kay-se-ro,Word,Noun,NA,NA,NA,Singular,People,Jobs,1,1,il_people_jobs_cashier_word_noun,,Where is the cashier?,Ayanna iti kaysera?
-shopping_equipment_cashregister_word_noun,Ilocano,Cash Register,Kaha,Kaha,ka-ha,Word,Noun,NA,NA,NA,NA,Shopping,Equipment,1,1,il_shopping_equipment_cashregister_word_noun,,,
-shopping_equipment_shoppingcart_word_noun,Ilocano,Shopping Cart,Karting ti panaggatang,Karting ti panaggatang,kar-ting ti pa-nag-ga-tang,Word,Noun,NA,NA,NA,NA,Shopping,Equipment,1,1,il_shopping_equipment_shoppingcart_word_noun,,,
-structure_interior_floor_word_noun,Ilocano,Floor,daler,NA,da-ler,Word,Noun,NA,NA,NA,Singular,Structure,Interior,1,1,il_structure_interior_floor_word_noun,,The floor is clean.,nadalus ti daler.
-structure_interior_wall_word_noun,Ilocano,Wall,diding,NA,di-ding,Word,Noun,NA,NA,NA,Singular,Structure,Interior,1,1,il_structure_interior_wall_word_noun,,The wall is white.,Puraw ti diding.
-structure_interior_window_word_noun,Ilocano,Window,tawa,NA,ta-wa,Word,Noun,NA,NA,NA,Singular,Structure,Interior,1,1,il_structure_interior_window_word_noun,,Close the window.,Irikepmo ti tawa.
+people_general_man_word_noun,Ilocano,Man,Lalaki,,la-la-ki,Word,Noun,NA,NA,NA,NA,People,General,1,1,il_people_general_man_word_noun,,,
+people_general_woman_word_noun,Ilocano,Woman,Babai,,ba-ba-i,Word,Noun,NA,NA,NA,NA,People,General,1,1,il_people_general_woman_word_noun,,,
+people_jobs_cashier_word_noun,Ilocano,Cashier,kaysero,,kay-se-ro,Word,Noun,NA,NA,NA,Singular,People,Jobs,1,1,il_people_jobs_cashier_word_noun,,Where is the cashier?,Ayanna iti kaysera?
+shopping_equipment_cashregister_word_noun,Ilocano,Cash Register,Kaha,,ka-ha,Word,Noun,NA,NA,NA,NA,Shopping,Equipment,1,1,il_shopping_equipment_cashregister_word_noun,,,
+shopping_equipment_shoppingcart_word_noun,Ilocano,Shopping Cart,Karting ti panaggatang,,kar-ting ti pa-nag-ga-tang,Word,Noun,NA,NA,NA,NA,Shopping,Equipment,1,1,il_shopping_equipment_shoppingcart_word_noun,,,
+structure_interior_floor_word_noun,Ilocano,Floor,daler,,da-ler,Word,Noun,NA,NA,NA,Singular,Structure,Interior,1,1,il_structure_interior_floor_word_noun,,The floor is clean.,nadalus ti daler.
+structure_interior_wall_word_noun,Ilocano,Wall,diding,,di-ding,Word,Noun,NA,NA,NA,Singular,Structure,Interior,1,1,il_structure_interior_wall_word_noun,,The wall is white.,Puraw ti diding.
+structure_interior_window_word_noun,Ilocano,Window,tawa,,ta-wa,Word,Noun,NA,NA,NA,Singular,Structure,Interior,1,1,il_structure_interior_window_word_noun,,Close the window.,Irikepmo ti tawa.

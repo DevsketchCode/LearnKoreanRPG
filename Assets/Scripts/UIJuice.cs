@@ -19,6 +19,13 @@ public class UIJuice : MonoBehaviour
         if (canvasGroup == null) canvasGroup = gameObject.AddComponent<CanvasGroup>();
     }
 
+    private void OnDisable()
+    {
+        // Ensure the button is normal size when it turns back on later
+        transform.localScale = Vector3.one;
+        StopAllCoroutines();
+    }
+
     public void PlayEntrance()
     {
         StopAllCoroutines();

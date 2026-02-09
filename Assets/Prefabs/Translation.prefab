@@ -317,6 +317,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIJuice
   duration: 0.25
   targetScale: {x: 1, y: 1, z: 1}
+  pulseSpeed: 0.8
+  pulseIntensity: 0.1
 --- !u!114 &6891517962341379172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,7 +349,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3342485063603607403
 RectTransform:
   m_ObjectHideFlags: 0
