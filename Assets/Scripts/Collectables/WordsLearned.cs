@@ -135,7 +135,7 @@ namespace Assets.Scripts.Collectables
                 Debug.LogWarning($"[WordsLearned] No entry found for ID: {CollectableID} in {targetLang}");
             }
 
-            Debug.Log($"<color=yellow>[ID Check]</color> GO:<b>{gameObject.name}</b> | Key:<b>{CollectableID}</b> | Result:<b>{learnedWord_eng}</b>", gameObject);
+            // Debug.Log($"<color=yellow>[ID Check]</color> GO:<b>{gameObject.name}</b> | Key:<b>{CollectableID}</b> | Result:<b>{learnedWord_eng}</b>", gameObject);
         }
 
         // Handshakes with child WordButtons to prevent "Sibling Not Found" errors

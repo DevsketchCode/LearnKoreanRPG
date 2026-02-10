@@ -22,6 +22,8 @@ public class UIManager : MonoBehaviour
     public Transform familiarityPanel;
     public Transform translationPanel;
 
+    public Transform notifierPanel;
+
     public WordsLearned activeWordScript; // The current active word for translation
     public bool IsStudySessionActive = false; // Locks in Study Sessions
 
@@ -130,7 +132,7 @@ public class UIManager : MonoBehaviour
 
     // Centralized UI Update Method
     // This is called by ActiveTranslationManager to populate the labels
-    public void UpdateUI(string english, string altLang)
+    public void UpdateUI(string english, string altLang, string altLangRomanized)
     {
         if (translationPanel == null)
         {
@@ -141,10 +143,11 @@ public class UIManager : MonoBehaviour
         // Find the TextMeshPro components under the translationPanel
         TMP_Text englishText = translationPanel.Find("Panel_English/Text_English")?.GetComponent<TMP_Text>();
         TMP_Text altLangText = translationPanel.Find("Panel_AltLang/Text_AltLang")?.GetComponent<TMP_Text>();
-        TMP_Text altLangRomanizedText = translationPanel.Find("Panel_AltLang/Text_AltLang")?.GetComponent<TMP_Text>();
+        TMP_Text altLangRomanizedText = translationPanel.Find("Panel_AltLang/Text_AltLang_Romanized")?.GetComponent<TMP_Text>();
 
         if (englishText != null) englishText.text = english;
         if (altLangText != null) altLangText.text = altLang;
+        if (altLangRomanizedText != null) altLangRomanizedText.text = altLangRomanized;
 
         // Find the UI Image component (Destination)
         // It must be under Panel_Object/Sprite
@@ -178,7 +181,25 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void HandleXPJuice(int diff)
+    public void ShowNotification(string message)
+    {
+        if (notifierPanel == null) return;
+
+        // Find the TextMeshPro component inside the notifierPanel
+        TextMeshProUGUI notifierText = notifierPanel.GetComponentInChildren<TextMeshProUGUI>();
+
+        if (notifierText != null)
+        {
+            notifierText.text = message;
+        }
+
+        // Access the parent (Panel_Notifier_Border) and enable it
+        // transform.parent gets the border; .gameObject.SetActive(true) shows it
+        notifierPanel.parent.gameObject.SetActive(true);
+        notifierPanel.parent.gameObject.GetComponent<UIJuice>().PlayPulse();
+    }
+
+private void HandleXPJuice(int diff)
     {
         // Determine color and prefix based on gain/loss
         Color juiceColor = diff > 0 ? Color.green : Color.red;

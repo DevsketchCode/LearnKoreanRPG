@@ -16,6 +16,10 @@ namespace Assets.Scripts.Menu
                     HandleStartGame();
                     break;
 
+                case "Button-Credits":
+                    HandleCredits();
+                    break;
+
                 case "Button-Settings":
                     HandleSettings();
                     break;
@@ -49,6 +53,16 @@ namespace Assets.Scripts.Menu
             // If we are in-game, we might want to tell the GameManager to remember where we came from
             // so we can "Return to Game" later.
             SceneManager.LoadScene("_Settings");
+        }
+
+        private void HandleCredits()
+        {
+            // If we are already in Settings, don't do anything
+            if (SceneManager.GetActiveScene().name == "_Credits") return;
+
+            // If we are in-game, we might want to tell the GameManager to remember where we came from
+            // so we can "Return to Game" later.
+            SceneManager.LoadScene("_Credits");
         }
 
         private void HandleMainMenu()

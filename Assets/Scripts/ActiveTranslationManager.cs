@@ -30,7 +30,7 @@ public class ActiveTranslationManager : MonoBehaviour
         if (UIManager.Instance != null)
         {
             // Populate the UI with the NEW data
-            UIManager.Instance.UpdateUI(newSession.english, newSession.altLang);
+            UIManager.Instance.UpdateUI(newSession.english, newSession.altLang, newSession.altLang_Romanized);
             UIManager.Instance.IsStudySessionActive = true;
         }
 
