@@ -15841,6 +15841,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1803866591786776153, guid: 68238ff7cb0594745b77e619d7f888b5, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803866591786776153, guid: 68238ff7cb0594745b77e619d7f888b5, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1901928763857624104, guid: 68238ff7cb0594745b77e619d7f888b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 938.2719
@@ -15932,6 +15940,10 @@ PrefabInstance:
     - target: {fileID: 5875728266493854479, guid: 68238ff7cb0594745b77e619d7f888b5, type: 3}
       propertyPath: sceneType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6569936300277861156, guid: 68238ff7cb0594745b77e619d7f888b5, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9132386191560458453, guid: 68238ff7cb0594745b77e619d7f888b5, type: 3}
       propertyPath: m_AnchorMax.y

@@ -9,12 +9,12 @@ public class LanguageStatRowUI : MonoBehaviour
     public Button viewWordsButton;
 
     private WordData.Language myLang;
-    private SettingsMenuManager manager;
+    private SettingsMenuManager settingsManager;
 
     public void Setup(WordData.Language lang, string statString, int wordCount, SettingsMenuManager mngr)
     {
         myLang = lang;
-        manager = mngr;
+        settingsManager = mngr;
 
         languageNameText.text = lang.ToString();
         statsSummaryText.text = statString; // Already formatted by the Manager
@@ -27,7 +27,17 @@ public class LanguageStatRowUI : MonoBehaviour
     }
 
     // Hook these up to your prefab buttons in the inspector!
-    public void OnViewWordsClicked() => manager.OpenWordList((int)myLang);
+    public void OnViewWordsClicked()
+    {
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.FillWordList(myLang);
 
-    public void OnResetClicked() => manager.RequestReset((int)myLang);
+            // We still want the Settings UI to hide its local stats panel 
+            // so the WordList panel is clear.
+            settingsManager.statsListPanel.SetActive(false);
+        }
+    }
+
+    public void OnResetClicked() => settingsManager.RequestReset((int)myLang);
 }

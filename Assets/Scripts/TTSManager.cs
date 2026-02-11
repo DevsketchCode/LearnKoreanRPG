@@ -3,12 +3,14 @@ using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Collectables;
+using UnityEngine.SceneManagement;
 
 public class TTSManager : MonoBehaviour
 {
     public static TTSManager Instance;
     public AudioSource audioSource;
-    public GameObject loadingSpinner; // Assumes you've added the spinner GO
+    public AudioClip cachedSettingsClip; // The English "Hello" sample
+    public GameObject loadingSpinner;
 
     private Dictionary<string, AudioClip> audioCache = new Dictionary<string, AudioClip>();
 
@@ -18,6 +20,12 @@ public class TTSManager : MonoBehaviour
         else Destroy(gameObject);
 
         if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>();
+
+        // Only pre-load the sample if we are actually in the Settings scene
+        if (SceneManager.GetActiveScene().name == "_Settings")
+        {
+            StartCoroutine(PreloadSettingsSample());
+        }
     }
 
     public void Speak(WordData data)
@@ -37,6 +45,28 @@ public class TTSManager : MonoBehaviour
         {
             // Pass the original language so we can handle specific fallbacks like Ilocano -> Tagalog
             StartCoroutine(DownloadAndPlay(textToSpeak, langCode, cacheKey, data.language));
+        }
+    }
+
+    private IEnumerator PreloadSettingsSample()
+    {
+        // Use your existing logic structure for consistency
+        string url = "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&q=Hello&tl=en";
+
+        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                cachedSettingsClip = DownloadHandlerAudioClip.GetContent(www);
+                cachedSettingsClip.name = "TTS_Sample_Hello";
+                Debug.Log("[TTS] Settings sample cached successfully.");
+            }
+            else
+            {
+                Debug.LogWarning("[TTS] Failed to cache settings sample: " + www.error);
+            }
         }
     }
 

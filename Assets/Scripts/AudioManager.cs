@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Networking;
 
 public class AudioManager : MonoBehaviour
 {
@@ -25,11 +26,10 @@ public class AudioManager : MonoBehaviour
 
     [Header("Feedback Clips")]
     public AudioClip buttonPopClip; // button pop sound
-    public AudioClip ttsSampleClip; // A short voice clip (e.g., "Ready")
     public AudioClip ambienceSampleClip; // ambience clip
 
     private float lastSampleTime;
-    private const float sampleDelay = 0.15f; // Prevents "machine gun" sounds when sliding
+    private const float sampleDelay = 0.35f; // Prevents "machine gun" sounds when sliding
 
     private void Awake()
     {
@@ -72,11 +72,10 @@ public class AudioManager : MonoBehaviour
     public void SyncVolumesWithPrefs()
     {
         SetMusicVolume(PlayerPrefs.GetFloat("MusicVol", 0.5f));
-        SetSFXVolume(PlayerPrefs.GetFloat("SFXVol", 0.8f));
-        SetTTSVolume(PlayerPrefs.GetFloat("TTSVol", 1.0f));
-        SetAmbienceVolume(PlayerPrefs.GetFloat("AmbienceVol", 0.6f));
+        SetSFXVolume(PlayerPrefs.GetFloat("SFXVol", 0.8f), false);
+        SetTTSVolume(PlayerPrefs.GetFloat("TTSVol", 1.0f), false);
+        SetAmbienceVolume(PlayerPrefs.GetFloat("AmbienceVol", 0.6f), false);
     }
-
 
     public void PlayBackgroundMusic(AudioClip clip)
     {
@@ -138,26 +137,39 @@ public class AudioManager : MonoBehaviour
         // No sample needed for Music because it's already playing in the background
     }
 
-    public void SetSFXVolume(float value)
+    public void SetSFXVolume(float value, bool playFeedback = true)
     {
         SetMixerVolume("SFXVol", value);
         PlayerPrefs.SetFloat("SFXVol", value);
-        PlaySampleSound(buttonPopClip, sfxSource);
+
+        if (playFeedback)
+        {
+            PlaySampleSound(buttonPopClip, sfxSource);
+        }
     }
 
-    public void SetTTSVolume(float value)
+    public void SetTTSVolume(float value, bool playFeedback = true)
     {
         SetMixerVolume("TTSVol", value);
         PlayerPrefs.SetFloat("TTSVol", value);
-        PlaySampleSound(ttsSampleClip, ttsSampleSource);
+
+        // Find the TTSManager in the Management prefab and use its cached clip
+        TTSManager tts = FindObjectOfType<TTSManager>();
+        if (playFeedback && tts != null && tts.cachedSettingsClip != null)
+        {
+            PlaySampleSound(tts.cachedSettingsClip, ttsSampleSource);
+        }
     }
 
-    public void SetAmbienceVolume(float value)
+    public void SetAmbienceVolume(float value, bool playFeedback = true)
     {
         SetMixerVolume("AmbienceVol", value);
         PlayerPrefs.SetFloat("AmbienceVol", value);
-        // Optional: Play a wind loop sample here if desired
-        PlaySampleSound(ambienceSampleClip, ambienceSource);
+        
+        if(playFeedback)
+        {
+            PlaySampleSound(ambienceSampleClip, ambienceSource);
+        }
     }
 
     private void SetMixerVolume(string parameter, float value)

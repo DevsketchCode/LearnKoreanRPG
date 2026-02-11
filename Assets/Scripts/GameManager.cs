@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Debug")]
     public bool debugMode = false;
-    public GameObject toggleCompleteReset;
 
     private void Awake()
     {
@@ -99,6 +98,7 @@ public class GameManager : MonoBehaviour
             freshStart = false;
             ClearPlayerPrefs();
             ResetSessionStats();
+            TTSManager.Instance.cachedSettingsClip = null;
         }
         else
         {
@@ -711,7 +711,6 @@ public class GameManager : MonoBehaviour
                 {
                     ClearPlayerPrefs();
                     ResetSessionStats();
-                    toggleCompleteReset.SetActive(false);
                 }, true);
         }
     }

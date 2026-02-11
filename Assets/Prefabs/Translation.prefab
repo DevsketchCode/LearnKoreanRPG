@@ -143,6 +143,7 @@ MonoBehaviour:
   masteredExperience: 200
   learnedWord_eng: 
   learnedWord_alt: 
+  learnedWord_alt_romanized: 
   newWordColor: {r: 1, g: 1, b: 1, a: 1}
   familiarWordColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   knownWordColor: {r: 0, g: 1, b: 1, a: 1}
@@ -162,6 +163,7 @@ GameObject:
   - component: {fileID: 5653631220592244975}
   - component: {fileID: 1851597779228892901}
   - component: {fileID: 6891517962341379172}
+  - component: {fileID: 2152889950332167952}
   m_Layer: 5
   m_Name: Button_InitiateInteraction
   m_TagString: Untagged
@@ -331,6 +333,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89dc294278bddf54f932c77831740fcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AutoJuice
+--- !u!114 &2152889950332167952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075122049953665042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e1de7ca8cd84e24ca6ec46f22fb5e45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSoundLinker
+  popSound: {fileID: 8300000, guid: 2778cf7da81fcc049aba92e861079e9d, type: 3}
 --- !u!1 &2164249931162890433
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,8 +634,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WordDisplay
   masterDB: {fileID: 11400000, guid: 5fc489c4c58ae0b4a852081d9264bff8, type: 2}
   wordID: 
-  popupEnglish: {fileID: 0}
-  popupAltLang: {fileID: 0}
 --- !u!1 &6757408068891538936
 GameObject:
   m_ObjectHideFlags: 0

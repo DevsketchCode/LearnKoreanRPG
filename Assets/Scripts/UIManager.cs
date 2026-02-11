@@ -3,27 +3,41 @@ using TMPro;
 using System.Collections;
 using Assets.Scripts.Collectables;
 using UnityEngine.UI;
+using System.Linq;
 
 public class UIManager : MonoBehaviour
 {
 
     public static UIManager Instance; // The Singleton
 
+    [Header("Stats Components")]
     public TMP_Text Text_WordsLearnedValue;
     public TMP_Text Text_ExperienceValue;
+
+    [Header("Debug Window Components")]
     public bool ActivateDebugWindow;
     public Canvas DebugWindowCanvas;
     public TMP_Text Text_DebugPlayerX;
     public TMP_Text Text_DebugPlayerY;
 
+    [Header("References")]
     public GameManager gameManager;
-    public GameObject popupTranslationCanvas;
 
+    [Header("Translation Components")]
+    public GameObject popupTranslationCanvas;
     public Transform familiarityPanel;
     public Transform translationPanel;
 
+    [Header("Notification Components")]
     public Transform notifierPanel;
 
+    [Header("Word List View")]
+    public GameObject wordListPanel;
+    public Transform wordListContentContainer;
+    public GameObject wordRowPrefab;
+    public LanguageDatabase masterDB; // Reference your MasterDB here too
+
+    [Header("Active Word Tracking")]
     public WordsLearned activeWordScript; // The current active word for translation
     public bool IsStudySessionActive = false; // Locks in Study Sessions
 
@@ -147,7 +161,7 @@ public class UIManager : MonoBehaviour
 
         if (englishText != null) englishText.text = english;
         if (altLangText != null) altLangText.text = altLang;
-        if (altLangRomanizedText != null) altLangRomanizedText.text = altLangRomanized;
+        if (altLangRomanizedText != null) altLangRomanizedText.text = "[ " + altLangRomanized + " ]";
 
         // Find the UI Image component (Destination)
         // It must be under Panel_Object/Sprite
@@ -181,6 +195,80 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    // This version is called by a "View Words" button in the HUD
+    public void OpenCurrentLanguageWordList()
+    {
+        // If we are in-game, GameManager knows what language we are playing
+        if (gameManager != null)
+        {
+            // Convert the string (e.g., "Korean") back into the Enum (WordData.Language.Korean)
+            if (System.Enum.TryParse(gameManager.currentLanguage, out WordData.Language langEnum))
+            {
+                FillWordList(langEnum);
+            }
+            else
+            {
+                Debug.LogError($"[UIManager] Could not parse '{gameManager.currentLanguage}' into a valid Language Enum.");
+            }
+        }
+    }
+
+    public void CloseWordList()
+    {
+        wordListPanel.SetActive(false);
+
+        // If the Settings Manager exists in this scene, tell it to show the stats again
+        SettingsMenuManager settings = FindObjectOfType<SettingsMenuManager>();
+        if (settings != null)
+        {
+            settings.CloseWordList(); // This just reactivates statsListPanel
+        }
+    }
+
+    // This is the logic moved from SettingsMenuManager
+    public void FillWordList(WordData.Language lang)
+    {
+        string prefix = lang.ToString() + "_";
+        string json = PlayerPrefs.GetString(prefix + "KnowledgeData", "");
+
+        // Clear previous rows
+        foreach (Transform child in wordListContentContainer) Destroy(child.gameObject);
+
+        wordListPanel.SetActive(true);
+
+        if (string.IsNullOrEmpty(json)) return;
+
+        GameManager.KnowledgeWrapper wrapper = JsonUtility.FromJson<GameManager.KnowledgeWrapper>(json);
+
+        // --- SORTING LOGIC ---
+        // Use .OrderByDescending to put highest levels (Mastered) at the top
+        // Use .OrderBy to put lowest levels (New) at the top
+        var sortedWords = wrapper.words
+                .OrderBy(w => w.level)
+                .ThenBy(w => w.uniqueSaveKey)
+                .ToList();
+
+        foreach (GameManager.WordSaveData savedWord in sortedWords)
+        {
+            // Split the key to find it in the DB (like we did in LoadState)
+            int lastUnderscore = savedWord.uniqueSaveKey.LastIndexOf('_');
+            string originalKey = savedWord.uniqueSaveKey.Substring(0, lastUnderscore);
+
+            WordData masterWord = masterDB.GetWord(originalKey, lang);
+
+            if (masterWord != null)
+            {
+                GameObject row = Instantiate(wordRowPrefab, wordListContentContainer);
+                // Row UI script should handle setting text: English, AltLang, Level
+                row.GetComponent<WordRowUI>().Setup(
+                    masterWord.english,
+                    masterWord.complex,
+                    (WordsLearned.WordKnowledgeLevel)savedWord.level
+                );
+            }
+        }
+    }
+
     public void ShowNotification(string message)
     {
         if (notifierPanel == null) return;
@@ -199,7 +287,7 @@ public class UIManager : MonoBehaviour
         notifierPanel.parent.gameObject.GetComponent<UIJuice>().PlayPulse();
     }
 
-private void HandleXPJuice(int diff)
+    private void HandleXPJuice(int diff)
     {
         // Determine color and prefix based on gain/loss
         Color juiceColor = diff > 0 ? Color.green : Color.red;

@@ -1194,6 +1194,7 @@ GameObject:
   - component: {fileID: 6323386446563606766}
   - component: {fileID: 4549580010900917598}
   - component: {fileID: 1448989847980989451}
+  - component: {fileID: 1374301853441770395}
   m_Layer: 5
   m_Name: LanguageStatRow
   m_TagString: Untagged
@@ -1274,3 +1275,16 @@ MonoBehaviour:
   languageNameText: {fileID: 1814657522661023134}
   statsSummaryText: {fileID: 282556750928087268}
   viewWordsButton: {fileID: 7640913836492880583}
+--- !u!114 &1374301853441770395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8063080770320050113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e1de7ca8cd84e24ca6ec46f22fb5e45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSoundLinker
+  popSound: {fileID: 8300000, guid: 2778cf7da81fcc049aba92e861079e9d, type: 3}

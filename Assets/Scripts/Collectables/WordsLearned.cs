@@ -249,7 +249,7 @@ namespace Assets.Scripts.Collectables
 
 
                 // Find the Audio Button
-                audioAltLangButton = translationPanel.Find("Button_Audio_AltLang")?.GetComponent<Button>();
+                audioAltLangButton = translationPanel.parent.Find("Button_Audio_AltLang")?.GetComponent<Button>();
                 if (audioAltLangButton == null)
                 {
                     Debug.LogError($"[WordsLearned] Button_Audio_AltLang NOT found under Panel_Translation!");

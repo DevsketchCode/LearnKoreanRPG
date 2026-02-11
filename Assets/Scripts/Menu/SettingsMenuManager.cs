@@ -90,47 +90,12 @@ public class SettingsMenuManager : MonoBehaviour
     public void OpenWordList(int langIndex)
     {
         WordData.Language lang = (WordData.Language)langIndex;
-   
-        string prefix = lang.ToString() + "_";
-        string json = PlayerPrefs.GetString(prefix + "KnowledgeData", "");
 
-        // Clear previous rows
-        foreach (Transform child in wordListContentContainer) Destroy(child.gameObject);
+        // Simply tell the UIManager to fill and show the list for this language
+        UIManager.Instance.FillWordList(lang);
 
-        if (string.IsNullOrEmpty(json)) return;
-
-        GameManager.KnowledgeWrapper wrapper = JsonUtility.FromJson<GameManager.KnowledgeWrapper>(json);
-
-        // --- SORTING LOGIC ---
-        // Use .OrderByDescending to put highest levels (Mastered) at the top
-        // Use .OrderBy to put lowest levels (New) at the top
-        var sortedWords = wrapper.words
-                .OrderBy(w => w.level)
-                .ThenBy(w => w.uniqueSaveKey)
-                .ToList();
-
-        wordListPanel.SetActive(true);
+        // Hide your local stats panel as before
         statsListPanel.SetActive(false);
-
-        foreach (GameManager.WordSaveData savedWord in sortedWords)
-        {
-            // We need to split the key to find it in the DB (like we did in LoadState)
-            int lastUnderscore = savedWord.uniqueSaveKey.LastIndexOf('_');
-            string originalKey = savedWord.uniqueSaveKey.Substring(0, lastUnderscore);
-
-            WordData masterWord = masterDB.GetWord(originalKey, lang);
-
-            if (masterWord != null)
-            {
-                GameObject row = Instantiate(wordRowPrefab, wordListContentContainer);
-                // Row UI script should handle setting text: English, AltLang, Level
-                row.GetComponent<WordRowUI>().Setup(
-                    masterWord.english, 
-                    masterWord.complex, 
-                    (WordsLearned.WordKnowledgeLevel)savedWord.level
-                );
-            }
-        }
     }
 
     public void CloseWordList()

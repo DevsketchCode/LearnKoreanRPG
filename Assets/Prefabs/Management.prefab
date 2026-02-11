@@ -84,10 +84,10 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -2916590204329098252, guid: fa31931513561be47a8692caed920604, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -181,7 +181,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -3059555648335150775, guid: fa31931513561be47a8692caed920604, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -484,7 +484,6 @@ MonoBehaviour:
   ambienceSource: {fileID: 5550389716542838668}
   ttsSampleSource: {fileID: 6507915085888207279}
   buttonPopClip: {fileID: 8300000, guid: 2778cf7da81fcc049aba92e861079e9d, type: 3}
-  ttsSampleClip: {fileID: 8300000, guid: cfc1b74ff2fce244aa9833897248802d, type: 3}
   ambienceSampleClip: {fileID: 8300000, guid: 3e27e1fa6414dbb43a3c9daff5fd1315, type: 3}
 --- !u!1 &5325325884094499390
 GameObject:
@@ -580,6 +579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TTSManager
   audioSource: {fileID: 6017183404234143492}
+  cachedSettingsClip: {fileID: 0}
   loadingSpinner: {fileID: 5242027556885145903}
 --- !u!82 &6017183404234143492
 AudioSource:

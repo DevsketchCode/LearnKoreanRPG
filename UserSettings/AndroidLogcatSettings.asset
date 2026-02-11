@@ -3,7 +3,7 @@
     "m_SelectedProcess": {
         "deviceId": "29261FDH300D8D",
         "name": "com.devsketch.lexiconlane",
-        "processId": 4473,
+        "processId": 28735,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -168,6 +168,12 @@
             "deviceId": "29261FDH300D8D",
             "name": "com.devsketch.lexiconlane",
             "processId": 4473,
+            "exited": false
+        },
+        {
+            "deviceId": "29261FDH300D8D",
+            "name": "com.devsketch.lexiconlane",
+            "processId": 28735,
             "exited": false
         }
     ],
