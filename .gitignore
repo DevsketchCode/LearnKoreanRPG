@@ -364,7 +364,6 @@ FodyWeavers.xsd
 /.plastic
 /Library
 /Temp
-/_Builds
 /ignore.conf
 /.vsconfig
 /.collabignore

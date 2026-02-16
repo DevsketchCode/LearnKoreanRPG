@@ -3,7 +3,7 @@
     "m_SelectedProcess": {
         "deviceId": "29261FDH300D8D",
         "name": "com.devsketch.lexiconlane",
-        "processId": 16880,
+        "processId": 27520,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -180,6 +180,18 @@
             "deviceId": "29261FDH300D8D",
             "name": "com.devsketch.lexiconlane",
             "processId": 16880,
+            "exited": false
+        },
+        {
+            "deviceId": "29261FDH300D8D",
+            "name": "com.devsketch.lexiconlane",
+            "processId": 25239,
+            "exited": false
+        },
+        {
+            "deviceId": "29261FDH300D8D",
+            "name": "com.devsketch.lexiconlane",
+            "processId": 27520,
             "exited": false
         }
     ],
